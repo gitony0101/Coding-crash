@@ -1,0 +1,250 @@
+# 第 5 章 if 语句
+
+编程时经常需要检查一系列条件,并据此决定采取什么措施。
+在 Python 中,if 语句让你能够检查程序的当前状态,并采取相应的措施。
+
+- 条件测试,以检查所关心的任何条件
+
+## 示例
+
+```python
+cars = ['bmw', 'audi', 'toyota', 'subaru']
+
+for car in cars:
+    if car == 'bmw':
+        print(car.upper())
+    else:
+        print(car.title())
+```
+
+## 条件测试
+
+```python
+car = 'bmw'
+car == 'bmw'
+```
+
+```python
+car = 'audi'
+car == 'bmw'
+```
+
+```python
+requested_topping = 'mushrooms'
+if requested_topping != 'anchovies':
+    print("Hold the anchovies!")
+```
+
+```python
+answer = 17
+if answer != 42:
+    print("That is not the correct answer, please try again!")
+```
+
+检查多个条件：
+
+```python
+age_0 = 22
+age_1 = 18
+age_0 >= 21 and age_1 >= 21
+```
+
+```python
+age_0 = 22
+age_1 = 18
+age_0 >= 21 or age_1 >= 21
+```
+
+```python
+requested_toppings = ['mushrooms', 'extra cheese','onions']
+'mushrooms' in requested_toppings
+```
+
+```python
+#banned users
+banned_users = ['andrew', 'carolina', 'david']
+user = 'marie'
+if user not in banned_users:
+    print(f"{user.title()}, you can post a response if you wish.")
+```
+
+```python
+car = 'subaru'
+print("Is this car subaru? I predict True." )
+print(car == 'subaru')
+
+print("\nIs this car Audi? I predict False.")
+print(car == 'audi')
+```
+
+## If 语句
+
+```python
+age = 19
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+
+```
+
+```python
+age = 17
+if age >= 18:
+    print("You are old enough to vote!")
+    print("Have you registered to vote yet?")
+else:
+    print("Sorry, you are too young to vote.")
+    print("Please register to vote as soon as you turn 18!")
+```
+
+### if-elif-else 结构
+
+现实世界中,很多情况下需要考虑的情形超过两个
+
+```python
+age = 12
+if age < 4:
+    print("Your admission cost is $0")
+elif age < 18:
+    print("Your admission cost is $25")
+else:
+    print("Your admission cost is $10")
+```
+
+Python 并不要求 if-elif 结构后面必须有 else 代码块。在有些情况下,else 代码块很有用;而在其他一些情况下,使用一条 elif 语句来处理特定的情形更清晰
+
+```python
+age = 80
+
+if age < 14:
+    price = 0
+elif age < 18:
+    price = 25
+elif age <65:
+    price = 40
+elif age >= 65:
+    price = 20
+
+print(f"You admission cost is {price}.")
+```
+
+```python
+requested_toppings = ['mushrooms', 'extra cheese']
+
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+if 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+if 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+
+print("\nFinished making your pizza!")
+```
+
+**如果像下面这样转而使用 if-elif-else 结构,代码将不能正确运行,因为有一个测试通过后,就会跳过余下的测试**:
+
+### elif 使用需谨慎
+
+```python
+requested_toppings = ['mushrooms', 'extra cheese']
+if 'mushrooms' in requested_toppings:
+    print("Adding mushrooms.")
+elif 'pepperoni' in requested_toppings:
+    print("Adding pepperoni.")
+elif 'extra cheese' in requested_toppings:
+    print("Adding extra cheese.")
+
+print("\nFinished making your pizza!")
+```
+
+## 使用 if 语句处理列表
+
+通过结合使用 if 语句和列表：
+
+- 对列表中特定的值做特殊处理;
+
+- 高效地管理不断变化的情形；
+
+- 证明代码在各种情形下都将按预期那样运行。
+
+```python
+requested_toppings = ['mushrooms', 'extra cheese', 'pepperoni']
+
+for requested_topping in requested_toppings:
+    print(f"Adding {requested_topping}.")
+print("\nFinished making your pizza!")
+```
+
+```python
+requested_toppings = ['mushrooms', 'extra cheese','green peppers', 'pepperoni']
+
+for requested_topping in requested_toppings:
+    if requested_topping == 'green peppers':
+        print("Sorry, we are out of green peppers right now.")
+    else:
+        print(f"Adding {requested_topping}.")
+
+print("\nFinished making your pizza!")
+```
+
+确定列表不是空的到目前为止,我们对于处理的每个列表都做了一个简单的假设——假设它们都至少包含一个元素。因为马上就要让用户来提供存储在列表中的信息,所以不能再假设循环运行时列表不是空的。有鉴于此,在运行 for 循环前确定列表是否为空很重要。
+下面在制作比萨前检查顾客点的配料列表是否为空。如果列表为空,就向顾客确认是否要点原味比萨;如果列表不为空,就像前面的示例那样制作比萨:
+
+```python
+requested_toppings = []
+
+if requested_toppings:
+    for requested_topping in requested_toppings:
+        print(f"Adding {requested_topping}.")
+    print("\nFinished making your pizza!")
+else:
+    print("Are you sure you want a plain pizza?")
+```
+
+### 使用多个列表
+
+```python
+available_toppings = ['mushrooms', 'olives', 'green peppers', 'pepperoni', 'pineapple', 'extra cheese']
+
+requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
+
+for requested_topping in requested_toppings:
+    if requested_topping in available_toppings:
+        print(f"Adding {requested_topping}")
+    else:
+        print(f"Sorry, we don't have {requested_topping}.")
+
+print("\nFinished making your pizza!")
+```
+
+```python
+users = ['admin', 'bob', 'susan', 'michelle', 'david']
+
+for user in users:
+    if user == 'admin':
+        print(f"Hi {user}, would you like to see the status report?")
+    else:
+        print(f"Hello! {user.title()}, thank you for logging in again.")
+```
+
+## 设置 if 语句的格式
+
+这么少的内容用一节来说，肯定重要：
+
+本章的每个示例都展示了良好的格式设置习惯。在条件测试的格式设置方面,PEP 8 提供的唯一建议是,在诸如== 、>= 和<= 等比较运算符两边各添加一个空格。例如:
+
+```python
+if age < 4:
+```
+
+## 小结
+
+在本章中,你学习了:
+
+如何编写结果要么为 True 要么为 False 的条件测试;
+
+如何编写简单的 if 语句、if-else 语句和 if-elif-else 结构,并且在程序中使用这些结构来测试特定的条件,以确定这些条件是否满足;
+
+如何在利用高效的 for 循环的同时,以不同于其他元素的方式对特定的列表元素进行处理。
+
+你还再次学习了 Python 就代码格式提出的建议,从而确保即便编写的程序越来越复杂,其代码依然易于阅读和理解。
