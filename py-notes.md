@@ -26,4 +26,10 @@
     允许定义自己的类型
     提供其他类型的类型化版本，例如NamedTuple代替namedtuple
 
+### copy — Shallow and deep copy
 
+- 浅拷贝（shallowCopy）只是增加了一个指针指向已存在的内存地址，
+- 深拷贝（deepCopy）是增加了一个指针并且申请了一个新的内存，使这个增加的指针指向这个新的内存，
+  - 使用深拷贝的情况下，释放内存的时候不会因为出现浅拷贝时释放同一个内存的错误。
+
+![copyimg](./img/copy.png)
