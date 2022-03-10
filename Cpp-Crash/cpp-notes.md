@@ -19,7 +19,7 @@
   Algorithm
 
 - Part 2
-- Cpp console app
+  - Cpp console app
 
 #### What is C++?
 
