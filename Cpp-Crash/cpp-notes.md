@@ -6,6 +6,39 @@
 
 ### Intro C++
 
+- Part 1
+  What is C++
+  What is it used for
+  What kind of
+  Compiler
+  applications can we
+  build with C++
+  Why it was created
+  Source code
+  Object code
+  Algorithm
+
+- Part 2
+- Cpp console app
+
+#### What is C++?
+
+General purpose
+
+- Create all types of programs:
+  games,
+  operating systems,
+  browsers,compilers,
+  embedded systems,
+  all other general purpose software.
+- Compiled
+  - Converting code that you understand into code that your computer understands
+  - Building code
+  - Compile-time errors
+- Case sensitive
+  - C++distinguishes between uppercase and lowercase letters
+  - **myVariablel != myvariable**
+
 ```cpp
 #include <iostream> // header file-"Library"
                     // input output stream
@@ -48,6 +81,8 @@ int main()
 ```
 
 ### Chap 2 Variables, Datatypes
+
+#### Variales
 
 Variales: store int float double char string bool with maxium limit container.
 
@@ -115,9 +150,40 @@ cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
 }
 ```
 
+#### Datatypes
+
+Most common datatypes we use in C++
+
 ```cpp
+#include <climits>
+#include <iostream>
+using namespace std;
+
+int main() { //most common datatypes we use in C++
+  int yearOfBirth = 1995;
+  char gender = 'm';
+  bool isOlderThan18 = true;
+  float averageGrade = 4.5;
+  double balance = 452345234;
+
+
+  cout << "Int min value is " << INT_MIN << endl;
+  cout << "Int max value is " << INT_MAX << endl;
+  cout << "Uint max value is " << UINT_MAX << endl;
+
+  cout << "Size of char is " << sizeof(char) << "bytes\n";
+  cout << "Size of unsinged int is " << sizeof(unsigned int) << " bytes\n";
+  cout << "Size of int is " << sizeof(int) << " bytes\n";
+  cout << "Size of float is " << sizeof(float) << " bytes\n";
+  cout << "Size of double is " << sizeof(double) << " bytes\n";
+
+}
 
 ```
+
+The following table shows the variable type, how much memory it takes to store the value in memory, and what is maximum and minimum value which can be stored in such type of variables.
+
+![img](img/datatyes.png)
 
 ```cpp
 
