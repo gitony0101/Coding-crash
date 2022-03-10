@@ -7,7 +7,5 @@ int main()
   // cout : consloe output
   // cin : console input
   // std : name of the base for using cout and cin
-  std::cout << "My name is Tony0101." << std::endl;
-  std::cout << "Today is Wednesday.\n";
-
+  std::cout << "My name is Tony0101/n";
 } 
