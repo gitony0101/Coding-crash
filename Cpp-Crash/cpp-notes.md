@@ -260,6 +260,16 @@ int main() {
 
 ### Chap 3 If-else statements
 
+#### Operators
+
+- Logical Operators
+
+  Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
+
+  - The unary negation operator `!` takes a single operand and returns its opposite. In other words, !true yields false, and !false yields true.
+  - The logical operators AND `&&` and OR `||` are binary.
+  - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -309,7 +319,26 @@ Determine whether a triangle is equilateral,isosceles or scalene.
 ![img](/Cpp-Crash/img/chapter-3--Tri-ifelseDIagram.png)
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+  // User enters side lengths of a triangle (a,b,c)
+  // Program should write out whether that triangle is equilateral,isosceles or
+  // scalene
+  float a, b, c;
+  cout << "Enter the length of the triangle's each side a,b,c:";
+  cin >> a >> b >> c;
+  if (a == b && b == c) // Here I hide the curly brackets for better readability.
+    cout << "The triangle is equilateral.\n";
+  else {
+    if (a != b && b != c && a != c) {
+      cout << "The triangle is scalene.\n";
+    } else {
+      cout << "The triangle is isosceles.\n";
+    }
+  }
+}
 ```
 
 ```cpp
