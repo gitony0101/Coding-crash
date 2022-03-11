@@ -261,12 +261,52 @@ int main() {
 ### Chap 3 If-else statements
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+// User enters integer number
+// Program write out if that number is even or odd
+
+int main() { cout << 10 % 3 << endl; }
 
 ```
+
+with the modulo operator,we can make the function with the flowchart:
+
+![img](./img/chapter-3-ifelseDIagram.png)
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+// User enters integer number
+// Program write out if that number is even or odd
+
+int main() {
+  int number;                 // declare the number variable.
+  cout << "Enter a number: "; // Hint the user to enter a number.
+  cin >> number;              // get the number from the user.
+  // determine if the number is even or odd
+  if (number % 2 == 0)
+  // notice the curly brackets which shows the next operation if number % 2 == 0
+  {
+    cout << "You entered an even number." << endl;
+  } else
+
+  // otherwise, the number is odd, notice the coding style.
+  {
+    cout << "You entered an odd number." << endl;
+  }
+  cout << "Thank you for using the program!" << endl;
+}
 ```
+
+Review this code carefully and notice hwo to code if-else statement.
+
+Let's get it more complex.
+Determine whether a triangle is equilateral,isosceles or scalene.
+
+![img](/Cpp-Crash/img/chapter-3--Tri-ifelseDIagram.png)
 
 ```cpp
 
