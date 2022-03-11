@@ -262,13 +262,136 @@ int main() {
 
 #### Operators
 
-- Logical Operators
+Operators in C++ can be classified into 6 types:
+
+Arithmetic Operators
+Assignment Operators
+Relational Operators
+Logical Operators
+Bitwise Operators // not in in note ver 0.1
+Other Operators // not in in note ver 0.1
+
+- Arithematic operators: +, -, \*, /, % (modulus)
+
+```cpp
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << 5 + 2 << endl;
+  cout << 5 /2 << endl;
+  cout << 5.0 / 2 << endl;
+  cout << 5 /2.0 << endl;
+  cout << 5 % 2 << endl; // modulus operator
+}
+```
+
+Here we notice that 5 / 2 =2 since C++ return the integer value of the division.If you want to get the decimal value, you need to change the type of the divisor or dividend to float.
+
+- Increment/decrement operators ++ --
+  Increment/decrement operators increment or decrement the value of the object.
+
+  Pre-increment `++a` and pre-decrement `--a` operators increments or decrements the value of the object and returns a reference to the result.
+
+Post-increment `a++` and post-decrement `a--` creates a copy of the object, increments or decrements the value of the object and returns the copy from before the increment or decrement.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // ++,-- increment and decrement operators
+  int counter = 7;
+  counter++;
+  cout << counter << endl;
+  counter--;
+  cout << counter << endl;
+  // preincrement, predecrement
+  // postincrement, postdecrement
+  int counter_2 = 7;
+  cout << counter_2++ << endl; // shows 7 which is the value before increment
+  cout << counter_2 << endl; // Next, shows 8 which is the value after increment
+  cout << counter_2--
+       << endl; // shows 8 which is the value before decrement,yes, counter_2 is 8 now becasue of previous increment.
+  cout << counter_2 << endl; // Next, shows 7 which is the value after decrement
+}
+```
+
+- Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int a = 6, b = 5;
+cout << (a > b ) << endl; // shows 1 for true
+cout << (a < b)  << endl; // shows 0 for false
+cout << (a >= b) << endl; // shows 0 for false
+cout << (a <= b) << endl; // shows 1 for true
+cout << (a == b) << endl; // shows 0 for false
+cout << (a != b) << endl; // shows 1 for true
+}
+
+```
+
+- Logical Operators &&(AND), ||(OR), !(NOT)
 
   Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
 
   - The unary negation operator `!` takes a single operand and returns its opposite. In other words, !true yields false, and !false yields true.
   - The logical operators AND `&&` and OR `||` are binary.
   - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int a = 6, b = 5;
+cout << (a == 5 && b ==5) << endl; // AND operator,shows 0 for false
+cout << (a == 5 || b ==5) << endl; // OR operator,shows 1 for true
+// JUST add a '!' to the front of the operator to get the opposite result
+cout << (!(a == 5 && b ==5)) << endl; // NOT operator,shows 1 for true
+}
+```
+
+- Operator priority
+
+  Arithmetic operators >> relation operators >> logical operators
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int x = 6, y = 8;
+cout << (x ==6 && y == 5 +3) << endl; // calculates 5+3 first, then checks  whether x==6 , y== 8 seperately, at last, make sure they are BOTH true, shows 1 for true.
+
+}
+```
+
+- Assignment operators: =, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int x =5;
+  x +=7; // x = x + 7 (equals to 12)
+  cout << x << endl;
+  // -= is the same as x = x - 7
+
+}
+
+```
+
+Later, check [**C++ Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) for more information.
 
 ```cpp
 #include <iostream>
