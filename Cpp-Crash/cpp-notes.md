@@ -78,6 +78,12 @@ int main()
 }
 ```
 
+### Difference between void main and int main
+
+The main() function is like other functions. It also takes arguments, and returns some value. One point we have to keep in mind that the program starts executing from this main() function. So the operating system calls this function. When some value is returned from main(), it is returned to operating system.
+
+The void main() indicates that the main() function will not return any value, but the int main() indicates that the main() can return integer type data. When our program is simple, and it is not going to terminate before reaching the last line of the code, or the code is error free, then we can use the void main(). But if we want to terminate the program using exit() method, then we have to return some integer values (zero or non-zero). In that situation, the void main() will not work.
+
 # Chapter 1 Variables, Datatypes
 
 ## Variales
@@ -271,6 +277,8 @@ Other Operators // not in in note ver 0.1
 
 ### Arithematic operators: +, -, \*, /, % (modulus)
 
+First of all ,we need to know how the computer to calculate the result.
+
 ```cpp
 
 #include <iostream>
@@ -278,14 +286,14 @@ using namespace std;
 
 int main() {
   cout << 5 + 2 << endl;
-  cout << 5 /2 << endl;
-  cout << 5.0 / 2 << endl;
-  cout << 5 /2.0 << endl;
-  cout << 5 % 2 << endl; // modulus operator
+  cout << "5 / 2 = " << 5 / 2 << endl; // take care!
+  cout <<"5.0 / 2 = " <<  5.0 / 2 << endl; // take care!
+  cout <<"5 / 2.0 = " <<  5 / 2.0 << endl;//take care!
+  cout << "5 % 2 = " << 5 % 2 << endl; // modulus operator
 }
 ```
 
-Here we notice that 5 / 2 =2 since C++ return the integer value of the division.If you want to get the decimal value, you need to change the type of the divisor or dividend to float.
+**Here we notice that 5 / 2 = 2 since C++ returns the integer value of the division.If you want to get the decimal value, you need to change the type of the divisor or dividend to float.**
 
 - Increment/decrement operators ++ --
   Increment/decrement operators increment or decrement the value of the object.
@@ -721,6 +729,8 @@ int main() {
 
 yeah, we made the defalut condition as the other error cases.
 
+Moreover, notice that : 123 / 10 = 12, 123.4 / 10 = 12.34.
+
 ### Swich case 2.0; Number of days
 
 [Leap Year algorithm](https://www.mathsisfun.com/leap-years.html)
@@ -790,17 +800,70 @@ int main() {
   int counter = 100;
   while (counter <= 500) {
     if (counter % 3 == 0 && counter % 5 == 0)
-      cout << counter << "is divisible by 3 and 5" << endl;
+      cout << counter << " is divisible by 3 and 5" << endl;
     counter++;
     // ++counter; // same as above
   }
 }
-
 ```
+
+## While Loop
+
+Now let's build a while loop to count digits of a number,this is a classical way to count digits.
+
+As we discussed previously,C++ returns the integer value of the division of two integers, like:
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+  cout << "5 / 2 = " << 5 / 2 << endl; // take care!
+  cout << "1 / 10 = " << 1 / 10 << endl;
+  cout << - 1 / 10 << endl;
+}
 ```
+
+We find that 1 / 10 = 0, so here is our while loop:
+
+step 1 initialize the counter variable as 0;
+step 2 input the number we want to count the digits;
+step 3 let the number divide by 10, and repeat step 3 until the number is 0,save the times of division in the counter variable;
+step 4 print out the number of digits.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Count digits of a number
+  int number, counter = 0;
+  cout << "Please enter a number: ";
+  cin >> number;
+  if (number == 0)
+    cout << "You juse entered 0." << endl;
+  else {
+    while (number != 0) {
+      number /= 10;
+      // counter++; //all the same
+      ++counter;
+    }
+  }
+  cout << "The number you entered has " << counter << " digits." << endl;
+}
+```
+
+    Please enter a number: 123124345356423665777
+    The number you entered has 10 digits.
+
+This is a story about the datatype:
+123124345356423665777 is exceeding the range of an int, by very far
+
+you could declare number as a size_t instead, which translates to the largest unsigned integer type natively available on the platform (probably 64 bits in most cases)
+
+#### ？
+
+so, let's move on and imporve later.
 
 ```cpp
 
