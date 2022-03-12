@@ -290,6 +290,7 @@ int main() {
   cout <<"5.0 / 2 = " <<  5.0 / 2 << endl; // take care!
   cout <<"5 / 2.0 = " <<  5 / 2.0 << endl;//take care!
   cout << "5 % 2 = " << 5 % 2 << endl; // modulus operator
+  cout << "47 % 10 = " <<47 % 10 << endl; // modulus operator
 }
 ```
 
@@ -809,6 +810,8 @@ int main() {
 
 ## While Loop
 
+### Count digits of a number
+
 Now let's build a while loop to count digits of a number,this is a classical way to count digits.
 
 As we discussed previously,C++ returns the integer value of the division of two integers, like:
@@ -864,6 +867,10 @@ you could declare number as a size_t instead, which translates to the largest un
 #### ？
 
 so, let's move on and imporve later.
+
+### Reversing number
+
+by moulye
 
 ```cpp
 
