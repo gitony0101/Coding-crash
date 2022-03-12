@@ -771,7 +771,30 @@ The switch case statement just **consider situations within the `cases`**,so if 
 
 # Chapter 4 Loops
 
+## Intro to Loops
+
+Loops as iteration statements execute a statement repeatedly.
+
+The four kinds of iteration statements are the while loop, the do-while loop, the for loop, and the range-based for loop.
+
+## Write the first loop
+
+Write out all the numbers between 100-500 that are divisible by 3 and 5
+
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Write out all the numbers between 100-500 that are divisible by 3 and 5
+  int counter = 100;
+  while (counter <= 500) {
+    if (counter % 3 == 0 && counter % 5 == 0)
+      cout << counter << "is divisible by 3 and 5" << endl;
+    counter++;
+    // ++counter; // same as above
+  }
+}
 
 ```
 
