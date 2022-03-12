@@ -436,6 +436,10 @@ int main() {
 
 ## If-else statements
 
+- If-else statements
+- conditional operator (0?1:2)
+- Switch case statements
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -558,7 +562,7 @@ int main() {
 
 ```
 
-## Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
+### Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
 
 IN C++ :
 
@@ -613,13 +617,61 @@ int main() {
 
 Also, we can upgrade the function with loops later.
 
-```cpp
+### From if-else statement to swich case statement
 
+Now let's build a calculator with if-else statement.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  float num1, num2;
+  char operatorCalc;
+  cout << "Please enter the number and operator: " << endl;
+  cin >> num1 >> operatorCalc >> num2;
+  if (operatorCalc == '+')
+    cout << num1 + num2 << endl;
+  else if (operatorCalc == '-')
+    cout << num1 - num2 << endl;
+  else if (operatorCalc == '*')
+    cout << num1 * num2 << endl;
+  else if (operatorCalc == '/')
+    cout << num1 / num2 << endl;
+  // else if (operatorCalc == '%')
+  //   cout << int(num1) % int(num2)
+  //        << endl;
+  // caution: only modulo the intergers.
+  else
+    cout << "Invalid operator" << endl;
+}
 ```
 
-```cpp
+Cool calculator, and you got hinted that **the modulo integers ONLY**,you made it, now let's introduce the switch case statement.
 
+This is the formal version of the switch case statement:
+
+```cpp
+switch (expression)  {
+    case constant1:
+        // code to be executed if
+        // expression is equal to constant1;
+        break;
+
+    case constant2:
+        // code to be executed if
+        // expression is equal to constant2;
+        break;
+        .
+        .
+        .
+    default:
+        // code to be executed if
+        // expression doesn't match any constant
+}
 ```
+
+Where the expression is corresponding to constantX.
 
 ```cpp
 
