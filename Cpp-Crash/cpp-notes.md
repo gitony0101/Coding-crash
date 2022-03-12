@@ -1,10 +1,8 @@
-# C++ Notes 0
+# C++ Notes 0 Code 10 hours
 
-# Code-10hours
+# Chap 0
 
-## Chap 0
-
-### Intro C++
+## Intro C++
 
 - Part 1
   What is C++
@@ -21,7 +19,7 @@
 - Part 2
   - Cpp console app
 
-#### What is C++?
+## What is C++?
 
 General purpose
 
@@ -80,9 +78,9 @@ int main()
 }
 ```
 
-### Chap 2 Variables, Datatypes
+# Chap 1 Variables, Datatypes
 
-#### Variales
+## Variales
 
 Variales: store int float double char string bool with maxium limit container.
 
@@ -150,7 +148,7 @@ cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
 }
 ```
 
-#### Datatypes
+## Datatypes
 
 Most common datatypes we use in C++
 
@@ -185,7 +183,7 @@ The following table shows the variable type, how much memory it takes to store t
 
 ![img](img/datatyes.png)
 
-#### Datatype overflow
+## Datatype overflow
 
 ```cpp
 #include <iostream>
@@ -201,7 +199,7 @@ int main() { // max amount of INT
 
 It actually works like the clock when it is over INT_MAX, then it goes to the INT_MIN.
 
-#### ASCII Program
+# Chapter 2 ASCII Program
 
 ```cpp
 #include <iostream>
@@ -258,9 +256,9 @@ int main() {
 
 ```
 
-### Chap 3 If-else statements
+# Chap 3 If-else statements
 
-#### Operators
+## Operators
 
 Operators in C++ can be classified into 6 types:
 
@@ -271,7 +269,7 @@ Logical Operators
 Bitwise Operators // not in in note ver 0.1
 Other Operators // not in in note ver 0.1
 
-- Arithematic operators: +, -, \*, /, % (modulus)
+### Arithematic operators: +, -, \*, /, % (modulus)
 
 ```cpp
 
@@ -318,7 +316,7 @@ int main() {
 }
 ```
 
-- Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
+### Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
 
 ```cpp
 #include <iostream>
@@ -337,13 +335,13 @@ cout << (a != b) << endl; // shows 1 for true
 
 ```
 
-- Logical Operators &&(AND), ||(OR), !(NOT)
+### Logical Operators &&(AND), ||(OR), !(NOT)
 
-  Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
+Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
 
-  - The unary negation operator `!` takes a single operand and returns its opposite. In other words, !true yields false, and !false yields true.
-  - The logical operators AND `&&` and OR `||` are binary.
-  - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
+- The unary negation operator `!` takes a single operand and returns its opposite. In other words, !true yields false, and !false yields true.
+- The logical operators AND `&&` and OR `||` are binary.
+- Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
 
 ```cpp
 #include <iostream>
@@ -375,7 +373,7 @@ cout << (x ==6 && y == 5 +3) << endl; // calculates 5+3 first, then checks  whet
 }
 ```
 
-- Assignment operators: =, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=
+### Assignment operators: =, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=
 
 ```cpp
 #include <iostream>
@@ -391,7 +389,52 @@ int main() {
 
 ```
 
-Later, check [**C++ Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) for more information.
+### Later, check [**C++ Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) for more information.
+
+### How to swap 2 variables values?
+
+- Pouring liquids
+
+<div align = "center">
+<div style="width:200px">
+
+![img](./img/swap-pouring-with-3rd-glass)
+
+</div>
+</div>
+
+Yeah, we need a third glass to contain one of the two liquids.
+
+However, we can exchange them without the third container since we can make full use of themselves:
+
+Let's code:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Program to swap two variables values
+  int a = 20, b = 10;
+  int temp = a; // hold the value of a in temp
+  a = b;        // assign the value of b to a
+  b = temp;     // assign the value of temp to b
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+  // Also, we can make it without using the third container, instead, we will
+  // handle it in a mathmatic way:
+  int x = 20, y = 10;
+  x = x + y; // now x stores the sum of x and y which is 30
+  y = x - y; // the NEW x subtracts the value of y ITSELF, which is 20, now we
+             // get y value swapped
+  x = x - y; // the NEW x subtracts NEW y, in the end x value got swapped which
+             // is 10.
+  cout << "x = " << x << endl;
+  cout << "y = " << y << endl;
+}
+```
+
+## If-else statements
 
 ```cpp
 #include <iostream>
@@ -439,7 +482,7 @@ Review this code carefully and notice hwo to code if-else statement.
 Let's get it more complex.
 Determine whether a triangle is equilateral,isosceles or scalene.
 
-![img](/Cpp-Crash/img/chapter-3--Tri-ifelseDIagram.png)
+![img](img/chapter-3--Tri-ifelseDIagram.png)
 
 ```cpp
 #include <iostream>
@@ -464,7 +507,50 @@ int main() {
 }
 ```
 
+### From BMI Calulator to algorithm design
+
+There are 3 thresholds for BMI:
+// Underweight 18.5
+// Normal weight 18.5-24.9
+// Overweight >25
+
+So with the if-else statement, we can design the algorithm with the condition:
+
+1. if <= 18.5
+2. if>= 25
+3. else
+
+![img](./img/BMI.jpg)
+
+as we see in the plot, we can make the "Break points" with 18.5 and 25 to reduce steps.
+
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // BMI calculator
+  // weight(kg)/height * height(m)
+  // Underweight 18.5
+  // Normal weight 18.5-24.9
+  // Overweight >25
+  float weight, height, bmi; // bmi = weight(kg)/height * height(m)
+  cout << "Enter your weight(kg): ";
+  cin >> weight;
+  cout << "Enter your height(m): ";
+  cin >> height;
+  bmi = weight / (height * height); // essential brackets
+
+  // this if else statement is more precise:
+  if (bmi < 18.5)
+    cout << "you are underweight" << endl;
+  else if (bmi > 25)
+    cout << "you are overweight" << endl;
+  else
+    cout << "you are normal weight" << endl;
+
+  cout << "Your BMI is: " << bmi << endl;
+}
 
 ```
 
@@ -472,17 +558,60 @@ int main() {
 
 ```
 
+## Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
+
+IN C++ :
+
 ```cpp
+Exp1 ? Exp2 : Exp3;
+```
+
+Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the **colon**.
+
+The **value of a ? expression** is determined like this: Exp1 is evaluated. If it is true, then Exp2 is evaluated and becomes the value of the entire ? expression. If Exp1 is false, then Exp3 is evaluated and its value becomes the value of the expression.
+
+The **? is called a ternary operator** because it requires three operands and can be used to replace if-else statements.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int hostUserNum, guestUserNum;
+  cout << "Enter a host number: ";
+  cin >> hostUserNum;
+  system("clear");
+  cout << "Enter a guest number: ";
+  cin >> guestUserNum;
+
+  if (guestUserNum == hostUserNum)
+    cout << "Correct." << endl;
+  else
+    cout << "Failed." << endl;
+}
 
 ```
 
+Now lets take a look at the short version:
+condicion ? expresion1 : expresion2
+
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int hostUserNum, guestUserNum;
+  cout << "Enter a host number: ";
+  cin >> hostUserNum;
+  system("clear");
+  cout << "Enter a guest number: ";
+  cin >> guestUserNum;
+    (guestUserNum == hostUserNum)? cout << "Correct." :cout << "Failed.";
+}
 
 ```
 
-```cpp
-
-```
+Also, we can upgrade the function with loops later.
 
 ```cpp
 
