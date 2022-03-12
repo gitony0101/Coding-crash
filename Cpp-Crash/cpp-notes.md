@@ -78,7 +78,7 @@ int main()
 }
 ```
 
-# Chap 1 Variables, Datatypes
+# Chapter 1 Variables, Datatypes
 
 ## Variales
 
@@ -256,7 +256,7 @@ int main() {
 
 ```
 
-# Chap 3 If-else statements
+# Chapter 3 If-else statements
 
 ## Operators
 
@@ -719,11 +719,57 @@ int main() {
 
 ```
 
-yeah, we made the defalut as the
+yeah, we made the defalut condition as the other error cases.
+
+### Swich case 2.0; Number of days
+
+[Leap Year algorithm](https://www.mathsisfun.com/leap-years.html)
 
 ```cpp
-
+/(year%4=0 && year%100!=0 || year%400==0)
 ```
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // show the number of days in certain month, year.
+  // leap year:
+  ///(year%4=0 && year%100!=0 || year%400==0)
+  int year, month;
+  cout << "Please enter the year and month:YYYY MM " << endl;
+  cin >> year >> month;
+  switch (month) {
+  case 2:
+    (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+        ? cout << "29 days in February" << endl
+        : cout << "28 days in February" << endl;
+    break;
+  case 4:
+  case 6:
+  case 9:
+  case 11:
+    cout << "30 days in this month" << endl;
+    break;
+  case 1:
+  case 3:
+  case 5:
+  case 7:
+  case 8:
+  case 10:
+  case 12:
+    cout << "31 days in this month" << endl;
+    break;
+  default:
+    cout << "NOT VALID!" << endl;
+  }
+}
+```
+
+The switch case statement just **consider situations within the `cases`**,so if you try 13 or -1 as the month which is not delared in the statement, the function itself show as an error.
+
+# Chapter 4 Loops
 
 ```cpp
 
