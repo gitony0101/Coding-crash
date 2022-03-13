@@ -1,4 +1,16 @@
-# C++ Notes 0 Code 10 hours
+# C++ Notes 0
+
+Tutorial:
+
+- CodeBeauty 10-hours
+
+Books:
+
+- C++ Crash
+
+Ref:
+
+- W3C School
 
 # Chap 0
 
@@ -1009,6 +1021,14 @@ It works,however, we still encounter the issue of datatype:
 Please enter a number, I will show the factorial of it :
 18
 18! = -898433024
+
+## Nestling Loops
+
+Now we will nest for loop with do-while loop.
+Here we would like to sum up the 3 courses grades of a student.
+Why nest loop?
+
+- 3 courses, each grade ranges from 1 to 5.
 
 ```cpp
 
