@@ -215,6 +215,8 @@ int main() { // max amount of INT
 }
 ```
 
+**The datatype is critical to the program**. If you use the wrong datatype, the program will not work, or in worse,the program will give you wired result.
+
 It actually works like the clock when it is over INT_MAX, then it goes to the INT_MIN.
 
 # Chapter 2 ASCII Program
@@ -694,6 +696,10 @@ switch (expression)  {
 
 Where the expression is corresponding to constantX.
 
+#### Why switch case statement?
+
+- **Enhance the efficiency of the program, reduce the number of if-else statements.**
+
 With this method, let's code the calculator with switch case statement.
 
 ```cpp
@@ -1022,17 +1028,53 @@ Please enter a number, I will show the factorial of it :
 18
 18! = -898433024
 
-## Nestling Loops
+## Nest Loops
 
 Now we will nest for loop with do-while loop.
-Here we would like to sum up the 3 courses grades of a student.
+
+### Nested For Loop with do-while loop, sum grade
+
+Here we would like to sum up the 3 courses grades of a student, and get the average grade.
 Why nest loop?
 
 - 3 courses, each grade ranges from 1 to 5.
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+  // nest for loop with do-while loop
+  // Sum up the grades and ger the average grade
+  int grade, sum = 0; // initialize the grade and sum as 0, if sum is not
+                      // initialized, there will be an error.
+  for (int i = 0; i < 3; i++) {
+    // for loop from 1 to 3 ,increment i by 1
+    do { // dowhile loop
+      cout << "Enter grade (1-5): " << endl;
+      cin >> grade;
+    } while (grade < 1 || grade > 5); // tricky part here
+    sum += grade;
+  }
+  cout << "The sum of the grade is :" << sum << endl;
+  cout << "The average of the grade is :" << float(sum) / 3.0 << endl;
+}
 ```
+
+Here we need to know why the code is : **while (grade < 1 || grade > 5)**
+
+1. Here is the loop from 1 to 3, you just have 3 times for storing the grade.
+2. If the grade is out of range, the code should not store the grade and ask the user to enter the grade again,so the range is grade < 1 OR grade > 5
+
+### Nest loop: Multiplication table
+
+<div align = "center">
+<div style="width:500px">
+
+![img](./img/MultiplyTable.jpg)
+
+</div>
+</div>
 
 ```cpp
 
