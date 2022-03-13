@@ -3,8 +3,8 @@
 Tutorial:
 
 - CodeBeauty 10-hours
-
-Books:
+  ·
+  Books:
 
 - C++ Crash
 
@@ -17,16 +17,14 @@ Ref:
 ## Intro C++
 
 - Part 1
-  What is C++
-  What is it used for
-  What kind of
-  Compiler
-  applications can we
-  build with C++
-  Why it was created
-  Source code
-  Object code
-  Algorithm
+
+  - What is C++
+  - What is it used for
+  - What kind of Compiler applications can we build with C++
+  - Why it was created
+  - Source code
+  - Object code
+  - Algorithm
 
 - Part 2
   - Cpp console app
@@ -36,11 +34,11 @@ Ref:
 General purpose
 
 - Create all types of programs:
-  games,
-  operating systems,
-  browsers,compilers,
-  embedded systems,
-  all other general purpose software.
+  - Games,
+  - Operating systems,
+  - Browsers,compilers,
+  - Embedded systems,
+  - All other general purpose software.
 - Compiled
   - Converting code that you understand into code that your computer understands
   - Building code
@@ -90,9 +88,13 @@ int main()
 }
 ```
 
+## About the C++ Version and Evironments
+
+## One More Thing
+
 ### Difference between void main and int main
 
-The main() function is like other functions. It also takes arguments, and returns some value. One point we have to keep in mind that the program starts executing from this main() function. So the operating system calls this function. When some value is returned from main(), it is returned to operating system.
+The main() function takes arguments, and returns some value like other functions. One point we have to keep in mind that the program starts executing from this main() function. So the operating system calls this function. When some value is returned from main(), it is returned to operating system.
 
 The void main() indicates that the main() function will not return any value, but the int main() indicates that the main() can return integer type data. When our program is simple, and it is not going to terminate before reaching the last line of the code, or the code is error free, then we can use the void main(). But if we want to terminate the program using exit() method, then we have to return some integer values (zero or non-zero). In that situation, the void main() will not work.
 
@@ -131,7 +133,7 @@ int main(){
 }
 ```
 
-cin
+- cin ： input from users.
 
 ```cpp
 #include <iostream>
@@ -168,7 +170,7 @@ cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
 
 ## Datatypes
 
-Most common datatypes we use in C++
+Most common datatypes we use in C++.
 
 ```cpp
 #include <climits>
@@ -214,6 +216,8 @@ int main() { // max amount of INT
 
 }
 ```
+
+### Datatype importance
 
 **The datatype is critical to the program**. If you use the wrong datatype, the program will not work, or in worse,the program will give you wired result.
 
