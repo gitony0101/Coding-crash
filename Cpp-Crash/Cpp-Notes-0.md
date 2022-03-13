@@ -866,31 +866,153 @@ you could declare number as a size_t instead, which translates to the largest un
 
 #### ？
 
-so, let's move on and imporve later.
+So, let's move on and imporve later.
 
 ### Reversing number
 
-by moulye
+For instance, a number 123, we want to reverse it to 321.
+
+step 1.we need a container - a variable to store the reversed number which is intialized as 0;
+step 2.get the the last digit of the number with the method of **taking the modulo of the number by 10**;
+step 3.**multiply the last digit by 10** and add it to the reversed number;
+step 4.taking the modulo of the number by 10 to get the last digit at that time and repeat step 2 and 3 until the previous number is 0;
+
+- Get the last digit by taking modulo of the number by 10,which will be multiplied by 10 at the next step.
+- You need to know the modulus method [here, consider it with periodic features](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic).
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Reversing number
+  int number, reversedNUmber = 0;
+  cout << "Please enter a number: ";
+  cin >> number;
+
+  while (number != 0) {
+
+    int lastDigit = number % 10; // get the last digit by taking the modulo of
+                                 // the number by 10 lastDigit += number % 10;
+    reversedNUmber *= 10;        // level up the digit by multiplying it by 10
+    reversedNUmber += lastDigit; // in the next step the new last digit still at
+                                 // the last position
+                                 // Or you can do it in one line:
+                                 // reversedNUmber += number % 10
+    number /= 10; // keep on dividing the number by 10 until it reaches 0
+  }
+  cout << "Reversed number :" << reversedNUmber << endl;
+}
+```
+
+## Do-while Loop
+
+- Syntax
+
+```cpp
+do {
+  // code block to be executed
+}
+while (condition);
+```
+
+### Hotel Safe Locker
+
+Make the safe locker by using do-while loop.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Simulate the safe locker box in the hotel
+
+  int userPin = 1234, pin,
+      errorCounter = 0; // initialize the userPin and pin which would be the
+                        // input of the user, and the errorCounter which is used
+                        // to count the number of error, start from 0 times.
+
+  // Do-While loop:
+
+  do { // code block will be executed when the while condition is true
+    cout << "Please enter your 4-digit pin: "; // Hint user to enter the pin
+    cin >> pin;                                // input the pin number
+    if (pin != userPin) { // condition :if the pin is not equal to the userPin
+      errorCounter++;     // increment the errorCounter
+      cout << "Incorrect pin, please try again." << endl; // hint try again
+    }
+  } while (errorCounter < 3 &&
+           pin != userPin); // while condition for the do block
+  if (pin == userPin) {     // condition : if the pin is equal to the userPin
+    cout << "Loading..." << endl;
+    cout << "Access granted." << endl;
+  } else
+    cout << "Access denied." << endl;
+}
+```
+
+This is a simple safe locker while here is the Saldina code's different part:
+
+```cpp
+  if (errorCounter < 3)
+    cout << "Access granted." << endl;
+  else
+    cout << "Access denied." << endl;
+```
+
+## For Loop
+
+- Syntax
+
+```cpp
+ for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+```
+
+Cool, three statements.
+
+Intro for loop with application of factorial.
+
+#### Factorial
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // The factorial of a number:
+  // The product of all the integers from 1 to the number.
+  // The number must be natural number。
+  int number;
+  cout << "Please enter a number, I will show the factorial of it : " << endl;
+  cin >> number;
+
+  int factorial = 1; // initialize the factorial number with 1
+
+  // Also we can do it this way: 6! = 6*5*4*3*2*1 = 720
+  for (int i = number; i >= 1; i--) {
+    factorial = factorial * i;
+  }
+
+  //   for (int i = 1; i <= number; i++) {
+  //     factorial = factorial * i;
+  //     // here the product : 1 * 2 * 3 * ...* number
+  //     // also this explains why 0! = 1
+  //   }
+  cout << number << "! = " << factorial << endl;
+}
+// 6! = 6*5*4*3*2*1 = 720
+// 6-5-4-3-2-1
+
 
 ```
 
-```cpp
+It works,however, we still encounter the issue of datatype:
 
-```
-
-```cpp
-
-```
-
-```cpp
-
-```
-
-```cpp
-
-```
+Please enter a number, I will show the factorial of it :
+18
+18! = -898433024
 
 ```cpp
 
