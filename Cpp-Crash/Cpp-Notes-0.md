@@ -1002,10 +1002,6 @@ int main() {
   //   }
   cout << number << "! = " << factorial << endl;
 }
-// 6! = 6*5*4*3*2*1 = 720
-// 6-5-4-3-2-1
-
-
 ```
 
 It works,however, we still encounter the issue of datatype:
