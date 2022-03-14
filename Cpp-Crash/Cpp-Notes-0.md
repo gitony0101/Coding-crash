@@ -1174,6 +1174,8 @@ cout << endl;
 
 # Chapter 5 Functions
 
+## Function Introduction
+
 ### Difference between void main and int main
 
 The main() function takes arguments, and returns some value like other functions.
@@ -1194,6 +1196,10 @@ void myFunction() { cout << "Hello World from myFunction." << endl; }
 int main() { cout << "Hello World from main." << endl; }
 ```
 
+We can see that there is only one code shows `Hello World from main.`
+
+If we want to call the `myFunction` we need to call it in main:
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -1206,9 +1212,45 @@ int main() {
   cout << "Hello World from main." << endl;}
 ```
 
-```cpp
+- Do not use the variable name as "`Function`" or "`main`" directly, the computer could not recognize them whether the build-in function or user-defined function.
 
+### Decoration function
+
+I like this function.
+
+As for there are lots of functions in the project, we can use decoration function at first to name all the functions which make the code more readable:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void myFunction_1(), myFunction_2(), myFunction_3(), myFunction_4(); // Decoration function, these functions are defined below:
+
+int main() { // main function, call the functions
+  cout << "Hello World from main" << endl;
+  myFunction_1();
+  myFunction_2();
+  myFunction_3();
+  myFunction_4();
+  myFunction_4();// of course, we can call the function as many times as we want.
+  myFunction_4();
+}
+
+void myFunction_1() { cout << "Hello World from myFunction_1" << endl; }
+
+void myFunction_2() { cout << "This is the 2nd Function" << endl; }
+
+void myFunction_3() { cout << "This is the 3rd Function" << endl; }
+
+void myFunction_4() {
+  cout << "This is the 4th Function, 4 is my lucky number." << endl;
+}
 ```
+
+## Function Parameters， Arguments
+
+Yeah, \*args, \*\*kargs？ Perhaps.
+Let's rock!
 
 ```cpp
 
