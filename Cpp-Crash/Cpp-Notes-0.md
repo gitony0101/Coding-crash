@@ -1253,10 +1253,47 @@ Yeah, \*args, \*\*kargs？ Perhaps.
 Let's rock!
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+void introduceMe(string name, string city, int age) // set the parameters here.
+
+{
+  // make void function with parameters
+  cout << "My name is " << name << " and I am " << age << " years old." << endl;
+}
+
+int main() {
+  // call function with two string parameters
+  introduceMe("John", "New York", 30);
+  introduceMe("Mary", "Paris", 25);
+  introduceMe("Bob", "London", 35);
+  introduceMe("Jane", "Berlin", 20);
+}
 ```
 
+### Default paremeters
+
+Also, we can set default value for parameters, however,the default parameters must be placed at the **END of the parameter list**.
+
 ```cpp
+#include <iostream>
+using namespace std;
+
+void introduceMe(string name, int age, string city = "NJ") {
+  // make void function with two string parameters
+  cout << "My name is " << name << " , I am " << age << " years old."
+       << " I'm from " << city << endl;
+}
+
+int main() {
+  // call function with two string parameters
+  introduceMe("John", 20, "New York");
+  introduceMe("Mary", 25);
+  introduceMe("Bob", 35);
+  introduceMe("Jane", 20, "Berlin");
+}
+
 
 ```
 
