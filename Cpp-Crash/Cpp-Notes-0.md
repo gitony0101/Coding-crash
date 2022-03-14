@@ -1282,7 +1282,7 @@ using namespace std;
 
 void introduceMe(string name, int age, string city = "NJ") {
   // make void function with two string parameters
-  cout << "My name is " << name << " , I am " << age << " years old."
+  cout << "My name is " << namœe << " , I am " << age << " years old."
        << " I'm from " << city << endl;
 }
 
