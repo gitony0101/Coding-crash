@@ -1080,11 +1080,65 @@ Here we need to know why the code is : **while (grade < 1 || grade > 5)**
 </div>
 </div>
 
-```cpp
+There is a normal version, now we can use do-while loop to make it more flexible.
 
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  // Make a Multiplication Table
+  // Double Loop?
+  int a, b;
+  do {
+    cout << "Enter the first integer (0-50) :" << endl;
+    cin >> a;
+    cout << "Enter the second integer (0-50) :" << endl;
+    cin >> b;
+  } while (a >= 50 || a <= 0 || b >= 50 || b <= 0);
+
+  cout << "Multiplaction Table for " << a << " * " << b << ":" << endl;
+
+  for (int i = 1; i <= a; i++) {
+    for (int j = 1; j <= b; j++) {
+      cout << i << " * " << j << " = " << i * j << endl;
+    }
+    cout << endl;
+  }
+  cout << "END of Multiplaction Table for " << a << " * " << b << endl;
+}
 ```
 
+### Nest Loop Rectangle shape (still double loop)
+
+Standard library header <iomanip>
+
+- `iomanip` is a library for input and output manipulation.
+- setw()
+
 ```cpp
+#include <iomanip>
+#include <iostream> // import iomanip to use setw()
+
+using namespace std;
+
+int main() {
+  int height, width;
+  char symbol;
+  cout << "Enter height: ";
+  cin >> height;
+  cout << "Enter width: ";
+  cin >> width;
+  cout << "Enter symbol: ";
+  cin >> symbol;
+  for (int h = 0; h < height; h++) {
+    for (int w = 0; w < width; w++) {
+
+      cout << setw(3) << symbol;
+    }
+    cout << endl;
+  }
+}
 
 ```
 
