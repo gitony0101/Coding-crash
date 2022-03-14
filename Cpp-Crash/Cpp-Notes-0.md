@@ -92,12 +92,6 @@ int main()
 
 ## One More Thing
 
-### Difference between void main and int main
-
-The main() function takes arguments, and returns some value like other functions. One point we have to keep in mind that the program starts executing from this main() function. So the operating system calls this function. When some value is returned from main(), it is returned to operating system.
-
-The void main() indicates that the main() function will not return any value, but the int main() indicates that the main() can return integer type data. When our program is simple, and it is not going to terminate before reaching the last line of the code, or the code is error free, then we can use the void main(). But if we want to terminate the program using exit() method, then we have to return some integer values (zero or non-zero). In that situation, the void main() will not work.
-
 # Chapter 1 Variables, Datatypes
 
 ## Variales
@@ -1139,19 +1133,77 @@ int main() {
     cout << endl;
   }
 }
+```
 
+### Nest Loop Triangle shape
+
+```cpp
+#include <iomanip>
+#include <iostream> // import iomanip to use setw()
+
+using namespace std;
+
+int main() {
+// make isolexic triangles
+// set parameters.
+int length;
+cout << "Enter the length of the triangle: " << endl;
+cin >> length;
+char symbol;
+cout << "Enter the symbol to use: " << endl;
+cin >> symbol;
+
+// nest the loop
+// make the lower triangle
+for (int i = 1; i <= length; i++) {
+for (int j = 1; j <= i; j++) {
+cout << setw(2) << symbol;
+}
+cout << endl;
+}
+cout << endl << endl;
+// make the upper triangle
+for (int i = length; i >= 1; i--) {
+for (int j = 1; j <= i; j++) {
+cout << setw(2) << symbol;
+}
+cout << endl;
+}
+}
+```
+
+# Chapter 5 Functions
+
+### Difference between void main and int main
+
+The main() function takes arguments, and returns some value like other functions.
+
+- The program starts executing from this main() function, So the operating system calls this function. When some value is returned from main(), it is returned to operating system.
+
+The void main() indicates that the main() function will NOT return any value, but the int main() indicates that the main() can return integer type data.
+
+Try this code to find which function will show the result.
+
+```cpp
+//Version 1
+#include <iostream>
+using namespace std;
+
+void myFunction() { cout << "Hello World from myFunction." << endl; }
+
+int main() { cout << "Hello World from main." << endl; }
 ```
 
 ```cpp
+#include <iostream>
+using namespace std;
 
-```
+void myFunction() { cout << "Hello World from function." << endl; }
 
-```cpp
+int main() {
+  myFunction();
 
-```
-
-```cpp
-
+  cout << "Hello World from main." << endl;}
 ```
 
 ```cpp
