@@ -47,7 +47,7 @@ General purpose
   - C++distinguishes between uppercase and lowercase letters
   - **myVariablel != myvariable**
 
-```cpp
+```c++
 #include <iostream> // header file-"Library"
                     // input output stream
 int main()
@@ -61,7 +61,7 @@ int main()
 }
 ```
 
-```cpp
+```c++
 #include <iostream> // header file-"Library"
                     // input output stream
 using namespace std; // using the std at global level
@@ -75,7 +75,7 @@ int main()
 }
 ```
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -103,7 +103,7 @@ Variales: store int float double char string bool with maxium limit container.
 
 Create a variale "annualsalary" with the datatype "float", put the value "50000.99" into the variable.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -115,7 +115,7 @@ int main(){
 }
 ```
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -129,7 +129,7 @@ int main(){
 
 - cin ： input from users.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -146,7 +146,7 @@ cout << "Your monthly salary is : " << monthlySallary << endl;
 
 Let pc compute the income in 10 years
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -166,7 +166,7 @@ cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
 
 Most common datatypes we use in C++.
 
-```cpp
+```c++
 #include <climits>
 #include <iostream>
 using namespace std;
@@ -199,7 +199,7 @@ The following table shows the variable type, how much memory it takes to store t
 
 ## Datatype overflow
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -219,7 +219,7 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 
 # Chapter 2 ASCII Program
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -236,13 +236,13 @@ The $\textit{American Standard Code for Information Interchange (ASCII)}$ table 
 
 ![img](img/ascii-2.png)
 
-```cpp
+```c++
 
 ```
 
 So， you can build an app to cipher or decipher words and ASCII codes.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -258,7 +258,7 @@ int main() {
 
 ```
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -291,7 +291,7 @@ Other Operators // not in in note ver 0.1
 
 First of all ,we need to know how the computer to calculate the result.
 
-```cpp
+```c++
 
 #include <iostream>
 using namespace std;
@@ -315,7 +315,7 @@ int main() {
 
 Post-increment `a++` and post-decrement `a--` creates a copy of the object, increments or decrements the value of the object and returns the copy from before the increment or decrement.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -339,7 +339,7 @@ int main() {
 
 ### Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -364,7 +364,7 @@ Logical operators evaluate Boolean logic on bool types. You characterize operato
 - The logical operators AND `&&` and OR `||` are binary.
 - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -382,7 +382,7 @@ cout << (!(a == 5 && b ==5)) << endl; // NOT operator,shows 1 for true
 
   Arithmetic operators >> relation operators >> logical operators
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -396,7 +396,7 @@ cout << (x ==6 && y == 5 +3) << endl; // calculates 5+3 first, then checks  whet
 
 ### Assignment operators: =, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -430,7 +430,7 @@ However, we can exchange them without the third container since we can make full
 
 Let's code:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -461,7 +461,7 @@ int main() {
 - conditional operator (0?1:2)
 - Switch case statements
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -476,7 +476,7 @@ with the modulo operator,we can make the function with the flowchart:
 
 ![img](./img/chapter-3-ifelseDIagram.png)
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -509,7 +509,7 @@ Determine whether a triangle is equilateral,isosceles or scalene.
 
 ![img](img/chapter-3--Tri-ifelseDIagram.png)
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -549,7 +549,7 @@ So with the if-else statement, we can design the algorithm with the condition:
 
 as we see in the plot, we can make the "Break points" with 18.5 and 25 to reduce steps.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -579,7 +579,7 @@ int main() {
 
 ```
 
-```cpp
+```c++
 
 ```
 
@@ -587,7 +587,7 @@ int main() {
 
 IN C++ :
 
-```cpp
+```c++
 Exp1 ? Exp2 : Exp3;
 ```
 
@@ -597,7 +597,7 @@ The **value of a ? expression** is determined like this: Exp1 is evaluated. If i
 
 The **? is called a ternary operator** because it requires three operands and can be used to replace if-else statements.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -620,7 +620,7 @@ int main() {
 Now lets take a look at the short version:
 condicion ? expresion1 : expresion2
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -642,7 +642,7 @@ Also, we can upgrade the function with loops later.
 
 Now let's build a calculator with if-else statement.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -672,7 +672,7 @@ Cool calculator, and you got hinted that **the modulo integers ONLY**,you made i
 
 This is the formal version of the switch case statement:
 
-```cpp
+```c++
 switch (expression)  {
     case constant1:
         // code to be executed if
@@ -700,7 +700,7 @@ Where the expression is corresponding to constantX.
 
 With this method, let's code the calculator with switch case statement.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -752,11 +752,11 @@ Moreover, notice that : 123 / 10 = 12, 123.4 / 10 = 12.34.
 
 [Leap Year algorithm](https://www.mathsisfun.com/leap-years.html)
 
-```cpp
+```c++
 /(year%4=0 && year%100!=0 || year%400==0)
 ```
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -808,7 +808,7 @@ The four kinds of iteration statements are the while loop, the do-while loop, th
 
 Write out all the numbers between 100-500 that are divisible by 3 and 5
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -832,7 +832,7 @@ Now let's build a while loop to count digits of a number,this is a classical way
 
 As we discussed previously,C++ returns the integer value of the division of two integers, like:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -850,7 +850,7 @@ step 2 input the number we want to count the digits;
 step 3 let the number divide by 10, and repeat step 3 until the number is 0,save the times of division in the counter variable;
 step 4 print out the number of digits.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -896,7 +896,7 @@ step 4.taking the modulo of the number by 10 to get the last digit at that time 
 - Get the last digit by taking modulo of the number by 10,which will be multiplied by 10 at the next step.
 - You need to know the modulus method [here, consider it with periodic features](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic).
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -925,7 +925,7 @@ int main() {
 
 - Syntax
 
-```cpp
+```c++
 do {
   // code block to be executed
 }
@@ -936,7 +936,7 @@ while (condition);
 
 Make the safe locker by using do-while loop.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -969,7 +969,7 @@ int main() {
 
 This is a simple safe locker while here is the Saldina code's different part:
 
-```cpp
+```c++
   if (errorCounter < 3)
     cout << "Access granted." << endl;
   else
@@ -980,7 +980,7 @@ This is a simple safe locker while here is the Saldina code's different part:
 
 - Syntax
 
-```cpp
+```c++
  for (statement 1; statement 2; statement 3) {
   // code block to be executed
 }
@@ -992,7 +992,7 @@ Intro for loop with application of factorial.
 
 #### Factorial
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1037,7 +1037,7 @@ Why nest loop?
 
 - 3 courses, each grade ranges from 1 to 5.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1076,7 +1076,7 @@ Here we need to know why the code is : **while (grade < 1 || grade > 5)**
 
 There is a normal version, now we can use do-while loop to make it more flexible.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1110,7 +1110,7 @@ Standard library header <iomanip>
 - `iomanip` is a library for input and output manipulation.
 - setw()
 
-```cpp
+```c++
 #include <iomanip>
 #include <iostream> // import iomanip to use setw()
 
@@ -1137,7 +1137,7 @@ int main() {
 
 ### Nest Loop Triangle shape
 
-```cpp
+```c++
 #include <iomanip>
 #include <iostream> // import iomanip to use setw()
 
@@ -1186,7 +1186,7 @@ The void main() indicates that the main() function will NOT return any value, bu
 
 Try this code to find which function will show the result.
 
-```cpp
+```c++
 //Version 1
 #include <iostream>
 using namespace std;
@@ -1200,7 +1200,7 @@ We can see that there is only one code shows `Hello World from main.`
 
 If we want to call the `myFunction` we need to call it in main:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1220,7 +1220,7 @@ I like this function.
 
 As for there are lots of functions in the project, we can use decoration function at first to name all the functions which make the code more readable:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1252,7 +1252,7 @@ void myFunction_4() {
 Yeah, \*args, \*\*kargs？ Perhaps.
 Let's rock!
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1276,7 +1276,7 @@ int main() {
 
 Also, we can set default value for parameters, however,the default parameters must be placed at the **END of the parameter list**.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -1293,186 +1293,210 @@ int main() {
   introduceMe("Bob", 35);
   introduceMe("Jane", 20, "Berlin");
 }
+```
 
+
+
+
+
+### 指针 pointer
+
+
+
+### 引用 Reference
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
-
-```
-
-```cpp
+```c++
 
 ```
