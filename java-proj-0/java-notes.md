@@ -1,6 +1,6 @@
 # Notes
 
-## Java class
+## Java class CS61B
 
 1. In Java, all code must be part a class；
 2. Classes are defined by the `public class CLASSNAME` ；
