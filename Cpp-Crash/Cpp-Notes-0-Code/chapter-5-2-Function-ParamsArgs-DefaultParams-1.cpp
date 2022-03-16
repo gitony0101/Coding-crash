@@ -11,13 +11,13 @@ void introduceMe(string name, int age, string city = "NJ")
 
 int main() {
   // call function with two string parameters
-  string name, city;
-  int age;
+  string name_Input, city_Input;
+  int age_input;
   cout << "Please enter your name: " << endl;
-  cin >> name;
+  cin >> name_Input;
   cout << "Please enter your age: " << endl;
-  cin >> age;
+  cin >> age_input;
   cout << "Please enter your city: " << endl;
-  cin >> city;
-  introduceMe(name, age, city);
+  cin >> city_Input;
+  introduceMe(name_Input, age_input, city_Input);
 }
