@@ -10,6 +10,7 @@ void showMenu() {
   cout << "1. Balance" << endl;
   cout << "2. Deposit" << endl;
   cout << "3. Withdraw" << endl;
+  cout << "4. Exit" << endl;
   cout << "*******************************" << endl;
 }
 
@@ -48,6 +49,3 @@ int main() {
     }
   } while (option != 4);
 }
-// case 4:
-// cout << "Thank you, see you next time!" << endl;
-// break;

@@ -976,6 +976,66 @@ This is a simple safe locker while here is the Saldina code's different part:
     cout << "Access denied." << endl;
 ```
 
+### ATM simulation with do-while loop
+
+Do-while functions ATM
+
+````cpp
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+// Do while loop for keeping this ATM alive.
+// extra number not allowed
+
+void showMenu() {
+  cout << "***********MENU***************" << endl;
+  cout << "1. Balance" << endl;
+  cout << "2. Deposit" << endl;
+  cout << "3. Withdraw" << endl;
+  cout << "4. Exit" << endl;
+  cout << "*******************************" << endl;
+}
+
+int main() {
+  int option;
+  double balance = 500;
+  do {
+    // Check balance,deposit,withdraw,show menu.
+
+    showMenu();
+    cout << "Press the number of the option: ";
+    cin >> option;
+    system("cls");
+    switch (option) {
+    case 1:
+      cout << "Balance:" << balance << "$" << endl;
+      break;
+    case 2:
+      cout << "Deposit amount:";
+      double depositamount;
+      cin >> depositamount;
+      balance += depositamount;
+      break;
+    case 3:
+      cout << "Please enter the money you want to withdraw:";
+      double withdrawamount;
+      cin >> withdrawamount;
+
+      if (withdrawamount <= balance) {
+        balance -= withdrawamount;
+        break;
+      } else {
+        cout << "You do not have enough balance." << endl;
+        break;
+      }
+    }
+  } while (option != 4);
+}
+
+
+
+
 ## For Loop
 
 - Syntax
@@ -984,7 +1044,7 @@ This is a simple safe locker while here is the Saldina code's different part:
  for (statement 1; statement 2; statement 3) {
   // code block to be executed
 }
-```
+````
 
 Cool, three statements.
 
@@ -1387,11 +1447,12 @@ float sum(float a, float b, float c) { return a + b + c; }
 
 ```
 
-Do-while functions ATM
+# Chapter 6 Generic and Template
 
-```cpp
+Philosophy of programming.
 
-```
+- Generic : 范型
+- Template : 模板
 
 ```cpp
 
