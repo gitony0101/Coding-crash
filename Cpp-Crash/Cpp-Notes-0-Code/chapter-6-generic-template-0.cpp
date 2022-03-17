@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 
-template <typename T> // declare the template "args"
+template <typename T> // declare the template "args" as T,  typename is the
+                      // kyeword you can use class (ANOTHER TYPTE) etc.
 
-void Swap(T &a, T &b) { // & as reference, we will go througt it later.
+void Swap(T &a, T &b) { // & as reference, we will go
+                        // througt it later.
   T temp = a;
   a = b;
   b = temp;

@@ -211,11 +211,13 @@ int main() { // max amount of INT
 }
 ```
 
+It actually works like the clock when it is over INT_MAX, then it goes to the INT_MIN.
+
 ### Datatype importance
 
 **The datatype is critical to the program**. If you use the wrong datatype, the program will not work, or in worse,the program will give you wired result.
 
-It actually works like the clock when it is over INT_MAX, then it goes to the INT_MIN.
+**So, when we are coding ,the first thing we must make clear is the datatype we are using**.
 
 # Chapter 2 ASCII Program
 
@@ -1456,15 +1458,17 @@ Philosophy of programming.
 
 Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
 
-In this chapter we just introduce these concepts.
+In this chapter we just introduce these concepts，since Generic and Template is more than this.
 
 ```cpp
 #include <iostream>
 using namespace std;
 
-template <typename T> // declare the template "args"
+template <typename T> // declare the template "args" as T,  typename is the
+                      // kyeword you can use class (ANOTHER TYPTE) etc.
 
-void Swap(T &a, T &b) { // & as reference, we will go througt it later.
+                      void Swap(T &a, T &b) { // & as reference, we will go
+                                              // througt it later.
   T temp = a;
   a = b;
   b = temp;
@@ -1481,15 +1485,57 @@ int main() {
   Swap(c, d);
   cout << "Now, c = " << c << "and d = " << d << endl;
 }
+
 ```
+
+# Chapter 7 Recursion
+
+A function that calls itself is known as a recursive function. And, this technique is known as recursion.
+
+[Check here for Recursion.](https://www.programiz.com/cpp-programming/recursion)
+
+Sum of the numebrs between m to n.
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+// Recursion version of the sum
+
+int recursive_sum(int m, int n) {
+  if (m == n)
+    return m;                         // base case to stop the recursion
+  return m + recursive_sum(m + 1, n); // how it recurrs
+}
+
+int main() {
+  int m = 2, n = 4;
+  cout << "Sum: " << recursive_sum(m, n) << endl;
+}
 ```
+
+Calculate the factorial
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+// Calculate the factorial of the number by recursion
+
+int recursive_factorial(int m) {
+  if (m == 1)
+    return m; // base case to stop the recursion
+  return m * recursive_factorial(m - 1); // how it recurrs
+}
+
+int main() {
+  int a = 5;
+  cout << recursive_factorial(5) << endl;
+}
 
 ```
+
+As we see the code above there are always a base case to stop the recursion and a return statement to show us how it recurrs.
 
 ```cpp
 
