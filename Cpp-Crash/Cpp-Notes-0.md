@@ -1454,8 +1454,33 @@ Philosophy of programming.
 - Generic : 范型
 - Template : 模板
 
-```cpp
+Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
 
+In this chapter we just introduce these concepts.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+template <typename T> // declare the template "args"
+
+void Swap(T &a, T &b) { // & as reference, we will go througt it later.
+  T temp = a;
+  a = b;
+  b = temp;
+}
+
+int main() {
+  int a = 5, b = 7;
+  cout << "Initially, a = " << a << "and b = " << b << endl;
+  Swap(a, b);
+  cout << "Now, a = " << a << "and b = " << b << endl;
+
+  char c = 'c', d = 'd';
+  cout << "Initially, c = " << c << "and d = " << d << endl;
+  Swap(c, d);
+  cout << "Now, c = " << c << "and d = " << d << endl;
+}
 ```
 
 ```cpp
@@ -1505,8 +1530,53 @@ Philosophy of programming.
 ```cpp
 
 ```
+
+---
+
+# On-the-go
 
 # 指针 pointer 引用 Reference
+
+## References in C++ `‘&’`
+
+When a variable is declared as a reference, it becomes an alternative name for an existing variable.
+
+**A variable can be declared as a reference by putting `‘&’` in the declaration.**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int x = 10;
+
+  // ref is a reference to X.
+  int &ref = x;
+  cout << ref << endl;
+
+  // Value of x is now changed to 20
+  ref = 20;
+  cout << "x = " << x << endl;
+
+  // Value of x is now changed to 30
+  x = 30;
+  cout << "ref = " << ref << endl;
+}
+```
+
+### References are less powerful than pointers
+
+1. Once a reference is created, it cannot be later made to reference another object; it cannot be reset. This is often done with pointers.
+2. References cannot be NULL. Pointers are often made NULL to indicate that they are not pointing to any valid thing.
+3. A reference must be initialized when declared. There is no such restriction with pointers.
+   Due to the above limitations, references in C++ cannot be used for implementing data structures like Linked List, Tree, etc. In Java, references don’t have the above restrictions and can be used to implement all data structures. References being more powerful in Java is the main reason Java doesn’t need pointers.
+
+### References are safer and easier to use:
+
+1. Safer: Since references must be initialized, wild references like wild pointers are unlikely to exist. It is still possible to have references that don’t refer to a valid location (See questions 5 and 6 in the below exercise )
+2. Easier to use: References don’t need a dereferencing operator to access the value. They can be used like normal variables. ‘&’ operator is needed only at the time of declaration. Also, members of an object reference can be accessed with dot operator (‘.’), unlike pointers where arrow operator (->) is needed to access members.
+
+Together with the above reasons, there are few places like the copy constructor argument where pointer cannot be used. Reference must be used to pass the argument in the copy constructor. Similarly, references must be used for overloading some operators like ++.
 
 ```cpp
 
