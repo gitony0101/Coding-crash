@@ -1387,9 +1387,7 @@ float sum(float a, float b, float c) { return a + b + c; }
 
 ```
 
-```cpp
-
-```
+Do-while functions ATM
 
 ```cpp
 
@@ -1443,9 +1441,11 @@ float sum(float a, float b, float c) { return a + b + c; }
 
 ```
 
-### 指针 pointer
+```cpp
 
-### 引用 Reference
+```
+
+# 指针 pointer 引用 Reference
 
 ```cpp
 

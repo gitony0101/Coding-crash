@@ -19,11 +19,11 @@ int main() {
   showMenu();
   cout << "Press the number of the option: ";
   cin >> option;
-  system("cls");
 
   switch (option) {
   case 1:
     cout << "Balance:" << balance << "$" << endl;
+    break;
   case 2:
     cout << "Deposit amount:";
     double depositamount;
