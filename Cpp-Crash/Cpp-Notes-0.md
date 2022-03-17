@@ -1449,46 +1449,7 @@ float sum(float a, float b, float c) { return a + b + c; }
 
 ```
 
-# Chapter 6 Generic and Template
-
-Philosophy of programming.
-
-- Generic : 范型
-- Template : 模板
-
-Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
-
-In this chapter we just introduce these concepts，since Generic and Template is more than this.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-template <typename T> // declare the template "args" as T,  typename is the
-                      // kyeword you can use class (ANOTHER TYPTE) etc.
-
-                      void Swap(T &a, T &b) { // & as reference, we will go
-                                              // througt it later.
-  T temp = a;
-  a = b;
-  b = temp;
-}
-
-int main() {
-  int a = 5, b = 7;
-  cout << "Initially, a = " << a << "and b = " << b << endl;
-  Swap(a, b);
-  cout << "Now, a = " << a << "and b = " << b << endl;
-
-  char c = 'c', d = 'd';
-  cout << "Initially, c = " << c << "and d = " << d << endl;
-  Swap(c, d);
-  cout << "Now, c = " << c << "and d = " << d << endl;
-}
-
-```
-
-# Chapter 7 Recursion
+## Recursion
 
 A function that calls itself is known as a recursive function. And, this technique is known as recursion.
 
@@ -1536,6 +1497,70 @@ int main() {
 ```
 
 As we see the code above there are always a base case to stop the recursion and a return statement to show us how it recurrs.
+
+# Chapter 6 Generic and Template
+
+Philosophy of programming.
+
+- Generic : 范型
+- Template : 模板
+
+Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
+
+In this chapter we just introduce these concepts，since Generic and Template is more than this.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+template <typename T> // declare the template "args" as T,  typename is the
+                      // kyeword you can use class (ANOTHER TYPTE) etc.
+
+                      void Swap(T &a, T &b) { // & as reference, we will go
+                                              // througt it later.
+  T temp = a;
+  a = b;
+  b = temp;
+}
+
+int main() {
+  int a = 5, b = 7;
+  cout << "Initially, a = " << a << "and b = " << b << endl;
+  Swap(a, b);
+  cout << "Now, a = " << a << "and b = " << b << endl;
+
+  char c = 'c', d = 'd';
+  cout << "Initially, c = " << c << "and d = " << d << endl;
+  Swap(c, d);
+  cout << "Now, c = " << c << "and d = " << d << endl;
+}
+
+```
+
+# Chapter 7 Object-Oriented Programming - OOP
+
+**OOP** stands for **Object-Oriented Programming**.
+
+**Procedural programming** is about writing procedures or functions that perform operations on the data, while object-oriented programming is about creating objects that contain both data and functions.
+
+Object-oriented programming has several advantages over procedural programming:
+
+- OOP is faster and easier to execute
+- OOP provides a clear structure for the programs
+- OOP helps to keep the C++ code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
+- OOP makes it possible to create full reusable applications with less code and shorter development time
+
+## Class and Objects
+
+Classes and objects are the two main aspects of object-oriented programming.
+
+<div align = "center">
+<div style="width:700px">
+
+![img](./img/cls-obj.jpg)
+
+</div>
+</div>
 
 ```cpp
 
