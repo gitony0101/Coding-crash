@@ -1562,6 +1562,8 @@ Classes and objects are the two main aspects of object-oriented programming.
 </div>
 </div>
 
+#### Youtube channel class
+
 ```cpp
 
 ```
@@ -1604,7 +1606,7 @@ Classes and objects are the two main aspects of object-oriented programming.
 
 ---
 
-# On-the-go
+# ON-THE-GO
 
 # 指针 pointer 引用 Reference
 
