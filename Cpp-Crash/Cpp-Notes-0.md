@@ -1621,31 +1621,140 @@ Difference with a normal member function:
 - It must be placed in public section of class
 - If we do not specify a constructor, C++ compiler generates a default constructor for object (expects no parameters and has an empty body)
 
-```cpp
+Here is the example of constructor and class method
 
-```
-
-```cpp
-
-```
+- constructor to collect the information of the object-`YouTubeChannel`
+- calss method to print the information of the object- `getInfo()`
 
 ```cpp
+#include <cstdio>
+#include <iostream>
+#include <list> // use the list C++ Standard Template Library (STL)
+#include <string>
+using namespace std;
 
-```
+class YoutubeChannel {
+public: // corresponding to private, the variables below can be used publicly
+  string Name;
+  string OwnerName;
+  int SubscribersCount;
+  list<string> PublishedVideoTitles;
+  // Build the constructor inside the class
+  YoutubeChannel(string name, string ownerName) { // two key parameters here
+    Name = name;
+    OwnerName = ownerName;
+    SubscribersCount = 0;
+  }
+  // use class method to get the info we entered.
+  void getInfo() {
 
-```cpp
+    printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
+    printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
+    printf("Number of subscribers : %d\n", SubscribersCount);
+    for (auto &videoTitle : PublishedVideoTitles) {
+      printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
+    }
+  }
+};
 
-```
+int main() {
+  YoutubeChannel yt_1("CodeBeauty", "Saldina");
+  yt_1.PublishedVideoTitles.push_back("C++ for beginners");
+  yt_1.PublishedVideoTitles.push_back("HTML & CSS for beginners");
+  yt_1.PublishedVideoTitles.push_back("C++ OOP for beginners");
 
-```cpp
+  YoutubeChannel yt_2("Sigur Ros", "Jonsi and his bands.");
+  yt_2.PublishedVideoTitles.push_back("Hopipolla");
+  yt_2.PublishedVideoTitles.push_back("Heima");
 
+  yt_1.getInfo(); // call the class method to get the info we entered.
+  yt_2.getInfo(); // call the class method to get the info we entered.
+}
 ```
 
 ## Encapsulation
 
-```cpp
+Encapsulation is one of the key features of object-oriented programming. It involves the bundling of data members and functions inside a single class.
 
+Bundling similar data members and functions inside a class together also helps in data hiding.
+
+The process of implementing encapsulation can be sub-divided into two steps:
+
+- The data members should be labeled as private using the private access specifiers
+- The member function which manipulates the data members should be labeled as public using the public access specifier
+
+That is:
+
+- **Features inside (private), Funcions outside(public), Encapuslate them ALL.**
+
+```cpp
+#include <iostream>
+#include <list> // use the list C++ Standard Template Library (STL)
+// #include <string>
+using namespace std;
+
+class YoutubeChannel {
+private: // The data members should be labeled as private using the private
+         // access specifiers
+  string Name;
+  string OwnerName;
+  int SubscribersCount;
+  list<string> PublishedVideoTitles;
+
+public: // The member function which manipulates the data members should be
+        // labeled as public using the public access specifier
+  YoutubeChannel(string name, string ownerName) { // two key parameters here
+    Name = name;
+    OwnerName = ownerName;
+    SubscribersCount = 0;
+  }
+
+  // use class method to get the info we entered.
+  void getInfo() {
+
+    printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
+    printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
+    printf("Number of subscribers : %d\n", SubscribersCount);
+    for (auto &videoTitle : PublishedVideoTitles) {
+      printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
+    }
+  };
+
+  void Subscribe() { SubscribersCount++; } // + 1 subscriber
+  void Unsubscribe() {
+    if (SubscribersCount > 0) {
+      SubscribersCount--;
+    } else {
+      SubscribersCount = 0;
+    }
+  }
+  // - 1 subscriber with condition
+  void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
+
+}; // this ; MUST HAVE
+
+int main() {
+  YoutubeChannel yt_1("CodeBeauty", "Saldina");
+  yt_1.Subscribe();
+  yt_1.Subscribe();
+  yt_1.Subscribe();
+  yt_1.Unsubscribe();
+  yt_1.PublishVideo("C++ for beginners");
+  yt_1.PublishVideo("HTML & CSS for beginners");
+  yt_1.PublishVideo("C++ OOP beginners");
+  yt_1.getInfo();
+}
 ```
+
+## Inheritance
+
+The capability of a class to derive properties and characteristics from another class is called Inheritance. Inheritance is one of the most important feature of Object Oriented Programming.
+
+**Sub Class:** The class that inherits properties from another class is called Sub class or Derived Class.
+**Super Class:** The class whose properties are inherited by sub class is called Base Class or Super class.
+
+Here we go on with our youtube channel and dive in a more specific area:
+Cooking channel, which shows us how inheritance works.
 
 ```cpp
 
