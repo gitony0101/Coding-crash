@@ -16,6 +16,8 @@ public: // corresponding to private, the variables below can be used publicly
     OwnerName = ownerName;
     SubscribersCount = 0;
   }
+  // use class method
+  void getInfo() {}
 };
 
 int main() {

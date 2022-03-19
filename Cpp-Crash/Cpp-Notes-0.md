@@ -1603,8 +1603,28 @@ int main() {
 - printf() is a function that prints the string to the screen.
 - printf Format Specifiers:The first argument to printf is always a format string. The format string provides a template for the string to be printed, and it contains any number of special format specifiers. Format specifiers tell printf how to interpret and format the arguments following the format string. All format specifiers begin with %.
 
+Note:
+
+`%d\n` is the format specifier for an integer, `\n` is `endl;`, DO NOT remember this, you can make it when coding.
+
 ## Constructors and Class methods
 
+### Constructor
+
+A constructor is **a special type of member function** of** a class which initializes objects of a class**. In C++, Constructor is automatically called when object(instance of class) is created. It is special member function of the class because it does NOT have any RETURN type.
+
+Difference with a normal member function:
+
+- Constructor MUST HAVE the SAME name as the class itself
+- Constructors don’t have input argument ，neither return type
+- A constructor is automatically called when an object is created
+- It must be placed in public section of class
+- If we do not specify a constructor, C++ compiler generates a default constructor for object (expects no parameters and has an empty body)
+
+```cpp
+
+```
+
 ```cpp
 
 ```
@@ -1621,9 +1641,7 @@ int main() {
 
 ```
 
-```cpp
-
-```
+## Encapsulation
 
 ```cpp
 
