@@ -2094,12 +2094,6 @@ int main() {
   sytch_1.Practice();
   sytch_1.Practice();
   sytch_1.CheckAnalytics();
-
-  //   // Pointer # Not Work
-  //   YoutubeChannel *yt_1 = &CookingYoutubeChannel;
-  //   YoutubeChannel *yt_2 = &SingerYoutubeChannel;
-  //   yt_1->CheckAnalytics();
-  //   yt_2->CheckAnalytics();
 }
 
 ```
@@ -2114,8 +2108,17 @@ int main() {
 
 # Chapter 8 Pointers
 
-```cpp
+Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
 
+```cpp
+// General syntax
+datatype *var_name;
+
+// An example pointer "ptr" that holds
+// address of an integer variable or holds
+// address of a memory whose value(s) can
+// be accessed as integer values through "ptr"
+int *ptr;
 ```
 
 ```cpp

@@ -1,8 +1,10 @@
 #include <iostream>
 #include <list>
+#include <string>
 using namespace std;
 
 // Polymorphism with pointers
+// " has just practiced singing ,dancing the in the channel." lack of name issue
 class YoutubeChannel {
 private:
   string Name;
@@ -58,6 +60,8 @@ public:
 // channel
 
 class CookingYoutubeChannel : public YoutubeChannel {
+protected:
+  string ownerName;
 
 public:
   CookingYoutubeChannel(string name,
@@ -75,8 +79,6 @@ public:
 // Morph a new class: SingerYoutubeChannel:
 
 class SingerYoutubeChannel : public YoutubeChannel {
-protected: //  protected inheritance, can be accessed outside.
-  string ownerName;
 
 public:
   SingerYoutubeChannel(string name,
@@ -99,14 +101,7 @@ int main() {
   cytch_1.Subscribe();
   cytch_1.getInfo();
   cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
+
   cytch_1.CheckAnalytics();
   // singer channel
   SingerYoutubeChannel sytch_1("Elton's Voice", "Elton John");
