@@ -1753,10 +1753,354 @@ The capability of a class to derive properties and characteristics from another 
 **Sub Class:** The class that inherits properties from another class is called Sub class or Derived Class.
 **Super Class:** The class whose properties are inherited by sub class is called Base Class or Super class.
 
+- Why and when to use inheritance?
+
 Here we go on with our youtube channel and dive in a more specific area:
 Cooking channel, which shows us how inheritance works.
 
 ```cpp
+#include <cstdio>
+#include <iostream>
+#include <list> // use the list C++ Standard Template Library (STL)
+using namespace std;
+
+class YoutubeChannel { // Now YoutubeChannel is the base class
+private:
+  string Name;
+  string OwnerName;
+  int SubscribersCount;
+  list<string> PublishedVideoTitles;
+
+public:
+  YoutubeChannel(string name, string ownerName) { // two key parameters here
+    Name = name;
+    OwnerName = ownerName;
+    SubscribersCount = 0;
+  }
+
+  // use class method to get the info we entered.
+  void getInfo() {
+
+    printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
+    printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
+    printf("Number of subscribers : %d\n", SubscribersCount);
+    for (auto &videoTitle : PublishedVideoTitles) {
+      printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
+    }
+  };
+
+  void Subscribe() { SubscribersCount++; } // + 1 subscriber
+  void Unsubscribe() {
+    if (SubscribersCount > 0) {
+      SubscribersCount--;
+    } else {
+      SubscribersCount = 0;
+    }
+  }
+  // - 1 subscriber with condition
+  void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
+}; // upload video
+
+class CookingYoutubeChannel
+    : public YoutubeChannel // ## Inherit YoutubeChannel above ## // Derived
+                            // Class, really?
+{
+protected: //  protected inheritance, can be accessed outside.
+  string ownerName;
+
+public:
+  CookingYoutubeChannel(string name,
+                        string ownerName) // Inherit the constructors
+      : YoutubeChannel(name, ownerName) {}
+  void Practice(string fans, string course) {
+    printf("%s has just practiced the %s in the channel %s.\n", fans.c_str(),
+           course.c_str(), ownerName.c_str()); // the ownerName can be visited
+                                               // by protected inheritance
+  }; // the unique feature that the CookinnYoutbeChannel has.
+};
+
+int main() {
+  CookingYoutubeChannel cyt_1("CodeBeauty Kitchen", "Saldina");
+  cyt_1.PublishVideo("Apple Pie");
+  cyt_1.PublishVideo("Chocolate Cake");
+  cyt_1.Subscribe();
+  cyt_1.Subscribe();
+  cyt_1.getInfo();
+  cyt_1.Practice("Amy", "pizza");
+
+}
+
+```
+
+Using inheritance, we have to write the functions only one time instead of three times as we have inherited rest of the three classes from base class.
+
+Implementing inheritance in C++: For creating a sub-class which is inherited from the base class we have to follow the below syntax.
+
+```cpp
+class subclass_name : access_mode base_class_name
+{
+  // body of subclass
+};
+```
+
+Here,**subclass_name** is the name of the sub class, access_mode is the mode in which you want to inherit this sub class for example: **public, private ,protected**. and **base_class_name** is the name of the base class from which you want to inherit the sub class.
+
+Note: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
+
+```cpp
+// C++ program to demonstrate implementation
+// of Inheritance
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Base class
+class Parent
+{
+  public:
+    int id_p;
+};
+
+// Sub class inheriting from Base Class(Parent)
+class Child : public Parent
+{
+  public:
+    int id_c;
+};
+
+// main function
+int main()
+{
+    Child obj1;
+
+    // An object of class child has all data members
+    // and member functions of class parent
+    obj1.id_c = 7;
+    obj1.id_p = 91;
+    cout << "Child id is: " <<  obj1.id_c << '\n';
+    cout << "Parent id is: " <<  obj1.id_p << '\n';
+
+    return 0;
+}
+```
+
+In the above program the ‘Child’ class is publicly inherited from the ‘Parent’ class so the public data members of the class ‘Parent’ will also be inherited by the class ‘Child’.
+
+#### Modes of Inheritance
+
+- Public mode: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
+- Protected mode: If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
+- Private mode: If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
+
+#### Types of Inheritance
+
+- Single inheritance
+
+- Multi-level inheritance
+
+- Multiple inheritance
+
+- Hybrid inheritance
+
+- Hierarchical inheritance
+
+- Multipath inheritance
+
+Note: The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed. For example, Classes B, C and D all contain the variables x, y and z in below example. It is just question of access.
+
+```cpp
+// C++ Implementation to show that a derived class
+// doesn’t inherit access to private data members.
+// However, it does inherit a full parent object.
+class A
+{
+public:
+    int x;
+protected:
+    int y;
+private:
+    int z;
+};
+
+class B : public A
+{
+    // x is public
+    // y is protected
+    // z is not accessible from B
+};
+
+class C : protected A
+{
+    // x is protected
+    // y is protected
+    // z is not accessible from C
+};
+
+class D : private A    // 'private' is default for classes
+{
+    // x is private
+    // y is private
+    // z is not accessible from D
+};
+```
+
+## Polymorphism
+
+The word polymorphism means **having many forms** : The ability of a message to be displayed in more than one form.
+
+A real-life example of polymorphism, a person at the same time can have different characteristics. **Like a man at the same time is a father, a husband, an employee**.
+
+So the same person posses different behavior in different situations. This is called polymorphism. Polymorphism is considered as one of the important features of Object Oriented Programming.
+
+In C++ polymorphism is mainly divided into two types:
+
+- Compile time Polymorphism
+- Runtime Polymorphism
+
+#### Difference between Inheritance and Polymorphism
+
+<div align = "center">
+<div style="width:700px">
+
+| Inheritance                                                                                     | Polymorphism                                                                                                                        |
+| :---------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| Created (derived class) that inherits the features from the already existing class(Base class). | Can be defined in multiple forms                                                                                                    |
+| Basically applied to classes                                                                    | Basically applied to functions or methods.                                                                                          |
+| Supports the concept of reusability and reduces code length in object-oriented programming      | Allows the object to decide which form of the function to implement at compile-time (overloading) as well as run-time (overriding). |
+| Can be single, hybrid, multiple, hierarchical and multilevel inheritance                        | Can be compiled-time polymorphism (overload) as well as run-time polymorphism (overriding).                                         |
+| Used in pattern designing                                                                       | Used in pattern designing.                                                                                                          |
+
+</div>
+</div>
+
+Now we continue the youtube channel tutorial.
+
+```cpp
+#include <iostream>
+#include <list>
+using namespace std;
+
+// Polymorphism with pointers
+class YoutubeChannel {
+private:
+  string Name;
+  string OwnerName;
+  int SubscribersCount;
+  list<string> PublishedVideoTitles;
+
+protected: //  protected inheritance, can be accessed outside.
+  string ownerName;
+  int ContentQuality;
+
+public:
+  YoutubeChannel(string name, string ownerName) {
+    Name = name;
+    OwnerName = ownerName;
+    SubscribersCount = 0;
+    ContentQuality = 0;
+  }
+
+  void getInfo() {
+
+    printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
+    printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
+    printf("Number of subscribers : %d\n", SubscribersCount);
+    for (auto &videoTitle : PublishedVideoTitles) {
+      printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
+    }
+  };
+
+  void Subscribe() { SubscribersCount++; } // + 1 subscriber
+  void Unsubscribe() {
+    if (SubscribersCount > 0) {
+      SubscribersCount--;
+    } else {
+      SubscribersCount = 0;
+    }
+  }
+  // - 1 subscriber with condition
+  void PublishVideo(string title) {
+    PublishedVideoTitles.push_back(title);
+  } // upload video
+  void CheckAnalytics() {
+    if (ContentQuality < 5)
+      printf("%s has bad quality content.\n", Name.c_str());
+    else if (ContentQuality > 8)
+      printf("%s has good quality content.\n", Name.c_str());
+    else
+      printf("%s's content is normal.\n", Name.c_str());
+    ;
+  }
+};
+// As example of morphism, we would like to creat another class like cooking
+// channel
+
+class CookingYoutubeChannel : public YoutubeChannel {
+
+public:
+  CookingYoutubeChannel(string name,
+                        string ownerName) // Inherit the constructors
+      : YoutubeChannel(name, ownerName) {}
+  void Practice() {
+    printf("%s has just practiced how to make delicious food the in the "
+           "channel.\n",
+           ownerName.c_str()); // the ownerName can be visited
+                               // by protected inheritance
+    ContentQuality++;
+  }; // the unique feature that the CookinnYoutbeChannel has.
+};
+
+// Morph a new class: SingerYoutubeChannel:
+
+class SingerYoutubeChannel : public YoutubeChannel {
+protected: //  protected inheritance, can be accessed outside.
+  string ownerName;
+
+public:
+  SingerYoutubeChannel(string name,
+                       string ownerName) // Inherit the constructors
+      : YoutubeChannel(name, ownerName) {}
+  void Practice() {
+    printf("%s has just practiced singing ,dancing the in the channel.\n",
+           ownerName.c_str()); // the ownerName can be visited
+                               // by protected inheritance
+    ContentQuality++;
+  };
+};
+
+int main() {
+  // cooking channel
+  CookingYoutubeChannel cytch_1("CodeBeauty Kitchen", "Saldina");
+  cytch_1.PublishVideo("Apple Pie");
+  cytch_1.PublishVideo("Chocolate Cake");
+  cytch_1.Subscribe();
+  cytch_1.Subscribe();
+  cytch_1.getInfo();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.Practice();
+  cytch_1.CheckAnalytics();
+  // singer channel
+  SingerYoutubeChannel sytch_1("Elton's Voice", "Elton John");
+  sytch_1.Practice();
+  sytch_1.Practice();
+  sytch_1.Practice();
+  sytch_1.Practice();
+  sytch_1.Practice();
+  sytch_1.CheckAnalytics();
+
+  //   // Pointer # Not Work
+  //   YoutubeChannel *yt_1 = &CookingYoutubeChannel;
+  //   YoutubeChannel *yt_2 = &SingerYoutubeChannel;
+  //   yt_1->CheckAnalytics();
+  //   yt_2->CheckAnalytics();
+}
 
 ```
 
@@ -1768,7 +2112,185 @@ Cooking channel, which shows us how inheritance works.
 
 ```
 
----
+# Chapter 8 Pointers
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```````cpp
+
+``````cpp
+
+```````
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
 
 # ON-THE-GO
 

@@ -1,6 +1,6 @@
+#include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
-// #include <string>
 using namespace std;
 
 class YoutubeChannel { // Now YoutubeChannel is the base class
@@ -38,28 +38,32 @@ public:
   }
   // - 1 subscriber with condition
   void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
-};
+}; // upload video
 
 class CookingYoutubeChannel
     : public YoutubeChannel // ## Inherit YoutubeChannel above ## // Derived
                             // Class, really?
 {
+protected: //  protected inheritance, can be accessed outside.
+  string ownerName;
+
 public:
   CookingYoutubeChannel(string name,
                         string ownerName) // Inherit the constructors
       : YoutubeChannel(name, ownerName) {}
+  void Practice(string fans, string course) {
+    printf("%s has just practiced the %s in the channel %s.\n", fans.c_str(),
+           course.c_str(), ownerName.c_str()); // the ownerName can be visited
+                                               // by protected inheritance
+  }; // the unique feature that the CookinnYoutbeChannel has.
 };
 
 int main() {
   CookingYoutubeChannel cyt_1("CodeBeauty Kitchen", "Saldina");
+  cyt_1.PublishVideo("Apple Pie");
+  cyt_1.PublishVideo("Chocolate Cake");
+  cyt_1.Subscribe();
+  cyt_1.Subscribe();
   cyt_1.getInfo();
-
-  //   yt_1.Subscribe();
-  //   yt_1.Subscribe();
-  //   yt_1.Subscribe();
-  //   yt_1.Unsubscribe();
-  //   yt_1.PublishVideo("C++ for beginners");
-  //   yt_1.PublishVideo("HTML & CSS for beginners");
-  //   yt_1.PublishVideo("C++ OOP beginners");
-  //   yt_1.getInfo();
+  cyt_1.Practice("Amy", "pizza");
 }
