@@ -2121,6 +2121,10 @@ datatype *var_name;
 int *ptr;
 ```
 
+## Some concepts of pointers
+
+### Memory Address
+
 ```cpp
 
 ```
