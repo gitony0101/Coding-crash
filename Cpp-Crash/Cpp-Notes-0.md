@@ -874,8 +874,8 @@ int main() {
 }
 ```
 
-    Please enter a number: 123124345356423665777
-    The number you entered has 10 digits.
+Please enter a number: 123124345356423665777
+The number you entered has 10 digits.
 
 This is a story about the datatype:
 123124345356423665777 is exceeding the range of an int, by very far
@@ -2108,7 +2108,7 @@ int main() {
 
 # Chapter 8 Pointers
 
-Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
+Variable contains certain value,while Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
 
 ```cpp
 // General syntax
@@ -2140,9 +2140,37 @@ Note : Pointers contain addresses.
 
 Adding two addresses makes no sense, because there is no idea what it would point to. Subtracting two addresses lets you compute the offset between these two addresses.
 
+## Void pointers
+
+How void pointer are used.
+
+- `int` is not a function, it is a data type,a declaration.
+
 ```cpp
+#include <iostream>
+using namespace std;
+
+void print(void *ptr, char type) {
+  switch (type) {
+  case 'i':
+    printf("The value is :%d\n", *(int *)ptr);
+    break;
+  case 'c': // c for char
+    printf("The letter is : %c\n", *(char *)ptr);
+  }
+}
+
+// try
+int main() {
+  int number = 5;
+  char letter = 'a';
+  print(&number, 'i');
+  print(&letter, 'c');
+}
 
 ```
+
+## Pointers and arrays
 
 ```cpp
 
@@ -2316,7 +2344,7 @@ Adding two addresses makes no sense, because there is no idea what it would poin
 
 # ON-THE-GO
 
-# 指针 pointer 引用 Reference
+# 引用 Reference 逆向引用 Dereference `*`
 
 ## References in C++ `‘&’`
 
