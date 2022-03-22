@@ -2324,12 +2324,13 @@ int main() {
 
 ```
 
-## Multi-dimensional Dynamic Arrays
+## Multi-Dimensional Dynamic Arrays
 
 <div align = "center">
 <div style="width:600px">
 
 ![img](./img/Multi-Dimensional-Dynamic-Arrays.jpg)
+
 table and its' arrays
 
 </div>
