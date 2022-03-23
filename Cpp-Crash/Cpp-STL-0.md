@@ -80,4 +80,175 @@ v.end()结束迭代器，指向的是容器中最后一个元素的下一个位�
 
 # On the Go
 
-1. 指针；2. 引用；3. 指针和引用的关心；4. 运算符重载
+# ON-THE-GO
+
+# 指针
+
+# 引用
+
+# 引用 Reference 逆向引用 Dereference `*`
+
+## References in C++ `‘&’`
+
+When a variable is declared as a reference, it becomes an alternative name for an existing variable.
+
+**A variable can be declared as a reference by putting `‘&’` in the declaration.**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int x = 10;
+
+  // ref is a reference to X.
+  int &ref = x;
+  cout << ref << endl;
+
+  // Value of x is now changed to 20
+  ref = 20;
+  cout << "x = " << x << endl;
+
+  // Value of x is now changed to 30
+  x = 30;
+  cout << "ref = " << ref << endl;
+}
+```
+
+### References are less powerful than pointers
+
+1. Once a reference is created, it cannot be later made to reference another object; it cannot be reset. This is often done with pointers.
+2. References cannot be NULL. Pointers are often made NULL to indicate that they are not pointing to any valid thing.
+3. A reference must be initialized when declared. There is no such restriction with pointers.
+   Due to the above limitations, references in C++ cannot be used for implementing data structures like Linked List, Tree, etc. In Java, references don’t have the above restrictions and can be used to implement all data structures. References being more powerful in Java is the main reason Java doesn’t need pointers.
+
+### References are safer and easier to use:
+
+1. Safer: Since references must be initialized, wild references like wild pointers are unlikely to exist. It is still possible to have references that don’t refer to a valid location (See questions 5 and 6 in the below exercise )
+2. Easier to use: References don’t need a dereferencing operator to access the value. They can be used like normal variables. ‘&’ operator is needed only at the time of declaration. Also, members of an object reference can be accessed with dot operator (‘.’), unlike pointers where arrow operator (->) is needed to access members.
+
+Together with the above reasons, there are few places like the copy constructor argument where pointer cannot be used. Reference must be used to pass the argument in the copy constructor. Similarly, references must be used for overloading some operators like ++.
+
+# 指针和引用的关心
+
+# 运算符重载
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
+
+```cpp
+
+```
