@@ -1,3 +1,4 @@
+#include <algorithm> // standard algorithm head file
 #include <cstdio>
 #include <iostream>
 #include <vector> // vector library
@@ -12,6 +13,8 @@ void test_01() {
     // cout << "Value of arr :" << arr[i] << endl;
   }
 }
+
+void myPrint(int val) { printf("%d\n", val); } // for the 3rd traverse function
 
 void test_02() {
   vector<int>
@@ -28,18 +31,18 @@ void test_02() {
                                          // next poistion of the last element.
 
   // 1st traverse
-  //   while (itBegin != itEnd) {
-  //     cout << *itBegin << endl;
-  //     itBegin++;
-  //   }
   while (itBegin != itEnd) {
     cout << *itBegin << endl;
     itBegin++;
   }
+  // 2nd traverse
+  for (vector<int>::iterator it = v.begin(); it != v.end(); it++) {
+    printf("%d\n", *(it));
+    // 3rd;
+    // built-in algorithm:
+    for_each(v.begin(), v.end(), myPrint);
+  }
 }
-
-// 2nd traverse
-// int main() {}
 
 int main() {
   test_01();
