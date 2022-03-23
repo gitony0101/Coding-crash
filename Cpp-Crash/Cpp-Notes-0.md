@@ -47,19 +47,7 @@ General purpose
   - cppdistinguishes between uppercase and lowercase letters
   - **myVariablel != myvariable**
 
-```cpp
-#include <iostream> // header file-"Library"
-                    // input output stream
-int main()
-{ // main: main function
-  std::cout << "Hello World!\n"; // this will output the console hello world.
-  // cout : consloe output
-  // cin : console input
-  // std : name of the base for using cout and cin
-  std::cout << "My name is Tony0101." << std::endl;
-  std::cout << "Today is Wednesday.\n";
-}
-```
+````
 
 ```cpp
 #include <iostream> // header file-"Library"
@@ -73,7 +61,7 @@ int main()
   cout << "My name is Tony0101." << endl;
   cout << "Today is Wednesday.\n";
 }
-```
+````
 
 ```cpp
 #include <iostream>
@@ -2370,11 +2358,13 @@ int main() {
 
 ```
 
-```````cpp
+```cpp
 
-``````cpp
+```
 
-```````
+```cpp
+
+```
 
 ```cpp
 
