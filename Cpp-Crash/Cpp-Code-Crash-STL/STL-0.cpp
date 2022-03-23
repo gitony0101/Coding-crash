@@ -4,15 +4,14 @@
 using namespace std;
 
 // native Pointers are iterators,too.
-// void test_01() {
-//   int arr[5] = {1, 2, 3, 4, 5};
-//   int *p = arr;
-//   for (int i = 0; i < 5; i++) {
-//     // printf("Value of arr :%d\n", arr[i]);
-//     // printf("s &d\n", *(p[i]));
-//     cout << *(p++) << endl;
-//   }
-// }
+void test_01() {
+  int arr[5] = {1, 2, 3, 4, 5};
+  int *p = arr;
+  for (int i = 0; i < 5; i++) {
+    printf("Value of arr :%d\n", *(p + i));
+    // cout << "Value of arr :" << arr[i] << endl;
+  }
+}
 
 void test_02() {
   vector<int>
@@ -29,10 +28,20 @@ void test_02() {
                                          // next poistion of the last element.
 
   // 1st traverse
+  //   while (itBegin != itEnd) {
+  //     cout << *itBegin << endl;
+  //     itBegin++;
+  //   }
   while (itBegin != itEnd) {
     cout << *itBegin << endl;
     itBegin++;
   }
 }
+
 // 2nd traverse
 // int main() {}
+
+int main() {
+  test_01();
+  test_02();
+}
