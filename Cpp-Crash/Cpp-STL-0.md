@@ -78,9 +78,10 @@ v.end()结束迭代器，指向的是容器中最后一个元素的下一个位�
 
 ---
 
-# On the Go
-
 # ON-THE-GO
+
+逻辑回归的损失函数
+PCA 原理
 
 # 指针
 
@@ -140,6 +141,14 @@ Together with the above reasons, there are few places like the copy constructor 
 ```cpp
 
 ```
+
+int main
+
+void function(int x) {
+int y = x;
+int \*p = &x;
+int &r = x;
+}
 
 ```cpp
 
