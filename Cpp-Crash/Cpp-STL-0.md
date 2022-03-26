@@ -76,6 +76,22 @@ v.end()结束迭代器，指向的是容器中最后一个元素的下一个位�
 - 容器中存放自定义数据类型指针
 - 容器嵌套容器
 
+# STL 常用容器
+
+## String 容器
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 # ON-THE-GO
@@ -95,7 +111,7 @@ When a variable is declared as a reference, it becomes an alternative name for a
 
 **A variable can be declared as a reference by putting `‘&’` in the declaration.**
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -134,11 +150,11 @@ Together with the above reasons, there are few places like the copy constructor 
 
 # 运算符重载
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
@@ -150,114 +166,114 @@ int \*p = &x;
 int &r = x;
 }
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```
 
-```cpp
+```c++
 
 ```

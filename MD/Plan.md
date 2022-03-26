@@ -11,3 +11,12 @@ Parallel 2 : des4, after des2, 30d
 Parallel 3 : des5,after des3, 30d
 Parallel 4 : des6, after des5, 30d
 ```
+
+|     |     |     |
+| :-: | :-: | :-: |
+| ✔️  | ✔️  |     |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+|     |     |     |
+|     |     |     |
