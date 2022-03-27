@@ -1,8 +1,9 @@
 #include <cstdio>
 #include <iostream>
-#include <string>
+#include <string> //头文件
 using namespace std;
-/* 构造 赋值
+/* 字符串操作
+构造 赋值 拼接
 字符存取
 
     */
@@ -32,9 +33,28 @@ void test02() { // string 赋值操作
   string str3;
   str3 = 'a';
   printf("str3 = %s\n", str3.c_str());
+  string str4;
+  str4.assign("Hello C++");
+  printf("str4 = %s\n", str4.c_str());
+  string str5;
+  str5.assign("Hello C++", 4); // str5 = Hell
+  printf("str5 = %s\n", str5.c_str());
+  string str6;
+  str6.assign(str5);
+  printf("str6 = %s\n", str6.c_str());
+  string str7;
+  str7.assign(3, 'x');
+  printf("str7 = %s\n", str7.c_str());
+}
+
+void tes03() {
+  string str1 = "I";
+  printf("str1 = %s\n", str1.c_str());
+  str1 += "Love C++";
 }
 int main() {
   //   test01();
-  test02();
+  //   test02();
+  tes03();
   return 0;
 }
