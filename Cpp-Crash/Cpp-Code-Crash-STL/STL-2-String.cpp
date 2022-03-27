@@ -4,6 +4,7 @@
 using namespace std;
 /* 字符串操作
 构造 赋值 拼接
+查找和替换
 字符存取
 
     */
@@ -22,6 +23,7 @@ void test01() { // string 构造函数
 }
 
 void test02() { // string 赋值操作
+  // operator=
   string str1;
   str1 = "Hello World";
   printf("str1 = %s\n", str1.c_str());
@@ -34,6 +36,7 @@ void test02() { // string 赋值操作
   str3 = 'a';
   printf("str3 = %s\n", str3.c_str());
   string str4;
+  // assign
   str4.assign("Hello C++");
   printf("str4 = %s\n", str4.c_str());
   string str5;
@@ -47,14 +50,56 @@ void test02() { // string 赋值操作
   printf("str7 = %s\n", str7.c_str());
 }
 
-void tes03() {
-  string str1 = "I";
+void test03() {
+  // operator +=
+  string str1 = "I ";
   printf("str1 = %s\n", str1.c_str());
-  str1 += "Love C++";
+  str1 += "Love Coding ";
+  printf("str1 = %s\n", str1.c_str());
+  str1 += ':';
+  printf("str1 = %s\n", str1.c_str());
+  string str2;
+  str2 = " C++ Python";
+  str1 += str2;
+  printf("str1 = %s\n", str1.c_str());
+  // append
+  string str3 = "I ";
+  str3.append("Love ");
+  str3.append("Code ABCDE", 4);
+  printf("str3 = %s\n", str3.c_str());
+  //   str3.append(str2);
+  //   printf("str3 = %s\n", str3.c_str());
+  str3.append(str2, 4, 3); // 从下标4位置开始 ，截取3个字符，拼接到字符串末尾
+  // C++ Python
+  // 1234
+  //    123
+  printf("str3 = %s\n", str3.c_str());
 }
+
+// 查找替换
+// *查找：查找指定字符串是否存在
+// *替换：在指定的位置替换字符串
+void test04() { //查找
+  string str1 = "abcdefgde";
+  int pos = str1.find("de");
+  if (pos == -1) {
+    printf("没找到");
+  } else {
+    printf("pos = %d\n", pos);
+  }
+}
+
+void test05() { // 替换
+  string str1 = "abcdefgde";
+  str1.replace(1, 3, "11111");
+  printf("str1 = %s\n", str1.c_str());
+}
+// 执行
 int main() {
   //   test01();
   //   test02();
-  tes03();
+  //   test03();
+  //   test04();
+  test05();
   return 0;
 }
