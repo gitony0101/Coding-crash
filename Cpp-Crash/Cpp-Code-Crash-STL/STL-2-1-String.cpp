@@ -5,8 +5,6 @@ using namespace std;
 /* 字符串操作
 构造 赋值 拼接
 查找和替换
-字符存取
-
     */
 
 void test01() { // string 构造函数
@@ -96,10 +94,15 @@ void test05() { // 替换
 }
 // 执行
 int main() {
-  //   test01();
-  //   test02();
-  //   test03();
-  //   test04();
+  printf("This is test01 :\n");
+  test01();
+  printf("This is test02 :\n");
+  test02();
+  printf("This is test03 :\n");
+  test03();
+  printf("This is test04 :\n");
+  test04();
+  printf("This is test05 :\n");
   test05();
   return 0;
 }
