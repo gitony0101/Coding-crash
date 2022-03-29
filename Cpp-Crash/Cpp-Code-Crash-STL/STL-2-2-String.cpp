@@ -38,7 +38,7 @@ void test02() {
   str.at(3) = 'x';
   printf("%s\n", str.c_str());
 }
-void test03() { //插入喝删除
+void test03() { //插入和删除
   string str = "hello";
   str.insert(1, "111");
 
@@ -47,16 +47,25 @@ void test03() { //插入喝删除
   printf("%s\n", str.c_str());
 }
 
-void test04() { // 从字符串中获得想要的子串
-  string str = "abcdefg";
-  string subStr = str.substr(1, 3);
-  printf("%s\n", subStr.c_str());
-  string email = "poweroverwhelming@blizzard.com";
-  int pos = email.find("@");
-  string userName = email.substr(0, pos);
-  printf("Ths username : %s\n", userName.c_str());
-  //**总结：**灵活的运用求子串功能，可以在实际开发中获取有效的信息
+void test04() {
+  // string to char*
+  string str = "itcast";
+  const char *cstr = str.c_str();
+  // char* to string
+  char *s = "itcast";
+  string str2 = s;
 }
+
+//     { // 从字符串中获得想要的子串
+//   string str = "abcdefg";
+//   string subStr = str.substr(1, 36);
+//   printf("%s\n", subStr.c_str());
+//   string email = "poweroverwhelming@blizzard.com";
+//   int pos = email.find("@");
+//   string userName = email.substr(0, pos);
+//   printf("Ths username : %s\n", userName.c_str());
+//   //**总结：**灵活的运用求子串功能，可以在实际开发中获取有效的信息
+// }
 int main() {
   //   test01();
   //   test02();
