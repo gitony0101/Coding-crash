@@ -47,28 +47,46 @@ void test03() { //插入和删除
   printf("%s\n", str.c_str());
 }
 
-void test04() {
-  // string to char*
-  string str = "itcast";
-  const char *cstr = str.c_str();
-  // char* to string
-  char *s = "itcast";
-  string str2 = s;
+// void4 隐式转换
+void test04_work1(string str) {}
+void test04_work2(const char *str) {}
+
+void test04() { // string 和 c-style 字符串转换
+  const char *str = "Hello";
+  // const char * 转为 string
+  string s(str);
+  // string 转为 const char *
+  const char *str2 = s.c_str();
+  // work1 : const char * 可以隐式转换为 string
+  test04_work1(str2);
+  // string 不可以隐式转换为 const char*
+  // test04_work2(s);
 }
 
-//     { // 从字符串中获得想要的子串
-//   string str = "abcdefg";
-//   string subStr = str.substr(1, 36);
-//   printf("%s\n", subStr.c_str());
-//   string email = "poweroverwhelming@blizzard.com";
-//   int pos = email.find("@");
-//   string userName = email.substr(0, pos);
-//   printf("Ths username : %s\n", userName.c_str());
-//   //**总结：**灵活的运用求子串功能，可以在实际开发中获取有效的信息
-// }
+void test05() {
+  string s = "abcdefg";
+  char &a = s[2];
+  char &b = s[3];
+  a = '1';
+  b = '2';
+  printf("%s\n", s.c_str());
+  printf("%p\n", (int *)s.c_str()); // pointer
+}
+void test06() { // 从字符串中获得想要的子串
+  string str = "abcdefg";
+  string subStr = str.substr(1, 36);
+  printf("%s\n", subStr.c_str());
+  string email = "poweroverwhelming@blizzard.com";
+  int pos = email.find("@");
+  string userName = email.substr(0, pos);
+  printf("Ths username : %s\n", userName.c_str());
+  //**总结：**灵活的运用求子串功能，可以在实际开发中获取有效的信息
+}
 int main() {
   //   test01();
   //   test02();
   //   test03();
-  test04();
+  // test04();
+  test05();
+  test06();
 }
