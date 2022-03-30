@@ -24,6 +24,12 @@ STL 从广义上分为：
 - 算法 algorithm)
 - 送代器(iterator)
 
+|  组件  |   英文    |                 描述                 |
+| :----: | :-------: | :----------------------------------: |
+|  容器  | container |    容器是用来管理某一类对象的集合    |
+|  算法  | algorithm | 作用于容器，提供了执行各种操作的方式 |
+| 迭代器 | iterator  |            链接容器和算法            |
+
 **容器和算法之问通过送代器进行无缝连接。**
 
 ## STL 六大组件
@@ -58,17 +64,6 @@ STL 从广义上分为：
 非质变算法
 
 # STL 初识：
-
-```c++
-  vector<int>::iterator itBegin =
-      v.begin(); // v.begin() Initial iterator, points to the firs element of
-                 // the container.
-  vector<int>::iterator itEnd = v.end(); // v.end() end iterator,points to the
-                                         // next poistion of the last element.
-```
-
-v.begin()起始迭代器，指向容器中第一个数据
-v.end()结束迭代器，指向的是容器中最后一个元素的下一个位置
 
 - 内置数据类型
 - 自定义数据类型
@@ -133,6 +128,45 @@ string 类内部封装了很多成员方法:
 
 ## Vector 容器
 
+- 使用率高，可以理解为数组--单端数组
+- 动态数组：自动扩展内存
+  - 自动扩展内存并不是在原有空间后续进行扩展，而是另起炉灶，将原有数据拷贝到新空间下并释放原有空间。 
+- 接口
+  - 赋值 构造
+  - 交换 swap
+  - 大小 size
+  - 是否为空 empty
+  - 重置大小 resize ：多退超出部分，少补默认值
+  - 容量 capacity
+  - 翻转 reverse
+  - 检索 at []
+  - front 返回容器中的第一个元素 back 返回容易中最后一个元素
+
+
+
+
+
+
+
+
+
+
+
+<div align = "center">
+<div style="width:800px">
+
+![img](./img/clip_image002.jpg)
+
+</div>
+</div>
+
+
+
+注意：
+所谓动态增加大小，并不是在原空间之后续接新空间（因为无法保证原空间之后尚有可配
+置的空间)，而是一块更大的内存空间，然后将原数据拷贝新空间，并释放原空间。因此，
+对vector的任何操作，一旦引起空间的重新配置指向原vector的所有迭代器就都失效了。
+这是程序员容易犯的一个错误，务必小心。
 
 
 
