@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdio>
 #include <iostream>
 #include <iterator>
@@ -15,6 +16,12 @@ using namespace std;
     * 重新指定大小  ---  resize
 
 插入和删除：尾插 尾删 插入删除清空
+
+数据存取： 对 vector中的数据的存取操作
+    - 迭代器 [] at() 获取vector中的元素
+    - front 返回第一个元素，back 最后一个。
+
+互换容器 swap
 */
 
 void printVector(vector<int> &v) { // 打印vector
@@ -111,11 +118,50 @@ void test04() {   //插入和删除
   printf("insert(v1.end(), 2,42):");
   v1.insert(v1.end(), 2, 42);
   printVector(v1);
+  //删除 认真比较出
+  printf("erase:");
+  v1.erase(v1.begin());
+  printVector(v1);
+  // 清空
+  printf("erase and clear:");
+  v1.erase(v1.begin(), v1.end());
+  printVector(v1);
+  v1.clear();
+  printVector(v1);
+}
+
+void test05() {   // 对 vector中的数据存取操作
+  vector<int> v1; // 无掺构造
+  for (int i = 0; i < 10; i++) {
+    v1.push_back(i);
+  }
+  printf("v1[i]:\n");
+  for (int i = 0; i < v1.size(); i++) {
+    printf("%d", v1[i]);
+  }
+  cout << endl;
+  printf("at(i):\n");
+  for (int i = 0; i < v1.size(); i++) {
+    printf("%d ", v1.at(i));
+  }
+  cout << endl;
+  printf("v1 的第一个元素为：%d\nv1 最后一个元素为：%d\n", v1.front(),
+         v1.back());
+}
+
+void swapContainer() { //容器互换
+  vector<int> v1;
+  for (int i = 0; i < 10; i++) {
+    v1.push_back(i);
+  }
+  printVector(v1);
 }
 
 int main() {
   //   test01();
   //   test02();
   //   test03();
-  test04();
+  // test04();
+  // test05();
+  swapContainer();
 }
