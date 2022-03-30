@@ -21,7 +21,7 @@ using namespace std;
     - 迭代器 [] at() 获取vector中的元素
     - front 返回第一个元素，back 最后一个。
 
-互换容器 swap
+互换容器  swap 可以使两个容器互换，可以达到实用的收缩内存效果
 */
 
 void printVector(vector<int> &v) { // 打印vector
@@ -149,12 +149,43 @@ void test05() {   // 对 vector中的数据存取操作
          v1.back());
 }
 
-void swapContainer() { //容器互换
+void swapContainer01() { //容器互换
   vector<int> v1;
+  printf("v1: ");
   for (int i = 0; i < 10; i++) {
     v1.push_back(i);
   }
   printVector(v1);
+  printf("v2:");
+  vector<int> v2;
+  for (int i = 10; i > 0; i--) {
+    v2.push_back(i);
+  }
+  printVector(v2);
+  // 互换容器
+  printf("互换容器：\n");
+  v1.swap(v2);
+  printf("互换之后,v1:\n");
+  printVector(v1);
+  printf("互换之后,v2:\n");
+  printVector(v2);
+}
+
+void swapContainer02() { // swap可以使两个容器互换，可以达到实用的收缩内存效果
+  vector<int> v;
+  for (int i = 0; i < 10000; i++) {
+    v.push_back(i);
+  }
+  cout << "v的容量为：" << v.capacity() << endl;
+  cout << "v的大小为：" << v.size() << endl;
+  // 调整大小：
+  v.resize(3);
+  cout << "v.resize(3)调整后，v的容量为：" << v.capacity() << endl;
+  cout << "v.resize(3)调整后，v的大小为：" << v.size() << endl;
+  //收缩内存
+  vector<int>(v).swap(v); //匿名对象
+  cout << "vector<int>(v).swap(v) 以后，v的容量为：" << v.capacity() << endl;
+  cout << "vector<int>(v).swap(v) 以后，v的大小为：" << v.size() << endl;
 }
 
 int main() {
@@ -163,5 +194,6 @@ int main() {
   //   test03();
   // test04();
   // test05();
-  swapContainer();
+  // swapContainer01();
+  swapContainer02();
 }
