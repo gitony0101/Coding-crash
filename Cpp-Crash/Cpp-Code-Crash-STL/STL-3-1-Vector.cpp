@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cstddef>
 #include <cstdio>
 #include <iostream>
 #include <iterator>
@@ -22,6 +23,9 @@ using namespace std;
     - front 返回第一个元素，back 最后一个。
 
 互换容器  swap 可以使两个容器互换，可以达到实用的收缩内存效果
+预留空间 reserve 减少vector 在动态扩展容量时的扩展次数
+逆序遍历 reverse_iterator
+跳跃访问 itBegin += 3
 */
 
 void printVector(vector<int> &v) { // 打印vector
@@ -32,7 +36,7 @@ void printVector(vector<int> &v) { // 打印vector
   cout << endl;
 }
 
-void test01() { // 构造函数
+void buildVector() { // 构造函数
   printf("v1:\n");
   vector<int> v1; // 无参构造
   for (int i = 0; i < 10; i++) {
@@ -50,7 +54,7 @@ void test01() { // 构造函数
   printVector(v4);
 }
 
-void test02() { // 赋值操作
+void inputVector() { // 赋值操作
   printf("v1:\n");
   vector<int> v1; // 无参构造
   for (int i = 0; i < 10; i++) {
@@ -71,7 +75,7 @@ void test02() { // 赋值操作
   printVector(v4);
 }
 
-void test03() {
+void resizeVector() {
   printf("v1:\n");
   vector<int> v1;
   for (int i = 0; i < 10; i++) {
@@ -97,8 +101,8 @@ void test03() {
   printVector(v1);
 }
 
-void test04() {   //插入和删除
-  vector<int> v1; // 无参构造
+void insertEraseVector() { //插入和删除
+  vector<int> v1;          // 无参构造
   printf("尾插和尾删v1(原来是10到60):\n");
   //尾插
   v1.push_back(10);
@@ -130,8 +134,8 @@ void test04() {   //插入和删除
   printVector(v1);
 }
 
-void test05() {   // 对 vector中的数据存取操作
-  vector<int> v1; // 无掺构造
+void editVector() { // 对 vector中的数据存取操作
+  vector<int> v1;   // 无掺构造
   for (int i = 0; i < 10; i++) {
     v1.push_back(i);
   }
@@ -183,17 +187,100 @@ void swapContainer02() { // swap可以使两个容器互换，可以达到实用
   cout << "v.resize(3)调整后，v的容量为：" << v.capacity() << endl;
   cout << "v.resize(3)调整后，v的大小为：" << v.size() << endl;
   //收缩内存
-  vector<int>(v).swap(v); //匿名对象
+  vector<int>(v).swap(v); // 小括号创建匿名对象
+  //用v 去初始化这个匿名对象
   cout << "vector<int>(v).swap(v) 以后，v的容量为：" << v.capacity() << endl;
   cout << "vector<int>(v).swap(v) 以后，v的大小为：" << v.size() << endl;
 }
 
+void memorySpacetaken00() {
+  // 计算累加占用了多少内存空间
+  //不使用reserve
+  vector<int> v;
+  int *p = NULL;
+  int num = 0;
+  for (int i = 0; i < 100000; i++) {
+    v.push_back(i);
+    if (p != &v[0]) {
+      p = &v[0];
+      num++;
+    }
+  }
+  printf("num = %d\n", num);
+  cout << "v的容量 = " << v.capacity() << endl;
+  cout << "v的大小 = " << v.size() << endl;
+}
+/*
+上例结果：
+num = 18
+v的容量 = 131072
+v的大小 = 100000
+找内存就重复找了18次，效率比较低，看下面的这个reserve：
+*/
+void memorySpacetaken01() {
+
+  // 计算累加占用了多少内存空间
+  //使用reserve
+  vector<int> v;
+  v.reserve(100000); // 预留空间，和下面的循环次数相等
+  // 可以调整这个数字在看一下结果。
+  int *p = NULL;
+  int num = 0;
+  for (int i = 0; i < 100000; i++) {
+    v.push_back(i);
+    if (p != &v[0]) {
+      p = &v[0];
+      num++;
+    }
+  }
+  printf("num = %d\n", num);
+  cout << "v的容量 = " << v.capacity() << endl;
+  cout << "v的大小 = " << v.size() << endl;
+}
+
+void reverseIteration() { // 逆序遍历:reverse_iterator
+  vector<int> v1;
+  // printf("\n");
+  v1.push_back(10);
+  v1.push_back(20);
+  v1.push_back(30);
+  v1.push_back(40);
+  v1.push_back(50);
+  v1.push_back(60);
+  for (vector<int>::reverse_iterator it = v1.rbegin(); it != v1.rend(); it++) {
+    // printf("&p\n", *it);
+    cout << *it << endl;
+  }
+  printf("Try 'auto' :\n");
+  for (auto it = v1.rbegin(); it != v1.rend(); it++) {
+    cout << *it << endl;
+  }
+}
+
+void leapVisit() { // 跳跃访问
+
+  vector<int> v1;
+  v1.push_back(10); // 0
+  v1.push_back(20); // 1
+  v1.push_back(30); // 2
+  v1.push_back(40); // 3
+  v1.push_back(50); // 4
+  v1.push_back(60); // 5
+  // vector 迭代器是随机访问迭代器，支持跳跃访问
+  vector<int>::iterator itBegin = v1.begin();
+  itBegin += 3; //  itBegin = itBegin + 3
+  cout << *itBegin << endl;
+}
 int main() {
-  //   test01();
-  //   test02();
-  //   test03();
-  // test04();
-  // test05();
+  // buildVector();
+  // inputVector();
+  // resizeVector();
+  // insertEraseVector();
+  // editVector();
   // swapContainer01();
-  swapContainer02();
+  // swapContainer02();
+  // memorySpacetaken00();
+  // memorySpacetaken01();
+  // reverseIteration();
+  leapVisit();
 }
