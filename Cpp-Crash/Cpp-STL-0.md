@@ -218,6 +218,21 @@ string 类内部封装了很多成员方法:
 
 
 
+10
+
+
+
+## 迭代器
+
+- iterator 普通迭代器
+- reverse_iterator 反向(翻转)迭代器
+- const_iterator 只读（常量）迭代器
+
+
+
+
+
+
 ---
 
 # ON-THE-GO
