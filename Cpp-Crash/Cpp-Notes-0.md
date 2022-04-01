@@ -16,29 +16,13 @@ Ref:
 
 ## Intro cpp
 
-- Part 1
-
-  - What is cpp
-  - What is it used for
-  - What kind of Compiler applications can we build with cpp
-  - Why it was created
-  - Source code
-  - Object code
-  - Algorithm
-
-- Part 2
-  - Cpp console app
+Search it online.
 
 ## What is cpp?
 
 General purpose
 
-- Create all types of programs:
-  - Games,
-  - Operating systems,
-  - Browsers,compilers,
-  - Embedded systems,
-  - All other general purpose software.
+- Create all types of programs
 - Compiled
   - Converting code that you understand into code that your computer understands
   - Building code
@@ -46,35 +30,6 @@ General purpose
 - Case sensitive
   - cppdistinguishes between uppercase and lowercase letters
   - **myVariablel != myvariable**
-
-````
-
-```cpp
-#include <iostream> // header file-"Library"
-                    // input output stream
-using namespace std; // using the std at global level
-int main()
-{ // main: main function
-  cout << "Hello World!\n"; // this will output the console hello world.
-  // cout : consloe output
-  // cin : console input  // std : name of the base for using cout and cin
-  cout << "My name is Tony0101." << endl;
-  cout << "Today is Wednesday.\n";
-}
-````
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-  cout << "Hello World!\n";
-  cout << "My name is To ny0101." << endl;
-  cout << "Today is Wednesday.\n";
-  cout << "Have a nice day!\n";
-}
-```
 
 ## About the cpp Version and Evironments
 
