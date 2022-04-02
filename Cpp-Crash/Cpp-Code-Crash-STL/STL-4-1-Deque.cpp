@@ -8,7 +8,8 @@ using namespace std;
 大小操作 empty size resize
 插入和删除 头插尾插头删尾删
 */
-void printDeque(const deque<int> &d) {
+void printDeque(const deque<int> &d) { // const 指定常数，防止误操作修改数据
+                                       // 对应的，下面要写const_iteraton
   for (deque<int>::const_iterator it = d.begin(); it != d.end(); it++) {
     cout << *it << " "; // 这个空格很有必要 把每个元素空出来了
   }

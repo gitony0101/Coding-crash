@@ -13,7 +13,7 @@
 # STL 概论
 
 ```c++
-
+C++是C + 面向对象（类）+模板（STL）， 所以叫++
 ```
 
 为了建立数据结构和算法标准，并且降低他们之问的耦合关系，以提升各自的独立性、弹性、交互操作性（相互合作性 interoperability),诞生了 STL(Standard Template Library,标准模板库)。
