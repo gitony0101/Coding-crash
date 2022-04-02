@@ -39,38 +39,12 @@ General purpose
 
 ## Variales
 
-Variales: store int float double char string bool with maxium limit container.
+Variales: store **int float double char string bool** with **maxium limit container**.
 
 - Can NOT store different datatypes in one varialble
 - Can NOT change the datatype once you created
 
-Create a variale "annualsalary" with the datatype "float", put the value "50000.99" into the variable.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main(){
-    float annualSalary = 50000.99;
-    float monthlySallary = annualSalary / 12;
-    cout << "Annual salary: " << annualSalary << endl;
-    cout << "Your monthly salary is : " << monthlySallary << endl;
-}
-```
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main(){
-    float annualSalary = 500000;
-    float monthlySallary = annualSalary / 12;
-    cout << "Annual salary: " << annualSalary << endl;
-    cout << "Your monthly salary is : " << monthlySallary << endl;
-}
-```
-
-- cin ： input from users.
+### cin ： input from users.
 
 ```cpp
 #include <iostream>
@@ -84,24 +58,6 @@ cin >> annualSalary;
 float monthlySallary = annualSalary / 12;
 cout << "Annual salary: " << annualSalary << endl;
 cout << "Your monthly salary is : " << monthlySallary << endl;
-}
-```
-
-Let pc compute the income in 10 years
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-float annualSalary;
-cout << "Please enter your annual salary:\n";
-cin >> annualSalary;
-float monthlySallary = annualSalary / 12;
-cout << "Annual salary: " << annualSalary << endl;
-cout << "Your monthly salary is : " << monthlySallary << endl;
-cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
 }
 ```
 
@@ -109,32 +65,7 @@ cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
 
 Most common datatypes we use in cpp.
 
-```cpp
-#include <climits>
-#include <iostream>
-using namespace std;
-
-int main() { //most common datatypes we use in cpp
-  int yearOfBirth = 1995;
-  char gender = 'm';
-  bool isOlderThan18 = true;
-  float averageGrade = 4.5;
-  double balance = 452345234;
-
-
-  cout << "Int min value is " << INT_MIN << endl;
-  cout << "Int max value is " << INT_MAX << endl;
-  cout << "Uint max value is " << UINT_MAX << endl;
-
-  cout << "Size of char is " << sizeof(char) << "bytes\n";
-  cout << "Size of unsinged int is " << sizeof(unsigned int) << " bytes\n";
-  cout << "Size of int is " << sizeof(int) << " bytes\n";
-  cout << "Size of float is " << sizeof(float) << " bytes\n";
-  cout << "Size of double is " << sizeof(double) << " bytes\n";
-
-}
-
-```
+#### table？
 
 The following table shows the variable type, how much memory it takes to store the value in memory, and what is maximum and minimum value which can be stored in such type of variables.
 
@@ -162,7 +93,7 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 
 **So, when we are coding ,the first thing we must make clear is the datatype we are using**.
 
-# Chapter 2 ASCII Program
+## ASCII Program
 
 ```cpp
 #include <iostream>
@@ -308,20 +239,6 @@ Logical operators evaluate Boolean logic on bool types. You characterize operato
 - The unary negation operator `!` takes a single operand and returns its opposite. In other words, !true yields false, and !false yields true.
 - The logical operators AND `&&` and OR `||` are binary.
 - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
-
-```cpp
-#include <iostream>
-using namespace std;
-
-int main()
-{
-int a = 6, b = 5;
-cout << (a == 5 && b ==5) << endl; // AND operator,shows 0 for false
-cout << (a == 5 || b ==5) << endl; // OR operator,shows 1 for true
-// JUST add a '!' to the front of the operator to get the opposite result
-cout << (!(a == 5 && b ==5)) << endl; // NOT operator,shows 1 for true
-}
-```
 
 - Operator priority
 
