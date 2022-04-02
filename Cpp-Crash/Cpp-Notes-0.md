@@ -39,14 +39,40 @@ General purpose
 
 ## Variales
 
-Variales: store **int float double char string bool** with **maxium limit container**.
+Variales: store int float double char string bool with maxium limit container.
 
 - Can NOT store different datatypes in one varialble
 - Can NOT change the datatype once you created
 
-### cin ： input from users.
+Create a variale "annualsalary" with the datatype "float", put the value "50000.99" into the variable.
 
-```cpp
+```c++
+#include <iostream>
+using namespace std;
+
+int main(){
+    float annualSalary = 50000.99;
+    float monthlySallary = annualSalary / 12;
+    cout << "Annual salary: " << annualSalary << endl;
+    cout << "Your monthly salary is : " << monthlySallary << endl;
+}
+```
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main(){
+    float annualSalary = 500000;
+    float monthlySallary = annualSalary / 12;
+    cout << "Annual salary: " << annualSalary << endl;
+    cout << "Your monthly salary is : " << monthlySallary << endl;
+}
+```
+
+- cin ： input from users.
+
+```c++
 #include <iostream>
 using namespace std;
 
@@ -61,11 +87,54 @@ cout << "Your monthly salary is : " << monthlySallary << endl;
 }
 ```
 
+Let pc compute the income in 10 years
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+float annualSalary;
+cout << "Please enter your annual salary:\n";
+cin >> annualSalary;
+float monthlySallary = annualSalary / 12;
+cout << "Annual salary: " << annualSalary << endl;
+cout << "Your monthly salary is : " << monthlySallary << endl;
+cout << "In 10 years you will earn:" << annualSalary * 10 << endl;
+}
+```
+
 ## Datatypes
 
 Most common datatypes we use in cpp.
 
-#### table？
+```c++
+#include <climits>
+#include <iostream>
+using namespace std;
+
+int main() { //most common datatypes we use in cpp
+  int yearOfBirth = 1995;
+  char gender = 'm';
+  bool isOlderThan18 = true;
+  float averageGrade = 4.5;
+  double balance = 452345234;
+
+
+  cout << "Int min value is " << INT_MIN << endl;
+  cout << "Int max value is " << INT_MAX << endl;
+  cout << "Uint max value is " << UINT_MAX << endl;
+
+  cout << "Size of char is " << sizeof(char) << "bytes\n";
+  cout << "Size of unsinged int is " << sizeof(unsigned int) << " bytes\n";
+  cout << "Size of int is " << sizeof(int) << " bytes\n";
+  cout << "Size of float is " << sizeof(float) << " bytes\n";
+  cout << "Size of double is " << sizeof(double) << " bytes\n";
+
+}
+
+```
 
 The following table shows the variable type, how much memory it takes to store the value in memory, and what is maximum and minimum value which can be stored in such type of variables.
 
@@ -73,7 +142,7 @@ The following table shows the variable type, how much memory it takes to store t
 
 ## Datatype overflow
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -93,9 +162,9 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 
 **So, when we are coding ,the first thing we must make clear is the datatype we are using**.
 
-## ASCII Program
+### ASCII Program
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -112,13 +181,13 @@ The $\textit{American Standard Code for Information Interchange (ASCII)}$ table 
 
 ![img](img/ascii-2.png)
 
-```cpp
+```c++
 
 ```
 
 So， you can build an app to cipher or decipher words and ASCII codes.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -134,7 +203,7 @@ int main() {
 
 ```
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -167,7 +236,7 @@ Other Operators // not in in note ver 0.1
 
 First of all ,we need to know how the computer to calculate the result.
 
-```cpp
+```c++
 
 #include <iostream>
 using namespace std;
@@ -191,7 +260,7 @@ int main() {
 
 Post-increment `a++` and post-decrement `a--` creates a copy of the object, increments or decrements the value of the object and returns the copy from before the increment or decrement.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -215,7 +284,7 @@ int main() {
 
 ### Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -240,11 +309,25 @@ Logical operators evaluate Boolean logic on bool types. You characterize operato
 - The logical operators AND `&&` and OR `||` are binary.
 - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
 
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int a = 6, b = 5;
+cout << (a == 5 && b ==5) << endl; // AND operator,shows 0 for false
+cout << (a == 5 || b ==5) << endl; // OR operator,shows 1 for true
+// JUST add a '!' to the front of the operator to get the opposite result
+cout << (!(a == 5 && b ==5)) << endl; // NOT operator,shows 1 for true
+}
+```
+
 - Operator priority
 
   Arithmetic operators >> relation operators >> logical operators
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -258,7 +341,7 @@ cout << (x ==6 && y == 5 +3) << endl; // calculates 5+3 first, then checks  whet
 
 ### Assignment operators: =, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -292,7 +375,7 @@ However, we can exchange them without the third container since we can make full
 
 Let's code:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -323,7 +406,7 @@ int main() {
 - conditional operator (0?1:2)
 - Switch case statements
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -338,7 +421,7 @@ with the modulo operator,we can make the function with the flowchart:
 
 ![img](./img/chapter-3-ifelseDIagram.png)
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -371,7 +454,7 @@ Determine whether a triangle is equilateral,isosceles or scalene.
 
 ![img](img/chapter-3--Tri-ifelseDIagram.png)
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -411,7 +494,7 @@ So with the if-else statement, we can design the algorithm with the condition:
 
 as we see in the plot, we can make the "Break points" with 18.5 and 25 to reduce steps.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -441,7 +524,7 @@ int main() {
 
 ```
 
-```cpp
+```c++
 
 ```
 
@@ -449,7 +532,7 @@ int main() {
 
 IN cpp :
 
-```cpp
+```c++
 Exp1 ? Exp2 : Exp3;
 ```
 
@@ -459,7 +542,7 @@ The **value of a ? expression** is determined like this: Exp1 is evaluated. If i
 
 The **? is called a ternary operator** because it requires three operands and can be used to replace if-else statements.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -482,7 +565,7 @@ int main() {
 Now lets take a look at the short version:
 condicion ? expresion1 : expresion2
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -504,7 +587,7 @@ Also, we can upgrade the function with loops later.
 
 Now let's build a calculator with if-else statement.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -534,7 +617,7 @@ Cool calculator, and you got hinted that **the modulo integers ONLY**,you made i
 
 This is the formal version of the switch case statement:
 
-```cpp
+```c++
 switch (expression)  {
     case constant1:
         // code to be executed if
@@ -562,7 +645,7 @@ Where the expression is corresponding to constantX.
 
 With this method, let's code the calculator with switch case statement.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -614,11 +697,11 @@ Moreover, notice that : 123 / 10 = 12, 123.4 / 10 = 12.34.
 
 [Leap Year algorithm](https://www.mathsisfun.com/leap-years.html)
 
-```cpp
+```c++
 /(year%4=0 && year%100!=0 || year%400==0)
 ```
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -670,7 +753,7 @@ The four kinds of iteration statements are the while loop, the do-while loop, th
 
 Write out all the numbers between 100-500 that are divisible by 3 and 5
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -694,7 +777,7 @@ Now let's build a while loop to count digits of a number,this is a classical way
 
 As we discussed previously,cpp returns the integer value of the division of two integers, like:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -712,7 +795,7 @@ step 2 input the number we want to count the digits;
 step 3 let the number divide by 10, and repeat step 3 until the number is 0,save the times of division in the counter variable;
 step 4 print out the number of digits.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -758,7 +841,7 @@ step 4.taking the modulo of the number by 10 to get the last digit at that time 
 - Get the last digit by taking modulo of the number by 10,which will be multiplied by 10 at the next step.
 - You need to know the modulus method [here, consider it with periodic features](https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic).
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -787,7 +870,7 @@ int main() {
 
 - Syntax
 
-```cpp
+```c++
 do {
   // code block to be executed
 }
@@ -798,7 +881,7 @@ while (condition);
 
 Make the safe locker by using do-while loop.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -831,7 +914,7 @@ int main() {
 
 This is a simple safe locker while here is the Saldina code's different part:
 
-```cpp
+```c++
   if (errorCounter < 3)
     cout << "Access granted." << endl;
   else
@@ -902,7 +985,7 @@ int main() {
 
 - Syntax
 
-```cpp
+```
  for (statement 1; statement 2; statement 3) {
   // code block to be executed
 }
@@ -914,7 +997,7 @@ Intro for loop with application of factorial.
 
 #### Factorial
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -959,7 +1042,7 @@ Why nest loop?
 
 - 3 courses, each grade ranges from 1 to 5.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -998,7 +1081,7 @@ Here we need to know why the code is : **while (grade < 1 || grade > 5)**
 
 There is a normal version, now we can use do-while loop to make it more flexible.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1032,7 +1115,7 @@ Standard library header <iomanip>
 - `iomanip` is a library for input and output manipulation.
 - setw()
 
-```cpp
+```
 #include <iomanip>
 #include <iostream> // import iomanip to use setw()
 
@@ -1059,7 +1142,7 @@ int main() {
 
 ### Nest Loop Triangle shape
 
-```cpp
+```
 #include <iomanip>
 #include <iostream> // import iomanip to use setw()
 
@@ -1108,7 +1191,7 @@ The void main() indicates that the main() function will NOT return any value, bu
 
 Try this code to find which function will show the result.
 
-```cpp
+```
 //Version 1
 #include <iostream>
 using namespace std;
@@ -1122,7 +1205,7 @@ We can see that there is only one code shows `Hello World from main.`
 
 If we want to call the `myFunction` we need to call it in main:
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1142,7 +1225,7 @@ I like this function.
 
 As for there are lots of functions in the project, we can use decoration function at first to name all the functions which make the code more readable:
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1174,7 +1257,7 @@ void myFunction_4() {
 Yeah, \*args, \*\*kargs？ Perhaps.
 Let's rock!
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1198,7 +1281,7 @@ int main() {
 
 Also, we can set default value for parameters, however,the default parameters must be placed at the **END of the parameter list**.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1219,7 +1302,7 @@ int main() {
 
 Here is the input version:
 
-```cpp
+```
 
 #include <iostream>
 using namespace std;
@@ -1250,7 +1333,7 @@ int main() {
 
 Determine whether a number is a Prime number.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1287,7 +1370,7 @@ int main() {
 
 **Function overloading** is a feature of object oriented programming where two or more functions can have the same name but different parameters.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1317,7 +1400,7 @@ A function that calls itself is known as a recursive function. And, this techniq
 
 Sum of the numebrs between m to n.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1337,7 +1420,7 @@ int main() {
 
 Calculate the factorial
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1369,7 +1452,7 @@ Generic programming is writing code once that works with different types rather 
 
 In this chapter we just introduce these concepts，since Generic and Template is more than this.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -1424,7 +1507,7 @@ Classes and objects are the two main aspects of object-oriented programming.
 
 #### Youtube channel class
 
-```cpp
+```
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -1486,7 +1569,7 @@ Here is the example of constructor and class method
 - constructor to collect the information of the object-`YouTubeChannel`
 - calss method to print the information of the object- `getInfo()`
 
-```cpp
+```
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -1547,7 +1630,7 @@ That is:
 
 - **Features inside (private), Funcions outside(public), Encapuslate them ALL.**
 
-```cpp
+```
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
 // #include <string>
@@ -1618,7 +1701,7 @@ The capability of a class to derive properties and characteristics from another 
 Here we go on with our youtube channel and dive in a more specific area:
 Cooking channel, which shows us how inheritance works.
 
-```cpp
+```
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -1696,7 +1779,7 @@ Using inheritance, we have to write the functions only one time instead of three
 
 Implementing inheritance in C++: For creating a sub-class which is inherited from the base class we have to follow the below syntax.
 
-```cpp
+```
 class subclass_name : access_mode base_class_name
 {
   // body of subclass
@@ -1707,7 +1790,7 @@ Here,**subclass_name** is the name of the sub class, access_mode is the mode in 
 
 Note: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
 
-```cpp
+```
 // C++ program to demonstrate implementation
 // of Inheritance
 
@@ -1768,7 +1851,7 @@ In the above program the ‘Child’ class is publicly inherited from the ‘Par
 
 Note: The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed. For example, Classes B, C and D all contain the variables x, y and z in below example. It is just question of access.
 
-```cpp
+```
 // C++ Implementation to show that a derived class
 // doesn’t inherit access to private data members.
 // However, it does inherit a full parent object.
@@ -1835,7 +1918,7 @@ In C++ polymorphism is mainly divided into two types:
 
 Now we continue the youtube channel tutorial.
 
-```cpp
+```
 #include <iostream>
 #include <list>
 using namespace std;
@@ -1958,11 +2041,11 @@ int main() {
 
 ```
 
-```cpp
+```
 
 ```
 
-```cpp
+```
 
 ```
 
@@ -1970,7 +2053,7 @@ int main() {
 
 Variable contains certain value,while Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
 
-```cpp
+```
 // General syntax
 datatype *var_name;
 
@@ -2006,7 +2089,7 @@ How void pointer are used.
 
 - `int` is not a function, it is a data type,a declaration.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -2032,7 +2115,7 @@ int main() {
 
 ## Pointers and arrays
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 
@@ -2069,7 +2152,7 @@ int main() {
 
 Use pointers to return min and max value of array.
 
-```cpp
+```
 #include <iostream>
 using namespace std;
 // int getMin(int numbers[], int size) {
@@ -2132,7 +2215,7 @@ Arrys is a type of collection which stores elements is contiguous memory locatio
 
 if I definite a fuction:
 
-```cpp
+```
 int myArray[5];
 ```
 
@@ -2140,7 +2223,7 @@ It means I created a container of 5 locations which can store elements.
 
 **Dynamic arrays** are arrays with **dynamic storage duration**. You create dynamic arrays with array new expressions. Array new expressions have the following form:
 
-```cpp
+```
 new MyType[n_elements] { init-list }
 ```
 
@@ -2149,7 +2232,7 @@ new MyType[n_elements] { init-list }
 - new : allocate memory for us when we need it.
 - delete : deallocate memory for us when we do not need it.
 
-```cpp
+```
 
 #include <iostream>
 using namespace std;
@@ -2198,7 +2281,7 @@ table and its' arrays
 
 ### \*\* - Pointer to Pointer
 
-```cpp
+```
 #include <cstdio>
 #include <iostream>
 using namespace std;
@@ -2226,14 +2309,16 @@ int main() {
 }
 ```
 
-```cpp
+```
 
 ```
 
-```cpp
+```
 
 ```
 
-```cpp
+```
+
+```
 
 ```
