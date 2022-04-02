@@ -1,11 +1,17 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdio>
+#include <cstdlib>
 #include <deque>
 #include <iostream>
+#include <iterator>
 #include <vector>
 
 using namespace std;
+/*
+deque<float> &d 以及 vector<Person> &v 再去理解
+rand() % 40 + 60 注意rand使用方法，此处60-100
+*/
 
 // 评委打分 自己做的版本
 void printDeque(const deque<float> &d) {
@@ -79,8 +85,9 @@ public:
 //   }
 // }
 
-void createPerson(vector<Person> &v) { // 1、创建五名选手ABCDE v ? &v?
-  // 这里还真的是 &v,不然下面打印不出来这个循环
+void createPerson(vector<Person> &v) {
+  // 1、创建五名选手ABCDE
+  // v ? &v?---- 这里还真的是 &v,不然下面打印不出来创建选手的循环
   string nameSeed = "ABCDE";
   for (int i = 0; i < 5; i++) {
     string name = "选手";
@@ -95,6 +102,59 @@ void createPerson(vector<Person> &v) { // 1、创建五名选手ABCDE v ? &v?
   }
 }
 
+/* 打分：（双循环）
+//      生成每个选手分数
+//      每个选手分数求和
+        以及求平均数*/
+void setScore(vector<Person> &v) { // 将评委的分数，放到deque容器中
+  //外层循环遍历选手
+  for (vector<Person>::iterator it = v.begin(); it != v.end(); it++) {
+    //内层循环对每个选手生成10个随机分数：
+    deque<int> d;
+    for (int i = 0; i < 10; i++) {
+      int score = rand() % 41 + 60; // 60-100
+      d.push_back(score);
+    }
+    // printf("%s 打分：\n", (*it).m_Name.c_str());
+    // for (deque<int>::iterator dit = d.begin(); dit != d.end(); dit++) {
+    //   printf("%d ", *dit);
+    // }
+    // cout << endl; // OK  输出成功，注释掉这里
+    //排序 并去除最高最低分
+    sort(d.begin(), d.end());
+    d.pop_back();
+    d.pop_front();
+    // 取每个选手的平均分：
+    int sum = 0;
+    for (deque<int>::iterator dit = d.begin(); dit != d.end(); dit++) {
+      sum += *dit; //累加每个评委的分数
+    }
+    int avg = sum / d.size(); //求出平均分
+
+    // 将平均分 赋值到选手身上 看清楚了，这里最后是it
+    it->m_Score = avg; // 此时，Person
+                       // 类已经已经改头换面，并且public类允许下面的show调用了
+  }
+}
+
+// void showScore(vector<Person> &v) {
+//   for (vector<Person>::iterator it = v.begin(); it != v.end(); it++) {
+//     printf("姓名： %s,平均分：%d\n.", it->m_Name.c_str(), it->m_Score);
+//   }
+// }
+
+// void rankPlayer(vector<Person> &v) { // 我想给选手们排序
+//     // 排序
+//     sort(v.begin(), v.end(),
+//          [](Person &p1, Person &p2) { return p1.m_Score > p2.m_Score; });
+
+// }
+
+void showScore(vector<Person> &v) {
+  for (vector<Person>::iterator it = v.begin(); it != v.end(); it++) {
+    printf("姓名：%s,平均分：%d\n", it->m_Name.c_str(), it->m_Score);
+  }
+}
 int main() {
   // gradePlayer0(); // 自选测试版本
   // 随机数种子
@@ -103,7 +163,14 @@ int main() {
   vector<Person> v;
   createPerson(v);
   // ##测试创建出来的五名选手，然后把这里注释掉，这是一种撸代码的方法，成了就成了这里
-  for (vector<Person>::iterator it = v.begin(); it != v.end(); it++) {
-    printf("姓名: %s, 分数： %d\n", (*it).m_Name.c_str(), (*it).m_Score);
-  }
+  //   for (vector<Person>::iterator it = v.begin(); it != v.end(); it++) {
+  //     printf("姓名: %s, 分数： %d\n", (*it).m_Name.c_str(), (*it).m_Score);
+  //   } // 测试成功，然后注释掉，这样就可以了
+  // 2. 给五名选手打分
+  setScore(v);
+  // 2.1 排序
+  //   rankPlayer(v);
+
+  // 3.最后求平均分：
+  showScore(v);
 }

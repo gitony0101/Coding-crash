@@ -1,2 +1,1 @@
-
-}
+  rankPlayer(v);
