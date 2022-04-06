@@ -70,11 +70,27 @@ void resizeList() { // list 大小操作
 }
 
 void insertDellist() { // list 插入删除
-  list<int> L1{10, 20, 30, 40};
+  list<int> L;
+  //尾插
+  L.push_back(10);
+  L.push_back(20);
+  L.push_back(30);
+  //头插
+  L.push_front(100);
+  L.push_front(200);
+  L.push_front(300);
+  printList(L);
+  //尾删
+  L.pop_back();
+  printList(L);
+  //头删
+  L.pop_front();
+  printList(L);
 }
 
 int main() {
   // constructList();
   // assignSwapList();
-  resizeList();
+  // resizeList();
+  insertDellist();
 }
