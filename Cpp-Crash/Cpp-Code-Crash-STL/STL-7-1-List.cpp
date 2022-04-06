@@ -15,7 +15,7 @@ void printList(const list<int> &L) { //打印List链表
   cout << endl;
 }
 
-void commonList(list<int> &L){};
+void commonList(list<int> &L) { list<int> L0; };
 
 void constructList() { // 构造函数 都一样
 
@@ -35,11 +35,46 @@ void constructList() { // 构造函数 都一样
   list<int> L4(10, 1000);
   printList(L4);
   // XB
-  list<int> L5{10, 20, 30, 40};
-  printList(L5);
+  // list<int> L5{10, 20, 30, 40};
+  // printList(L5);
 }
 
 void assignSwapList() { //赋值交换
+  list<int> L1{10, 20, 30,
+               40}; // 简单写法，报错忽略，vsc默认11，直接忽略右边的报错就好，
+  // 看微软吧，hhh
+  list<int> L2;
+  L2.assign(10, 100);
+  cout << "交换前：" << endl;
+  printList(L1);
+  printList(L2);
+  cout << endl;
+  L1.swap(L2);
+  cout << "交换后：" << endl;
+  printList(L1);
+  printList(L2);
 }
 
-int main() { constructList(); }
+void resizeList() { // list 大小操作
+  list<int> L1{10, 20, 30, 40};
+  if (L1.empty()) {
+    printf("L1为空");
+  } else {
+    printf("L1不为空，它的大小为：%lu。\n", L1.size());
+    //重新制定大小
+    L1.resize(10); // 多出来的补零
+    printList(L1);
+    L1.resize(2); // 裁到两个
+    printList(L1);
+  }
+}
+
+void insertDellist() { // list 插入删除
+  list<int> L1{10, 20, 30, 40};
+}
+
+int main() {
+  // constructList();
+  // assignSwapList();
+  resizeList();
+}
