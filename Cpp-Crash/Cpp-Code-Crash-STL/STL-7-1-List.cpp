@@ -86,11 +86,32 @@ void insertDellist() { // list 插入删除
   //头删
   L.pop_front();
   printList(L);
+  //插入
+  list<int>::iterator it = L.begin();
+  L.insert(++it, 1000);
+  printList(L);
+  // 删除
+  it = L.begin();
+  L.erase(++it);
+  printList(L);
+  // 移除
+  L.push_back(10000);
+  L.push_back(10000);
+  L.push_back(10000);
+  printList(L);
+  L.remove(10000);
+  printList(L);
+  //清空
+  L.clear();
+  printf("clear 清空结果：\n");
+  printList(L);
 }
+
+//存取
 
 int main() {
   // constructList();
   // assignSwapList();
   // resizeList();
-  insertDellist();
+  // insertDellist();
 }
