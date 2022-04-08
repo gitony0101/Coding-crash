@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 #include <list>
+#include <string>
 using namespace std;
 
 /* List 链表 将数据链式存储
@@ -103,15 +104,96 @@ void insertDellist() { // list 插入删除
   printList(L);
   //清空
   L.clear();
-  printf("clear 清空结果：\n");
+  printf("clear命令 清空结果：\n");
   printList(L);
 }
 
-//存取
+void accessList() { // list 数据存取
+  // list 不支持 at 和 []访问数据
+  list<int> L1{10, 20, 30, 40}; // 别管报错
+  printf("第一个元素为：%d。最后一个元素为:%d。\n", L1.front(), L1.back());
+  // list 容器迭代器是双向迭代器，不支持随机访问
+  list<int>::iterator it = L1.begin();
+  // it = it + 1;//错误，不可以跳跃访问，即使是+1
+}
+
+// list 反转和排序专用回调函数,callback时候，从大到小排列 val1 > val2。
+bool myCompare(int val1, int val2) { return val1 > val2; }
+
+void reversortList() {          // list 反转和排序
+  list<int> L1{10, 20, 30, 40}; // 别管报错
+  // 反转容器的元素
+  L1.reverse();
+  printList(L1);
+  //排序
+  L1.sort(); // 默认排序规则从小到大
+  printList(L1);
+  //回调函数制定规则，从大到小
+  L1.sort(myCompare);
+  printList(L1);
+}
+
+/* 排序案例
+案例描述：
+将Person自定义数据类型进行排序，Person中属性有姓名、年龄、身高
+排序规则：
+按照年龄进行升序，如果年龄相同按照身高进行降序
+*/
+class Person { // 定义一个Person 类，包含了姓名年龄身高
+public:        //定义公共属性
+  Person(string name, int age, int height) {
+    m_Name = name;
+    m_Age = age;
+    m_Height = height;
+  }
+  string m_Name; // 姓名
+  int m_Age;     // 年龄
+  int m_Height;  // 身高
+};
+bool ComparePerson(Person &p1, Person &p2) {
+  //定义回调函数
+  if (p1.m_Age == p2.m_Age) {
+    return p1.m_Height > p2.m_Height;
+  } else {
+    return p1.m_Age < p2.m_Age;
+  }
+}
+
+void compareThem() {
+  list<Person> L; // 细品这个定义
+
+  Person p1("刘备", 35, 175);
+  Person p2("曹操", 45, 180);
+  Person p3("孙权", 40, 170);
+  Person p4("赵云", 25, 190);
+  Person p5("张飞", 35, 160);
+  Person p6("关羽", 35, 200);
+
+  L.push_back(p1);
+  L.push_back(p2);
+  L.push_back(p3);
+  L.push_back(p4);
+  L.push_back(p5);
+  L.push_back(p6);
+
+  //开始刷：
+  for (list<Person>::iterator it = L.begin(); it != L.end(); it++) {
+    printf("姓名：%s,身高：%d。\n", (*it).m_Name.c_str(), (*it).m_Height);
+  }
+  printf("-----下面开始排序-----\n");
+  L.sort(ComparePerson); // 使用回调函数sort排序
+  for (list<Person>::iterator it = L.begin(); it != L.end(); it++) {
+    printf("姓名：%s,身高：%d。\n", (*it).m_Name.c_str(), (*it).m_Height);
+  }
+}
 
 int main() {
   // constructList();
   // assignSwapList();
   // resizeList();
   // insertDellist();
+  // accessList();
+  // reversortList();
+  //排序案例：
+  compareThem();
 }
