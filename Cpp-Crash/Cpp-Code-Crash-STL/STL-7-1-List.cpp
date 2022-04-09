@@ -5,8 +5,13 @@
 using namespace std;
 
 /* List 链表 将数据链式存储
-构造函数
-
+- 构造、赋值、大小、重置大小、是否为空
+- 反转reverse 排序sort
+- 如果容器的迭代器支持随机访问，可以使用系统提供的标志算法
+- 不支持随机访问的迭代器的容器，内部会提供对应的算法接口
+- 对于自定义数据类型，必须要指定排序规则+
+- 对自定义数据类型做了高级排序
+- 如果利用remove删除自定义数据类型，需要重载
 */
 
 void printList(const list<int> &L) { //打印List链表
@@ -15,8 +20,6 @@ void printList(const list<int> &L) { //打印List链表
   }
   cout << endl;
 }
-
-void commonList(list<int> &L) { list<int> L0; };
 
 void constructList() { // 构造函数 都一样
 
@@ -188,12 +191,12 @@ void compareThem() {
 }
 
 int main() {
-  // constructList();
-  // assignSwapList();
-  // resizeList();
-  // insertDellist();
-  // accessList();
-  // reversortList();
-  //排序案例：
+  constructList();
+  assignSwapList();
+  resizeList();
+  insertDellist();
+  accessList();
+  reversortList();
+  // 排序案例：
   compareThem();
 }
