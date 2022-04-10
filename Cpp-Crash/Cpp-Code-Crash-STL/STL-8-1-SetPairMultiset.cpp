@@ -1,6 +1,8 @@
 #include <cstdio>
 #include <iostream>
 #include <set> // 导入set头文件
+#include <string>
+#include <utility>
 using namespace std;
 
 /*set 容器
@@ -105,4 +107,44 @@ equal_range(keyElem)),/返回容器中key与keyElem相等的上下限的两个�
          *it4.first, *it4.second);
 }
 
-int main() { mySet(); }
+// pair 对组创建
+void myPair() {
+  // 无参构造
+  pair<string, int> p1(string("Jay"), 23);
+  printf("姓名: %s，年龄：%d。\n", p1.first.c_str(), p1.second);
+  // make_pair
+  pair<string, int> p2 = make_pair("Tony", 8);
+  printf("姓名: %s，年龄：%d。\n", p2.first.c_str(), p2.second);
+}
+
+// set 和 multiset区别
+void SetAndMultiset01() {
+  set<int> s;
+  pair<set<int>::iterator, bool> ret = s.insert(10);
+  if (ret.second) {
+    printf("第一次插入成功");
+  } else {
+    printf("第一次插入失败");
+  }
+  //再来一次
+  ret = s.insert(10);
+  if (ret.second) {
+    printf("第二次插入成功");
+  } else {
+    printf(
+        "第二次插入失败\n"); // 运行后发现第二次插入是失败的，因为set不允许重复
+  }
+  // multiset 允许插入重复的key值
+  multiset<int> ms;
+  ms.insert(10);
+  ms.insert(10);
+  for (auto it = ms.begin(); it != ms.end(); it++) {
+    printf("%d\n", *it);
+  }
+}
+
+int main() {
+  // mySet();
+  // myPair();
+  SetAndMultiset01();
+}
