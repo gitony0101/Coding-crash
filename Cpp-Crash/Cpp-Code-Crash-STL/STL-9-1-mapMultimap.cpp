@@ -10,6 +10,9 @@ map/multimap属于 关联式容器，底层结构是用二叉树实现。
 //
 构造 赋值 大小交换 判断是否为空
 查找和统计
+- lower_bound(keyElem);/返回第一个key >= keyElem元素的迭代器。
+- upper_bound(keyElem);/返回第一个key > keyElem元素的迭代器。(下一个)
+- equal_range(keyElem)),/返回容器中key与keyElem相等的上下限的两个迭代器pair。
 
 */
 
