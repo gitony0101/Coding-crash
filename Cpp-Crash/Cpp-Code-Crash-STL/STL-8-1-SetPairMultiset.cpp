@@ -50,7 +50,7 @@ void mySet() { //构造 赋值大小插入删除,一把梭哈
   printSet(s4);
   printSet(s5);
   printf("交换后：\n");
-  s4.swap(s5);
+  s4.swap(s5); // 交换
   printSet(s4);
   printSet(s5);
   //插入删除 插入已经有了直接开始删除
@@ -144,7 +144,7 @@ void SetAndMultiset01() {
 }
 
 int main() {
-  // mySet();
-  // myPair();
+  mySet();
+  myPair();
   SetAndMultiset01();
 }

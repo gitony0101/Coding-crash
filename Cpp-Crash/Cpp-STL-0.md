@@ -157,10 +157,6 @@ STL 从广义上分为：
 7. 如果需要关联式数组，应采用map
 8. 如果需要字典结构，应采用multimap。
 
-
-
-
-
 ## String 容器
 
 - string 是 C++风格的字符串，而 string 本质上是一个类
@@ -244,7 +240,6 @@ string 类内部封装了很多成员方法:
 
 
 ![img](./img/clip_image002.jpg)
-
 
 </div>
 </div>
