@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 using namespace std;
 #include <ctime>
 #include <map>
@@ -23,6 +24,39 @@ using namespace std;
 4. 分部门显示员工信息
 */
 
-void myFunc() {}
+#define CEHUA 0  // 定义策划部门为0
+#define MEISHU 1 // 定义美术部门为1
+#define YANFA 2  //定义研发部门为2
+
+class Worker {
+public:
+  string m_Name;
+  int m_Salray;
+};
+//创建员工
+void createWorker(vector<Worker> &v) { //看清楚了这里定义了v
+  string nameSeed = "ABCDEFGHIJ";
+  for (int i = 0; i < 10; i++) {
+    Worker worker;
+    worker.m_Name = "员工";
+    worker.m_Name += nameSeed[i];
+    // 定义薪水
+    worker.m_Salray = rand() % 10000 + 10000;
+    //将员工放入到Woker vector 容器中
+    v.push_back(worker);
+    ;
+  }
+}
+
+//员工分组
+
+void setGroup(vector<Worker> &v, multimap<int, Worker> &m) {
+  for (auto it = v.begin(); it != v.end(); it++) {
+    //产生随机部门编号
+    int deptId = rand() % 3; // 此处生成0 1 2 随机数
+    // 将员工插入到分组中，部门编号： key， 具体员工 ： value
+    m.insert(make_pair(deptId, *it));
+  }
+}
 
 int main() {}
