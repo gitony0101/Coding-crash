@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 #include <utility>
 using namespace std;
@@ -40,7 +41,7 @@ void createWorker(vector<Worker> &v) { //看清楚了这里定义了v
     Worker worker;
     worker.m_Name = "员工";
     worker.m_Name += nameSeed[i];
-    // 定义薪水
+    // 定义薪水 10000 ~ 19999
     worker.m_Salray = rand() % 10000 + 10000;
     //将员工放入到Woker vector 容器中
     v.push_back(worker);
@@ -49,7 +50,6 @@ void createWorker(vector<Worker> &v) { //看清楚了这里定义了v
 }
 
 //员工分组
-
 void setGroup(vector<Worker> &v, multimap<int, Worker> &m) {
   for (auto it = v.begin(); it != v.end(); it++) {
     //产生随机部门编号
@@ -59,4 +59,15 @@ void setGroup(vector<Worker> &v, multimap<int, Worker> &m) {
   }
 }
 
-int main() {}
+// 分组显示员工
+
+int main() {
+  // 1、创建5名员工
+  vector<Worker> vWorker;
+  createWorker(vWorker);
+  // for (auto it = vWorker.begin(); it != vWorker.end(); it++) { // 调试
+  //   printf("%s %d\n", it->m_Name.c_str(), it->m_Salray);
+  // 2、 员工分组
+  multimap<int, Worker> mWorker;
+  setGroup(vWorker, mWorker);
+}
