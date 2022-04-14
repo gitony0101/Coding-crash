@@ -59,7 +59,37 @@ void setGroup(vector<Worker> &v, multimap<int, Worker> &m) {
   }
 }
 
-// 分组显示员工
+// 分组显示员工， 循环里面的第一个分号很奇怪
+void showWorkerByGroup(multimap<int, Worker> &m) {
+  // 0  A  B  C   1  D  E   2  F G ...
+  printf("策划部门：\n");
+  multimap<int, Worker>::iterator pos = m.find(CEHUA);
+  int count = m.count(CEHUA); // 统计具体人数
+  int index = 0;
+  for (; pos != m.end() && index < count; pos++, index++) {
+    // 👆这个地方的分号很奇怪。
+    printf("姓名：%s，工资：%d。\n", pos->second.m_Name.c_str(),
+           pos->second.m_Salray);
+  }
+  printf("------------------------\n美术部门：\n");
+  pos = m.find(MEISHU);
+  count = m.count(MEISHU); // 统计美术部门具体人数
+  index = 0;
+  for (; pos != m.end() && index < count; pos++, index++) {
+    // 👆这个地方的分号很奇怪。
+    printf("姓名：%s，工资：%d。\n", pos->second.m_Name.c_str(),
+           pos->second.m_Salray);
+  }
+  printf("------------------------\n研发部门：\n");
+  pos = m.find(YANFA);
+  count = m.count(YANFA); // 统计美术部门具体人数
+  index = 0;
+  for (; pos != m.end() && index < count; pos++, index++) {
+    // 👆这个地方的分号很奇怪。
+    printf("姓名：%s，工资：%d。\n", pos->second.m_Name.c_str(),
+           pos->second.m_Salray);
+  }
+}
 
 int main() {
   // 1、创建5名员工
@@ -70,4 +100,6 @@ int main() {
   // 2、 员工分组
   multimap<int, Worker> mWorker;
   setGroup(vWorker, mWorker);
+
+  showWorkerByGroup(mWorker);
 }
