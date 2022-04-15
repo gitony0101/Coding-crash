@@ -76,7 +76,8 @@ void showWorkerByGroup(multimap<int, Worker> &m) {
   count = m.count(MEISHU); // 统计美术部门具体人数
   index = 0;
   for (; pos != m.end() && index < count; pos++, index++) {
-    // 👆这个地方的分号很奇怪。
+    // 👆这个地方的分号前面不用再定义pos和index了，因为上面三行全都搞定了pos 和
+    // index
     printf("姓名：%s，工资：%d。\n", pos->second.m_Name.c_str(),
            pos->second.m_Salray);
   }
@@ -85,7 +86,8 @@ void showWorkerByGroup(multimap<int, Worker> &m) {
   count = m.count(YANFA); // 统计美术部门具体人数
   index = 0;
   for (; pos != m.end() && index < count; pos++, index++) {
-    // 👆这个地方的分号很奇怪。
+    // 👆这个地方的分号前面不用再定义pos和index了，因为上面三行全都搞定了pos 和
+    // index
     printf("姓名：%s，工资：%d。\n", pos->second.m_Name.c_str(),
            pos->second.m_Salray);
   }
