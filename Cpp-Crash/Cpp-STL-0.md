@@ -413,9 +413,20 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 
 
 
-### lambda表达式 
-  - `[](){}` 代表lambda表达式的标志
+### lambda表达式 lambda expression
+在 C++11 及更高版本中，lambda 表达式（通常称为
+lambda）是定义匿名函数对象的便捷方法， (关闭)
+直接在调用或作为参数传递给函数的位置。
+
+  - 本质匿名函数
+  - `[](){}` 代表lambda表达式三件套：
+  - `[ captures ] ( params ) specs requires(optional) { body } `
+    - 中括号 lambda expression标志 看好了我要开始用了
+    - 小括号 型参列表
+    - 大括号 具体的函数体（实验体）
   - 匿名函数
+
+
 
 
 
