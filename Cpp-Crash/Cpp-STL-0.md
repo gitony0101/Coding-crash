@@ -1,27 +1,35 @@
 # STL 笔记
 
 
+
 ## Todo
+
 
 
 1. 精简概念
 2. 集中代码，精简内容，少说多做
 
 
+
 ## 大纲
+
 
 STL 容器
 STL 常用算法
 
 
+
 ### Tutorials
+
 
 
 - 黑马 C++ STL
 - Cpp-Crash
 
 
+
 # STL 概论
+
 
 
 ```c++
@@ -32,12 +40,15 @@ C++是 C + 面向对象（类）+ 模板（STL）， 所以叫++
 为了建立数据结构和算法标准，并且降低他们之问的耦合关系，以提升各自的独立性、弹性、交互操作性（相互合作性 interoperability),诞生了 STL(Standard Template Library,标准模板库)。
 
 
+
 STL 从广义上分为：
+
 
 
 - 容器(container）
 - 算法 algorithm)
 - 送代器(iterator)
+
 
 
 |  组件  |   英文    |                 描述                 |
@@ -47,13 +58,17 @@ STL 从广义上分为：
 | 迭代器 | iterator  |            链接容器和算法            |
 
 
+
 **容器和算法之问通过送代器进行无缝连接。**
+
 
 
 ## STL 六大组件
 
 
+
 **容器、算法、迭代器、仿函数、适配器（配接器）和空问配置器。**
+
 
 
 - 容器：各种数据结构，如 vector、list,deque、Set、map 等，用来存放数据，从实现角度来看，STL 容器是一种 class template
@@ -64,7 +79,9 @@ STL 从广义上分为：
 - 空问配置器：负责空间的配置与管理，从实现角度看，配置器是一个实现了动态空间配置、空间管理、空间释放的 class tempalte.
 
 
+
 ## STL 优点
+
 
 
 1. 内建在 C+编译器中，不需要安装额外内容+
@@ -72,12 +89,15 @@ STL 从广义上分为：
 3. STL 具有**高可重用性，高性能，高移植性**，跨平台的优点。
 
 
+
 - 高可重用性：STL 中几乎所有的代码都采用了模板类和版函如的方式实现,这相比于传统的由函数和类组成的库来说提供了更好的代码重用机会。
 - 高性能：如 map 可以高效地从十万条记录里面查找出指定的记录，因为 map 是采用红黑树的变体实现的.
 - 高移植性：如在项目 A 上用 STL 编写的模块，可以直接移植到项目 B 上。
 
 
+
 ### 容器划分
+
 
 
 序列式容器
@@ -85,21 +105,27 @@ STL 从广义上分为：
 有个 key 起到索引作用
 
 
+
 ### 算法
+
 
 
 质变算法
 非质变算法
 
 
+
 # STL 初识：
+
 
 
 - 内置数据类型
 - 自定义数据类型
 
 
+
 ### 利用算法遍历容器
+
 
 
 - for_each(v.begin(),v.end(),myPrint）头文件 algorithm+
@@ -108,7 +134,9 @@ STL 从广义上分为：
 - 容器嵌套容器
 
 
+
 # STL 常用容器
+
 
 
 1. string
@@ -121,13 +149,17 @@ STL 从广义上分为：
 8. map/multimap
 
 
+
 ## STL 容器常用接口表格
+
 
 
 <div style="font-size: 16px">
 
 
+
 <font size="4">
+
 
 
 |              |            | `<string>` | `<vector>` | `<deque>` | `<stack>` | `<queue>` | `<list>` | `<set>` | `<multiset>` |   `<map>`   | `<multimap>` |
@@ -169,14 +201,18 @@ STL 从广义上分为：
 |              |            |            |            |           |           |           |          |         |              |             |              |
 
 
+
 </div >
+
 
 
 - vector 的使用场景：比如软件历史操作记录的存储，我们经常要查看历史记录，比如上一次的记录，上上次的记录，但却不会去删除记录，因为记录是事实的描述。
 - deque 的使用场景：比如排队购票系统，对排队者的存储可以采用 deque，支持头端的快速移除，尾端的快速添加。如果采用 vector，则头端移除时，会移动大量的数据，速度慢。
 
 
+
 - vector 与 deque 的比较：
+
 
 
     vector.at()比 deque.at()效率高，比如 vector.at(0)是固定的，deque 的开始位置 却是不固定的。
@@ -184,12 +220,15 @@ STL 从广义上分为：
     deque 支持头部的快速插入与快速移除，这是 deque 的优点。
 
 
+
 - list 的使用场景：比如公交车乘客的存储，随时可能有乘客下车，支持频繁的不确实位置元素的移除插入。
 - set 的使用场景：比如对手机游戏的个人得分记录的存储，存储要求从高分到低分的顺序排列。
 - map 的使用场景：比如按 ID 号存储十万个用户，想要快速要通过 ID 查找对应的用户。二叉树的查找效率，这时就体现出来了。如果是 vector 容器，最坏的情况下可能要遍历完整个容器才能找到该用户
 
 
+
 作为对上表的补充，使用时：
+
 
 
 1. 缺省情况下应该使用 vector。vector 的内部结构最简单，并允许随机存取，所以数据的存取十分方便灵活据的处理也够快
@@ -202,13 +241,17 @@ STL 从广义上分为：
 8. 如果需要字典结构，应采用 multimap。
 
 
+
 ## String 容器
+
 
 
 - string 是 C++风格的字符串，而 string 本质上是一个类
 
 
+
 string 和 char\* 的区别：
+
 
 
 - char \* 是一个指针
@@ -216,7 +259,9 @@ string 和 char\* 的区别：
   string 管理 char*所分配的内存，不用担心复制越界和取值越界等，由类内部进行负责
 
 
+
 string 类内部封装了很多成员方法:
+
 
 
 1. 构造 赋值
@@ -236,7 +281,9 @@ string 类内部封装了很多成员方法:
 10. 大小写互换 tolower toupper
 
 
+
 ## Vector 容器
+
 
 
 - 使用率高，可以理解为数组--单端数组
@@ -254,15 +301,19 @@ string 类内部封装了很多成员方法:
   - front 返回容器中的第一个元素 back 返回容易中最后一个元素
 
 
+
 <div align = "center">
 <div style="width:800px">
+
 
 
 ![img](./img/clip_image002.jpg)
 
 
+
 </div>
 </div>
+
 
 
 注意：
@@ -272,11 +323,14 @@ string 类内部封装了很多成员方法:
 这是程序员容易犯的一个错误，务必小心。
 
 
+
 构造函数： vector 的多种构造方式没有可比性，灵活使用即可
 赋值操作： vector 赋值方式比较简单，使用 operator=，或者 assign 都可以
 
 
+
 容量和大小操作：
+
 
 
 - 判断是否为空 --- empty
@@ -285,41 +339,54 @@ string 类内部封装了很多成员方法:
 - 重新指定大小 --- resize
 
 
+
 插入和删除：尾插 尾删 插入删除清空
 
 
+
 数据存取： 对 vector 中的数据的存取操作
+
 
 
 - 迭代器 [] at() 获取 vector 中的元素
 - front 返回第一个元素，back 最后一个。
 
 
+
 互换容器 swap 可以使两个容器互换，可以达到实用的收缩内存效果
+
 
 
 预留空间 reserve 减少 vector 在动态扩展容量时的扩展次数
 
 
+
 逆序遍历 reverse_iterator 非质变算法
+
 
 
 判断容器迭代器是否支持随机访问：
 
 
+
 - 跳跃访问 itBegin += 3
+
 
 
 ## Deque 容器
 
 
+
 ### Deque 双端数组
+
 
 
 可对头尾插入删除操作
 
 
+
 ### deque 与 vector 区别
+
 
 
 - vector 对于头部的插入删除效率低，数据量越大，效率越低
@@ -327,30 +394,39 @@ string 类内部封装了很多成员方法:
 - deque 相对而言，对头部的插入删除速度回比 vector 快
 
 
+
 ### 工作原理
+
 
 
 ![img](./img/clip_image002-1547547642923.jpg)
 
 
+
 内部工作原理：
+
 
 
 deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区中存放真实数据
 中控器维护的是每个缓冲区的地址，使得使用 deque 时像一片连续的内存空间
 
 
+
 - deque 容器的迭代器也是支持随机访问的
 
 
+
 ![img](./img/clip_image002-1547547896341.jpg)
+
 
 
 - 构造 赋值 , 都一样，体现不出来区别。
 - 大小操作 empty size resize
 
 
+
 ### 编辑
+
 
 
 - 插入和删除提供的位置是迭代器，而不是迭代器的值
@@ -360,21 +436,27 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 - 头删 --- pop_front
 
 
+
 ## Stack 栈容器
 
 
+
 只有一个出口，先进后出 FILO,不能遍历
+
 
 
 <div align = "center">
 <div style="width:700px">
 
 
+
 ![img](./img/clip_image002-1547604555425.jpg)
 
 
+
 </div>
 </div>
+
 
 
 - 入栈 进入数据 --- push
@@ -384,21 +466,27 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 - 返回栈大小 --- size
 
 
+
 ## Queue 队列容器
 
 
+
 正如 queue 字面意思，排队，先进先出 FIFO 没有遍历，有两个出口
+
 
 
 <div align = "center">
 <div style="width:700px">
 
 
+
 ![img](./img/clip_image002-1547606475892.jpg)
 
 
+
 </div>
 </div>
+
 
 
 - 入队 往队尾添加元素 --- push
@@ -409,22 +497,28 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 - 返回队列大小 --- size
 
 
+
 ## List 列表容器
+
 
 
 将数据进行链式存储，是一种物理单元上非连续的存储结构，数据元素的逻辑顺序通过链表中的指针链接实现
 ：
 
 
+
 <div align = "center">
 <div style="width:700px">
+
 
 
 ![img](./img/clip_image002-1547608564071.jpg)
 
 
+
 </div>
 </div>
+
 
 
 - 链表 list 由一系列节点组成
@@ -432,7 +526,9 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 - STL 链表是双向循环链表
 
 
+
 对外接口
+
 
 
 - 构造、赋值、大小、重置大小、是否为空
@@ -444,10 +540,13 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 - 如果利用 remove 删除自定义数据类型，需要重载
 
 
+
 ## set/multiset 容器（关联容器）
 
 
+
 关联式容器：插入的时候已经帮助做好了排序,\* set/multiset 属于**关联式容器**，底层结构是用**二叉树**实现。
+
 
 
 - set 里面不允许有重复元素，multiset 允许有重复元素
@@ -456,19 +555,25 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 - equal_range(keyElem)),/返回容器中 key 与 keyElem 相等的上下限的两个迭代器 pair。
 
 
+
 ## pair 对组创建
+
 
 
 - 成对出现的数据，利用对组可以返回两个数据
 
 
+
 `pair<type, type> p ( value1, value2 );`
+
 
 
 `pair<type, type> p = make_pair( value1, value2 );`
 
 
+
 ## map/multimap 容器
+
 
 
 - 默认按照 key 从小到大排序
@@ -482,7 +587,9 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 
 
 
+
 ## STL 小结
+
 
 
 
@@ -490,19 +597,25 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 # STL 常用算法
 
 
+
 ## 函数对象
+
 
 
 **仿函数 functor 就是函数对象**，只不过**仿函数是早起的名字**，而**函数对象是** C++ 标准规范的名字：
 
 
+
 - 就实现意义而言，“函数对象” 比较贴切：一种具有函数特质的对象。
+
 
 
 - 就行为而言，仿函数比较突出： 重载了`()`操作符的**类**，仿函数可以由调用者像函数一样调用。
 
 
+
 小结：
+
 
 
 1. 函数对象通常不定义构造函数和析构函数，所以在构造和析构时不会发生任何问题，避免了函数调用的运行时问题
@@ -519,10 +632,13 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 
 
 
+
 ### 谓词 predicate
 
 
+
 返回**bool 类型**的**仿函数**称为**谓词**
+
 
 - 如果 operator()接受一个参数，那么叫做一元谓词
 - 如果 operator()接受两个参数，那么叫做二元谓词
@@ -530,11 +646,14 @@ deque 内部有个**中控器**，维护每段缓冲区中的内容，缓冲区�
 
 
 
+
 ### lambda 表达式 lambda expression
+
 
 在 C++11 及更高版本中，lambda 表达式（通常称为
 lambda）是定义匿名函数对象的便捷方法， (关闭)
 直接在调用或作为参数传递给函数的位置。
+
 
 
 - 本质匿名函数
@@ -560,15 +679,19 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+
 ### 内建函数对象
+
 
 
 重载好的小括号我们可以直接去用
 
 
+
 - 算术仿函数
 - 关系仿函数
 - 逻辑仿函数
+
 
 
 - 这些仿函数产生的对象、用法和一般函数完全相同内建函数对象需要引入头文件 #include <functional>
@@ -588,10 +711,13 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+
 ### 适配器
 
 
+
 用到再学
+
 
 1. 函数对象适配器
 2. 取反适配器
@@ -603,17 +729,22 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+
 ## 常用算法
 
 
+
 概述：
+
 
 1. 算法主要是由头文件`<algorithm> <functional> <numeric>`组成
 2. <algorithm>是所有 STL 头文件中最大的一个，范围涉及到比较、 交换、查找、遍历操作、复制、修改等等
 3. . `<numeric>`体积很小，只包括几个在序列上面进行简单数学运算的模板函数
 4. `<functional>`定义了一些模板类,用以声明函数对象
 
+
 常用的算法主要有：
+
 
 1. 常用遍历算法
 2. 常用查找算法
@@ -625,7 +756,9 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+
 ## 常用遍历算法
+
 
 - `for_each`
   - 用于遍历容器，有返回值，可以绑定参数进行输出
@@ -635,33 +768,41 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+
 ### for_each 实现遍历容器
 
-函数原型：`for_each(_InputIterator __first, _InputIterator __last, _Function __f);  `
 
-  // 遍历算法 遍历容器元素
+函数原型：`for_each(_InputIterator __first, _InputIterator __last, _Function __f); `
 
-  // beg 开始迭代器
 
-  // end 结束迭代器
+// 遍历算法 遍历容器元素
 
-  // _func 函数或者函数对象
+
+// beg 开始迭代器
+
+
+// end 结束迭代器
+
+
+// \_func 函数或者函数对象
+
 
 ### transform 实现搬运容器
 
-函数原型：transform(iterator beg1, iterator end1, iterator beg2, _func);
+
+函数原型：transform(iterator beg1, iterator end1, iterator beg2, \_func);
+
 
 //beg1 源容器开始迭代器
 
+
 //end1 源容器结束迭代器
 
-//beg2 目标容器开始迭代器
 
-//_func 函数或者函数对象
-
+//beg2 目标容器开始迭代器 (**从这里开始搬运**)
 
 
-
+//\_func 函数或者函数对象
 
 
 
@@ -693,18 +834,41 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
-```c++
 
-```
 
-```c++
 
-```
+
+
+## 常用查找算法
+
+- `find` //查找元素
+- `find_if` //按条件查找元素
+- `adjacent_find` //查找相邻重复元素
+- `binary_search` //二分查找法
+- `count` //统计元素个数
+- `count_if` //按条件统计元素个数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
 
+
 # Saga ON-THE-GO
+
 
 
 逻辑回归的损失函数
@@ -712,17 +876,23 @@ PCA 原理
 
 
 
+
 ## 迭代器
+
 
 - iterator 普通迭代器
 - reverse_iterator 反向(翻转)迭代器
 - const_iterator 只读（常量）迭代器
 
+
 ### Callback function 回调函数
+
 
 - One reason to use callbacks is to write generic code which is independent from the logic in the called function and can be reused with different callbacks，which passed to other functions as an argument to be called later in program execution
 
+
 回调函数通过独立于函数的一般代码，可以被反复使用，在将来的程序执行时调用
+
 
 ```c++
 // list 反转和排序专用回调函数,callback 时候，从大到小排列 val1 > val2。
@@ -740,6 +910,7 @@ return p1.m_Age < p2.m_Age;
 //加减法
 int addTwoInts(int i, int j) { return i + j; }
 int subtructTwoInts(int i, int j) { return i - j; }
+
 ```
 
 
@@ -749,19 +920,27 @@ int subtructTwoInts(int i, int j) { return i - j; }
 # 指针
 
 
+
+
+
 # 引用
+
 
 
 # 引用 Reference 逆向引用 Dereference `*`
 
 
+
 ## References in C++ `‘&’`
+
 
 
 When a variable is declared as a reference, it becomes an alternative name for an existing variable.
 
 
+
 **A variable can be declared as a reference by putting `‘&’` in the declaration.**
+
 
 
 ```c++
@@ -789,29 +968,37 @@ cout << "ref = " << ref << endl;
 ### References are less powerful than pointers
 
 
+
 1. Once a reference is created, it cannot be later made to reference another object; it cannot be reset. This is often done with pointers.
 2. References cannot be NULL. Pointers are often made NULL to indicate that they are not pointing to any valid thing.
 3. A reference must be initialized when declared. There is no such restriction with pointers.
    Due to the above limitations, references in C++ cannot be used for implementing data structures like Linked List, Tree, etc. In Java, references don’t have the above restrictions and can be used to implement all data structures. References being more powerful in Java is the main reason Java doesn’t need pointers.
 
 
+
 ### References are safer and easier to use:
+
 
 
 1. Safer: Since references must be initialized, wild references like wild pointers are unlikely to exist. It is still possible to have references that don’t refer to a valid location (See questions 5 and 6 in the below exercise )
 2. Easier to use: References don’t need a dereferencing operator to access the value. They can be used like normal variables. ‘&’ operator is needed only at the time of declaration. Also, members of an object reference can be accessed with dot operator (‘.’), unlike pointers where arrow operator (->) is needed to access members.
 
 
+
 Together with the above reasons, there are few places like the copy constructor argument where pointer cannot be used. Reference must be used to pass the argument in the copy constructor. Similarly, references must be used for overloading some operators like ++.
+
 
 
 # 指针和引用的关心
 
 
+
 # 运算符重载
 
 
+
 int main
+
 
 
 void function(int x) {
@@ -819,6 +1006,7 @@ int y = x;
 int \*p = &x;
 int &r = x;
 }
+
 
 
 ```c++
