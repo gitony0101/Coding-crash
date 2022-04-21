@@ -927,7 +927,7 @@ This is a simple safe locker while here is the Saldina code's different part:
 
 Do-while functions ATM
 
-````cpp
+```markdown
 #include <cstdlib>
 #include <iostream>
 using namespace std;
@@ -2290,7 +2290,7 @@ using namespace std;
 
 // new delete
 
-```cpp
+```c++
 int main() {
   int rows, cols;
   printf("Please enter the number of rows");
@@ -2299,7 +2299,7 @@ int main() {
   cin >> cols;
 ```
 
-```cpp
+```c++
   int **table =
       new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
   for (int i = 0; i < rows; i++) {
@@ -2318,6 +2318,19 @@ int main() {
 ```
 
 ```markdown
+
+```
+
+```markdown
+
+```
+
+```markdown
+
+```
+
+# C++ Primer Plus
+
 # C++ Primer 5th
 
     Chapter 1: Getting Started     
@@ -2345,11 +2358,10 @@ int main() {
     Chapter 19: Specialized Tools and Techniques       
     Index     
 
-```
 
-```markdown
 
-    第1章 : 开始
+    
+  第1章 : 开始
     第 I 部分 : C++基础
         第2章 : 变量和基本类型
         第3章 : 字符串、向量和数组
@@ -2374,13 +2386,6 @@ int main() {
         第19章 : 特殊工具与技术
 
 
-```
-
-```markdown
-dda
-```
-
-C++ Primer Plus
 
 1. C++预备知识
 
