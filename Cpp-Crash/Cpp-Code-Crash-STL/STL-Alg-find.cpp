@@ -78,7 +78,7 @@ public:
   bool operator()(int val) { return val > 5; }
 };
 
-void exfindIf() {
+void exfindIf01() {
   vector<int> v;
   for (int i = 0; i < 10; i++) {
     v.push_back(i + 1);
@@ -97,7 +97,7 @@ public:
   bool operator()(Person &p) { return p.m_Age > 20; }
 };
 
-void test02() {
+void exFindIf02() {
 
   vector<Person> v;
   //创建数据
@@ -110,18 +110,18 @@ void test02() {
   v.push_back(p2);
   v.push_back(p3);
   v.push_back(p4);
-
-  vector<Person>::iterator it = find_if(v.begin(), v.end(), Greater20());
+  auto it = find_if(v.begin(), v.end(), Greater20());
   if (it == v.end()) {
-    cout << "没有找到!" << endl;
+    printf("没找到");
   } else {
-    cout << "找到姓名:" << it->m_Name << " 年龄: " << it->m_Age << endl;
+    printf("找到大于20岁的第一个人，姓名：%s,年龄%d。\n", it->m_Name.c_str(),
+           it->m_Age);
   }
 }
 
 int main() {
   // exFind();
   // findPerson();
-  // exfindIf();
-  test02();
+  // exfindIf01();
+  exFindIf02();
 }
