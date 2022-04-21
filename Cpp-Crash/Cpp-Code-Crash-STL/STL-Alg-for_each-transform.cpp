@@ -33,5 +33,14 @@ void ex4each() {
 }
 
 //常用遍历算法  搬运 transform
+class transform {
+public:
+  int operator()(int val) { return val; }
+};
+
+class MyPrint {
+public:
+  void operator()(int val) { printf("%d\n", val); }
+};
 
 int main() { ex4each(); }
