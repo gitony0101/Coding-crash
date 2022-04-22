@@ -871,7 +871,14 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 1. merge 合并，将两个有序序列的容器合并到目标容器中，目标容器必须有容量。
 2. sort 排序 最常用
-3. random_shuffle 洗牌，打乱顺序
+3. shuffle 洗牌，打乱顺序， C++17更新后已经删除random_shuffle
+- `#include <experimental/algorithm>` // 这个用来调用shuffle
+- `#include <random> // 设定种子用`
+- ```cpp
+  random_device rnd;      // 设定随机数
+  mt19937_64 seed(rnd()); // 设定随机数
+  shuffle(v.begin(), v.end(), seed);// 模板
+```
 4. reverse 逆序
 
 

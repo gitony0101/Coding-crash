@@ -21,7 +21,7 @@ using namespace std;
 
 class myPrint { //打印仿函数 全局调用
 public:
-  void operator()(int val) { printf("%d\n", val); }
+  void operator()(int val) { printf("%d", val); }
 };
 
 // sort最常用
@@ -52,7 +52,7 @@ void exShuffle() {
     v.push_back(i);
   }
 
-  printf("Original order: ");
+  printf("Original order: \n");
   for_each(v.begin(), v.end(), myPrint());
   printf("After shuffle:\n");
   random_device rnd;      // 设定随机数
@@ -63,8 +63,17 @@ void exShuffle() {
 }
 
 // merge 合并，将两个有序序列的容器合并到目标容器中，目标容器必须有容量
+// merge(beg1,end1,beg2,end2, iterator target )
+void exMerge() {
+  vector<int> v1;                // 创建原vector v1
+  vector<int> v2;                // v2
+  for (int i = 0; i < 10; i++) { // 遍历赋值
+    v1.push_back(i);
+    v2.push_back(i + 2);
+  }
+}
 
 int main() {
   // exSort();
-  exShuffle(); // error: use of undeclared identifier 'random_shuffle'
+  // exShuffle();
 }
