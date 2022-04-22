@@ -9,6 +9,7 @@ using namespace std;
 常用查找算法
 find(iterator beg, iterator end, value);//查找元素
 find_if(iterator beg, iterator end, _Pred); //按条件查找元素
+                                            //
 - `adjacent_find`    //查找相邻重复元素
 - `binary_search`    //二分查找法
 - `count`                   //统计元素个数
@@ -118,6 +119,7 @@ void exFindIf02() {
            it->m_Age);
   }
 }
+//剩下几个都比较简单 我们都试一下
 
 int main() {
   // exFind();

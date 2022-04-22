@@ -34,7 +34,7 @@ void ex4each() {
 }
 
 //常用遍历算法  搬运 transform
-class TF { // TransForm
+class TF { // TransForm 定义仿函数
 public:
   int operator()(int val) { return val; }
 };
