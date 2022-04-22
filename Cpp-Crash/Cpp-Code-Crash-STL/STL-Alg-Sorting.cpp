@@ -14,7 +14,6 @@ using namespace std;
 
 1. sort 排序 最常用
 2. shuffle 洗牌，打乱顺序 random_shuffle 已经不用了
-
 3. merge 合并，将两个有序序列的容器合并到目标容器中，目标容器必须有容量。
 4. reverse 逆序
 */
@@ -43,7 +42,7 @@ void exSort() {
   for_each(v.begin(), v.end(), myPrint()); //遍历vector，使用MyPrint()打印
 }
 
-// merge 容器内元素合并 并存储到另外一个容器中
+// merge 容器内元素合并 并存储到另外一个容器中 (反转一起)
 // 注意：合并容器内序列必须有序，新容器内必须有容量
 // random shuffle (beg end)洗牌   指定范围内的元素随机调整次序
 void exShuffle() {
@@ -64,16 +63,26 @@ void exShuffle() {
 
 // merge 合并，将两个有序序列的容器合并到目标容器中，目标容器必须有容量
 // merge(beg1,end1,beg2,end2, iterator target )
-void exMerge() {
+void exMergeRev() {
   vector<int> v1;                // 创建原vector v1
   vector<int> v2;                // v2
   for (int i = 0; i < 10; i++) { // 遍历赋值
     v1.push_back(i);
     v2.push_back(i + 2);
   }
+  vector<int> vtarget;                   // 创建目标容器
+  vtarget.resize(v1.size() + v2.size()); //提前开辟好空间
+  //下面开始合并
+  merge(v1.begin(), v1.end(), v2.begin(), v2.end(),
+        vtarget.begin()); //这样定义的非常清楚，从哪里来，到哪里去，一目了然
+  for_each(vtarget.begin(), vtarget.end(), myPrint());
+  printf("下面开始反转\n");
+  reverse(vtarget.begin(), vtarget.end());
+  for_each(vtarget.begin(), vtarget.end(), myPrint());
 }
 
 int main() {
   // exSort();
   // exShuffle();
+  exMergeRev();
 }
