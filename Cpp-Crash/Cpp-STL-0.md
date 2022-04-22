@@ -844,7 +844,7 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 - `find` //查找元素
 - `find_if` //按条件查找元素
 - `adjacent_find` //查找相邻重复元素
-- `binary_search` //二分查找法 （需要数列有序）
+- `binary_search` //二分查找法 (需要数列有序)
 - `count` //统计元素个数
 - `count_if` //按条件统计元素个数
 
