@@ -874,7 +874,7 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 3. shuffle 洗牌，打乱顺序， C++17更新后已经删除random_shuffle
 - `#include <experimental/algorithm>` // 这个用来调用shuffle
 - `#include <random> // 设定种子用`
-- ```cpp
+```c++
   random_device rnd;      // 设定随机数
   mt19937_64 seed(rnd()); // 设定随机数
   shuffle(v.begin(), v.end(), seed);// 模板
@@ -883,6 +883,16 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+
+
+
+
+
+
+
+## 常用拷贝和替换算法
+
+c c
 
 
 
