@@ -13,10 +13,28 @@ replace_if(iterator beg, iterator end, _pred, newvalue);//
 容器内指定范围满足条件的元素替换为新元素，可以利用仿函数灵活筛选满足的条件
 swap(container c1, container c2);// 互换两个容器的元素
 */
+
+class vecV1 { // samstrongman
+  // 创建可调用的vec容器
+public:
+  vecV1(vector<int> &v1) {
+    v1.push_back(20);
+    v1.push_back(30);
+    v1.push_back(20);
+    v1.push_back(40);
+    v1.push_back(50);
+    v1.push_back(10);
+    v1.push_back(20);
+  }
+  // 调用时： vector<int> v;
+  //   vecV1 objectname(v);
+};
+
 class myPrint {
 public:
   void operator()(int val) { printf("%d\n", val); }
 };
+
 void exCopy() {
   vector<int> v1;                //创建vector容器
   for (int i = 0; i < 10; i++) { //向量赋值
@@ -30,14 +48,10 @@ void exCopy() {
 }
 
 void exReplace() {
+  // 调用时： vector<int> vecTest;
+  //   vecV1 objectname(vecTest);
   vector<int> v;
-  v.push_back(20);
-  v.push_back(30);
-  v.push_back(20);
-  v.push_back(40);
-  v.push_back(50);
-  v.push_back(10);
-  v.push_back(20);
+  vecV1 objectname(v);
   printf("替换前：\n");
   for_each(v.begin(), v.end(), myPrint());
   printf("替换后；\n");
@@ -48,19 +62,6 @@ void exReplace() {
 class ReplaceGreater30 { //创造replace_if 里面的使用的仿函数
 public:
   bool operator()(int val) { return val >= 30; }
-};
-
-class vecV1 { // samstrongman
-public:
-  vecV1(vector<int> &v1) {
-    v1.push_back(20);
-    v1.push_back(30);
-    v1.push_back(20);
-    v1.push_back(40);
-    v1.push_back(50);
-    v1.push_back(10);
-    v1.push_back(20);
-  }
 };
 
 void test01() { // samstrongman
@@ -87,7 +88,7 @@ void exReplace_if() {
 
 int main() {
   //   exCopy();
-  //   exReplace();
-  test01(); // samstrongman
+  exReplace();
+  //   test01(); // samstrongman
   //   exReplace_if();
 }
