@@ -11,29 +11,31 @@ replace(iterator beg, iterator end, oldvalue, newvalue); //
 将容器内指定范围的所有旧元素修改为新元素
 replace_if(iterator beg, iterator end, _pred, newvalue);//
 容器内指定范围满足条件的元素替换为新元素，可以利用仿函数灵活筛选满足的条件
-swap(container c1, container c2);// 互换两个容器的元素
+swap(container c1, container c2);// 互换两个容器的元素 ,容器要同种类型
 */
-
-class vecV1 { // samstrongman
-  // 创建可调用的vec容器
-public:
-  vecV1(vector<int> &v1) {
-    v1.push_back(20);
-    v1.push_back(30);
-    v1.push_back(20);
-    v1.push_back(40);
-    v1.push_back(50);
-    v1.push_back(10);
-    v1.push_back(20);
-  }
-  // 调用时： vector<int> v;
-  //   vecV1 objectname(v);
-};
-
+// 仿函数 实现实现打印功能
 class myPrint {
 public:
   void operator()(int val) { printf("%d\n", val); }
 };
+
+// 创建可调用的vec容器
+class vecV1 { // samstrongman
+public:
+  vecV1(vector<int> &v1) {
+    int a[7] = {20, 30, 20, 40, 50, 60, 70};
+    v1.assign(a, a + 7); // 取代push_back
+    // v2.assign(a, a + 7); , vector<int> &v2
+  }
+  // 调用时： vector<int> v;
+  //   vecV1 objectname(v);
+};
+// test the vecV1 测试一下这个公共类
+void testPrintVecV1() {
+  vector<int> vecTest;
+  vecV1 helloworld(vecTest); // helloworld is an object name
+  for_each(vecTest.begin(), vecTest.end(), myPrint());
+}
 
 void exCopy() {
   vector<int> v1;                //创建vector容器
@@ -48,10 +50,8 @@ void exCopy() {
 }
 
 void exReplace() {
-  // 调用时： vector<int> vecTest;
-  //   vecV1 objectname(vecTest);
-  vector<int> v;
-  vecV1 objectname(v);
+  vector<int> v;       // 调用class vecV1时候，还是先定义vector 容器
+  vecV1 objectname(v); // 调用 vecV1,objectname定义对象名称
   printf("替换前：\n");
   for_each(v.begin(), v.end(), myPrint());
   printf("替换后；\n");
@@ -64,21 +64,9 @@ public:
   bool operator()(int val) { return val >= 30; }
 };
 
-void test01() { // samstrongman
-  vector<int> vecTest;
-  vecV1 helloworld(vecTest); // helloworld is an object name
-  for_each(vecTest.begin(), vecTest.end(), myPrint());
-}
-
 void exReplace_if() {
   vector<int> v;
-  v.push_back(20);
-  v.push_back(30);
-  v.push_back(20);
-  v.push_back(40);
-  v.push_back(50);
-  v.push_back(10);
-  v.push_back(20);
+  vecV1 objectname(v);
   printf("替换前：\n");
   for_each(v.begin(), v.end(), myPrint());
   printf("替换后；\n");
@@ -87,8 +75,8 @@ void exReplace_if() {
 }
 
 int main() {
+  testPrintVecV1();
   //   exCopy();
-  exReplace();
-  //   test01(); // samstrongman
-  //   exReplace_if();
+  // exReplace();
+  exReplace_if();
 }

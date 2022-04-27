@@ -892,7 +892,16 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 ## 常用拷贝和替换算法
 
-c c
+- copy(iterator beg, iterator end, iterator dest); //容器内指定范围的元素拷贝到另一容器中，目标容器记得提前开辟空间
+- replace(iterator beg, iterator end, oldvalue, newvalue); //将容器内指定范围的所有旧元素修改为新元素
+- replace_if(iterator beg, iterator end, _pred, newvalue);//容器内指定范围满足条件的元素替换为新元素，可以利用仿函数灵活筛选满足的条件
+- swap(container c1, container c2);// 互换两个容器的元素 ,容器要同种类型
+
+
+
+
+
+
 
 
 
@@ -904,9 +913,27 @@ c c
 
 
 
-逻辑回归的损失函数
-PCA 原理
+## 给容器赋值的方法
 
+
+
+```c++
+
+```cpp
+class vecV1 { // samstrongman
+  // 创建可调用的vec容器
+public:
+  vecV1(vector<int> &v1) {
+    int a[7] = {20, 30, 20, 40, 50, 60, 70};
+    v1.assign(a, a + 7); // 取代push_back
+    // v2.assign(a, a + 7); , vector<int> &v2
+  }
+  // 调用时： vector<int> v;
+  //   vecV1 objectname(v);
+};
+
+```
+```
 
 
 
