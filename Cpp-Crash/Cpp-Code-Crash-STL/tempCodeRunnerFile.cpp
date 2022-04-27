@@ -1,1 +1,1 @@
-(unsigned int)time(NULL)
+  printf("\n");
