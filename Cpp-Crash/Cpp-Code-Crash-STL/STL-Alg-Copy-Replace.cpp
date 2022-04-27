@@ -80,3 +80,25 @@ int main() {
   // exReplace();
   exReplace_if();
 }
+
+// 下面是写两个vector的时候：
+// 创建可调用的vec容器
+class vecV12 { // samstrongman
+public:
+  vecV12(vector<int> &v1, vector<int> &v2) {
+    int a[7] = {20, 30, 20, 40, 50, 60, 70};
+    v1.assign(a, a + 7); // 取代push_back
+    int b[7] = {10, 20, 30, 40, 50, 60, 70};
+    v2.assign(b, b + 7);
+  }
+};
+
+void testV12() {
+  vector<int> v1;
+  vector<int> v2;
+  vecV12 v12(v1, v2);
+  for_each(v1.begin(), v1.end(), myPrint());
+  printf("\n");
+  for_each(v2.begin(), v2.end(), myPrint());
+  printf("\n");
+}
