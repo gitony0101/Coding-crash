@@ -903,6 +903,30 @@ lambda）是定义匿名函数对象的便捷方法， (关闭)
 
 
 
+## 常用算数生成算法
+
+- 算术生成算法属于小型算法，使用时包含的头文件为 `#include <numeric>`
+- 简介：
+
+1. `accumulate(iterator beg, iterator end, value);`      // 计算容器元素累计总和
+2. `fill(iterator beg, iterator end, value); `// 向容器中添加元素
+
+## 常用集合算法 有序序列集合的交并差 
+
+- `set_intersection(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator dest);`// 取**有序序列**的交集
+  - 目标容器开辟空间需要从**两个容器中取小值**
+  - 返回值既是交集中最后一个元素的位置
+- `set_union(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator dest);  `//取并集
+  - 目标容器开辟空间需要**两个容器相加**
+  - set_union返回值既是并集中最后一个元素的位置
+- `set_difference(iterator beg1, iterator end1, iterator beg2, iterator end2, iterator dest);  `取差集
+  - 求差集的两个集合必须的有序序列
+  - 目标容器开辟空间需要从**两个容器取较大值**
+  - set_difference返回值既是差集中最后一个元素的位置
+
+
+
+
 
 
 
