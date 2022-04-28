@@ -3,7 +3,6 @@
 Tutorial:
 
 - CodeBeauty 10-hours
-  ·
   Books:
 
 - cpp Crash
@@ -20,9 +19,7 @@ Ref:
 
 Search it online.
 
-## What is cpp?
-
-General purpose
+### General purpose
 
 - Create all types of programs
 - Compiled
@@ -33,20 +30,14 @@ General purpose
   - cppdistinguishes between uppercase and lowercase letters
   - **myVariablel != myvariable**
 
-## About the cpp Version and Evironments
-
-## One More Thing
-
 # Chapter 1 Variables, Datatypes
 
 ## Variales
 
-Variales: store int float double char string bool with maxium limit container.
+Variales: store **`int float double char string bool`** with maxium limit container.
 
 - Can NOT store different datatypes in one varialble
 - Can NOT change the datatype once you created
-
-Create a variale "annualsalary" with the datatype "float", put the value "50000.99" into the variable.
 
 ```c++
 #include <iostream>
@@ -936,19 +927,19 @@ using namespace std;
 // extra number not allowed
 
 void showMenu() {
-  cout << "***********MENU***************" << endl;
-  cout << "1. Balance" << endl;
-  cout << "2. Deposit" << endl;
-  cout << "3. Withdraw" << endl;
-  cout << "4. Exit" << endl;
-  cout << "*******************************" << endl;
+cout << "\***\*\*\*\*\*\***MENU**\*\***\*\*\***\*\***" << endl;
+cout << "1. Balance" << endl;
+cout << "2. Deposit" << endl;
+cout << "3. Withdraw" << endl;
+cout << "4. Exit" << endl;
+cout << "**\*\***\*\***\*\***\*\*\***\*\***\*\***\*\***" << endl;
 }
 
 int main() {
-  int option;
-  double balance = 500;
-  do {
-    // Check balance,deposit,withdraw,show menu.
+int option;
+double balance = 500;
+do {
+// Check balance,deposit,withdraw,show menu.
 
     showMenu();
     cout << "Press the number of the option: ";
@@ -977,20 +968,19 @@ int main() {
         break;
       }
     }
-  } while (option != 4);
+
+} while (option != 4);
 }
-
-
-
 
 ## For Loop
 
 - Syntax
-
 ```
- for (statement 1; statement 2; statement 3) {
-  // code block to be executed
+
+for (statement 1; statement 2; statement 3) {
+// code block to be executed
 }
+
 ````
 
 Cool, three statements.
@@ -2333,34 +2323,34 @@ int main() {
 
 # C++ Primer 5th
 
-    Chapter 1: Getting Started     
-    Part I: The Basics   
-    Chapter 2: Variables and Basic Types      
-    Chapter 3: Strings, Vectors, and Arrays      
-    Chapter 4: Expressions      
-    Chapter 5: Statements       
-    Chapter 6: Functions       
-    Chapter 7: Classes       
-    Part II: The C++ Library        
-    Chapter 8: The IO Library        
-    Chapter 9: Sequential Containers       
-    Chapter 10: Generic Algorithms       
-    Chapter 11: Associative Containers       
-    Chapter 12: Dynamic Memory       
-    Part III: Tools for Class Authors        
-    Chapter 13: Copy Control       
-    Chapter 14: Overloaded Operations and Conversions       
-    Chapter 15: Object-Oriented Programming       
-    Chapter 16: Templates and Generic Programming       
-    Part IV: Advanced Topics       
-    Chapter 17: Specialized Library Facilities       
-    Chapter 18: Tools for Large Programs       
-    Chapter 19: Specialized Tools and Techniques       
-    Index     
+    Chapter 1: Getting Started
+    Part I: The Basics
+    Chapter 2: Variables and Basic Types
+    Chapter 3: Strings, Vectors, and Arrays
+    Chapter 4: Expressions
+    Chapter 5: Statements
+    Chapter 6: Functions
+    Chapter 7: Classes
+    Part II: The C++ Library
+    Chapter 8: The IO Library
+    Chapter 9: Sequential Containers
+    Chapter 10: Generic Algorithms
+    Chapter 11: Associative Containers
+    Chapter 12: Dynamic Memory
+    Part III: Tools for Class Authors
+    Chapter 13: Copy Control
+    Chapter 14: Overloaded Operations and Conversions
+    Chapter 15: Object-Oriented Programming
+    Chapter 16: Templates and Generic Programming
+    Part IV: Advanced Topics
+    Chapter 17: Specialized Library Facilities
+    Chapter 18: Tools for Large Programs
+    Chapter 19: Specialized Tools and Techniques
+    Index
 
 
 
-    
+
   第1章 : 开始
     第 I 部分 : C++基础
         第2章 : 变量和基本类型
@@ -3454,3 +3444,4 @@ int main() {
 18.11. 复习题
 
 
+````
