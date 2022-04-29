@@ -1,23 +1,20 @@
 # cpp Notes 0
 
-Tutorial:
+## Tutorial:
 
 - CodeBeauty 10-hours
-  Books:
+
+## Books:
 
 - cpp Crash
 - cpp primer
 
-Ref:
+## Ref:
 
 - W3C School
 - G4G
 
 # Chap 0
-
-## Intro cpp
-
-Search it online.
 
 ### General purpose
 
@@ -212,7 +209,7 @@ int main() {
 
 ```
 
-# Chapter 3 If-else statements
+# Chapter 2 If-else statements
 
 ## Operators
 
@@ -332,7 +329,7 @@ cout << (x ==6 && y == 5 +3) << endl; // calculates 5+3 first, then checks  whet
 }
 ```
 
-### Assignment operators: =, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=
+### Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
 
 ```c++
 #include <iostream>
@@ -351,20 +348,6 @@ int main() {
 ### Later, check [**cpp Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) for more information.
 
 ### How to swap 2 variables values?
-
-- Pouring liquids
-
-<div align = "center">
-<div style="width:200px">
-
-![img](./img/swap-pouring-with-3rd-glass)
-
-</div>
-</div>
-
-Yeah, we need a third glass to contain one of the two liquids.
-
-However, we can exchange them without the third container since we can make full use of themselves:
 
 Let's code:
 
