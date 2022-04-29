@@ -14,7 +14,7 @@
 - W3C School
 - G4G
 
-# Chap 0
+# Chapter 1 Intro,Variables, Datatypes
 
 ### General purpose
 
@@ -26,8 +26,6 @@
 - Case sensitive
   - cppdistinguishes between uppercase and lowercase letters
   - **myVariablel != myvariable**
-
-# Chapter 1 Variables, Datatypes
 
 ## Variales
 
