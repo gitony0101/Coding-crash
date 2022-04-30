@@ -1,20 +1,22 @@
-# cpp Notes 0
+# Cpp Notes 0
 
-## Tutorial:
+### Tutorial:
 
 - CodeBeauty 10-hours
 
-## Books:
+### Books:
 
 - cpp Crash
 - cpp primer
 
-## Ref:
+### Ref:
 
 - W3C School
 - G4G
 
 # Chapter 1 Intro,Variables, Datatypes
+
+## Intro
 
 ### General purpose
 
