@@ -30,6 +30,14 @@ void variableDataTypesAndRanges() {
          sizeof(double));
 }
 
+void exDataTypeOverFlow() { // It actually works like the clock when it is over
+                            // INT_MAX, then it goes to the INT_MIN.
+
+  int inxMax = INT_MAX;
+  printf("The value of intMax is %d\nThe value of intMax + 1 is %d\n", inxMax,
+         inxMax + 1);
+}
+
 void exASCIITrans() {
   char c1, c2, c3, c4, c5;
   printf("Enter 5 letters:\n");
@@ -42,6 +50,7 @@ int main() {
   exHelloworldPrintf();
   exIntChar();
   variableDataTypesAndRanges();
+  exDataTypeOverFlow();
   // Codes below we need to input values:
   // exASCIITrans();
 }
