@@ -121,7 +121,7 @@ int main() {
 }
 ```
 
-**Here we notice that 5 / 2 = 2 since cpp returns the integer value of the division.If you want to get the decimal value, you need to change the type of the divisor or dividend to float.**
+**Here we notice that 5 / 2 = 2 since cpp returns the integer value of the division.If you want to get the decimal value, you need to change the type of the divisor or divided to float.**
 
 - Increment/decrement operators ++ --
   Increment/decrement operators increment or decrement the value of the object.

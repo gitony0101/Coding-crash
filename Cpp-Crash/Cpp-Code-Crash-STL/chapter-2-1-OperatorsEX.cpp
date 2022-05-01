@@ -2,24 +2,54 @@
 #include <iostream>
 using namespace std;
 
-/*operator ex
+/*Operator ex
 Arithmetic Operators
 Assignment Operators
 Relational Operators
 Logical Operators
 */
 
-void exArithmetic() {
+void exArithmetic() { // arithmetic operators take care of the results and the
+                      // printf format specifiers
 
-  printf("5+2 = %d\n5 / 2 = %d\n5.0 / 2 = %f\n", 5 + 2, 5 / 2, 5.0 / 2);
-  // cout << 5 + 2 << endl;
-  // cout << "5 / 2 = " << 5 / 2 << endl;     // take care!
-  // cout << "5.0 / 2 = " << 5.0 / 2 << endl; // take care!
-  // cout << "5 / 2.0 = " << 5 / 2.0 << endl; // take care!
-  // cout << "5 % 2 = " << 5 % 2 << endl;     // modulus operator
-  // cout << "47 % 10 = " << 47 % 10 << endl; // modulus operator}
+  printf("5+2 = %d\n5 / 2 = %d\n5.0 / 2 = %f\n5 / 2.0 = %f\n5 %% 2 = %d\n",
+         5 + 2, 5 / 2, 5.0 / 2, 5 / 2.0,
+         5 % 2 // modulus operator
+  );
 }
-int main() { exArithmetic(); }
+
+void exAssignment() { // Assignment operators: `=, +=, -=, \*=, /=,
+                      // %=, <<=,>>=,
+                      // &=, |=, ^=`
+  int x = 5;
+  x += 7; // x = x + 7,-= is the same as x = x - 7
+  printf("x = %d\n", x);
+}
+
+void exRelationalAndLogical() { // Relational operators: <, >, <=, >=, ==(just
+                                // is equal to
+                                // operator), !=
+  // Logical Operators &&(AND), ||(OR), !(NOT)
+  int a = 6, b = 5;
+  printf("Relational Operators\na > b : %s\na < b : %s\na >=b : %d\na <= b : "
+         "%d\na == b : %d\na != b "
+         ": %d\n",
+         a > b ? "true" : "false", a < b ? "true" : "false", a >= b, a <= b,
+         a == b, a != b); // notice this printf, you can control the printf
+                          // true/false or 0/1
+  printf("Logical Operators\na == 5 && b ==5 : %s\na == 5 || b ==5 : %s\n!(a "
+         "== 5 && b ==5) : %d\n",
+         a == 5 && b == 5 ? "Yeah!" : "Nay!", // && AND operator
+         a == 5 || b == 5 ? "Yeah!" : "Nay!", /// || OR operator
+         !(a == 5 && b == 5));                // ! NOT operator
+}
+
+int main() {
+  exArithmetic();
+  exAssignment();
+  exAssignment();
+  exRelationalAndLogical();
+}
 
 // int a = 5, b = 4;
 // cout << a + (b++) << endl; // here b still = 4 because the expression is
