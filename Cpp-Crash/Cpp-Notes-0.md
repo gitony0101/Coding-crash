@@ -71,6 +71,9 @@ Here shows a the ASCII table.
 ![img](./img/formatSpecifiers3.png)
 
 The format specifier for a byte is %zd.
+The format specifier %f displays a float with decimal digits, whereas %e displays the same number in scientific notation.
+
+### To be continued HERE
 
 |        type        | examples | printf format specifiers |    etc     |
 | :----------------: | :------: | :----------------------: | :--------: | --- | --- | --- | --- | --- |
@@ -82,10 +85,11 @@ The format specifier for a byte is %zd.
 |        long        |          |           %ld            |            |     |     |     |     |     |
 |   unsingned long   |          |           %lu            |            |     |     |     |     |     |
 |     long long      |          |           %lld           |            |     |     |     |     |     |
-| unsigned long long |          |           %llu           |            |     |     |     |     |     |
-|                    |          |
+| unsigned long long |          |           %llu           |
 
 # Chapter 2 If-else statements
+
+codes: ex,BMI,Integer,Lunar year
 
 ## Operators
 
