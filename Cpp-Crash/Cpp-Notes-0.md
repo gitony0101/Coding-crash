@@ -46,6 +46,7 @@ The following table shows the variable type, how much memory it takes to store t
 
 ## Datatype overflow
 
+like:
 The value of intMax is 2147483647
 The value of intMax + 1 is -2147483648
 
@@ -61,9 +62,15 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 
 The $\textit{American Standard Code for Information Interchange (ASCII)}$ table assigns integers to characters.
 
-here shows a the ASCII table
+Here shows a the ASCII table.
 
-## printf format specifiers: the format of the output
+### printf format specifiers: the format of the output
+
+![img](./img/formatSpecifiers.png)
+![img](./img/formatSpecifiers2.png)
+![img](./img/formatSpecifiers3.png)
+
+The format specifier for a byte is %zd.
 
 |        type        | examples | printf format specifiers |    etc     |
 | :----------------: | :------: | :----------------------: | :--------: | --- | --- | --- | --- | --- |
@@ -76,12 +83,7 @@ here shows a the ASCII table
 |   unsingned long   |          |           %lu            |            |     |     |     |     |     |
 |     long long      |          |           %lld           |            |     |     |     |     |     |
 | unsigned long long |          |           %llu           |            |     |     |     |     |     |
-|                    |          |                          |            |     |     |     |     |     |
-|                    |          |                          |            |
-|                    |          |                          |            |     |     |     |     |     |
-|                    |          |                          |            |     |     |     |     |     |
-|                    |          |                          |            |     |     |     |     |     |
-|                    |          |                          |            |
+|                    |          |
 
 # Chapter 2 If-else statements
 
