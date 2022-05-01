@@ -1,4 +1,4 @@
-# Cpp Notes 0
+### Cpp Notes
 
 ### Tutorial:
 
@@ -59,13 +59,29 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 
 ### ASCII Program
 
-The $\textit{American Standard Code for Information Interchange (ASCII)}$ table assigns integers to characters. Table 2-4 shows the ASCII table. For each integer value in decimal (0d) and hex (0x), the given control code or printable character is shown.
+The $\textit{American Standard Code for Information Interchange (ASCII)}$ table assigns integers to characters.
 
-![img](img/ascii-1.png)
+here shows a the ASCII table
 
-![img](img/ascii-2.png)
+## printf format specifiers: the format of the output
 
-## printf format specifiers:From printf to the new print function
+|        type        | examples | printf format specifiers |    etc     |
+| :----------------: | :------: | :----------------------: | :--------: | --- | --- | --- | --- | --- |
+|       string       |          |            %s            | .to_cstr() |
+|       short        |          |           %hd            |            |
+|   unsigned short   |          |           %hu            |            |
+|        int         |          |            %d            |            |
+|    unsigned int    |          |            %u            |            |
+|        long        |          |           %ld            |            |     |     |     |     |     |
+|   unsingned long   |          |           %lu            |            |     |     |     |     |     |
+|     long long      |          |           %lld           |            |     |     |     |     |     |
+| unsigned long long |          |           %llu           |            |     |     |     |     |     |
+|                    |          |                          |            |     |     |     |     |     |
+|                    |          |                          |            |
+|                    |          |                          |            |     |     |     |     |     |
+|                    |          |                          |            |     |     |     |     |     |
+|                    |          |                          |            |     |     |     |     |     |
+|                    |          |                          |            |
 
 # Chapter 2 If-else statements
 
