@@ -154,23 +154,6 @@ int main() {
 
 ### Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
 
-```c++
-#include <iostream>
-using namespace std;
-
-int main()
-{
-int a = 6, b = 5;
-cout << (a > b ) << endl; // shows 1 for true
-cout << (a < b)  << endl; // shows 0 for false
-cout << (a >= b) << endl; // shows 0 for false
-cout << (a <= b) << endl; // shows 1 for true
-cout << (a == b) << endl; // shows 0 for false
-cout << (a != b) << endl; // shows 1 for true
-}
-
-```
-
 ### Logical Operators &&(AND), ||(OR), !(NOT)
 
 Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
@@ -179,51 +162,11 @@ Logical operators evaluate Boolean logic on bool types. You characterize operato
 - The logical operators AND `&&` and OR `||` are binary.
 - Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
 
-```c++
-#include <iostream>
-using namespace std;
-
-int main()
-{
-int a = 6, b = 5;
-cout << (a == 5 && b ==5) << endl; // AND operator,shows 0 for false
-cout << (a == 5 || b ==5) << endl; // OR operator,shows 1 for true
-// JUST add a '!' to the front of the operator to get the opposite result
-cout << (!(a == 5 && b ==5)) << endl; // NOT operator,shows 1 for true
-}
-```
-
 - Operator priority
 
   Arithmetic operators >> relation operators >> logical operators
 
-```c++
-#include <iostream>
-using namespace std;
-
-int main()
-{
-int x = 6, y = 8;
-cout << (x ==6 && y == 5 +3) << endl; // calculates 5+3 first, then checks  whether x==6 , y== 8 seperately, at last, make sure they are BOTH true, shows 1 for true.
-
-}
-```
-
 ### Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  int x =5;
-  x +=7; // x = x + 7 (equals to 12)
-  cout << x << endl;
-  // -= is the same as x = x - 7
-
-}
-
-```
 
 ### Later, check [**cpp Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) for more information.
 
@@ -3308,3 +3251,5 @@ int main() {
 
 
 ````
+
+```
