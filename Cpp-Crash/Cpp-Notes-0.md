@@ -104,25 +104,6 @@ Other Operators // not in in note ver 0.1
 
 ### Arithematic operators: +, -, \*, /, % (modulus)
 
-First of all ,we need to know how the computer to calculate the result.
-
-```c++
-
-#include <iostream>
-using namespace std;
-
-int main() {
-  cout << 5 + 2 << endl;
-  cout << "5 / 2 = " << 5 / 2 << endl; // take care!
-  cout <<"5.0 / 2 = " <<  5.0 / 2 << endl; // take care!
-  cout <<"5 / 2.0 = " <<  5 / 2.0 << endl;//take care!
-  cout << "5 % 2 = " << 5 % 2 << endl; // modulus operator
-  cout << "47 % 10 = " <<47 % 10 << endl; // modulus operator
-}
-```
-
-**Here we notice that 5 / 2 = 2 since cpp returns the integer value of the division.If you want to get the decimal value, you need to change the type of the divisor or divided to float.**
-
 - Increment/decrement operators ++ --
   Increment/decrement operators increment or decrement the value of the object.
 

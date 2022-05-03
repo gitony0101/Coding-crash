@@ -21,13 +21,13 @@ void exArithmetic() { // arithmetic operators take care of the results and the
   );
 }
 
-void exAssignment() { // Assignment operators: `=, +=, -=, \*=, /=,
-                      // %=, <<=,>>=,
-                      // &=, |=, ^=`
-  int x = 5;
-  x += 7; // x = x + 7,-= is the same as x = x - 7
-  printf("x = %d\nx++ = %d++x = %d\n", x, x++, ++x);
-}
+// void exAssignment() { // Assignment operators: `=, +=, -=, \*=, /=,
+//                       // %=, <<=,>>=,
+//                       // &=, |=, ^=`
+//   int x = 5;
+//   x += 7; // x = x + 7,-= is the same as x = x - 7
+//   printf("x = %d\nx++ = %d++x = %d\n", x, x++, ++x);
+// }
 
 void exRelationalAndLogical() { // Relational operators: <, >, <=, >=, ==(just
                                 // is equal to
@@ -49,7 +49,7 @@ void exRelationalAndLogical() { // Relational operators: <, >, <=, >=, ==(just
 
 int main() {
   exArithmetic();
-  exAssignment();
+  // exAssignment();
   exRelationalAndLogical();
 }
 
