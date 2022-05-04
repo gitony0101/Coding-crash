@@ -1,40 +1,34 @@
-### Cpp Notes
+# C++ 编程笔记
 
-### Tutorial:
+### 教材视频参考:
 
-- CodeBeauty 10-hours
+- 视频
+  - CodeBeauty 10-hours
+- 教材
+  - cpp Crash
+  - cpp primer
+- 参考网站
+  - W3C School
+  - G4G
 
-### Books:
+# Chapter 1 简介 变量 数据类型
 
-- cpp Crash
-- cpp primer
+## 介绍
 
-### Ref:
+### Cpp 主要任务
 
-- W3C School
-- G4G
+- 创建所有类型的编程语言
+- 汇编：把人类语言编译成机器能理解的语言
 
-# Chapter 1 Intro,Variables, Datatypes
+## 变量
 
-## Intro
-
-### General purpose
-
-- Create all types of programs
-- Compiled
-  - Converting code that you understand into code that your computer understands
-  - Building code
-  - Compile-time errors
-- Case sensitive
-  - cppdistinguishes between uppercase and lowercase letters
-  - **myVariablel != myvariable**
-
-## Variales
-
-Variales: store **`int float double char string bool`** with maxium limit container.
+变量就是存储整型、浮点、双精度、字符串、布尔值、指针、数组等数据的有上限的容器。
 
 - Can NOT store different datatypes in one varialble
 - Can NOT change the datatype once you created
+- - Case sensitive
+  - cppdistinguishes between uppercase and lowercase letters
+  - **myVariablel != myvariable**
 
 ## Datatypes
 
@@ -2164,7 +2158,68 @@ int main() {
 
 
 
-1. C++预备知识
+1. C++ 编程笔记
+      1. 教材视频参考:
+2. Chapter 1 简介 变量 数据类型
+   1. 介绍
+      1. Cpp 主要任务
+   2. 变量
+   3. Datatypes
+   4. Datatype overflow
+      1. Datatype importance
+      2. ASCII Program
+      3. printf format specifiers: the format of the output
+      4. To be continued HERE
+3. Chapter 2 If-else statements
+   1. Operators
+      1. Arithematic operators: +, -, \*, /, % (modulus)
+      2. Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
+      3. Logical Operators &&(AND), ||(OR), !(NOT)
+      4. Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
+      5. Later, check **cpp Operator Precedence Table** for more information.
+      6. How to swap 2 variables values?
+   2. If-else statements
+      1. From BMI Calulator to algorithm design
+      2. Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
+      3. From if-else statement to swich case statement
+         1. Why switch case statement?
+      4. Swich case 2.0; Number of days
+4. Chapter 4 Loops
+   1. Intro to Loops
+   2. Write the first loop
+   3. While Loop
+      1. Count digits of a number
+         1. ？
+      2. Reversing number
+   4. Do-while Loop
+      1. Hotel Safe Locker
+      2. ATM simulation with do-while loop
+         1. Factorial
+   5. Nest Loops
+      1. Nested For Loop with do-while loop, sum grade
+      2. Nest loop: Multiplication table
+      3. Nest Loop Rectangle shape (still double loop)
+      4. Nest Loop Triangle shape
+5. Chapter 5 Functions
+   1. Function Introduction
+      1. Difference between void main and int main
+      2. Decoration function
+   2. Function Parameters， Arguments
+      1. Default paremeters
+      2. The return
+      3. Functions Overloading
+   3. Recursion
+6. Chapter 6 Generic and Template
+7. Chapter 7 Object-Oriented Programming - OOP
+   1. Class and Objects
+         1. Youtube channel class
+         2. printf()
+   2. Constructors and Class methods
+      1. Constructor
+   3. Encapsulation
+   4. Inheritance
+8. C++ Primer Plus
+9. C++ Primer 5th
 
 1.1. C++简介
 
@@ -3232,5 +3287,7 @@ int main() {
 
 
 ````
+
+```
 
 ```
