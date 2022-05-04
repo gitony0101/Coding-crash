@@ -91,16 +91,15 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 ### To be continued HERE
 
 |        type        | examples | printf format specifiers |    etc     |
-| :----------------: | :------: | :----------------------: | :--------: | --- | --- | --- | --- | --- |
+| :----------------: | :------: | :----------------------: | :--------: |
 |       string       |          |            %s            | .to_cstr() |
 |       short        |          |           %hd            |            |
 |   unsigned short   |          |           %hu            |            |
 |        int         |          |            %d            |            |
 |    unsigned int    |          |            %u            |            |
-|        long        |          |           %ld            |            |     |     |     |     |     |
-|   unsingned long   |          |           %lu            |            |     |     |     |     |     |
-|     long long      |          |           %lld           |            |     |     |     |     |     |
-| unsigned long long |          |           %llu           |
+|        long        |          |           %ld            |            |
+|     long long      |          |           %lld           |            |
+| unsigned long long |          |           %llu           |            |
 
 # Chapter 2 If-else statements
 
