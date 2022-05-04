@@ -2,7 +2,7 @@
 
 ## C++ Notes
 
-Cpp [10-hours](https://www.youtube.com/channel/UCl5-BV9aRaeDVohpE4sqJiQ)
+[Cpp 10-hours](https://www.youtube.com/channel/UCl5-BV9aRaeDVohpE4sqJiQ)
 
 ## Python Notes
 
