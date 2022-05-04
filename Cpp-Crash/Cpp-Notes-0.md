@@ -20,19 +20,9 @@
 - 创建所有类型的编程语言
 - 汇编：把人类语言编译成机器能理解的语言
 
-## 变量
+## 数据类型
 
-变量就是存储整型、浮点、双精度、字符串、布尔值、指针、数组等数据的有上限的容器。
-
-- Can NOT store different datatypes in one varialble
-- Can NOT change the datatype once you created
-- - Case sensitive
-  - cppdistinguishes between uppercase and lowercase letters
-  - **myVariablel != myvariable**
-
-## Datatypes
-
-Most common datatypes we use in cpp.
+C++中常见的数据类型.
 
 The following table shows the variable type, how much memory it takes to store the value in memory, and what is maximum and minimum value which can be stored in such type of variables.
 
@@ -51,6 +41,15 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 **The datatype is critical to the program**. If you use the wrong datatype, the program will not work, or in worse,the program will give you wired result.
 
 **So, when we are coding ,the first thing we must make clear is the datatype we are using**.
+
+## 变量
+
+变量就是存储整型、浮点、双精度、字符串、布尔值、指针、数组等数据的有上限的容器。
+
+- 一个变量容器只能存储一类容器
+- 一旦确定了数据类型，就不能再改变
+- 大小写敏感
+  - **myVariablel != myvariable**
 
 ### ASCII Program
 
@@ -2163,13 +2162,13 @@ int main() {
 2. Chapter 1 简介 变量 数据类型
    1. 介绍
       1. Cpp 主要任务
-   2. 变量
-   3. Datatypes
-   4. Datatype overflow
+   2. 数据类型
+   3. Datatype overflow
       1. Datatype importance
-      2. ASCII Program
-      3. printf format specifiers: the format of the output
-      4. To be continued HERE
+   4. 变量
+      1. ASCII Program
+      2. printf format specifiers: the format of the output
+      3. To be continued HERE
 3. Chapter 2 If-else statements
    1. Operators
       1. Arithematic operators: +, -, \*, /, % (modulus)
