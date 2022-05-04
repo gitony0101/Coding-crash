@@ -11,7 +11,7 @@
   - W3C School
   - G4G
 
-# Chapter 1 简介 变量 数据类型
+# Chapter 1 简介 数据类型 变量
 
 ## 介绍
 
@@ -24,9 +24,31 @@
 
 C++中常见的数据类型.
 
-The following table shows the variable type, how much memory it takes to store the value in memory, and what is maximum and minimum value which can be stored in such type of variables.
+操作系统会根据变量的数据类型，来分配内存和决定在保留内存中存储什么，比如字符型、宽字符型、整型、浮点型、双浮点型、布尔型等
 
 ![img](img/datatyes.png)
+
+|        类型        | 位（字节数）  |                                范围                                 |
+| :----------------: | :-----------: | :-----------------------------------------------------------------: |
+|        bool        |       1       |                               0 和 1                                |
+|        char        |       1       |                      -128 到 127 或者 0 到 255                      |
+|   unsigned char    |       1       |                              0 到 255                               |
+|    signed char     |       1       |                             -128 到 127                             |
+|        int         |       4       |                      -2147483648 到 214748364                       |
+|    unsigned int    |       4       |                           0 到 4294967295                           |
+|     signed int     |       4       |                      -2147483648 到 2147483647                      |
+|     short int      |       2       |                           32768 到 32767                            |
+| unsigned short int |       2       |                             0 到 65,535                             |
+|  signed short int  |       2       |                           -32768 到 32767                           |
+|      long int      |       8       |       -9,223,372,036,854,775,808 到 9,223,372,036,854,775,807       |
+|  signed long int   |       8       |       -9,223,372,036,854,775,808 到 9,223,372,036,854,775,807       |
+| unsigned long int  |       8       |                   0 到 18,446,744,073,709,551,615                   |
+|       float        |       4       |   精度型占 4 个字节（32 位）内存空间，+/- 3.4e +/- 38 (~7 个数字)   |
+|       double       |       8       | 双精度型占 8 个字节（64 位）内存空间，+/- 1.7e +/- 308 (~15 个数字) |
+|    long double     |      16       |  长双精度型 16 个字节（128 位）内存空间，可提供 18-19 位有效数字。  |
+|      wchar_t       | 2 或 4 个字节 |                             1 个宽字符                              |
+
+注意，各种类型的存储大小与系统位数有关，但目前通用的以 64 位系统为主。
 
 ## Datatype overflow
 
@@ -2159,7 +2181,7 @@ int main() {
 
 1. C++ 编程笔记
       1. 教材视频参考:
-2. Chapter 1 简介 变量 数据类型
+2. Chapter 1 简介 数据类型 变量
    1. 介绍
       1. Cpp 主要任务
    2. 数据类型
