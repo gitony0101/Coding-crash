@@ -91,12 +91,8 @@ as we see in the plot, we can make the "Break points" with 18.5 and 25 to reduce
 using namespace std;
 
 int main() {
-  // BMI calculator
-  // weight(kg)/height * height(m)
-  // Underweight 18.5
-  // Normal weight 18.5-24.9
-  // Overweight >25
-  float weight, height, bmi; // bmi = weight(kg)/height * height(m)
+
+  float weight, height, bmi; /
   cout << "Enter your weight(kg): ";
   cin >> weight;
   cout << "Enter your height(m): ";
@@ -113,9 +109,5 @@ int main() {
 
   cout << "Your BMI is: " << bmi << endl;
 }
-
-```
-
-```c++
 
 ```
