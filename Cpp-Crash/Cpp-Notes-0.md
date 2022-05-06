@@ -136,18 +136,28 @@ codes: ex,BMI,Integer,Lunar year
 
 - 自增减运算符： `++ --`
 
-## If-else 语句
+## 判断语句
 
 - If-else 语句
-- Codidtional 条件操作符
+  - 嵌套 if ： else if
 - Switch case 语句
 
-### Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
+  - 嵌套 switch 语句
 
-IN cpp :
+- C++ 条件运算符 ? :
+
+`Exp1 ? Exp2 : Exp3;`
+
+其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。? : 表达式的值取决于 Exp1 的计算结果。如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 ? : 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 ? : 表达式的值。
+
+? 被称为三元运算符，因为它需要三个操作数，可以用来代替如下所示的 if-else 语句：
 
 ```c++
-Exp1 ? Exp2 : Exp3;
+if(condition){
+   var = X;
+}else{
+   var = Y;
+}
 ```
 
 Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the **colon**.
@@ -2014,11 +2024,10 @@ int main() {
       1. 算数运算符
       2. 逻辑和关系运算符
       3. 赋值运算符
-   2. If-else 语句
-      1. Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
-      2. From if-else statement to swich case statement
+   2. 判断语句
+      1. From if-else statement to swich case statement
          1. Why switch case statement?
-      3. Swich case 2.0; Number of days
+      2. Swich case 2.0; Number of days
 4. Chapter 4 Loops
    1. Intro to Loops
    2. Write the first loop
