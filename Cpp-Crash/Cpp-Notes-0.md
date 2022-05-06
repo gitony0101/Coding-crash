@@ -50,19 +50,17 @@ C++中常见的数据类型.
 
 注意，各种类型的存储大小与系统位数有关，但目前通用的以 64 位系统为主。
 
-## Datatype overflow
+### 计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
 
 like:
 The value of intMax is 2147483647
 The value of intMax + 1 is -2147483648
 
-It actually works like the clock when it is over INT_MAX, then it goes to the INT_MIN.
+## 数据类型的重要性
 
-### Datatype importance
+数据类型对程序非常重要，如果使用了错误的类型，程序可能会出错，或者程序可能会出现不可预料的结果。
 
-**The datatype is critical to the program**. If you use the wrong datatype, the program will not work, or in worse,the program will give you wired result.
-
-**So, when we are coding ,the first thing we must make clear is the datatype we are using**.
+所以在我们编程时，第一件事就是必须清楚，我们要使用的数据类型。
 
 ## 变量
 
@@ -73,22 +71,9 @@ It actually works like the clock when it is over INT_MAX, then it goes to the IN
 - 大小写敏感
   - **myVariablel != myvariable**
 
-### ASCII Program
+### printf 格式化输出
 
-The $\textit{American Standard Code for Information Interchange (ASCII)}$ table assigns integers to characters.
-
-Here shows a the ASCII table.
-
-### printf format specifiers: the format of the output
-
-![img](./img/formatSpecifiers.png)
-![img](./img/formatSpecifiers2.png)
-![img](./img/formatSpecifiers3.png)
-
-The format specifier for a byte is %zd.
-The format specifier %f displays a float with decimal digits, whereas %e displays the same number in scientific notation.
-
-### To be continued HERE
+printf 函数称为格式输出函数，其关键字最末一个字母 f 即为“格式”(format)之意。按照用户指定的格式（占位符），把指定的数据显示到屏幕上。
 
 |        type        | examples | printf format specifiers |    etc     |
 | :----------------: | :------: | :----------------------: | :--------: |
@@ -101,55 +86,43 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 |     long long      |          |           %lld           |            |
 | unsigned long long |          |           %llu           |            |
 
-# Chapter 2 If-else statements
+![img](./img/formatSpecifiers.png)
+![img](./img/formatSpecifiers2.png)
+![img](./img/formatSpecifiers3.png)
+
+The format specifier for a byte is %zd.
+The format specifier %f displays a float with decimal digits, whereas %e displays the same number in scientific notation.
+
+### 未完待续
+
+[关于输出函数详解](http://c.biancheng.net/cpp/html/33.html)
+
+# Chapter 2 If-else 语句
 
 codes: ex,BMI,Integer,Lunar year
 
-## Operators
+## 操作符
 
-Operators in cpp can be classified into 6 types:
+主要用六种运算符
 
-Arithmetic Operators
-Assignment Operators
-Relational Operators
-Logical Operators
-Bitwise Operators // not in in note ver 0.1
-Other Operators // not in in note ver 0.1
+- 算术运算符
+- 关系运算符
+- 逻辑运算符
+- 位运算符
+- 赋值运算符
+- 其他运算符
 
-### Arithematic operators: +, -, \*, /, % (modulus)
+### 算数运算符
 
-- Increment/decrement operators ++ --
-  Increment/decrement operators increment or decrement the value of the object.
+加减乘除取余数：
 
-  Pre-increment `++a` and pre-decrement `--a` operators increments or decrements the value of the object and returns a reference to the result.
+- +, -, \*, /, % (求余数)
 
-Post-increment `a++` and post-decrement `a--` creates a copy of the object, increments or decrements the value of the object and returns the copy from before the increment or decrement.
+### 逻辑和关系运算符
 
-```c++
-#include <iostream>
-using namespace std;
+- <, >, <=, >=, ==, !=
 
-int main() {
-  // ++,-- increment and decrement operators
-  int counter = 7;
-  counter++;
-  cout << counter << endl;
-  counter--;
-  cout << counter << endl;
-  // preincrement, predecrement
-  // postincrement, postdecrement
-  int counter_2 = 7;
-  cout << counter_2++ << endl; // shows 7 which is the value before increment
-  cout << counter_2 << endl; // Next, shows 8 which is the value after increment
-  cout << counter_2--
-       << endl; // shows 8 which is the value before decrement,yes, counter_2 is 8 now becasue of previous increment.
-  cout << counter_2 << endl; // Next, shows 7 which is the value after decrement
-}
-```
-
-### Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
-
-### Logical Operators &&(AND), ||(OR), !(NOT)
+- &&(且), ||(或), !(非)
 
 Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
 
@@ -193,6 +166,13 @@ int main() {
   cout << "y = " << y << endl;
 }
 ```
+
+- Increment/decrement operators ++ --
+  Increment/decrement operators increment or decrement the value of the object.
+
+  Pre-increment `++a` and pre-decrement `--a` operators increments or decrements the value of the object and returns a reference to the result.
+
+Post-increment `a++` and post-decrement `a--` creates a copy of the object, increments or decrements the value of the object and returns the copy from before the increment or decrement.
 
 ## If-else statements
 
@@ -2184,20 +2164,18 @@ int main() {
    1. 介绍
       1. Cpp 主要任务
    2. 数据类型
-   3. Datatype overflow
-      1. Datatype importance
+      1. 计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
+   3. 数据类型的重要性
    4. 变量
-      1. ASCII Program
-      2. printf format specifiers: the format of the output
-      3. To be continued HERE
-3. Chapter 2 If-else statements
-   1. Operators
-      1. Arithematic operators: +, -, \*, /, % (modulus)
-      2. Relational operators: <, >, <=, >=, ==(just is equal to operator), !=
-      3. Logical Operators &&(AND), ||(OR), !(NOT)
-      4. Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
-      5. Later, check **cpp Operator Precedence Table** for more information.
-      6. How to swap 2 variables values?
+      1. printf 格式化输出
+      2. 未完待续
+3. Chapter 2 If-else 语句
+   1. 操作符
+      1. 算数运算符
+      2. 逻辑和关系运算符
+      3. Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
+      4. Later, check **cpp Operator Precedence Table** for more information.
+      5. How to swap 2 variables values?
    2. If-else statements
       1. From BMI Calulator to algorithm design
       2. Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
@@ -3307,6 +3285,10 @@ int main() {
 
 
 ````
+
+```
+
+```
 
 ```
 
