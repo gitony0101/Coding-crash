@@ -8,8 +8,9 @@ Assignment Operators
 Relational Operators
 Logical Operators
 
-priority:
+Priority:
   Arithmetic operators >> relation operators >> logical operators
+swap value
 */
 
 void exArithmetic() { // arithmetic operators take care of the results and the
@@ -47,10 +48,25 @@ void exRelationalAndLogical() { // Relational operators: <, >, <=, >=, ==(just
          !(a == 5 && b == 5));                // ! NOT operator
 }
 
+void exSwap() {
+  int a = 20, b = 10;
+  int temp = a;
+  a = b;
+  b = temp;
+  printf("a = %d\nb = %d\n", a, b);
+  // mathmetic way
+  int x = 20, y = 10;
+  x = x + y;
+  y = x - y;
+  x = x - y;
+  printf("x = %d\ny = %d\n", x, y);
+}
+
 int main() {
   exArithmetic();
   // exAssignment();
   exRelationalAndLogical();
+  exSwap();
 }
 
 // int a = 5, b = 4;

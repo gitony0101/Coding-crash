@@ -124,183 +124,23 @@ codes: ex,BMI,Integer,Lunar year
 
 - &&(且), ||(或), !(非)
 
-Logical operators evaluate Boolean logic on bool types. You characterize operators by how many operands they take. A unary operator takes a single operand, a binary operator takes two, a ternary operator takes three, and so on. You categorize operators further by describing the types of their operands.
+- 运算符优先级
 
-- The unary negation operator `!` takes a single operand and returns its opposite. In other words, !true yields false, and !false yields true.
-- The logical operators AND `&&` and OR `||` are binary.
-- Logical AND returns true only if both of its operands are true. Logical OR returns true if either or both of its operands are true.
+算数运算符 >> 关系运算符 >> 逻辑运算符
 
-- Operator priority
+- 更多可以看:([**cpp Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) )
 
-  Arithmetic operators >> relation operators >> logical operators
+### 赋值运算符
 
-### Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
+`=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
 
-### Later, check [**cpp Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) for more information.
+- 自增减运算符： `++ --`
 
-### How to swap 2 variables values?
+## If-else 语句
 
-Let's code:
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // Program to swap two variables values
-  int a = 20, b = 10;
-  int temp = a; // hold the value of a in temp
-  a = b;        // assign the value of b to a
-  b = temp;     // assign the value of temp to b
-  cout << "a = " << a << endl;
-  cout << "b = " << b << endl;
-  // Also, we can make it without using the third container, instead, we will
-  // handle it in a mathmatic way:
-  int x = 20, y = 10;
-  x = x + y; // now x stores the sum of x and y which is 30
-  y = x - y; // the NEW x subtracts the value of y ITSELF, which is 20, now we
-             // get y value swapped
-  x = x - y; // the NEW x subtracts NEW y, in the end x value got swapped which
-             // is 10.
-  cout << "x = " << x << endl;
-  cout << "y = " << y << endl;
-}
-```
-
-- Increment/decrement operators ++ --
-  Increment/decrement operators increment or decrement the value of the object.
-
-  Pre-increment `++a` and pre-decrement `--a` operators increments or decrements the value of the object and returns a reference to the result.
-
-Post-increment `a++` and post-decrement `a--` creates a copy of the object, increments or decrements the value of the object and returns the copy from before the increment or decrement.
-
-## If-else statements
-
-- If-else statements
-- conditional operator (0?1:2)
-- Switch case statements
-
-```c++
-#include <iostream>
-using namespace std;
-
-// User enters integer number
-// Program write out if that number is even or odd
-
-int main() { cout << 10 % 3 << endl; }
-
-```
-
-with the modulo operator,we can make the function with the flowchart:
-
-![img](./img/chapter-3-ifelseDIagram.png)
-
-```c++
-#include <iostream>
-using namespace std;
-
-// User enters integer number
-// Program write out if that number is even or odd
-
-int main() {
-  int number;                 // declare the number variable.
-  cout << "Enter a number: "; // Hint the user to enter a number.
-  cin >> number;              // get the number from the user.
-  // determine if the number is even or odd
-  if (number % 2 == 0)
-  // notice the curly brackets which shows the next operation if number % 2 == 0
-  {
-    cout << "You entered an even number." << endl;
-  } else
-
-  // otherwise, the number is odd, notice the coding style.
-  {
-    cout << "You entered an odd number." << endl;
-  }
-  cout << "Thank you for using the program!" << endl;
-}
-```
-
-Review this code carefully and notice hwo to code if-else statement.
-
-Let's get it more complex.
-Determine whether a triangle is equilateral,isosceles or scalene.
-
-![img](img/chapter-3--Tri-ifelseDIagram.png)
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // User enters side lengths of a triangle (a,b,c)
-  // Program should write out whether that triangle is equilateral,isosceles or
-  // scalene
-  float a, b, c;
-  cout << "Enter the length of the triangle's each side a,b,c:";
-  cin >> a >> b >> c;
-  if (a == b && b == c) // Here I hide the curly brackets for better readability.
-    cout << "The triangle is equilateral.\n";
-  else {
-    if (a != b && b != c && a != c) {
-      cout << "The triangle is scalene.\n";
-    } else {
-      cout << "The triangle is isosceles.\n";
-    }
-  }
-}
-```
-
-### From BMI Calulator to algorithm design
-
-There are 3 thresholds for BMI:
-// Underweight 18.5
-// Normal weight 18.5-24.9
-// Overweight >25
-
-So with the if-else statement, we can design the algorithm with the condition:
-
-1. if <= 18.5
-2. if>= 25
-3. else
-
-![img](./img/BMI.jpg)
-
-as we see in the plot, we can make the "Break points" with 18.5 and 25 to reduce steps.
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // BMI calculator
-  // weight(kg)/height * height(m)
-  // Underweight 18.5
-  // Normal weight 18.5-24.9
-  // Overweight >25
-  float weight, height, bmi; // bmi = weight(kg)/height * height(m)
-  cout << "Enter your weight(kg): ";
-  cin >> weight;
-  cout << "Enter your height(m): ";
-  cin >> height;
-  bmi = weight / (height * height); // essential brackets
-
-  // this if else statement is more precise:
-  if (bmi < 18.5)
-    cout << "you are underweight" << endl;
-  else if (bmi > 25)
-    cout << "you are overweight" << endl;
-  else
-    cout << "you are normal weight" << endl;
-
-  cout << "Your BMI is: " << bmi << endl;
-}
-
-```
-
-```c++
-
-```
+- If-else 语句
+- Codidtional 条件操作符
+- Switch case 语句
 
 ### Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
 
@@ -2173,15 +2013,12 @@ int main() {
    1. 操作符
       1. 算数运算符
       2. 逻辑和关系运算符
-      3. Assignment operators: `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
-      4. Later, check **cpp Operator Precedence Table** for more information.
-      5. How to swap 2 variables values?
-   2. If-else statements
-      1. From BMI Calulator to algorithm design
-      2. Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
-      3. From if-else statement to swich case statement
+      3. 赋值运算符
+   2. If-else 语句
+      1. Codidtional Operators (0 ? 1 : 2) : short version of if-else statement
+      2. From if-else statement to swich case statement
          1. Why switch case statement?
-      4. Swich case 2.0; Number of days
+      3. Swich case 2.0; Number of days
 4. Chapter 4 Loops
    1. Intro to Loops
    2. Write the first loop

@@ -1,2 +1,3 @@
-  // exHelloworldPrintf();
-  // exIntA();
+  exArithmetic();
+  exAssignment();
+  exRelationalAndLogical();
