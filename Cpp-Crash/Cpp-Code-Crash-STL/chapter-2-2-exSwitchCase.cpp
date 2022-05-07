@@ -1,7 +1,17 @@
 #include <cstdio>
 #include <iostream>
 using namespace std;
+/*
+exOperatorCalc
+  if-else
+  switch case
 
+Swich case 2.0; Number of days
+
+Leap Year algorithm:
+  https://www.mathsisfun.com/leap-years.html
+
+*/
 void exOperatorCalc01() { // if-else version
   float num1, num2;
   char operatorCalc;
@@ -48,6 +58,9 @@ void exOperatorCalc02() { // switch case
     printf("Invalid input.\n");
   }
 }
+
+// (year % 4 = 0 && year % 100 != 0 || year % 400 == 0)
+
 int main() {
   // exOperatorCalc01();
   exOperatorCalc02();
