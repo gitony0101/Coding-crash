@@ -192,123 +192,9 @@ if(condition){
 </div>
 </div>
 
-### From if-else statement to swich case statement
+### 从 if-else 到 swich case
 
-Now let's build a calculator with if-else statement.
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  float num1, num2;
-  char operatorCalc;
-  cout << "Please enter the number and operator: " << endl;
-  cin >> num1 >> operatorCalc >> num2;
-  if (operatorCalc == '+')
-    cout << num1 + num2 << endl;
-  else if (operatorCalc == '-')
-    cout << num1 - num2 << endl;
-  else if (operatorCalc == '*')
-    cout << num1 * num2 << endl;
-  else if (operatorCalc == '/')
-    cout << num1 / num2 << endl;
-  // else if (operatorCalc == '%')
-  //   cout << int(num1) % int(num2)
-  //        << endl;
-  // caution: only modulo the intergers.
-  else
-    cout << "Invalid operator" << endl;
-}
-```
-
-Cool calculator, and you got hinted that **the modulo integers ONLY**,you made it, now let's introduce the switch case statement.
-
-This is the formal version of the switch case statement:
-
-```c++
-switch (expression)  {
-    case constant1:
-        // code to be executed if
-        // expression is equal to constant1;
-        break;
-
-    case constant2:
-        // code to be executed if
-        // expression is equal to constant2;
-        break;
-        .
-        .
-        .
-    default:
-        // code to be executed if
-        // expression doesn't match any constant
-}
-```
-
-Where the expression is corresponding to constantX.
-
-#### Why switch case statement?
-
-- **Enhance the efficiency of the program, reduce the number of if-else statements.**
-
-With this method, let's code the calculator with switch case statement.
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  float num1, num2;  // declare two float variables
-  char operatorCalc; // declare the operatoras  a char variable which we will
-                     // use to store the operator
-  bool isNum1Int, isNum2Int; // declare two bool variables to be determine
-                             // whether num1 and num2 are integers.
-  cout << "Please enter the number and operator: " << endl;
-
-  cin >> num1 >> operatorCalc >>
-      num2; // declare the expression we will use in the calculator.
-
-  switch (operatorCalc) {
-  case '-':
-    cout << num1 << operatorCalc << num2 << " = " << num1 - num2 << endl;
-    break;
-  case '+':
-    cout << num1 << operatorCalc << num2 << " = " << num1 + num2 << endl;
-    break;
-  case '*':
-    cout << num1 << operatorCalc << num2 << " = " << num1 * num2 << endl;
-    break;
-  case '/':
-    cout << num1 << operatorCalc << num2 << " = " << num1 / num2 << endl;
-    break;
-  case '%':
-    isNum1Int = (int(num1) == num1);
-    isNum2Int = (int(num2) == num2);
-    if (isNum1Int && isNum2Int) // if they are both true.
-      cout << num1 << operatorCalc << num2 << " = " << int(num1) % int(num2)
-           << endl;
-    else
-      cout << "Invalid input" << endl;
-    break;
-  default:
-    cout << "Invalid calculation" << endl;
-  }
-}
-
-```
-
-yeah, we made the defalut condition as the other error cases.
-
-Moreover, notice that : 123 / 10 = 12, 123.4 / 10 = 12.34.
-
-### Swich case 2.0; Number of days
-
-[Leap Year algorithm](https://www.mathsisfun.com/leap-years.html)
-
-```c++
-/(year%4=0 && year%100!=0 || year%400==0)
-```
+对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了。请参考附属代码`chapter-2-2-exSwitchCase.cpp`
 
 ```c++
 #include <iostream>
@@ -2011,9 +1897,7 @@ int main() {
       3. 赋值运算符
    2. 判断语句
       1. 流程图
-      2. From if-else statement to swich case statement
-         1. Why switch case statement?
-      3. Swich case 2.0; Number of days
+      2. 从 if-else 到 swich case
 4. Chapter 4 Loops
    1. Intro to Loops
    2. Write the first loop
