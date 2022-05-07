@@ -159,6 +159,39 @@ if(condition){
 (condition) ? var = X : var = Y;
 ```
 
+### 流程图
+
+- 判定奇数偶数流程
+
+<div align = "center">
+<div style="width:700px">
+
+![img](./img/chapter-3-ifelseDIagram.png)
+
+</div>
+</div>
+
+- 判定三角形类型流程
+
+<div align = "center">
+<div style="width:700px">
+
+![img](img/chapter-3--Tri-ifelseDIagram.png)
+
+</div>
+</div>
+
+- 体脂率计算器流程
+  - 三个阈值：<18.5 低体脂率，>25 高体脂率，在 18.5-25 之间正常体脂率
+
+<div align = "center">
+<div style="width:700px">
+
+![img](./img/BMI.jpg)
+
+</div>
+</div>
+
 ### From if-else statement to swich case statement
 
 Now let's build a calculator with if-else statement.
@@ -1977,9 +2010,10 @@ int main() {
       2. 逻辑和关系运算符
       3. 赋值运算符
    2. 判断语句
-      1. From if-else statement to swich case statement
+      1. 流程图
+      2. From if-else statement to swich case statement
          1. Why switch case statement?
-      2. Swich case 2.0; Number of days
+      3. Swich case 2.0; Number of days
 4. Chapter 4 Loops
    1. Intro to Loops
    2. Write the first loop
