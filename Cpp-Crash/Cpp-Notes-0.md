@@ -141,16 +141,9 @@ codes: ex,BMI,Integer,Lunar year
 - If-else 语句
   - 嵌套 if ： else if
 - Switch case 语句
-
   - 嵌套 switch 语句
-
-- C++ 条件运算符 ? :
-
-`Exp1 ? Exp2 : Exp3;`
-
-其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。? : 表达式的值取决于 Exp1 的计算结果。如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 ? : 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 ? : 表达式的值。
-
-? 被称为三元运算符，因为它需要三个操作数，可以用来代替如下所示的 if-else 语句：
+- 条件运算符 `Exp1 ? Exp2 : Exp3;`
+  - 其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。`? :` 表达式的值取决于 Exp1 的计算结果。如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 `? :` 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 `? :` 表达式的值。`? 被称为三元运算符，因为它需要三个操作数，可以用来代替`if-else`语句。
 
 ```c++
 if(condition){
@@ -160,52 +153,11 @@ if(condition){
 }
 ```
 
-Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the **colon**.
-
-The **value of a ? expression** is determined like this: Exp1 is evaluated. If it is true, then Exp2 is evaluated and becomes the value of the entire ? expression. If Exp1 is false, then Exp3 is evaluated and its value becomes the value of the expression.
-
-The **? is called a ternary operator** because it requires three operands and can be used to replace if-else statements.
+等价于：
 
 ```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  int hostUserNum, guestUserNum;
-  cout << "Enter a host number: ";
-  cin >> hostUserNum;
-  system("clear");
-  cout << "Enter a guest number: ";
-  cin >> guestUserNum;
-
-  if (guestUserNum == hostUserNum)
-    cout << "Correct." << endl;
-  else
-    cout << "Failed." << endl;
-}
-
+(condition) ? var = X : var = Y;
 ```
-
-Now lets take a look at the short version:
-condicion ? expresion1 : expresion2
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  int hostUserNum, guestUserNum;
-  cout << "Enter a host number: ";
-  cin >> hostUserNum;
-  system("clear");
-  cout << "Enter a guest number: ";
-  cin >> guestUserNum;
-    (guestUserNum == hostUserNum)? cout << "Correct." :cout << "Failed.";
-}
-
-```
-
-Also, we can upgrade the function with loops later.
 
 ### From if-else statement to swich case statement
 

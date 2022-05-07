@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
 #include <math.h> // 平方 开方
 using namespace std;
@@ -7,6 +8,7 @@ using namespace std;
 even odd teller
 shape of triangle
 BMI Calculator
+guest number
 */
 void exEvenOdd() { // determine whether the number is even or odd
   int number;
@@ -54,18 +56,25 @@ void exBMICalculator() {
       printf("You are overwieight.\n");
     else
       printf("You are normalweight");
-    // // this if else statement is more precise:
-    // if (bmi < 18.5)
-    //   cout << "you are underweight" << endl;
-    // else if (bmi > 25)
-    //   cout << "you are overweight" << endl;
-    // else
-    //   cout << "you are normal weight" << endl;
   }
+}
+
+void exGuestNumber() {
+  int hostUserNum, guestUserNum;
+  printf("Enter a host number:\n");
+  cin >> hostUserNum;
+  system("clear");
+  printf("Enter a guest number:\n");
+  cin >> guestUserNum;
+
+  if (guestUserNum == hostUserNum)
+    printf("Correct.\n");
+  else
+    printf("Failed.\n");
 }
 
 int main() {
   //   exEvenOdd();
   //   exTriangleShape();
-  exBMICalculator();
+  // exBMICalculator();
 }
