@@ -41,8 +41,8 @@ void exOperatorCalc02() { // switch case
     isNum1Int = (int(num1) == num1);
     isNum2Int = (int(num2) == num2);
     if (isNum1Int && isNum2Int)
-      printf("%d moldulate %d = %d\n", int(num1), int(num2),
-             int(num1) % int(num2));
+      printf("%d %% %d = %d\n", int(num1), int(num2),
+             int(num1) % int(num2)); // 注意这里的格式
     break;
   default:
     printf("Invalid input.\n");
