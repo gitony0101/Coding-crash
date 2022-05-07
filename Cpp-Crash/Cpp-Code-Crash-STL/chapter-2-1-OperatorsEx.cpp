@@ -1,7 +1,9 @@
 #include <cstdio>
 #include <iostream>
+#include <math.h> // 平方 开方
 using namespace std;
 
+// Part 1
 /*Operator ex
 Arithmetic Operators
 Assignment Operators
@@ -12,6 +14,13 @@ Priority:
   Arithmetic operators >> relation operators >> logical operators
 swap value
 */
+// Part 2
+/*
+even odd teller
+shape of triangle
+BMI Calculator
+guest number
+*/
 
 void exArithmetic() { // arithmetic operators take care of the results and the
                       // printf format specifiers
@@ -21,14 +30,6 @@ void exArithmetic() { // arithmetic operators take care of the results and the
          5 % 2 // modulus operator
   );
 }
-
-// void exAssignment() { // Assignment operators: `=, +=, -=, \*=, /=,
-//                       // %=, <<=,>>=,
-//                       // &=, |=, ^=`
-//   int x = 5;
-//   x += 7; // x = x + 7,-= is the same as x = x - 7
-//   printf("x = %d\nx++ = %d++x = %d\n", x, x++, ++x);
-// }
 
 void exRelationalAndLogical() { // Relational operators: <, >, <=, >=, ==(just
                                 // is equal to
@@ -62,12 +63,89 @@ void exSwap() {
   printf("x = %d\ny = %d\n", x, y);
 }
 
+//
+
+void exEvenOdd() { // determine whether the number is even or odd
+  int number;
+  printf("Please enter a number:\n");
+  cin >> number;
+  if (number % 2 == 0) {
+    printf("%d is an even number.\n", number);
+  } else {
+    printf("%d is an odd number.\n", number);
+  }
+}
+
+void exTriangleShape() { //输入三角形三边长度，让程序判定这个三角形
+  float a, b, c;
+  printf("Please enter the triangle's each side:\n");
+  cin >> a >> b >> c;
+  if (a == b && b == c)
+    printf("This is an equilateral triangle.\n");
+
+  else {
+    if (a != b && b != c && a != c)
+      printf("This is a scalene triangle.\n");
+    else
+      printf("This is an isosceles triangle.\n");
+  }
+}
+
+void exBMICalculator() {
+  // BMI calculator
+  // weight(kg)/height * height(m)
+  // Underweight 18.5
+  // Normal weight 18.5-
+  float weight, height, bmi;
+  // bmi = weight(kg) / height ** 2(m)
+  printf("Please enter your height(M):\n");
+  cin >> height;
+  printf("Please enter your weight(Kg):\n");
+  cin >> weight;
+  bmi = weight / pow(height, 2);
+  if (bmi < 18.5)
+    printf("You are underweight.\n");
+
+  else {
+    if (bmi > 25)
+      printf("You are overwieight.\n");
+    else
+      printf("You are normalweight");
+  }
+}
+
+void exGuestNumber() {
+  int hostUserNum, guestUserNum;
+  printf("Enter a host number:\n");
+  cin >> hostUserNum;
+  system("clear");
+  printf("Enter a guest number:\n");
+  cin >> guestUserNum;
+
+  if (guestUserNum == hostUserNum)
+    printf("Correct.\n");
+  else
+    printf("Failed.\n");
+}
+
 int main() {
-  exArithmetic();
+  // exArithmetic();
   // exAssignment();
   exRelationalAndLogical();
-  exSwap();
+  // exSwap();
+  //   exEvenOdd();
+  //   exTriangleShape();
+  // exBMICalculator();
+  // exGuestNumber();
 }
+
+// void exAssignment() { // Assignment operators: `=, +=, -=, \*=, /=,
+//                       // %=, <<=,>>=,
+//                       // &=, |=, ^=`
+//   int x = 5;
+//   x += 7; // x = x + 7,-= is the same as x = x - 7
+//   printf("x = %d\nx++ = %d++x = %d\n", x, x++, ++x);
+// }
 
 // int a = 5, b = 4;
 // cout << a + (b++) << endl; // here b still = 4 because the expression is
