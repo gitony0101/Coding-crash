@@ -97,7 +97,9 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 
 [关于输出函数详解](http://c.biancheng.net/cpp/html/33.html)
 
-# Chapter 2 If-else 语句
+# Chapter 2 语句
+
+## If-else 条件语句
 
 codes: ex,BMI,Integer,Lunar year
 
@@ -195,41 +197,13 @@ if(condition){
 </div>
 </div>
 
-### 从 if-else 到 swich case
+### 从 if-else 到 swich case 语句
 
 对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了。
 
 请参考附属代码`chapter-2-2-exSwitchCase.cpp`
 
-# Chapter 4 Loops
-
-## Intro to Loops
-
-Loops as iteration statements execute a statement repeatedly.
-
-The four kinds of iteration statements are the while loop, the do-while loop, the for loop, and the range-based for loop.
-
-## Write the first loop
-
-Write out all the numbers between 100-500 that are divisible by 3 and 5
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // Write out all the numbers between 100-500 that are divisible by 3 and 5
-  int counter = 100;
-  while (counter <= 500) {
-    if (counter % 3 == 0 && counter % 5 == 0)
-      cout << counter << " is divisible by 3 and 5" << endl;
-    counter++;
-    // ++counter; // same as above
-  }
-}
-```
-
-## While Loop
+## 迭代语句
 
 ### Count digits of a number
 
@@ -385,7 +359,7 @@ This is a simple safe locker while here is the Saldina code's different part:
 
 Do-while functions ATM
 
-```markdown
+````cpp
 #include <cstdlib>
 #include <iostream>
 using namespace std;
@@ -442,12 +416,12 @@ do {
 ## For Loop
 
 - Syntax
-```
+
+```cpp
 
 for (statement 1; statement 2; statement 3) {
 // code block to be executed
 }
-
 ````
 
 Cool, three statements.
@@ -456,7 +430,7 @@ Intro for loop with application of factorial.
 
 #### Factorial
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -1160,7 +1134,8 @@ The capability of a class to derive properties and characteristics from another 
 Here we go on with our youtube channel and dive in a more specific area:
 Cooking channel, which shows us how inheritance works.
 
-```
+````
+
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -1168,20 +1143,20 @@ using namespace std;
 
 class YoutubeChannel { // Now YoutubeChannel is the base class
 private:
-  string Name;
-  string OwnerName;
-  int SubscribersCount;
-  list<string> PublishedVideoTitles;
+string Name;
+string OwnerName;
+int SubscribersCount;
+list<string> PublishedVideoTitles;
 
 public:
-  YoutubeChannel(string name, string ownerName) { // two key parameters here
-    Name = name;
-    OwnerName = ownerName;
-    SubscribersCount = 0;
-  }
+YoutubeChannel(string name, string ownerName) { // two key parameters here
+Name = name;
+OwnerName = ownerName;
+SubscribersCount = 0;
+}
 
-  // use class method to get the info we entered.
-  void getInfo() {
+// use class method to get the info we entered.
+void getInfo() {
 
     printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
     printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
@@ -1189,67 +1164,67 @@ public:
     for (auto &videoTitle : PublishedVideoTitles) {
       printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
     }
-  };
 
-  void Subscribe() { SubscribersCount++; } // + 1 subscriber
-  void Unsubscribe() {
-    if (SubscribersCount > 0) {
-      SubscribersCount--;
-    } else {
-      SubscribersCount = 0;
-    }
-  }
-  // - 1 subscriber with condition
-  void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
+};
+
+void Subscribe() { SubscribersCount++; } // + 1 subscriber
+void Unsubscribe() {
+if (SubscribersCount > 0) {
+SubscribersCount--;
+} else {
+SubscribersCount = 0;
+}
+}
+// - 1 subscriber with condition
+void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
 }; // upload video
 
 class CookingYoutubeChannel
-    : public YoutubeChannel // ## Inherit YoutubeChannel above ## // Derived
-                            // Class, really?
+: public YoutubeChannel // ## Inherit YoutubeChannel above ## // Derived
+// Class, really?
 {
-protected: //  protected inheritance, can be accessed outside.
-  string ownerName;
+protected: // protected inheritance, can be accessed outside.
+string ownerName;
 
 public:
-  CookingYoutubeChannel(string name,
-                        string ownerName) // Inherit the constructors
-      : YoutubeChannel(name, ownerName) {}
-  void Practice(string fans, string course) {
-    printf("%s has just practiced the %s in the channel %s.\n", fans.c_str(),
-           course.c_str(), ownerName.c_str()); // the ownerName can be visited
-                                               // by protected inheritance
-  }; // the unique feature that the CookinnYoutbeChannel has.
+CookingYoutubeChannel(string name,
+string ownerName) // Inherit the constructors
+: YoutubeChannel(name, ownerName) {}
+void Practice(string fans, string course) {
+printf("%s has just practiced the %s in the channel %s.\n", fans.c_str(),
+course.c_str(), ownerName.c_str()); // the ownerName can be visited
+// by protected inheritance
+}; // the unique feature that the CookinnYoutbeChannel has.
 };
 
 int main() {
-  CookingYoutubeChannel cyt_1("CodeBeauty Kitchen", "Saldina");
-  cyt_1.PublishVideo("Apple Pie");
-  cyt_1.PublishVideo("Chocolate Cake");
-  cyt_1.Subscribe();
-  cyt_1.Subscribe();
-  cyt_1.getInfo();
-  cyt_1.Practice("Amy", "pizza");
+CookingYoutubeChannel cyt_1("CodeBeauty Kitchen", "Saldina");
+cyt_1.PublishVideo("Apple Pie");
+cyt_1.PublishVideo("Chocolate Cake");
+cyt_1.Subscribe();
+cyt_1.Subscribe();
+cyt_1.getInfo();
+cyt_1.Practice("Amy", "pizza");
 
 }
 
 ```markdown
-
 Using inheritance, we have to write the functions only one time instead of three times as we have inherited rest of the three classes from base class.
 
 Implementing inheritance in C++: For creating a sub-class which is inherited from the base class we have to follow the below syntax.
-
 ```
+
 class subclass_name : access_mode base_class_name
 {
-  // body of subclass
+// body of subclass
 };
-```markdown
 
+```markdown
 Here,**subclass_name** is the name of the sub class, access_mode is the mode in which you want to inherit this sub class for example: **public, private ,protected**. and **base_class_name** is the name of the base class from which you want to inherit the sub class.
 
 Note: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
-
 ```
+
 // C++ program to demonstrate implementation
 // of Inheritance
 
@@ -1259,21 +1234,21 @@ using namespace std;
 // Base class
 class Parent
 {
-  public:
-    int id_p;
+public:
+int id_p;
 };
 
 // Sub class inheriting from Base Class(Parent)
 class Child : public Parent
 {
-  public:
-    int id_c;
+public:
+int id_c;
 };
 
 // main function
 int main()
 {
-    Child obj1;
+Child obj1;
 
     // An object of class child has all data members
     // and member functions of class parent
@@ -1283,7 +1258,9 @@ int main()
     cout << "Parent id is: " <<  obj1.id_p << '\n';
 
     return 0;
+
 }
+
 ```
 
 In the above program the ‘Child’ class is publicly inherited from the ‘Parent’ class so the public data members of the class ‘Parent’ will also be inherited by the class ‘Child’.
@@ -1311,39 +1288,41 @@ In the above program the ‘Child’ class is publicly inherited from the ‘Par
 Note: The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed. For example, Classes B, C and D all contain the variables x, y and z in below example. It is just question of access.
 
 ```
+
 // C++ Implementation to show that a derived class
 // doesn’t inherit access to private data members.
 // However, it does inherit a full parent object.
 class A
 {
 public:
-    int x;
+int x;
 protected:
-    int y;
+int y;
 private:
-    int z;
+int z;
 };
 
 class B : public A
 {
-    // x is public
-    // y is protected
-    // z is not accessible from B
+// x is public
+// y is protected
+// z is not accessible from B
 };
 
 class C : protected A
 {
-    // x is protected
-    // y is protected
-    // z is not accessible from C
+// x is protected
+// y is protected
+// z is not accessible from C
 };
 
-class D : private A    // 'private' is default for classes
+class D : private A // 'private' is default for classes
 {
-    // x is private
-    // y is private
-    // z is not accessible from D
+// x is private
+// y is private
+// z is not accessible from D
 };
+
 ```
 
 ## Polymorphism
@@ -1378,6 +1357,7 @@ In C++ polymorphism is mainly divided into two types:
 Now we continue the youtube channel tutorial.
 
 ```
+
 #include <iostream>
 #include <list>
 using namespace std;
@@ -1385,24 +1365,24 @@ using namespace std;
 // Polymorphism with pointers
 class YoutubeChannel {
 private:
-  string Name;
-  string OwnerName;
-  int SubscribersCount;
-  list<string> PublishedVideoTitles;
+string Name;
+string OwnerName;
+int SubscribersCount;
+list<string> PublishedVideoTitles;
 
-protected: //  protected inheritance, can be accessed outside.
-  string ownerName;
-  int ContentQuality;
+protected: // protected inheritance, can be accessed outside.
+string ownerName;
+int ContentQuality;
 
 public:
-  YoutubeChannel(string name, string ownerName) {
-    Name = name;
-    OwnerName = ownerName;
-    SubscribersCount = 0;
-    ContentQuality = 0;
-  }
+YoutubeChannel(string name, string ownerName) {
+Name = name;
+OwnerName = ownerName;
+SubscribersCount = 0;
+ContentQuality = 0;
+}
 
-  void getInfo() {
+void getInfo() {
 
     printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
     printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
@@ -1410,29 +1390,30 @@ public:
     for (auto &videoTitle : PublishedVideoTitles) {
       printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
     }
-  };
 
-  void Subscribe() { SubscribersCount++; } // + 1 subscriber
-  void Unsubscribe() {
-    if (SubscribersCount > 0) {
-      SubscribersCount--;
-    } else {
-      SubscribersCount = 0;
-    }
-  }
-  // - 1 subscriber with condition
-  void PublishVideo(string title) {
-    PublishedVideoTitles.push_back(title);
-  } // upload video
-  void CheckAnalytics() {
-    if (ContentQuality < 5)
-      printf("%s has bad quality content.\n", Name.c_str());
-    else if (ContentQuality > 8)
-      printf("%s has good quality content.\n", Name.c_str());
-    else
-      printf("%s's content is normal.\n", Name.c_str());
-    ;
-  }
+};
+
+void Subscribe() { SubscribersCount++; } // + 1 subscriber
+void Unsubscribe() {
+if (SubscribersCount > 0) {
+SubscribersCount--;
+} else {
+SubscribersCount = 0;
+}
+}
+// - 1 subscriber with condition
+void PublishVideo(string title) {
+PublishedVideoTitles.push_back(title);
+} // upload video
+void CheckAnalytics() {
+if (ContentQuality < 5)
+printf("%s has bad quality content.\n", Name.c_str());
+else if (ContentQuality > 8)
+printf("%s has good quality content.\n", Name.c_str());
+else
+printf("%s's content is normal.\n", Name.c_str());
+;
+}
 };
 // As example of morphism, we would like to creat another class like cooking
 // channel
@@ -1440,62 +1421,62 @@ public:
 class CookingYoutubeChannel : public YoutubeChannel {
 
 public:
-  CookingYoutubeChannel(string name,
-                        string ownerName) // Inherit the constructors
-      : YoutubeChannel(name, ownerName) {}
-  void Practice() {
-    printf("%s has just practiced how to make delicious food the in the "
-           "channel.\n",
-           ownerName.c_str()); // the ownerName can be visited
-                               // by protected inheritance
-    ContentQuality++;
-  }; // the unique feature that the CookinnYoutbeChannel has.
+CookingYoutubeChannel(string name,
+string ownerName) // Inherit the constructors
+: YoutubeChannel(name, ownerName) {}
+void Practice() {
+printf("%s has just practiced how to make delicious food the in the "
+"channel.\n",
+ownerName.c_str()); // the ownerName can be visited
+// by protected inheritance
+ContentQuality++;
+}; // the unique feature that the CookinnYoutbeChannel has.
 };
 
 // Morph a new class: SingerYoutubeChannel:
 
 class SingerYoutubeChannel : public YoutubeChannel {
-protected: //  protected inheritance, can be accessed outside.
-  string ownerName;
+protected: // protected inheritance, can be accessed outside.
+string ownerName;
 
 public:
-  SingerYoutubeChannel(string name,
-                       string ownerName) // Inherit the constructors
-      : YoutubeChannel(name, ownerName) {}
-  void Practice() {
-    printf("%s has just practiced singing ,dancing the in the channel.\n",
-           ownerName.c_str()); // the ownerName can be visited
-                               // by protected inheritance
-    ContentQuality++;
-  };
+SingerYoutubeChannel(string name,
+string ownerName) // Inherit the constructors
+: YoutubeChannel(name, ownerName) {}
+void Practice() {
+printf("%s has just practiced singing ,dancing the in the channel.\n",
+ownerName.c_str()); // the ownerName can be visited
+// by protected inheritance
+ContentQuality++;
+};
 };
 
 int main() {
-  // cooking channel
-  CookingYoutubeChannel cytch_1("CodeBeauty Kitchen", "Saldina");
-  cytch_1.PublishVideo("Apple Pie");
-  cytch_1.PublishVideo("Chocolate Cake");
-  cytch_1.Subscribe();
-  cytch_1.Subscribe();
-  cytch_1.getInfo();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.Practice();
-  cytch_1.CheckAnalytics();
-  // singer channel
-  SingerYoutubeChannel sytch_1("Elton's Voice", "Elton John");
-  sytch_1.Practice();
-  sytch_1.Practice();
-  sytch_1.Practice();
-  sytch_1.Practice();
-  sytch_1.Practice();
-  sytch_1.CheckAnalytics();
+// cooking channel
+CookingYoutubeChannel cytch_1("CodeBeauty Kitchen", "Saldina");
+cytch_1.PublishVideo("Apple Pie");
+cytch_1.PublishVideo("Chocolate Cake");
+cytch_1.Subscribe();
+cytch_1.Subscribe();
+cytch_1.getInfo();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.Practice();
+cytch_1.CheckAnalytics();
+// singer channel
+SingerYoutubeChannel sytch_1("Elton's Voice", "Elton John");
+sytch_1.Practice();
+sytch_1.Practice();
+sytch_1.Practice();
+sytch_1.Practice();
+sytch_1.Practice();
+sytch_1.CheckAnalytics();
 }
 
 ```
@@ -1513,14 +1494,16 @@ int main() {
 Variable contains certain value,while Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
 
 ```
+
 // General syntax
-datatype *var_name;
+datatype \*var_name;
 
 // An example pointer "ptr" that holds
 // address of an integer variable or holds
 // address of a memory whose value(s) can
 // be accessed as integer values through "ptr"
-int *ptr;
+int \*ptr;
+
 ```
 
 ## Some concepts of pointers
@@ -1549,25 +1532,26 @@ How void pointer are used.
 - `int` is not a function, it is a data type,a declaration.
 
 ```
+
 #include <iostream>
 using namespace std;
 
-void print(void *ptr, char type) {
-  switch (type) {
-  case 'i':
-    printf("The value is :%d\n", *(int *)ptr);
-    break;
-  case 'c': // c for char
-    printf("The letter is : %c\n", *(char *)ptr);
-  }
+void print(void _ptr, char type) {
+switch (type) {
+case 'i':
+printf("The value is :%d\n", _(int _)ptr);
+break;
+case 'c': // c for char
+printf("The letter is : %c\n", _(char \*)ptr);
+}
 }
 
 // try
 int main() {
-  int number = 5;
-  char letter = 'a';
-  print(&number, 'i');
-  print(&letter, 'c');
+int number = 5;
+char letter = 'a';
+print(&number, 'i');
+print(&letter, 'c');
 }
 
 ```
@@ -1575,34 +1559,35 @@ int main() {
 ## Pointers and arrays
 
 ```
+
 #include <iostream>
 using namespace std;
 
 int luckyNumbers[5] = {2, 3, 4, 5, 6};
 
 int main() {
-  printf("%p\n", luckyNumbers); // cout << luckyNumbers << endl; memory addres
-                                // of luckyNumbers
-  printf("'&luckynumbers[0]': %p\n",
-         &luckyNumbers[0]); // memory address of luckyNumbers[0]
-  printf("'&luckynumbers[1]': %p\n",
-         &luckyNumbers[1]); // memory address of luckyNumbers[1]
-  printf("'luckynumbers[2]': %d\n", luckyNumbers[2]); // deferencing
-  printf("'*(luckynumbers)': %d\n", *luckyNumbers);   // deferencing
-  printf("'*(luckynumbers+2)': %d\n",
-         *(luckyNumbers +
-           2)); // equivalent to luckyNumbers[2], which is
-                // accessing the 3rd element of the array,deferencing.
+printf("%p\n", luckyNumbers); // cout << luckyNumbers << endl; memory addres
+// of luckyNumbers
+printf("'&luckynumbers[0]': %p\n",
+&luckyNumbers[0]); // memory address of luckyNumbers[0]
+printf("'&luckynumbers[1]': %p\n",
+&luckyNumbers[1]); // memory address of luckyNumbers[1]
+printf("'luckynumbers[2]': %d\n", luckyNumbers[2]); // deferencing
+printf("'*(luckynumbers)': %d\n", *luckyNumbers); // deferencing
+printf("'_(luckynumbers+2)': %d\n",
+_(luckyNumbers +
+2)); // equivalent to luckyNumbers[2], which is
+// accessing the 3rd element of the array,deferencing.
 
-  int numslist[5];
-  for (int i = 0; i <= 4; i++) {
-    printf("Please enter a number(5 in total) :");
-    cin >> numslist[i];
-  }
-  for (int i = 0; i <= 4; i++) {
-    printf("The number array is: %d\n", *(numslist + i)); // * get the value
-                                                          // of the array
-  }
+int numslist[5];
+for (int i = 0; i <= 4; i++) {
+printf("Please enter a number(5 in total) :");
+cin >> numslist[i];
+}
+for (int i = 0; i <= 4; i++) {
+printf("The number array is: %d\n", _(numslist + i)); // _ get the value
+// of the array
+}
 }
 
 ```
@@ -1612,53 +1597,54 @@ int main() {
 Use pointers to return min and max value of array.
 
 ```
+
 #include <iostream>
 using namespace std;
 // int getMin(int numbers[], int size) {
-//   int min = numbers[0];
-//   for (int i = 1; i < size; i++) {
-//     if (numbers[i] < min)
-//       min = numbers[i];
-//   }
-//   return min;
+// int min = numbers[0];
+// for (int i = 1; i < size; i++) {
+// if (numbers[i] < min)
+// min = numbers[i];
+// }
+// return min;
 // }
 
 // int getMax(int numbers[], int size) {
-//   int max = numbers[0];
-//   for (int i = 1; i < size; i++) {
-//     if (numbers[i] > max)
-//       max = numbers[i];
-//   }
-//   return max;
+// int max = numbers[0];
+// for (int i = 1; i < size; i++) {
+// if (numbers[i] > max)
+// max = numbers[i];
+// }
+// return max;
 // }
 //
 
 void getMinandMax(int numbers[], int size, int *min, int *max) {
-  for (int i = 1; i <= size; i++) {
-    if (numbers[i] > *max)
-      *max = numbers[i];
-    if (numbers[i] < *min)
-      *min = numbers[i];
-  }
+for (int i = 1; i <= size; i++) {
+if (numbers[i] > *max)
+*max = numbers[i];
+if (numbers[i] < *min)
+*min = numbers[i];
+}
 }
 
 int main() {
 
-  int numArr[5] = {1, 3, -4, 5, 7};
-  int max = numArr[0];
-  int min = numArr[0];
+int numArr[5] = {1, 3, -4, 5, 7};
+int max = numArr[0];
+int min = numArr[0];
 
-  // if I use *min, * max:
-  // // Indirection requires pointer operand ('int' invalid)
-  // if I use min ,max directly:
-  // No matching function for call to 'getMinandMax' (fix available)
-  getMinandMax(numArr, 5, &min, &max); // reference
+// if I use _min, _ max:
+// // Indirection requires pointer operand ('int' invalid)
+// if I use min ,max directly:
+// No matching function for call to 'getMinandMax' (fix available)
+getMinandMax(numArr, 5, &min, &max); // reference
 
-  printf("The min number is: %d\n", min);
-  printf("The max numbers is: %d\n",
-         max); // passing parameter using reference: pass an address of the
-               // variale to the function rahter than passing the variable
-               // itself, which can sync with the changing of function.
+printf("The min number is: %d\n", min);
+printf("The max numbers is: %d\n",
+max); // passing parameter using reference: pass an address of the
+// variale to the function rahter than passing the variable
+// itself, which can sync with the changing of function.
 }
 
 ```
@@ -1675,7 +1661,9 @@ Arrys is a type of collection which stores elements is contiguous memory locatio
 if I definite a fuction:
 
 ```
+
 int myArray[5];
+
 ```
 
 It means I created a container of 5 locations which can store elements.
@@ -1683,7 +1671,9 @@ It means I created a container of 5 locations which can store elements.
 **Dynamic arrays** are arrays with **dynamic storage duration**. You create dynamic arrays with array new expressions. Array new expressions have the following form:
 
 ```
+
 new MyType[n_elements] { init-list }
+
 ```
 
 ### `new` and `delete` ?
@@ -1697,35 +1687,36 @@ new MyType[n_elements] { init-list }
 using namespace std;
 
 int main() {
-  int size;
-  printf("Please enter the size of the Array:");
-  cin >> size;
-  // int myArray[size]
-  int *myArray = new int[size];
-  for (int i = 0; i < size; i++) {
-    printf("Array %d\n", i);
-    cin >> myArray[i];
-  }
-  printf("This is your array with %d elements by the dereferencing method "
-         "'myArray[i]':\n",
-         size);
-  for (int i = 0; i < size; i++) {
+int size;
+printf("Please enter the size of the Array:");
+cin >> size;
+// int myArray[size]
+int \*myArray = new int[size];
+for (int i = 0; i < size; i++) {
+printf("Array %d\n", i);
+cin >> myArray[i];
+}
+printf("This is your array with %d elements by the dereferencing method "
+"'myArray[i]':\n",
+size);
+for (int i = 0; i < size; i++) {
 
     printf("%d\n", myArray[i]);
-  }
-  printf("This is your array with %d elements by the dereferencing method "
-         "'*(myArray + i)':\n",
-         size);
-  for (int i = 0; i < size; i++) {
+
+}
+printf("This is your array with %d elements by the dereferencing method "
+"'\*(myArray + i)':\n",
+size);
+for (int i = 0; i < size; i++) {
 
     printf("%d\n", *(myArray + i));
-  }
-  delete[] myArray;
-  myArray = NULL;
+
+}
+delete[] myArray;
+myArray = NULL;
 }
 
 ```markdown
-
 ## Multi-Dimensional Dynamic Arrays
 
 <div align = "center">
@@ -1739,8 +1730,8 @@ table and its' arrays
 </div>
 
 ### \*\* - Pointer to Pointer
-
 ```
+
 #include <cstdio>
 #include <iostream>
 using namespace std;
@@ -1770,1207 +1761,4 @@ int main() {
   //     table = NULL;
 }
 ```
-```markdown
-
-```
-
-```markdown
-
-```
-
-```markdown
-
-```
-
-```markdown
-
-```
-
-# C++ Primer Plus
-
-# C++ Primer 5th
-
-    Chapter 1: Getting Started
-    Part I: The Basics
-    Chapter 2: Variables and Basic Types
-    Chapter 3: Strings, Vectors, and Arrays
-    Chapter 4: Expressions
-    Chapter 5: Statements
-    Chapter 6: Functions
-    Chapter 7: Classes
-    Part II: The C++ Library
-    Chapter 8: The IO Library
-    Chapter 9: Sequential Containers
-    Chapter 10: Generic Algorithms
-    Chapter 11: Associative Containers
-    Chapter 12: Dynamic Memory
-    Part III: Tools for Class Authors
-    Chapter 13: Copy Control
-    Chapter 14: Overloaded Operations and Conversions
-    Chapter 15: Object-Oriented Programming
-    Chapter 16: Templates and Generic Programming
-    Part IV: Advanced Topics
-    Chapter 17: Specialized Library Facilities
-    Chapter 18: Tools for Large Programs
-    Chapter 19: Specialized Tools and Techniques
-    Index
-
-
-
-
-  第1章 : 开始
-    第 I 部分 : C++基础
-        第2章 : 变量和基本类型
-        第3章 : 字符串、向量和数组
-        第4章 : 表达式
-        第5章 : 语句
-        第6章 : 函数
-        第7章 : 类
-    第 II 部分 : C++标准库
-        第8章 : IO库
-        第9章 : 顺序容器
-        第10章 : 泛型算法
-        第11章 : 关联容器
-        第12章 : 动态内存
-    第 III 部分 : 类设计者的工具
-        第13章 : 拷贝控制
-        第14章 : 重载与类型转换
-        第15章 : 面向对象程序设计
-        第16章 : 模版与泛型编程
-    第 IV 部分 : 高级主题
-        第17章 : 标准库与特殊设施
-        第18章 : 用于大型程序的工具
-        第19章 : 特殊工具与技术
-
-
-
-1. C++ 编程笔记
-      1. 教材视频参考:
-2. Chapter 1 简介 数据类型 变量
-   1. 介绍
-      1. Cpp 主要任务
-   2. 数据类型
-      1. 计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
-   3. 数据类型的重要性
-   4. 变量
-      1. printf 格式化输出
-      2. 未完待续
-3. Chapter 2 If-else 语句
-   1. 操作符
-      1. 算数运算符
-      2. 逻辑和关系运算符
-      3. 赋值运算符
-   2. 判断语句
-      1. 流程图
-      2. 从 if-else 到 swich case
-4. Chapter 4 Loops
-   1. Intro to Loops
-   2. Write the first loop
-   3. While Loop
-      1. Count digits of a number
-         1. ？
-      2. Reversing number
-   4. Do-while Loop
-      1. Hotel Safe Locker
-      2. ATM simulation with do-while loop
-         1. Factorial
-   5. Nest Loops
-      1. Nested For Loop with do-while loop, sum grade
-      2. Nest loop: Multiplication table
-      3. Nest Loop Rectangle shape (still double loop)
-      4. Nest Loop Triangle shape
-5. Chapter 5 Functions
-   1. Function Introduction
-      1. Difference between void main and int main
-      2. Decoration function
-   2. Function Parameters， Arguments
-      1. Default paremeters
-      2. The return
-      3. Functions Overloading
-   3. Recursion
-6. Chapter 6 Generic and Template
-7. Chapter 7 Object-Oriented Programming - OOP
-   1. Class and Objects
-         1. Youtube channel class
-         2. printf()
-   2. Constructors and Class methods
-      1. Constructor
-   3. Encapsulation
-   4. Inheritance
-8. C++ Primer Plus
-9. C++ Primer 5th
-
-1.1. C++简介
-
-1.2. C++简史
-
-1.2.1. C语言
-
-1.2.2. C语言编程原理
-
-1.2.3. 面向对象编程
-
-1.2.4. C++和泛型编程
-
-1.2.5. C++的起源
-
-1.3. 可移植性和标准
-
-1.3.1. C++的发展
-
-1.3.2. 本书遵循的C++标准
-
-1.4. 程序创建的技巧
-
-1.4.1. 创建源代码和文件
-
-1.4.2. 编译和链接
-
-1.5. 总结
-
-2. 开始学习C++
-
-2.1. 进入C++
-
-2.1.1. main()函数
-
-2.1.2. C++注释
-
-2.1.3. C++预处理器和iostream文件
-
-2.1.4. 头文件名
-
-2.1.5. 名称空间
-
-2.1.6. 使用cout进行C++输出
-
-2.1.7. C++源代码的格式化
-
-2.2. C++语句
-
-2.2.1. 声明语句和变量
-
-2.2.2. 赋值语句
-
-2.2.3. cout的新花样
-
-2.3. 其他C++语句
-
-2.3.1. 使用cin
-
-2.3.2. 使用cout进行拼接
-
-2.3.3. 类简介
-
-2.4. 函数
-
-2.4.1. 使用有返回值的函数
-
-2.4.2. 函数变体
-
-2.4.3. 用户定义的函数
-
-2.4.4. 用户定义的有返回值的函数
-
-2.4.5. 在多函数程序中使用using编译指令
-
-2.5. 总结
-
-2.6. 复习题
-
-2.7. 编程练习
-
-3. 处理数据
-
-3.1. 简单变量
-
-3.1.1. 变量名
-
-3.1.2. 整型
-
-3.1.3. 整型short、int、long和long long
-
-3.1.4. 无符号类型
-
-3.1.5. 选择整型类型
-
-3.1.6. 整形字面值
-
-3.1.7. C++如何确定常量的类型
-
-3.1.8. char类型：字符和小整数
-
-3.1.9. bool类型
-
-3.2. const限定符
-
-3.3. 浮点数
-
-3.3.1. 书写浮点数
-
-3.3.2. 浮点类型
-
-3.3.3. 浮点常量
-
-3.3.4. 浮点数的优缺点
-
-3.4. C++算术运算符
-
-3.4.1. 运算符优先级和结合性
-
-3.4.2. 除法分支
-
-3.4.3. 求模运算符
-
-3.4.4. 类型转换
-
-3.4.5. C++11中的auto声明
-
-3.5. 总结
-
-3.6. 复习题
-
-3.7. 编程练习
-
-4. 复合类型
-
-4.1. 数组
-
-4.1.1. 程序说明
-
-4.1.2. 数组的初始化规则
-
-4.1.3. C++11数组初始化方法
-
-4.2. 字符串
-
-4.2.1. 拼接字符串常量
-
-4.2.2. 在数组中使用字符串
-
-4.2.3. 字符串输入
-
-4.2.4. 每次读取一行字符串输入
-
-4.2.5. 混合输入字符串和数字
-
-4.3. string类简介
-
-4.3.1. C++11字符串初始化
-
-4.3.2. 赋值、拼接和附加
-
-4.3.3. string类和其他操作
-
-4.3.4. string类的I/O
-
-4.3.5. 其他形式的字符串字面值
-
-4.4. 结构简介
-
-4.4.1. 在程序中使用结构
-
-4.4.2. C++11结构初始化
-
-4.4.3. 结构可以将string类作为成员吗
-
-4.4.4. 其他结构属性
-
-4.4.5. 结构数组
-
-4.4.6. 结构中的位字段
-
-4.5. 共用体
-
-4.6. 枚举
-
-4.6.1. 设置枚举量的值
-
-4.6.2. 枚举的取值范围
-
-4.7. 指针和自由存储空间
-
-4.7.1. 声明和初始化指针
-
-4.7.2. 指针的危险
-
-4.7.3. 指针和数字
-
-4.7.4. 使用new来分配内存
-
-4.7.5. 使用delete释放内存
-
-4.7.6. 使用new来创建动态数组
-
-4.8. 指针、数组和指针算术
-
-4.8.1. 程序说明
-
-4.8.2. 指针小结
-
-4.8.3. 指针和字符串
-
-4.8.4. 使用new创建动态结构
-
-4.8.5. 自动存储、静态存储和动态存储
-
-4.9. 类型组合
-
-4.10. 数组的替代品
-
-4.10.1. 模板类vector
-
-4.10.2. 模板类array
-
-4.10.3. 比较数组、vector对象和array对象
-
-4.11. 总结
-
-4.12. 复习题
-
-4.13. 编程练习
-
-5. 循环和关系表达式
-
-5.1. for循环
-
-5.1.1. for循环的组成部分
-
-5.1.2. 回到for循环
-
-5.1.3. 修改步长
-
-5.1.4. 使用for循环访问字符串
-
-5.1.5. 递增运算符（++）和递减运算符（--）
-
-5.1.6. 副作用和顺序点
-
-5.1.7. 前缀格式和后缀格式
-
-5.1.8. 递增/递减运算符和指针
-
-5.1.9. 组合赋值运算符
-
-5.1.10. 复合语句（语句块）
-
-5.1.11. 其他语法技巧——逗号运算符
-
-5.1.12. 关系表达式
-
-5.1.13. 赋值、比较和可能犯的错误
-
-5.1.14. C-风格字符串的比较
-
-5.1.15. 比较string类字符串
-
-5.2. while循环
-
-5.2.1. for和while
-
-5.2.2. 等待一段时间：编写延时循环
-
-5.3. do while 循环
-
-5.4. 基于范围的for循环
-
-5.5. 循环和文本输入
-
-5.5.1. 基于原始的cin进行输入
-
-5.5.2. 使用cin.get(char)进行补救
-
-5.5.3. 使用哪一个cin.get()
-
-5.5.4. 文件尾条件
-
-5.5.5. 另一个cin.get()版本
-
-5.6. 嵌套循环和二维数组
-
-5.6.1. 初始化二维数组
-
-5.6.2. 使用二维数组
-
-5.7. 总结
-
-5.8. 复习题
-
-5.9. 编程练习
-
-6. 分支语句和逻辑运算符
-
-6.1. if语句
-
-6.1.1. if-else语句
-
-6.1.2. 格式化if-else语句
-
-6.1.3. if-else-if-else结构
-
-6.2. 逻辑表达式
-
-6.2.1. 逻辑or运算符||
-
-6.2.2. 逻辑and运算符&&
-
-6.2.3. 用&&来设置取值范围
-
-6.2.4. 逻辑not运算符!
-
-6.2.5. 逻辑运算符细节
-
-6.2.6. 其他表示方式
-
-6.3. 字符函数库cctype
-
-6.4. :运算符
-
-6.5. switch语句
-
-6.5.1. 将枚举量用作标签
-
-6.5.2. switch和if else
-
-6.6. break和continue语句
-
-6.7. 读取数字的循环
-
-6.8. 简单文件输入/输出
-
-6.8.1. 文本I/O和文本文件
-
-6.8.2. 写入到文本文件中
-
-6.8.3. 读取文本文件
-
-6.9. 总结
-
-6.10. 复习题
-
-6.11. 编程练习
-
-7. 函数——C++的编程模块
-
-7.1. 复习函数的基本知识
-
-7.1.1. 定义函数
-
-7.1.2. 函数原型和函数调用
-
-7.2. 函数参数和按值传递
-
-7.2.1. 多个参数
-
-7.2.2. 另一个接受两个参数的函数
-
-7.3. 函数和数组
-
-7.3.1. 函数如何使用指针来处理数组
-
-7.3.2. 将数组作为参数意味着什么
-
-7.3.3. 更多数组函数示例
-
-7.3.4. 使用数组区间的参数
-
-7.3.5. 指针和const
-
-7.4. 函数和二维数组
-
-7.5. 函数和C-风格字符串
-
-7.5.1. 将C-风格字符串作为参数的函数
-
-7.5.2. 返回C-风格字符串的函数
-
-7.6. 函数和结构
-
-7.6.1. 传递和返回结构
-
-7.6.2. 另一个处理结构的函数示例
-
-7.6.3. 传递结构的地址
-
-7.7. 函数和string对象
-
-7.8. 函数和array对象
-
-7.9. 递归
-
-7.9.1. 包含一个递归调用的递归
-
-7.9.2. 包含多个递归调用的递归
-
-7.10. 函数指针
-
-7.10.1. 函数指针的基础知识
-
-7.10.2. 函数指针示例
-
-7.10.3. 深入探讨函数指针
-
-7.10.4. 使用typedef进行简化
-
-7.11. 总结
-
-7.12. 复习题
-
-7.13. 编程练习
-
-8. 函数探幽
-
-8.1. C++内联函数
-
-8.2. 引用变量
-
-8.2.1. 创建引用变量
-
-8.2.2. 将引用用作函数参数
-
-8.2.3. 引用的属性和特别之处
-
-8.2.4. 将引用用于结构
-
-8.2.5. 将引用用于类对象
-
-8.2.6. 对象、继承和引用
-
-8.2.7. 何时使用引用参数
-
-8.3. 默认参数
-
-8.4. 函数重载
-
-8.4.1. 重载示例
-
-8.4.2. 何时使用函数重载
-
-8.5. 函数模板
-
-8.5.1. 重载的模板
-
-8.5.2. 模板的局限性
-
-8.5.3. 显示具体化
-
-8.5.4. 实例化和具体化
-
-8.5.5. 编译器选择使用哪个函数版本
-
-8.5.6. 模板函数的发展
-
-8.6. 总结
-
-8.7. 复习题
-
-8.8. 编程练习
-
-9. 内存模型和名称空间
-
-9.1. 单独编译
-
-9.2. 存储程序性、作用域和链接性
-
-9.2.1. 作用域和链接
-
-9.2.2. 自动存储持续性
-
-9.2.3. 静态持续变量
-
-9.2.4. 静态持续性、外部链接性
-
-9.2.5. 静态持续性、内部链接性
-
-9.2.6. 静态存储连续性、无连接性
-
-9.2.7. 说明符和限定符
-
-9.2.8. 函数的链接性
-
-9.2.9. 语言链接性
-
-9.2.10. 存储方案和动态匹配
-
-9.3. 名称空间
-
-9.3.1. 传统的C++名称空间
-
-9.3.2. 新的名称空间特性
-
-9.3.3. 名称空间示例
-
-9.3.4. 名称空间及其前途
-
-9.4. 总结
-
-9.5. 复习题
-
-9.6. 编程练习
-
-10. 对象和类
-
-10.1. 过程性编程和面向对象编程
-
-10.2. 抽象和类
-
-10.2.1. 类型是什么
-
-10.2.2. C++中的类
-
-10.2.3. 实现类成员函数
-
-10.2.4. 使用类
-
-10.2.5. 修改实现
-
-10.2.6. 小结
-
-10.3. 类的构造函数和析构函数
-
-10.3.1. 声明和定义构造函数
-
-10.3.2. 使用构造函数
-
-10.3.3. 默认构造函数
-
-10.3.4. 析构函数
-
-10.3.5. 改进Stock类
-
-10.3.6. 构造函数和析构函数小结
-
-10.4. this指针
-
-10.5. 对象数组
-
-10.6. 类作用域
-
-10.6.1. 作用域为类的常量
-
-10.6.2. 作用域内枚举（C++11）
-
-10.7. 抽象数据类型
-
-10.8. 总结
-
-10.9. 复习题
-
-10.10. 编程练习
-
-11. 使用类
-
-11.1. 运算符重载
-
-11.2. 计算时间：一个运算符重载示例
-
-11.2.1. 添加加法运算符
-
-11.2.2. 重载限制
-
-11.2.3. 其他重载运算符
-
-11.3. 友元
-
-11.3.1. 创建友元
-
-11.3.2. 常用的友元：重载<<运算符
-
-11.4. 重载运算符：作为成员函数还是非成员函数
-
-11.5. 再谈重载：一个矢量类
-
-11.5.1. 使用状态成员
-
-11.5.2. 为Vector类重载算术运算符
-
-11.5.3. 对实现的说明
-
-11.5.4. 使用Vector类来模拟随机漫步
-
-11.6. 类的自动转换和强制类型转换
-
-11.6.1. 转换函数
-
-11.6.2. 转换函数和友元函数
-
-11.7. 总结
-
-11.8. 复习题
-
-11.9. 编程练习
-
-12. 类和动态内存分配
-
-12.1. 动态内存和类
-
-12.1.1. 复习示例和静态类成员
-
-12.1.2. 特殊成员函数
-
-12.1.3. 回到Stringbad：复制构造函数的哪里出了问题
-
-12.1.4. Stringbad的其他问题：赋值运算符
-
-12.2. 改进后的新String类
-
-12.2.1. 修订后的默认构造函数
-
-12.2.2. 比较成员函数
-
-12.2.3. 使用中括号表示法访问字符
-
-12.2.4. 静态类成员函数
-
-12.2.5. 进一步重载赋值运算符
-
-12.3. 在构造函数中使用new时应注意的事项
-
-12.3.1. 应该和不应该
-
-12.3.2. 包含类成员的类的逐成员复制
-
-12.4. 有关返回对象的说明
-
-12.4.1. 返回指向const对象的引用
-
-12.4.2. 返回指向非const对象的引用
-
-12.4.3. 返回对象
-
-12.4.4. 返回const对象
-
-12.5. 使用指向对象的指针
-
-12.5.1. 再谈new和delete
-
-12.5.2. 指针和对象小结
-
-12.5.3. 再谈定位new运算符
-
-12.6. 复习各种技术
-
-12.6.1. 重载<<运算符
-
-12.6.2. 转换函数
-
-12.6.3. 其构造函数使用new的类
-
-12.7. 队列模拟
-
-12.7.1. 队列类
-
-12.7.2. Customer类
-
-12.7.3. ATM模拟
-
-12.8. 总结
-
-12.9. 复习题
-
-12.10. 编程练习
-
-13. 类继承
-
-13.1. 一个简单的基类
-
-13.1.1. 派生一个类
-
-13.1.2. 构造函数：访问权限的考虑
-
-13.1.3. 使用派生类
-
-13.1.4. 派生类和基类之间的特殊关系
-
-13.2. 继承：is-a关系
-
-13.3. 多态公有继承
-
-13.4. 静态联编和动态联编
-
-13.4.1. 指针和引用类型的兼容性
-
-13.4.2. 虚成员函数和动态联编
-
-13.4.3. 有关虚函数注意事项
-
-13.5. 访问控制：protected
-
-13.6. 抽象基类
-
-13.6.1. 应用ABC概念
-
-13.6.2. ABC理念
-
-13.7. 继承和动态内存分配
-
-13.7.1. 第一种情况：派生类不使用new
-
-13.7.2. 第二种情况：派生类使用new
-
-13.7.3. 使用动态内存分配和友元的继承示例
-
-13.8. 类设计回顾
-
-13.8.1. 编译器生成的成员函数
-
-13.8.2. 其他的类方法
-
-13.8.3. 共有继承的考虑因素
-
-13.8.4. 类函数小结
-
-13.9. 总结
-
-13.10. 复习题
-
-14. C++中代码重用
-
-14.1. 包含对象成员的类
-
-14.1.1. Valarray类简介
-
-14.1.2. Student类的设计
-
-14.1.3. Student类示例
-
-14.2. 私有继承
-
-14.2.1. Student类示例（新版本）
-
-14.2.2. 使用包含还是私有继承
-
-14.2.3. 保护继承
-
-14.2.4. 使用using重新定义访问权限
-
-14.3. 多重继承
-
-14.3.1. 有多少Worker
-
-14.3.2. 哪个方法
-
-14.3.3. MI小结
-
-14.4. 类模板
-
-14.4.1. 定义类模板
-
-14.4.2. 使用模板类
-
-14.4.3. 深入探讨模板类
-
-14.4.4. 数组模板示例和非类型函数
-
-14.4.5. 模板多功能性
-
-14.4.6. 模板的具体化
-
-14.4.7. 成员模板
-
-14.4.8. 将模板用作参数
-
-14.4.9. 模板类和友元
-
-14.4.10. 模板别名（C++11）
-
-14.5. 总结
-
-14.6. 复习题
-
-14.7. 编程练习
-
-15. 友元、异常和其他
-
-15.1. 友元
-
-15.1.1. 友元类
-
-15.1.2. 友元成员函数
-
-15.1.3. 其他友元关系
-
-15.1.4. 共同的友元
-
-15.2. 嵌套类
-
-15.2.1. 嵌套类和访问权限
-
-15.2.2. 模板中的嵌套
-
-15.3. 异常
-
-15.3.1. 调用abort()
-
-15.3.2. 返回错误码
-
-15.3.3. 异常机制
-
-15.3.4. 将对象用作异常类型
-
-15.3.5. 异常规范和C++11
-
-15.3.6. 栈解退
-
-15.3.7. 其他异常特性
-
-15.3.8. exception类
-
-15.3.9. 异常、类和继承
-
-15.3.10. 异常何时会迷失方向
-
-15.3.11. 有关异常的注意事项
-
-15.4. RTTI
-
-15.4.1. RTTI的用途
-
-15.4.2. RTTI的工作原理
-
-15.5. 类型转换运算符
-
-15.6. 总结
-
-15.7. 复习题
-
-15.8. 编程练习
-
-16. string类和标准模板库（STL）
-
-16.1. String类
-
-16.1.1. 构造字符串
-
-16.1.2. String类输入
-
-16.1.3. 使用字符串
-
-16.1.4. String还提供了哪些功能
-
-16.1.5. 字符串种类
-
-16.2. 智能指针模板类
-
-16.2.1. 使用智能指针
-
-16.2.2. 有关智能指针的注意事项
-
-16.2.3. unique_ptr为何优于atuo_ptr
-
-16.2.4. 选择智能指针
-
-16.3. 标准模板库
-
-16.3.1. 模板类vector
-
-16.3.2. 可对矢量执行的操作
-
-16.3.3. 对矢量可执行的其他操作
-
-16.3.4. 基于范围的for循环（C++11）
-
-16.4. 泛型编程
-
-16.4.1. 为何使用迭代器
-
-16.4.2. 迭代器类型
-
-16.4.3. 迭代器层次结构
-
-16.4.4. 概念、改进和模型
-
-16.4.5. 容器种类
-
-16.4.6. 关联容器
-
-16.4.7. 无序关联容器（C++11）
-
-16.5. 函数对象
-
-16.5.1. 函数符概念
-
-16.5.2. 预定义的函数符
-
-16.5.3. 自适应函数符和函数适配器
-
-16.6. 算法
-
-16.6.1. 算法组
-
-16.6.2. 算法的通用特征
-
-16.6.3. STL和string类
-
-16.6.4. 函数和容器方法
-
-16.6.5. 使用STL
-
-16.7. 其他库
-
-16.7.1. vector、valarray和array
-
-16.7.2. 模板initializer_list（C++11）
-
-16.7.3. 使用initializer_list
-
-16.8. 总结
-
-16.9. 复习题
-
-16.10. 编程练习
-
-17. 输入、输出和文件
-
-17.1. C++输入和输出概述
-
-17.1.1. 流和缓冲区
-
-17.1.2. 流、缓冲区和iostream文件
-
-17.1.3. 重定向
-
-17.2. 使用cout进行输出
-
-17.2.1. 重载的<<运算符
-
-17.2.2. 其他ostream方法
-
-17.2.3. 刷新输出缓冲区
-
-17.2.4. 用cout进行格式化
-
-17.3. 使用cin进行输入
-
-17.3.1. cin>>如何检查输入
-
-17.3.2. 流状态
-
-17.3.3. 其他istream类方法
-
-17.3.4. 其他istream方法
-
-17.4. 文件输入和输出
-
-17.4.1. 简单的文件I/O
-
-17.4.2. 流状态检查和is_open()
-
-17.4.3. 打开多个文件
-
-17.4.4. 命令行处理技术
-
-17.4.5. 文件模式
-
-17.4.6. 随机存取
-
-17.5. 内核格式化
-
-17.6. 总结
-
-17.7. 复习题
-
-17.8. 编程练习
-
-18. 探讨C++新标准
-
-18.1. 复习前面介绍过的C++11功能
-
-18.1.1. 新类型
-
-18.1.2. 统一的初始化
-
-18.1.3. 声明
-
-18.1.4. 智能指针
-
-18.1.5. 异常规范方面的修改
-
-18.1.6. 作用域内枚举
-
-18.1.7. 对类的修改
-
-18.1.8. 模板和STL方面的修改
-
-18.1.9. 右值引用
-
-18.2. 移动语义和右值引用
-
-18.2.1. 为何需要移动语义
-
-18.2.2. 一个移动示例
-
-18.2.3. 移动构造函数解析
-
-18.2.4. 赋值
-
-18.2.5. 强制移动
-
-18.3. 新的类功能
-
-18.3.1. 特殊的成员函数
-
-18.3.2. 默认的方法和禁用的方法
-
-18.3.3. 委托构造函数
-
-18.3.4. 继承构造函数
-
-18.3.5. 管理虚方法：override和final
-
-18.4. Lambda函数
-
-18.4.1. 比较函数指针、函数符和Lambda函数
-
-18.4.2. 为何使用Lambda
-
-18.5. 包装器
-
-18.5.1. 包装器function及模板的低效性
-
-18.5.2. 修复问题
-
-18.5.3. 其他方式
-
-18.6. 可变参数模板
-
-18.6.1. 模板与函数参数包
-
-18.6.2. 展开参数包
-
-18.6.3. 在可变函数模板函数中使用递归
-
-18.7. C++11新增的其他功能
-
-18.7.1. 并行编程
-
-18.7.2. 新增的库
-
-18.7.3. 低级编程
-
-18.7.4. 杂项
-
-18.8. 语言变化
-
-18.8.1. Boost项目
-
-18.8.2. TR1
-
-18.8.3. 使用Boost
-
-18.9. 接下来的任务
-
-18.10. 总结
-
-18.11. 复习题
-
-
 ````
-
-```
-
-```
-
-```
-
-```
