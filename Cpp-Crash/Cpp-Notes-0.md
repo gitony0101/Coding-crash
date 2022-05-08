@@ -143,7 +143,10 @@ codes: ex,BMI,Integer,Lunar year
 - Switch case 语句
   - 嵌套 switch 语句
 - 条件运算符 `Exp1 ? Exp2 : Exp3;`
-  - 其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。`? :` 表达式的值取决于 Exp1 的计算结果。如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 `? :` 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 `? :` 表达式的值。`? 被称为三元运算符，因为它需要三个操作数，可以用来代替`if-else`语句。
+  - 其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。`? :` 表达式的值取决于 Exp1 的计算结果。
+    - 如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 `? :` 表达式的值。
+    - 如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 `? :` 表达式的值。`
+      - ? 被称为三元运算符，因为它需要三个操作数，可以用来代替`if-else`语句。
 
 ```c++
 if(condition){
@@ -194,47 +197,9 @@ if(condition){
 
 ### 从 if-else 到 swich case
 
-对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了。请参考附属代码`chapter-2-2-exSwitchCase.cpp`
+对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了。
 
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // show the number of days in certain month, year.
-  // leap year:
-  ///(year%4=0 && year%100!=0 || year%400==0)
-  int year, month;
-  cout << "Please enter the year and month:YYYY MM " << endl;
-  cin >> year >> month;
-  switch (month) {
-  case 2:
-    (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
-        ? cout << "29 days in February" << endl
-        : cout << "28 days in February" << endl;
-    break;
-  case 4:
-  case 6:
-  case 9:
-  case 11:
-    cout << "30 days in this month" << endl;
-    break;
-  case 1:
-  case 3:
-  case 5:
-  case 7:
-  case 8:
-  case 10:
-  case 12:
-    cout << "31 days in this month" << endl;
-    break;
-  default:
-    cout << "NOT VALID!" << endl;
-  }
-}
-```
-
-The switch case statement just **consider situations within the `cases`**,so if you try 13 or -1 as the month which is not delared in the statement, the function itself show as an error.
+请参考附属代码`chapter-2-2-exSwitchCase.cpp`
 
 # Chapter 4 Loops
 

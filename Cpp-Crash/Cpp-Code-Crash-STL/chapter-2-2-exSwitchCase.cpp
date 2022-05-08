@@ -12,6 +12,7 @@ Leap Year algorithm:
   https://www.mathsisfun.com/leap-years.html
 
 */
+
 void exOperatorCalc01() { // if-else version
   float num1, num2;
   char operatorCalc;
@@ -61,7 +62,40 @@ void exOperatorCalc02() { // switch case
 
 // (year % 4 = 0 && year % 100 != 0 || year % 400 == 0)
 
+void exDaysOfMonth() { // show the number of days in certain month, year.
+  // leap year:
+  ///(year%4=0 && year%100!=0 || year%400==0)
+  int year, month;
+  printf("Please enter the year and month:YYYY MM\n");
+  cin >> year >> month;
+  switch (month) {
+  case 2: // 使用条件运算符 Exp1 ? Exp2 : Exp3;
+    (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+        ? printf("In the year of %d, there are 29 days in February.\n", year)
+        : printf("In the year of %d, there are 28 days in February.\n", year);
+    break;
+  case 4:
+  case 6:
+  case 9:
+  case 11:
+    printf("There are 30 days in month %d.\n", month);
+    break;
+  case 1:
+  case 3:
+  case 5:
+  case 7:
+  case 8:
+  case 10:
+  case 12:
+    printf("There are 31 days in month %d.\n", month);
+    break;
+  default:
+    printf("NOT VALID!\n");
+  }
+}
+
 int main() {
   // exOperatorCalc01();
-  exOperatorCalc02();
+  // exOperatorCalc02();
+  // exDaysOfMonth();
 }

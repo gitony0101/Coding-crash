@@ -131,7 +131,7 @@ void exGuestNumber() {
 int main() {
   // exArithmetic();
   // exAssignment();
-  exRelationalAndLogical();
+  // exRelationalAndLogical();
   // exSwap();
   //   exEvenOdd();
   //   exTriangleShape();
