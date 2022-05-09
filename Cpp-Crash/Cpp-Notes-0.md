@@ -207,84 +207,13 @@ if(condition){
 
 迭代，知道重复执行操作到满足某个条件，或者超出某个范围。
 
+- for 循环
+  - `for (statement 1; statement 2; statement 3) { // code block to be executed }`
 - while 循环
   - `while (condition) { statements; }`
 - do-while 循环
   - `do { // code block to be executed } while (condition);`
     - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while condition
-
-### ATM simulation with do-while loop
-
-Do-while functions ATM
-
-````cpp
-#include <cstdlib>
-#include <iostream>
-using namespace std;
-
-// Do while loop for keeping this ATM alive.
-// extra number not allowed
-
-void showMenu() {
-cout << "\***\*\*\*\*\*\***MENU**\*\***\*\*\***\*\***" << endl;
-cout << "1. Balance" << endl;
-cout << "2. Deposit" << endl;
-cout << "3. Withdraw" << endl;
-cout << "4. Exit" << endl;
-cout << "**\*\***\*\***\*\***\*\*\***\*\***\*\***\*\***" << endl;
-}
-
-int main() {
-int option;
-double balance = 500;
-do {
-// Check balance,deposit,withdraw,show menu.
-
-    showMenu();
-    cout << "Press the number of the option: ";
-    cin >> option;
-    system("cls");
-    switch (option) {
-    case 1:
-      cout << "Balance:" << balance << "$" << endl;
-      break;
-    case 2:
-      cout << "Deposit amount:";
-      double depositamount;
-      cin >> depositamount;
-      balance += depositamount;
-      break;
-    case 3:
-      cout << "Please enter the money you want to withdraw:";
-      double withdrawamount;
-      cin >> withdrawamount;
-
-      if (withdrawamount <= balance) {
-        balance -= withdrawamount;
-        break;
-      } else {
-        cout << "You do not have enough balance." << endl;
-        break;
-      }
-    }
-
-} while (option != 4);
-}
-
-## For Loop
-
-- Syntax
-
-```cpp
-
-for (statement 1; statement 2; statement 3) {
-// code block to be executed
-}
-````
-
-Cool, three statements.
-
-Intro for loop with application of factorial.
 
 #### Factorial
 
