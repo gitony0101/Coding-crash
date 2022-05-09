@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
 using namespace std;
 
@@ -7,7 +8,7 @@ using namespace std;
 统计数字的位数 while
 数字反转 while
 酒店保险箱 do while
-模拟ATM机 do while
+模拟ATM机 do while + switch case
 
 */
 
@@ -70,11 +71,46 @@ void hotelSafeLocker() { //模拟酒店房间里的保险箱密码锁
     printf("Access denied.\n");
 }
 
+void simATM() { // do while 循环模拟ATM机
+  int option;
+  double deopositAmount, withdrawAmount, balance = 1500;
+  printf("********MENU*******\n"
+         "*1.Balance        *\n"
+         "*2.Deposit        *\n"
+         "*3.Withdraw       *\n"
+         "*4.Exit           *\n"
+         "*******************\n"
+         "\n\nPress the number of the option.\n");
+  do { // 查看银行存款，存取款。
+    cin >> option;
+    system("cls");
+    switch (option) {
+    case 1:
+      printf("Balance : $ %f\n", balance);
+    case 2:
+      printf("Deposit amount:\n");
+      cin >> deopositAmount;
+      balance += deopositAmount;
+      break;
+    case 3:
+      printf("Please enter the money you want to withdraw:\n");
+      cin >> withdrawAmount;
+
+      if (withdrawAmount <= balance)
+        balance -= withdrawAmount;
+      else
+        printf("You do not have enough balance.\n");
+      break;
+    }
+  } while (option != 4); // 限定了循环
+}
+
 int main() {
   // exDivisible3and5();
   // numDigitsCounter();
   // exReverseNumbers01();
-  hotelSafeLocker();
+  // hotelSafeLocker();
+  simATM();
 }
 
 // Notes:
