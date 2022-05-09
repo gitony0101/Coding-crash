@@ -3,9 +3,11 @@
 using namespace std;
 
 /*
-500以内被3 和5 整除
-统计数字的位数
-数字反转
+500以内被3 和5 整除 while
+统计数字的位数 while
+数字反转 while
+酒店保险箱 do while
+模拟ATM机 do while
 
 */
 
@@ -51,28 +53,31 @@ void exReverseNumbers01() { // Reversing Number
   printf("Reversed number: %d.\n", reversedNumber);
 }
 
-void exReverseNumbers02() { // Reversing Number
-  int number, reversedNumber = 0;
-  printf("Please enter a number:\n");
-  cin >> number;
-  while (number != 0) {
-    reversedNumber += number % 10;
-    number /= 10;
-  }
-  printf("Reversed number: %d.\n", reversedNumber);
+void hotelSafeLocker() { //模拟酒店房间里的保险箱密码锁
+  int userPin = 1234, pin,
+      errorCounter = 0; // 初始化密码1234，初始化自定义pin，初始化拨错次数0
+  do {
+    printf("Please enter your 4 digit \n");
+    cin >> pin;
+    if (pin != userPin) {
+      errorCounter++;
+      printf("Incorrect pin,please try again.\n");
+    }
+  } while (errorCounter < 3 && pin != userPin);
+  if (pin == userPin)
+    printf("Loading...\nAccess granted.\n");
+  else
+    printf("Access denied.\n");
 }
 
 int main() {
   // exDivisible3and5();
   // numDigitsCounter();
   // exReverseNumbers01();
-  // exReverseNumbers02();
-  // int a = 123 / 10;
-  // printf("%d\n", a);
+  hotelSafeLocker();
 }
 
 // Notes:
-
 /*
 about the numDigitsCounter():
 
@@ -118,4 +123,20 @@ time and repeat step 2 and 3 until the previous number is 0;
 multiplied by 10 at the next step.
 - You need to know the modulus method
 
+*/
+
+/* not work
+void exReverseNumbers02() { // Reversing Number
+  int number, reversedNumber = 0;
+  printf("Please enter a number:\n");
+  cin >> number;
+  while (number != 0) {
+    reversedNumber += number % 10;
+    number /= 10;
+  }
+  printf("Reversed number: %d.\n", reversedNumber);
+}
+
+但是可以参考这道medium
+https://leetcode.com/problems/reverse-integer/discuss/1054279/faster-than-100.00-of-C%2B%2B-online-submissions
 */

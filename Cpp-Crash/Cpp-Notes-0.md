@@ -207,87 +207,11 @@ if(condition){
 
 迭代，知道重复执行操作到满足某个条件，或者超出某个范围。
 
-### Reversing number
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // Reversing number
-  int number, reversedNUmber = 0;
-  cout << "Please enter a number: ";
-  cin >> number;
-
-  while (number != 0) {
-
-    int lastDigit = number % 10; // get the last digit by taking the modulo of
-                                 // the number by 10 lastDigit += number % 10;
-    reversedNUmber *= 10;        // level up the digit by multiplying it by 10
-    reversedNUmber += lastDigit; // in the next step the new last digit still at
-                                 // the last position
-                                 // Or you can do it in one line:
-                                 // reversedNUmber += number % 10
-    number /= 10; // keep on dividing the number by 10 until it reaches 0
-  }
-  cout << "Reversed number :" << reversedNUmber << endl;
-}
-```
-
-## Do-while Loop
-
-- Syntax
-
-```c++
-do {
-  // code block to be executed
-}
-while (condition);
-```
-
-### Hotel Safe Locker
-
-Make the safe locker by using do-while loop.
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  // Simulate the safe locker box in the hotel
-
-  int userPin = 1234, pin,
-      errorCounter = 0; // initialize the userPin and pin which would be the
-                        // input of the user, and the errorCounter which is used
-                        // to count the number of error, start from 0 times.
-
-  // Do-While loop:
-
-  do { // code block will be executed when the while condition is true
-    cout << "Please enter your 4-digit pin: "; // Hint user to enter the pin
-    cin >> pin;                                // input the pin number
-    if (pin != userPin) { // condition :if the pin is not equal to the userPin
-      errorCounter++;     // increment the errorCounter
-      cout << "Incorrect pin, please try again." << endl; // hint try again
-    }
-  } while (errorCounter < 3 &&
-           pin != userPin); // while condition for the do block
-  if (pin == userPin) {     // condition : if the pin is equal to the userPin
-    cout << "Loading..." << endl;
-    cout << "Access granted." << endl;
-  } else
-    cout << "Access denied." << endl;
-}
-```
-
-This is a simple safe locker while here is the Saldina code's different part:
-
-```c++
-  if (errorCounter < 3)
-    cout << "Access granted." << endl;
-  else
-    cout << "Access denied." << endl;
-```
+- while 循环
+  - `while (condition) { statements; }`
+- do-while 循环
+  - `do { // code block to be executed } while (condition);`
+    - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while condition
 
 ### ATM simulation with do-while loop
 
