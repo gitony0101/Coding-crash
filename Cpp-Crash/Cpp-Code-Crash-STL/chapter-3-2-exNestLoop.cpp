@@ -7,6 +7,7 @@ using namespace std;
 /*
 三门课平均分 嵌套循环
 升级版九九乘法表
+打印矩形
 */
 
 void exAverageGrade() { //三门课求平均分 使用for 嵌套do-while 循环
@@ -26,6 +27,26 @@ void exAverageGrade() { //三门课求平均分 使用for 嵌套do-while 循环
 }
 
 void multiplicationTable01() { // 升级版九九乘法表
+  int a, b;
+  do {
+    printf("请输入第一个整数（0-50）:\n");
+    cin >> a;
+    printf("请输入第二个整数（0-50）:\n");
+    cin >> b;
+  } while (a >= 50 || a <= 0 || b >= 50 || b <= 0);
+  printf("%d x %d 乘法表：\n", a, b);
+  for (int i = 1; i <= a; i++) {
+    for (int j = 1; j <= b; j++)
+      printf("%d * %d = %d\n", i, j, i * j);
+  }
+  cout << endl;
+  printf("乘法表结束\n");
 }
 
-int main() { exAverageGrade(); }
+void printRectangle() { //
+}
+
+int main() {
+  //   exAverageGrade();
+  multiplicationTable01();
+}

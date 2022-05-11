@@ -217,33 +217,6 @@ if(condition){
 - 嵌套循环
   - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
 
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-  // Make a Multiplication Table
-  // Double Loop?
-  int a, b;
-  do {
-    cout << "Enter the first integer (0-50) :" << endl;
-    cin >> a;net
-    cout << "Enter the second integer (0-50) :" << endl;
-    cin >> b;
-  } while (a >= 50 || a <= 0 || b >= 50 || b <= 0);
-
-  cout << "Multiplaction Table for " << a << " * " << b << ":" << endl;
-
-  for (int i = 1; i <= a; i++) {
-    for (int j = 1; j <= b; j++) {
-      cout << i << " * " << j << " = " << i * j << endl;
-    }
-    cout << endl;
-  }
-  cout << "END of Multiplaction Table for " << a << " * " << b << endl;
-}
-```
-
 ### Nest Loop Rectangle shape (still double loop)
 
 Standard library header <iomanip>
