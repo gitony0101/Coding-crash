@@ -217,7 +217,7 @@ if(condition){
 - 嵌套循环
   - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
 
-# Chapter 5 Functions
+# Chapter 4 函数
 
 ## Function Introduction
 
