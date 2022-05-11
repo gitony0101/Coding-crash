@@ -214,53 +214,10 @@ if(condition){
 - do-while 循环
   - `do { // code block to be executed } while (condition);`
     - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while
+- 嵌套循环
+  - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
 
-### 嵌套循环
-
-Why nest loop?
-
-- 3 courses, each grade ranges from 1 to 5.
-
-```
-#include <iostream>
-using namespace std;
-
-int main() {
-  // nest for loop with do-while loop
-  // Sum up the grades and ger the average grade
-  int grade, sum = 0; // initialize the grade and sum as 0, if sum is not
-                      // initialized, there will be an error.
-  for (int i = 0; i < 3; i++) {
-    // for loop from 1 to 3 ,increment i by 1
-    do { // dowhile loop
-      cout << "Enter grade (1-5): " << endl;
-      cin >> grade;
-    } while (grade < 1 || grade > 5); // tricky part here
-    sum += grade;
-  }
-  cout << "The sum of the grade is :" << sum << endl;
-  cout << "The average of the grade is :" << float(sum) / 3.0 << endl;
-}
-```
-
-Here we need to know why the code is : **while (grade < 1 || grade > 5)**
-
-1. Here is the loop from 1 to 3, you just have 3 times for storing the grade.
-2. If the grade is out of range, the code should not store the grade and ask the user to enter the grade again,so the range is grade < 1 OR grade > 5
-
-### Nest loop: Multiplication table
-
-<div align = "center">
-<div style="width:500px">
-
-![img](./img/MultiplyTable.jpg)
-
-</div>
-</div>
-
-There is a normal version, now we can use do-while loop to make it more flexible.
-
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -270,7 +227,7 @@ int main() {
   int a, b;
   do {
     cout << "Enter the first integer (0-50) :" << endl;
-    cin >> a;
+    cin >> a;net
     cout << "Enter the second integer (0-50) :" << endl;
     cin >> b;
   } while (a >= 50 || a <= 0 || b >= 50 || b <= 0);
@@ -294,9 +251,8 @@ Standard library header <iomanip>
 - `iomanip` is a library for input and output manipulation.
 - setw()
 
-```
-#include <iomanip>
-#include <iostream> // import iomanip to use setw()
+```cpp
+
 
 using namespace std;
 
@@ -545,11 +501,11 @@ int main() {
 
 ```
 
-### Functions Overloading
+### 函数重载
 
 **Function overloading** is a feature of object oriented programming where two or more functions can have the same name but different parameters.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -579,7 +535,7 @@ A function that calls itself is known as a recursive function. And, this techniq
 
 Sum of the numebrs between m to n.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
