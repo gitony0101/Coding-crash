@@ -8,6 +8,7 @@ using namespace std;
 三门课平均分 嵌套循环
 升级版九九乘法表
 打印矩形
+打印三角形
 */
 
 void exAverageGrade() { //三门课求平均分 使用for 嵌套do-while 循环
@@ -43,10 +44,50 @@ void multiplicationTable01() { // 升级版九九乘法表
   printf("乘法表结束\n");
 }
 
-void printRectangle() { //
+void printRectangle() { //打印矩形，使用iomanip库
+  int height, width;
+  char symbol;
+  printf("Enter the height:\n");
+  cin >> height;
+  printf("Enter the width:\n");
+  cin >> width;
+  printf("Enter the symbol:\n");
+  cin >> symbol;
+  for (int h = 0; h < height; h++) {
+    for (int w = 0; w < width; w++)
+      cout << setw(3) << symbol; // 怎么能用上printf呢
+    cout << endl;
+  }
+}
+
+void printTriangle() {
+  // make isolexic triangles
+  // set parameters.
+  int length;
+  printf("Enter the length of the triangle: \n");
+  cin >> length;
+  char symbol;
+  printf("Enter the symbol to use: \n");
+  cin >> symbol;
+  for (int i = 1; i <= length; i++) {
+    for (int j = 1; j <= i; j++) {
+      cout << setw(2) << symbol;
+    }
+    cout << endl;
+  }
+  cout << endl << endl;
+  // make the upper triangle
+  for (int i = length; i >= 1; i--) {
+    for (int j = 1; j <= i; j++) {
+      cout << setw(2) << symbol;
+    }
+    cout << endl;
+  }
 }
 
 int main() {
   //   exAverageGrade();
-  multiplicationTable01();
+  //   multiplicationTable01();
+  //   printRectangle();
+  printTriangle();
 }
