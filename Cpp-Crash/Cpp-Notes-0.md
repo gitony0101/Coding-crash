@@ -199,7 +199,7 @@ if(condition){
 
 对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了：提供了一条便捷路径，让我们在固定选项中做出选择。
 
-请参考附属代码`chapter-2-2-exSwitchCase.cpp`
+请参考附属代码`chapter-3-1-exSwitchCase.cpp`
 
 ## 迭代语句——iteration——循环
 
