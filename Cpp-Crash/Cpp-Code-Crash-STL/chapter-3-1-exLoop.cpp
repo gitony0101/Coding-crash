@@ -10,6 +10,7 @@ using namespace std;
 数字反转 while
 酒店保险箱 do while
 模拟ATM机 do while + switch case
+
 */
 
 void exFactorial() { //求整数的阶乘
