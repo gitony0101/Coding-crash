@@ -213,51 +213,10 @@ if(condition){
   - `while (condition) { statements; }`
 - do-while 循环
   - `do { // code block to be executed } while (condition);`
-    - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while condition
+    - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while
 
-#### Factorial
+### 嵌套循环
 
-```cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-  // The factorial of a number:
-  // The product of all the integers from 1 to the number.
-  // The number must be natural number。
-  int number;
-  cout << "Please enter a number, I will show the factorial of it : " << endl;
-  cin >> number;
-
-  int factorial = 1; // initialize the factorial number with 1
-
-  // Also we can do it this way: 6! = 6*5*4*3*2*1 = 720
-  for (int i = number; i >= 1; i--) {
-    factorial = factorial * i;
-  }
-
-  //   for (int i = 1; i <= number; i++) {
-  //     factorial = factorial * i;
-  //     // here the product : 1 * 2 * 3 * ...* number
-  //     // also this explains why 0! = 1
-  //   }
-  cout << number << "! = " << factorial << endl;
-}
-```
-
-It works,however, we still encounter the issue of datatype:
-
-Please enter a number, I will show the factorial of it :
-18
-18! = -898433024
-
-## Nest Loops
-
-Now we will nest for loop with do-while loop.
-
-### Nested For Loop with do-while loop, sum grade
-
-Here we would like to sum up the 3 courses grades of a student, and get the average grade.
 Why nest loop?
 
 - 3 courses, each grade ranges from 1 to 5.

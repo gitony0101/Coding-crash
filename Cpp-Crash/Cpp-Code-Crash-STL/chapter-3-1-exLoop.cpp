@@ -4,13 +4,24 @@
 using namespace std;
 
 /*
+阶乘 for
 500以内被3 和5 整除 while
 统计数字的位数 while
 数字反转 while
 酒店保险箱 do while
 模拟ATM机 do while + switch case
-
 */
+
+void exFactorial() { //求整数的阶乘
+  int number, factorial = 1;
+  printf("Please enter an integer:\n");
+  cin >> number;
+  //递减for循环
+  for (int i = number; i >= 1; i--) {
+    factorial *= i;
+  }
+  printf("The factorial of %d is %d\n", number, factorial);
+}
 
 void exDivisible3and5() {
   // Write out all the numbers between 100-500 that are divisible by 3 and 5
@@ -106,11 +117,12 @@ void simATM() { // do while 循环模拟ATM机
 }
 
 int main() {
+  // exFactorial();
   // exDivisible3and5();
   // numDigitsCounter();
   // exReverseNumbers01();
   // hotelSafeLocker();
-  simATM();
+  // simATM();
 }
 
 // Notes:
