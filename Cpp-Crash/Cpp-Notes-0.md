@@ -26,8 +26,6 @@ C++中常见的数据类型.
 
 操作系统会根据变量的数据类型，来分配内存和决定在保留内存中存储什么，比如字符型、宽字符型、整型、浮点型、双浮点型、布尔型等
 
-![img](img/datatyes.png)
-
 |        类型        | 位（字节数）  |                                范围                                 |
 | :----------------: | :-----------: | :-----------------------------------------------------------------: |
 |        bool        |       1       |                               0 和 1                                |
@@ -50,7 +48,7 @@ C++中常见的数据类型.
 
 注意，各种类型的存储大小与系统位数有关，但目前通用的以 64 位系统为主。
 
-### 计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
+#### 注意：计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
 
 like:
 The value of intMax is 2147483647
@@ -97,13 +95,7 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 
 [关于输出函数详解](http://c.biancheng.net/cpp/html/33.html)
 
-# Chapter 2 语句
-
-## If-else 条件语句
-
-codes: ex,BMI,Integer,Lunar year
-
-## 操作符
+# Chapter 2 操作符
 
 主要用六种运算符
 
@@ -137,6 +129,12 @@ codes: ex,BMI,Integer,Lunar year
 `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
 
 - 自增减运算符： `++ --`
+
+# Chapter 3 语句
+
+## If-else 条件语句
+
+codes: ex,BMI,Integer,Lunar year
 
 ## 判断语句
 
@@ -216,6 +214,13 @@ if(condition){
     - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while
 - 嵌套循环
   - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
+
+## 跳转语句
+
+- `break`
+- `continue`
+- `goto`
+- `return`
 
 # Chapter 4 函数
 
@@ -410,7 +415,7 @@ int main() {
 
 **Function overloading** is a feature of object oriented programming where two or more functions can have the same name but different parameters.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -440,7 +445,7 @@ A function that calls itself is known as a recursive function. And, this techniq
 
 Sum of the numebrs between m to n.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -815,7 +820,7 @@ cyt_1.Practice("Amy", "pizza");
 
 }
 
-```markdown
+```
 Using inheritance, we have to write the functions only one time instead of three times as we have inherited rest of the three classes from base class.
 
 Implementing inheritance in C++: For creating a sub-class which is inherited from the base class we have to follow the below syntax.
@@ -826,7 +831,7 @@ class subclass_name : access_mode base_class_name
 // body of subclass
 };
 
-```markdown
+```
 Here,**subclass_name** is the name of the sub class, access_mode is the mode in which you want to inherit this sub class for example: **public, private ,protected**. and **base_class_name** is the name of the base class from which you want to inherit the sub class.
 
 Note: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
@@ -1323,7 +1328,7 @@ delete[] myArray;
 myArray = NULL;
 }
 
-```markdown
+```
 ## Multi-Dimensional Dynamic Arrays
 
 <div align = "center">
@@ -1345,7 +1350,7 @@ using namespace std;
 
 // new delete
 
-```c++
+```
 int main() {
   int rows, cols;
   printf("Please enter the number of rows");
@@ -1354,7 +1359,7 @@ int main() {
   cin >> cols;
 ```
 
-```c++
+```
   int **table =
       new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
   for (int i = 0; i < rows; i++) {
@@ -1368,4 +1373,5 @@ int main() {
   //     table = NULL;
 }
 ```
-````
+
+```
