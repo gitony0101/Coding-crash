@@ -54,6 +54,16 @@ like:
 The value of intMax is 2147483647
 The value of intMax + 1 is -2147483648
 
+## 带符号类型和无符号类型
+
+有符号（signed）也就是该整型可以表示正数也可以表示负数，而无符号（unsigned）则表示该整数只能表示正数，不能表示负数。
+
+- signed 存储符号是有代价的，代价就是存储空间中的一个比特位专门用来存储符号，这一位不能表示数值。
+
+- 一般来说，同类型的 signed 能够存储的数的绝对值大小要小于 unsigned。
+
+- 在我们定义变量时，如果没有显式声明是 signed 还是 unsigned，那么默认就是 signed。
+
 ## 数据类型的重要性
 
 数据类型对程序非常重要，如果使用了错误的类型，程序可能会出错，或者程序可能会出现不可预料的结果。
@@ -224,7 +234,18 @@ if(condition){
 
 # Chapter 4 函数
 
-## Intro
+## 基础
+
+函数是一个命名了的代码块，通过调用函数执行相应的代码。典型的函数包括：
+
+- 返回类型 `return type`
+- 函数名 `function name`
+- 参数列表 `(parameter list)`
+  - 实参 `actual parameter` ：型参的初始值，默认值，类型必须匹配
+  - 型参 `type parameter`：不能同名
+- 函数体 `{ code block }`
+
+## 参数传递
 
 ### void main 和 int main
 
@@ -250,7 +271,7 @@ We can see that there is only one code shows `Hello World from main.`
 
 If we want to call the `myFunction` we need to call it in main:
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -270,7 +291,7 @@ I like this function.
 
 As for there are lots of functions in the project, we can use decoration function at first to name all the functions which make the code more readable:
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
