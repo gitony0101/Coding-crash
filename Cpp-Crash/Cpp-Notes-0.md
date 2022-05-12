@@ -224,9 +224,9 @@ if(condition){
 
 # Chapter 4 函数
 
-## Function Introduction
+## Intro
 
-### Difference between void main and int main
+### void main 和 int main
 
 The main() function takes arguments, and returns some value like other functions.
 
@@ -236,7 +236,7 @@ The void main() indicates that the main() function will NOT return any value, bu
 
 Try this code to find which function will show the result.
 
-```
+```cpp
 //Version 1
 #include <iostream>
 using namespace std;
