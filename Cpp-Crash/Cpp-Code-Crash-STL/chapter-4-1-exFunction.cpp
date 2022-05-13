@@ -6,6 +6,6 @@ using namespace std;
 
 */
 
-void myFunc() {}
+void introducing(string name, int age, string city = 'NJ') {}
 
 int main() {}
