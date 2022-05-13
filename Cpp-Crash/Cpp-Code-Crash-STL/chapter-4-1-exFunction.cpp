@@ -6,6 +6,7 @@ using namespace std;
 /*
 不要直接用 "function" 作为函数名字，真土
 自我介绍，参数传递
+检验质数
 */
 // 自我介绍，两个函数
 void introducing(string name, int age, string city = "NJ") {
@@ -34,8 +35,39 @@ bool isPrimeNumber(int number) {
   return isPrimeFlag;
 }
 
-int main() {
-  introducing("Tony", 8);
+void printIsPrimeNum() {
+  int number;
+  printf("Please eneter a number:\n");
+  cin >> number;
+  if (isPrimeNumber(number)) {
+    printf("The number %d is a prime number.\n", number);
 
-  printIntro();
+  } else {
+    printf("The number %d is not a prime number.\n", number);
+  }
 }
+
+int main() {
+  //   introducing("Tony", 8);
+  //   printIntro();
+  printIsPrimeNum();
+}
+
+// prime：
+/*
+  int number;
+  cout << " Please enter a number : ";
+  cin >> number;
+
+  // key loop here:
+  // bool isPrimeFlag = true; // Presumption of prime number(true)
+
+  for (int i = 2; i < number; i++) {
+    if (number % i == 0) {
+      cout << "The number is NOT a prime number" << endl;
+      break;
+
+    } else {
+      cout << "The number is a prime number" << endl;
+      break;
+    }*/
