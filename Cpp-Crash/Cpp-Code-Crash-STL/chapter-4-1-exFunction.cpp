@@ -2,12 +2,11 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 /*
-不要直接用 "function" 作为函数名字，真土
 自我介绍，参数传递
 检验质数
 */
+//不要直接用 "function" 作为函数名字，真土
 // 自我介绍，两个函数
 void introducing(string name, int age, string city = "NJ") {
   printf("Hello, My name is %s,I'm %d years old, I'm from %s.\n", name.c_str(),
@@ -46,6 +45,7 @@ void printIsPrimeNum() {
     printf("The number %d is not a prime number.\n", number);
   }
 }
+//
 
 int main() {
   //   introducing("Tony", 8);
