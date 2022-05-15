@@ -1,12 +1,22 @@
----
-title: Linux 第一课 - Shell
-zhihu-url: https://zhuanlan.zhihu.com/p/461544335
-zhihu-tags: Shell 编程开发, Linux
----
-
-# 变量
+# Part 1 [变量](https://zhuanlan.zhihu.com/p/461544335)
 
 ## 1. 基本概念
+
+![img](shell-1.png)
+
+- Kernel
+  - Linux 内核主要是为了和硬件打交道
+- Shell
+  - 命令解释器(command interpreter)
+  - Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。Shel‖既是一种命令语言，又是一种程序设计语言。
+  - Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。
+- shell 两大主流：
+  - sh:(基本上都这个)
+    - Bourne shell(sh),Solaris,hpux 默认 shell
+    - Bourne again shell(bash),**Linux 系统默认 shell**。写脚本尽量声明成 bash。
+  - csh:
+    - C shell(csh)
+    - tc shell(tcsh)
 
 ### 1.1. 注释
 
@@ -57,6 +67,8 @@ echo $name
 # 推荐使用大括号版
 echo ${name}
 ```
+
+### 变量的作用域
 
 ## 2. 字符串
 
@@ -248,4 +260,116 @@ printf "%-10s %-8s %-4.2f\n"
 i=$(ls 123.txt)
 # ls命令如果出现了错误提示，就会被重定向到/dev/null垃圾桶
 i=$(ls 123.txt 2> /dev/null)
+```
+
+# Part 2 [控制流与函数](https://zhuanlan.zhihu.com/p/462831975)
+
+## 1. 条件
+
+### 1.1. if...else...
+
+```bash
+if condition1
+then
+    exec1
+elif condition2
+then
+    exec2
+else
+    execn
+fi
+```
+
+## 2. case...in...
+
+```bash
+case $name in
+    a)  echo 'do a'
+    ;;
+    b)  echo 'do b'
+    ;;
+    *)  echo "don\'t do a nor b"
+    ;;
+esac
+```
+
+## 3. 循环
+
+### 3.1. for...in...
+
+```bash
+for num in 1 2 3 4 5
+do
+  echo "The value is: $num"
+done
+```
+
+```bash
+for ((i=0; i<3; i++)); do
+    touch test_${i}.txt
+    echo "shell is easy" >> test_${i}.txt
+done
+```
+
+### 3.2. while
+
+```bash
+while condition
+do
+  exec
+done
+```
+
+## 4. 函数
+
+### 4.1. 定义
+
+```bash
+# Single function
+my_func() {
+  action;
+
+  [return int;]
+}
+
+# Part of a package
+mypackage::my_func() {
+  action;
+
+  [return int;]
+}
+```
+
+### 4.2. 参数
+
+- 获取参数值：
+  - $0： 固定，代表执行的文件名
+  - $1 ： 代表传入的第 1 个参数
+  - $n ： 代表传入的第 n 个参数
+  - \$#：参数个数
+  - \$\*： 以一个单字符串显示所有向脚本传递的参数。
+  - \$@：与$\*相同，但是使用时加引号，并在引号中返回每个参数。
+  - \$\$：脚本运行的当前进程号
+  - \$：后台运行的最后一个进程的 ID
+  - \$?： 显示最后命令的退出状态。0 表示没有错误，其他任何值表明有错误。
+
+## 5. 文件与路径
+
+```bash
+if [-f /var/test.log]
+then
+  echo "File exts"
+fi
+```
+
+## 6. 网络
+
+- Install
+
+```bash
+curl -fsSL https://xxx/install.sh | sh
+```
+
+```powershell
+iwr -useb https://xxx/install.ps1 | iex
 ```
