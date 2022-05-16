@@ -77,7 +77,30 @@ The value of intMax + 1 is -2147483648
 
 ## 复合类型 指针 引用
 
-指针\*是地址，引用&是别名
+**指针\*是地址，引用&是别名**
+
+- ··
+
+### 引用 reference
+
+引用为对象起了另外一个名字。
+
+- 引用必须初始化
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+int val = 1024;
+int &refVal = val;
+printf("The value of refVal is %d\n", refVal);
+printf("%p\n",&val);
+printf("%p\n",&refVal);
+
+}
+```
+
+### 指针 pointer
 
 ## 变量
 
