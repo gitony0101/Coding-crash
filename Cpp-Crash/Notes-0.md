@@ -1362,7 +1362,7 @@ int main() {
   cin >> cols;
 ```
 
-```c++
+```cpp
   int **table =
       new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
   for (int i = 0; i < rows; i++) {
@@ -1382,4 +1382,8 @@ int main() {
 
 # 收集
 
-## 头文件 和 Cpp 文件
+## #include<> 和 include"" 区别
+
+- 使用#include<> 程序会直接到标准函数库中找文件
+
+- 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
