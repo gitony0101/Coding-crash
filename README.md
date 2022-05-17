@@ -8,6 +8,8 @@
 
 [Introduction to Data Structures and Algorithms with C++](https://courses.engr.illinois.edu/cs225/sp2022/)
 
+[tutorial](https://github.com/pkgamma/cs225-final-review)
+
 ## Python Notes
 
 [Py-Crash](https://ehmatthes.github.io/pcc_2e/regular_index/)

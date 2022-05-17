@@ -835,6 +835,8 @@ Object-oriented programming has several advantages over procedural programming:
 
 类像一个容器，装载着变量和方法，所以定义一个类，就是在定义变量和方法。
 
+`.h` 文件用于函数和变量的声明，而 `.cpp` 文件则用于定义。
+
 Classes and objects are the two main aspects of object-oriented programming.
 
 <div align = "center">
