@@ -102,6 +102,273 @@ printf("%p\n",&refVal);
 
 ### 指针 pointer
 
+# Chapter 8 Pointers
+
+Variable contains certain value,while Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
+
+// General syntax
+datatype \*var_name;
+
+// An example pointer "ptr" that holds
+// address of an integer variable or holds
+// address of a memory whose value(s) can
+// be accessed as integer values through "ptr"
+int \*ptr;
+
+## Some concepts of pointers
+
+### Memory Address
+
+### Pointer Expressions and Pointer Arithmetic
+
+A limited set of arithmetic operations can be performed on pointers. A pointer may be:
+
+- incremented ( ++ )
+- decremented ( -\- )
+- an integer may be added to a pointer ( + or += )
+- an integer may be subtracted from a pointer ( – or -= )
+
+Pointer arithmetic is meaningless **unless performed on an array.**
+
+Note : Pointers contain addresses.
+
+Adding two addresses makes no sense, because there is no idea what it would point to. Subtracting two addresses lets you compute the offset between these two addresses.
+
+## Void pointers
+
+How void pointer are used.
+
+- `int` is not a function, it is a data type,a declaration.
+
+```
+
+#include <iostream>
+using namespace std;
+
+void print(void _ptr, char type) {
+switch (type) {
+case 'i':
+printf("The value is :%d\n", _(int _)ptr);
+break;
+case 'c': // c for char
+printf("The letter is : %c\n", _(char \*)ptr);
+}
+}
+
+// try
+int main() {
+int number = 5;
+char letter = 'a';
+print(&number, 'i');
+print(&letter, 'c');
+}
+
+```
+
+## Pointers and arrays
+
+```
+
+#include <iostream>
+using namespace std;
+
+int luckyNumbers[5] = {2, 3, 4, 5, 6};
+
+int main() {
+printf("%p\n", luckyNumbers); // cout << luckyNumbers << endl; memory addres
+// of luckyNumbers
+printf("'&luckynumbers[0]': %p\n",
+&luckyNumbers[0]); // memory address of luckyNumbers[0]
+printf("'&luckynumbers[1]': %p\n",
+&luckyNumbers[1]); // memory address of luckyNumbers[1]
+printf("'luckynumbers[2]': %d\n", luckyNumbers[2]); // deferencing
+printf("'*(luckynumbers)': %d\n", *luckyNumbers); // deferencing
+printf("'_(luckynumbers+2)': %d\n",
+_(luckyNumbers +
+2)); // equivalent to luckyNumbers[2], which is
+// accessing the 3rd element of the array,deferencing.
+
+int numslist[5];
+for (int i = 0; i <= 4; i++) {
+printf("Please enter a number(5 in total) :");
+cin >> numslist[i];
+}
+for (int i = 0; i <= 4; i++) {
+printf("The number array is: %d\n", _(numslist + i)); // _ get the value
+// of the array
+}
+}
+
+```
+
+## Use pointers to return multiple values of a function
+
+Use pointers to return min and max value of array.
+
+```
+
+#include <iostream>
+using namespace std;
+// int getMin(int numbers[], int size) {
+// int min = numbers[0];
+// for (int i = 1; i < size; i++) {
+// if (numbers[i] < min)
+// min = numbers[i];
+// }
+// return min;
+// }
+
+// int getMax(int numbers[], int size) {
+// int max = numbers[0];
+// for (int i = 1; i < size; i++) {
+// if (numbers[i] > max)
+// max = numbers[i];
+// }
+// return max;
+// }
+//
+
+void getMinandMax(int numbers[], int size, int *min, int *max) {
+for (int i = 1; i <= size; i++) {
+if (numbers[i] > *max)
+*max = numbers[i];
+if (numbers[i] < *min)
+*min = numbers[i];
+}
+}
+
+int main() {
+
+int numArr[5] = {1, 3, -4, 5, 7};
+int max = numArr[0];
+int min = numArr[0];
+
+// if I use _min, _ max:
+// // Indirection requires pointer operand ('int' invalid)
+// if I use min ,max directly:
+// No matching function for call to 'getMinandMax' (fix available)
+getMinandMax(numArr, 5, &min, &max); // reference
+
+printf("The min number is: %d\n", min);
+printf("The max numbers is: %d\n",
+max); // passing parameter using reference: pass an address of the
+// variale to the function rahter than passing the variable
+// itself, which can sync with the changing of function.
+}
+
+```
+
+There are 2 things we need to make clear:
+
+- `void getMinandMax(int numbers[], int size, int *min, int *max)` where we need to use parameter *min, *max pointers.
+- When to use the function `getMinandMax(numArr, 5, &min, &max)`, passing parameter **using reference**: pass an address of the variale to the function rahter than passing the variable itself, which can **sync with the changing of function**, this is where you need to know the relationship between address and variable.
+
+## Dynamic Arrays
+
+Arrys is a type of collection which stores elements is contiguous memory locations, which stored one after the other.
+
+if I definite a fuction:
+
+```
+
+int myArray[5];
+
+```
+
+It means I created a container of 5 locations which can store elements.
+
+**Dynamic arrays** are arrays with **dynamic storage duration**. You create dynamic arrays with array new expressions. Array new expressions have the following form:
+
+```
+
+new MyType[n_elements] { init-list }
+
+```
+
+### `new` and `delete` ?
+
+- new : allocate memory for us when we need it.
+- delete : deallocate memory for us when we do not need it.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+int size;
+printf("Please enter the size of the Array:");
+cin >> size;
+// int myArray[size]
+int \*myArray = new int[size];
+for (int i = 0; i < size; i++) {
+printf("Array %d\n", i);
+cin >> myArray[i];
+}
+printf("This is your array with %d elements by the dereferencing method "
+"'myArray[i]':\n",
+size);
+for (int i = 0; i < size; i++) {
+
+    printf("%d\n", myArray[i]);
+
+}
+printf("This is your array with %d elements by the dereferencing method "
+"'\*(myArray + i)':\n",
+size);
+for (int i = 0; i < size; i++) {
+
+    printf("%d\n", *(myArray + i));
+
+}
+delete[] myArray;
+myArray = NULL;
+}
+
+```markdown
+## Multi-Dimensional Dynamic Arrays
+
+<div align = "center">
+<div style="width:600px">
+
+![img](./img/Multi-Dimensional-Dynamic-Arrays.jpg)
+
+table and its' arrays
+
+</div>
+</div>
+
+### \*\* - Pointer to Pointer
+```
+
+#include <cstdio>
+#include <iostream>
+using namespace std;
+
+// new delete
+
+```c++
+int main() {
+  int rows, cols;
+  printf("Please enter the number of rows");
+  cin >> rows;
+  printf("Please enter the number of columns");
+  cin >> cols;
+```
+
+```cpp
+  int **table =
+      new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
+  for (int i = 0; i < rows; i++) {
+    table[i] = new int[cols];
+  }
+  table[1][2] = 88; // row 00000BB the 3rd(loacation 2) element is 88
+  //   cout << **table << endl;
+  // delete the table:
+  //   for (int i = 0; i < rows; i++) {
+  //     delete[] table[i];
+  //     table = NULL;
+}
+```
+
 ## 变量
 
 变量就是存储整型、浮点、双精度、字符串、布尔值、指针、数组等数据的有上限的容器。
@@ -564,7 +831,9 @@ Object-oriented programming has several advantages over procedural programming:
 - OOP helps to keep the C++ code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
 - OOP makes it possible to create full reusable applications with less code and shorter development time
 
-## Class and Objects
+## 类和对象
+
+类像一个容器，装载着变量和方法，所以定义一个类，就是在定义变量和方法。
 
 Classes and objects are the two main aspects of object-oriented programming.
 
@@ -1129,281 +1398,6 @@ sytch_1.CheckAnalytics();
 
 ```
 
-# Chapter 8 Pointers
-
-Variable contains certain value,while Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
-
-```
-
-// General syntax
-datatype \*var_name;
-
-// An example pointer "ptr" that holds
-// address of an integer variable or holds
-// address of a memory whose value(s) can
-// be accessed as integer values through "ptr"
-int \*ptr;
-
-```
-
-## Some concepts of pointers
-
-### Memory Address
-
-### Pointer Expressions and Pointer Arithmetic
-
-A limited set of arithmetic operations can be performed on pointers. A pointer may be:
-
-- incremented ( ++ )
-- decremented ( -\- )
-- an integer may be added to a pointer ( + or += )
-- an integer may be subtracted from a pointer ( – or -= )
-
-Pointer arithmetic is meaningless **unless performed on an array.**
-
-Note : Pointers contain addresses.
-
-Adding two addresses makes no sense, because there is no idea what it would point to. Subtracting two addresses lets you compute the offset between these two addresses.
-
-## Void pointers
-
-How void pointer are used.
-
-- `int` is not a function, it is a data type,a declaration.
-
-```
-
-#include <iostream>
-using namespace std;
-
-void print(void _ptr, char type) {
-switch (type) {
-case 'i':
-printf("The value is :%d\n", _(int _)ptr);
-break;
-case 'c': // c for char
-printf("The letter is : %c\n", _(char \*)ptr);
-}
-}
-
-// try
-int main() {
-int number = 5;
-char letter = 'a';
-print(&number, 'i');
-print(&letter, 'c');
-}
-
-```
-
-## Pointers and arrays
-
-```
-
-#include <iostream>
-using namespace std;
-
-int luckyNumbers[5] = {2, 3, 4, 5, 6};
-
-int main() {
-printf("%p\n", luckyNumbers); // cout << luckyNumbers << endl; memory addres
-// of luckyNumbers
-printf("'&luckynumbers[0]': %p\n",
-&luckyNumbers[0]); // memory address of luckyNumbers[0]
-printf("'&luckynumbers[1]': %p\n",
-&luckyNumbers[1]); // memory address of luckyNumbers[1]
-printf("'luckynumbers[2]': %d\n", luckyNumbers[2]); // deferencing
-printf("'*(luckynumbers)': %d\n", *luckyNumbers); // deferencing
-printf("'_(luckynumbers+2)': %d\n",
-_(luckyNumbers +
-2)); // equivalent to luckyNumbers[2], which is
-// accessing the 3rd element of the array,deferencing.
-
-int numslist[5];
-for (int i = 0; i <= 4; i++) {
-printf("Please enter a number(5 in total) :");
-cin >> numslist[i];
-}
-for (int i = 0; i <= 4; i++) {
-printf("The number array is: %d\n", _(numslist + i)); // _ get the value
-// of the array
-}
-}
-
-```
-
-## Use pointers to return multiple values of a function
-
-Use pointers to return min and max value of array.
-
-```
-
-#include <iostream>
-using namespace std;
-// int getMin(int numbers[], int size) {
-// int min = numbers[0];
-// for (int i = 1; i < size; i++) {
-// if (numbers[i] < min)
-// min = numbers[i];
-// }
-// return min;
-// }
-
-// int getMax(int numbers[], int size) {
-// int max = numbers[0];
-// for (int i = 1; i < size; i++) {
-// if (numbers[i] > max)
-// max = numbers[i];
-// }
-// return max;
-// }
-//
-
-void getMinandMax(int numbers[], int size, int *min, int *max) {
-for (int i = 1; i <= size; i++) {
-if (numbers[i] > *max)
-*max = numbers[i];
-if (numbers[i] < *min)
-*min = numbers[i];
-}
-}
-
-int main() {
-
-int numArr[5] = {1, 3, -4, 5, 7};
-int max = numArr[0];
-int min = numArr[0];
-
-// if I use _min, _ max:
-// // Indirection requires pointer operand ('int' invalid)
-// if I use min ,max directly:
-// No matching function for call to 'getMinandMax' (fix available)
-getMinandMax(numArr, 5, &min, &max); // reference
-
-printf("The min number is: %d\n", min);
-printf("The max numbers is: %d\n",
-max); // passing parameter using reference: pass an address of the
-// variale to the function rahter than passing the variable
-// itself, which can sync with the changing of function.
-}
-
-```
-
-There are 2 things we need to make clear:
-
-- `void getMinandMax(int numbers[], int size, int *min, int *max)` where we need to use parameter *min, *max pointers.
-- When to use the function `getMinandMax(numArr, 5, &min, &max)`, passing parameter **using reference**: pass an address of the variale to the function rahter than passing the variable itself, which can **sync with the changing of function**, this is where you need to know the relationship between address and variable.
-
-## Dynamic Arrays
-
-Arrys is a type of collection which stores elements is contiguous memory locations, which stored one after the other.
-
-if I definite a fuction:
-
-```
-
-int myArray[5];
-
-```
-
-It means I created a container of 5 locations which can store elements.
-
-**Dynamic arrays** are arrays with **dynamic storage duration**. You create dynamic arrays with array new expressions. Array new expressions have the following form:
-
-```
-
-new MyType[n_elements] { init-list }
-
-```
-
-### `new` and `delete` ?
-
-- new : allocate memory for us when we need it.
-- delete : deallocate memory for us when we do not need it.
-
-```
-
-#include <iostream>
-using namespace std;
-
-int main() {
-int size;
-printf("Please enter the size of the Array:");
-cin >> size;
-// int myArray[size]
-int \*myArray = new int[size];
-for (int i = 0; i < size; i++) {
-printf("Array %d\n", i);
-cin >> myArray[i];
-}
-printf("This is your array with %d elements by the dereferencing method "
-"'myArray[i]':\n",
-size);
-for (int i = 0; i < size; i++) {
-
-    printf("%d\n", myArray[i]);
-
-}
-printf("This is your array with %d elements by the dereferencing method "
-"'\*(myArray + i)':\n",
-size);
-for (int i = 0; i < size; i++) {
-
-    printf("%d\n", *(myArray + i));
-
-}
-delete[] myArray;
-myArray = NULL;
-}
-
-```markdown
-## Multi-Dimensional Dynamic Arrays
-
-<div align = "center">
-<div style="width:600px">
-
-![img](./img/Multi-Dimensional-Dynamic-Arrays.jpg)
-
-table and its' arrays
-
-</div>
-</div>
-
-### \*\* - Pointer to Pointer
-```
-
-#include <cstdio>
-#include <iostream>
-using namespace std;
-
-// new delete
-
-```c++
-int main() {
-  int rows, cols;
-  printf("Please enter the number of rows");
-  cin >> rows;
-  printf("Please enter the number of columns");
-  cin >> cols;
-```
-
-```cpp
-  int **table =
-      new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
-  for (int i = 0; i < rows; i++) {
-    table[i] = new int[cols];
-  }
-  table[1][2] = 88; // row 00000BB the 3rd(loacation 2) element is 88
-  //   cout << **table << endl;
-  // delete the table:
-  //   for (int i = 0; i < rows; i++) {
-  //     delete[] table[i];
-  //     table = NULL;
-}
-```
-
-
-````
 
 # 收集
 
@@ -1416,3 +1410,5 @@ int main() {
 - 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
 
 ## 封装 Encapsulation
+```
+````
