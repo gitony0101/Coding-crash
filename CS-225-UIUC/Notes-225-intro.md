@@ -11,3 +11,5 @@
 ## 构造函数 Constructor
 
 ## 命名空间 Namespace
+
+Just a note, the distinction between pre-processor and processor is important because the compiler pre-processes everything - here meaning inserting the right code from cube.h and cube.cpp - before the compilation & linking happens.
