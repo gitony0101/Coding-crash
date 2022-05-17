@@ -623,6 +623,8 @@ Note:
 
 ## Constructors and Class methods
 
+## 封装
+
 ### Constructor
 
 A constructor is **a special type of member function** of** a class which initializes objects of a class**. In C++, Constructor is automatically called when object(instance of class) is created. It is special member function of the class because it does NOT have any RETURN type.
@@ -1405,8 +1407,12 @@ int main() {
 
 # 收集
 
+## Namespaces 命名空间
+
 ## #include<> 和 include"" 区别
 
 - 使用#include<> 程序会直接到标准函数库中找文件
 
 - 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
+
+## 封装 Encapsulation
