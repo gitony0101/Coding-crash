@@ -11,7 +11,7 @@
   - W3C School
   - G4G
 
-# Chapter 1 简介 数据类型 变量
+# 数据类型 变量
 
 ## 介绍
 
@@ -102,7 +102,7 @@ printf("%p\n",&refVal);
 
 ### 指针 pointer
 
-# Chapter 8 Pointers
+# Pointers
 
 Variable contains certain value,while Pointers store address of variables or a memory location. (Pointes not only store value but also the address of the value.)
 
@@ -404,7 +404,7 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 
 [关于输出函数详解](http://c.biancheng.net/cpp/html/33.html)
 
-# Chapter 2 操作符
+# 操作符
 
 主要用六种运算符
 
@@ -439,7 +439,7 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 
 - 自增减运算符： `++ --`
 
-# Chapter 3 语句
+# 语句
 
 ## If-else 条件语句
 
@@ -531,7 +531,7 @@ if(condition){
 - `goto`
 - `return`
 
-# Chapter 4 函数
+# 函数
 
 ## 基础
 
@@ -779,7 +779,7 @@ int main() {
 
 As we see the code above there are always a base case to stop the recursion and a return statement to show us how it recurrs.
 
-# Chapter 6 Generic and Template
+# Generic and Template
 
 Philosophy of programming.
 
@@ -790,7 +790,7 @@ Generic programming is writing code once that works with different types rather 
 
 In this chapter we just introduce these concepts，since Generic and Template is more than this.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -815,10 +815,9 @@ int main() {
   Swap(c, d);
   cout << "Now, c = " << c << "and d = " << d << endl;
 }
-
 ```
 
-# Chapter 7 Object-Oriented Programming - OOP
+# Object-Oriented Programming - OOP
 
 **OOP** stands for **Object-Oriented Programming**.
 
@@ -913,7 +912,7 @@ Here is the example of constructor and class method
 - constructor to collect the information of the object-`YouTubeChannel`
 - calss method to print the information of the object- `getInfo()`
 
-```
+```cpp
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -974,7 +973,7 @@ That is:
 
 - **Features inside (private), Funcions outside(public), Encapuslate them ALL.**
 
-```
+```cpp
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
 // #include <string>
@@ -1045,8 +1044,7 @@ The capability of a class to derive properties and characteristics from another 
 Here we go on with our youtube channel and dive in a more specific area:
 Cooking channel, which shows us how inheritance works.
 
-````
-
+```cpp
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -1118,24 +1116,24 @@ cyt_1.getInfo();
 cyt_1.Practice("Amy", "pizza");
 
 }
+```
 
-```markdown
 Using inheritance, we have to write the functions only one time instead of three times as we have inherited rest of the three classes from base class.
 
 Implementing inheritance in C++: For creating a sub-class which is inherited from the base class we have to follow the below syntax.
-```
 
+```cpp
 class subclass_name : access_mode base_class_name
 {
 // body of subclass
 };
+```
 
-```markdown
 Here,**subclass_name** is the name of the sub class, access_mode is the mode in which you want to inherit this sub class for example: **public, private ,protected**. and **base_class_name** is the name of the base class from which you want to inherit the sub class.
 
 Note: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
-```
 
+```cpp
 // C++ program to demonstrate implementation
 // of Inheritance
 
@@ -1171,7 +1169,6 @@ Child obj1;
     return 0;
 
 }
-
 ```
 
 In the above program the ‘Child’ class is publicly inherited from the ‘Parent’ class so the public data members of the class ‘Parent’ will also be inherited by the class ‘Child’.
@@ -1185,21 +1182,15 @@ In the above program the ‘Child’ class is publicly inherited from the ‘Par
 #### Types of Inheritance
 
 - Single inheritance
-
 - Multi-level inheritance
-
 - Multiple inheritance
-
 - Hybrid inheritance
-
 - Hierarchical inheritance
-
 - Multipath inheritance
 
 Note: The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed. For example, Classes B, C and D all contain the variables x, y and z in below example. It is just question of access.
 
-```
-
+```cpp
 // C++ Implementation to show that a derived class
 // doesn’t inherit access to private data members.
 // However, it does inherit a full parent object.
@@ -1233,7 +1224,6 @@ class D : private A // 'private' is default for classes
 // y is private
 // z is not accessible from D
 };
-
 ```
 
 ## Polymorphism
@@ -1262,13 +1252,10 @@ In C++ polymorphism is mainly divided into two types:
 | Can be single, hybrid, multiple, hierarchical and multilevel inheritance                        | Can be compiled-time polymorphism (overload) as well as run-time polymorphism (overriding).                                         |
 | Used in pattern designing                                                                       | Used in pattern designing.                                                                                                          |
 
-</div>
-</div>
 
 Now we continue the youtube channel tutorial.
 
-```
-
+```cpp
 #include <iostream>
 #include <list>
 using namespace std;
@@ -1389,17 +1376,7 @@ sytch_1.Practice();
 sytch_1.Practice();
 sytch_1.CheckAnalytics();
 }
-
 ```
-
-```
-
-```
-
-```
-
-```
-
 
 # 收集
 
@@ -1412,5 +1389,3 @@ sytch_1.CheckAnalytics();
 - 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
 
 ## 封装 Encapsulation
-```
-````
