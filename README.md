@@ -1,4 +1,7 @@
-# Contents
+# Crash Courses
+
+![code size](https://img.shields.io/github/languages/code-size/gitony0101/coding-crash.svg)
+![repo size](https://img.shields.io/github/repo-size/gitony0101/coding-crash.svg)
 
 ## C++ Notes
 
