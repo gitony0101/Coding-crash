@@ -35,6 +35,10 @@
 
 - 自增减运算符： `++ --`
 
+## 运算符优先级总览
+
+[C++ 内置运算符、优先级和关联性](https://docs.microsoft.com/zh-cn/cpp/cpp/cpp-built-in-operators-precedence-and-associativity?view=msvc-170)
+
 # 语句
 
 ## If-else 条件语句
