@@ -3,12 +3,12 @@
 /*先创建这个头文件，定义参数变量，
 然后才是运行cpp同名文件实现功能*/
 class Cube {
-  //公共变量
+  //共有成员
 public:
   double getVolume();
   double getSurfaceArea();
   void setLength(double length);
-
+  //私有成员
 private:
   double length_;
 };
