@@ -1,4 +1,14 @@
+# C++ 编程笔记 03
+
 # 函数
+
+## Namespaces 命名空间
+
+## #include<> 和 include"" 区别
+
+- 使用#include<> 程序会直接到标准函数库中找文件
+
+- 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
 
 ## 基础
 
@@ -146,11 +156,3 @@ int main() {
 ```
 
 eusable applications with less code and shorter development time
-
-## Namespaces 命名空间
-
-## #include<> 和 include"" 区别
-
-- 使用#include<> 程序会直接到标准函数库中找文件
-
-- 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它

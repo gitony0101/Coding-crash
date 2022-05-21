@@ -1,3 +1,5 @@
+# C++ 编程笔记 04
+
 # 类和对象
 
 # Object-Oriented Programming - OOP
@@ -64,15 +66,6 @@ int main() {
     printf("%s\n", videoTitle.c_str());
   }
 ```
-
-## printf()
-
-- printf() is a function that prints the string to the screen.
-- printf Format Specifiers:The first argument to printf is always a format string. The format string provides a template for the string to be printed, and it contains any number of special format specifiers. Format specifiers tell printf how to interpret and format the arguments following the format string. All format specifiers begin with %.
-
-Note:
-
-`%d\n` is the format specifier for an integer, `\n` is `endl;`, DO NOT remember this, you can make it when coding.
 
 # Constructors and Class methods
 
