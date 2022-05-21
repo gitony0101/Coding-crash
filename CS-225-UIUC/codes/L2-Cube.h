@@ -5,7 +5,14 @@
 class Cube {
   //共有成员
 public:
+  /**
+   * Returns the volume of the cube.
+   *
+   * @return
+   *   Volume of the cube.
+   */
   double getVolume();
+
   double getSurfaceArea();
   void setLength(double length);
   //私有成员
