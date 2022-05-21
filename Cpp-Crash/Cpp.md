@@ -559,163 +559,25 @@ if(condition){
   - 型参 `type parameter`：不能同名
 - 函数体 `{ code block }`
 
+
+
+### void main 和 int main 的区别 就是有无返回值
+
+- void main 函数不需要返回值，返回值类型为 void
+- int main 函数需要返回值，返回值类型为 int
+
+
 ## 参数传递
 
-### void main 和 int main
+赋值参数的方式：
+1. function(type1 parameter1, type2 parameter2); 
+2. function(type1 parameter1 , type2 parameter2 = default value);
+   - 注意默认参数要放在定义参数的最后面
 
-The main() function takes arguments, and returns some value like other functions.
-
-- The program starts executing from this main() function, So the operating system calls this function. When some value is returned from main(), it is returned to operating system.
-
-The void main() indicates that the main() function will NOT return any value, but the int main() indicates that the main() can return integer type data.
-
-Try this code to find which function will show the result.
-
-```c++
-//Version 1
-#include <iostream>
-using namespace std;
-
-void myFunction() { cout << "Hello World from myFunction." << endl; }
-
-int main() { cout << "Hello World from main." << endl; }
-```
-
-We can see that there is only one code shows `Hello World from main.`
-
-If we want to call the `myFunction` we need to call it in main:
-
-```c++
-#include <iostream>
-using namespace std;
-
-void myFunction() { cout << "Hello World from function." << endl; }
-
-int main() {
-  myFunction();
-
-  cout << "Hello World from main." << endl;}
-```
-
-- Do not use the variable name as "`Function`" or "`main`" directly, the computer could not recognize them whether the build-in function or user-defined function.
-
-### Decoration function
-
-I like this function.
-
-As for there are lots of functions in the project, we can use decoration function at first to name all the functions which make the code more readable:
-
-```c++
-#include <iostream>
-using namespace std;
-
-void myFunction_1(), myFunction_2(), myFunction_3(), myFunction_4(); // Decoration function, these functions are defined below:
-
-int main() { // main function, call the functions
-  cout << "Hello World from main" << endl;
-  myFunction_1();
-  myFunction_2();
-  myFunction_3();
-  myFunction_4();
-  myFunction_4();// of course, we can call the function as many times as we want.
-  myFunction_4();
-}
-
-void myFunction_1() { cout << "Hello World from myFunction_1" << endl; }
-
-void myFunction_2() { cout << "This is the 2nd Function" << endl; }
-
-void myFunction_3() { cout << "This is the 3rd Function" << endl; }
-
-void myFunction_4() {
-  cout << "This is the 4th Function, 4 is my lucky number." << endl;
-}
-```
-
-## Function Parameters， Arguments
-
-Yeah, \*args, \*\*kargs？ Perhaps.
-Let's rock!
-
-```
-#include <iostream>
-using namespace std;
-
-void introduceMe(string name, string city, int age) // set the parameters here.
-
-{
-  // make void function with parameters
-  cout << "My name is " << name << " and I am " << age << " years old." << endl;
-}
-
-int main() {
-  // call function with two string parameters
-  introduceMe("John", "New York", 30);
-  introduceMe("Mary", "Paris", 25);
-  introduceMe("Bob", "London", 35);
-  introduceMe("Jane", "Berlin", 20);
-}
-```
-
-### Default paremeters
-
-Also, we can set default value for parameters, however,the default parameters must be placed at the **END of the parameter list**.
-
-```
-#include <iostream>
-using namespace std;
-
-void introduceMe(string name, int age, string city = "NJ") {
-  // make void function with two string parameters
-  cout << "My name is " << namœe << " , I am " << age << " years old."
-       << " I'm from " << city << endl;
-}
-
-int main() {
-  // call function with two string parameters
-  introduceMe("John", 20, "New York");
-  introduceMe("Mary", 25);
-  introduceMe("Bob", 35);
-  introduceMe("Jane", 20, "Berlin");
-}
-```
-
-### The return
-
-Determine whether a number is a Prime number.
-
-```
-#include <iostream>
-using namespace std;
-
-bool isPrimeNumber(int number) {
-  bool isPrimeFlag = true; // initialize the flag prime number is true
-
-  // key loop
-  for (int i = 2; i < number; i++) {
-    if (number % i == 0) { //  check the  number if it is divisible by i, which
-                           //  ranged from 2 to the number itself.
-      isPrimeFlag = false; // if it is divisible, then the flag is false
-      break;               // Once the case happened, break the loop
-    }
-  }
-  return isPrimeFlag;
-}
-
-int main() {
-  int number;
-  cout << " Please enter a number : ";
-  cin >> number;
-
-  bool isPrimeFlag = isPrimeNumber(number);
-  if (isPrimeFlag) {
-    cout << " The number " << number << " is a prime number." << endl;
-  } else {
-    cout << " The number " << number << " is not a prime number." << endl;
-  }
-}
-
-```
+### 返回值 Return
+- 函数返回值：
+  - 函数返回值类型：`return type`
+  - 函数返回值：`return value`
 
 ### 函数重载
 
