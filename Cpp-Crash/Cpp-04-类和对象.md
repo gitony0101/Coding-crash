@@ -1,276 +1,4 @@
-# 操作符
-
-主要用六种运算符
-
-- 算术运算符
-- 关系运算符
-- 逻辑运算符
-- 位运算符
-- 赋值运算符
-- 其他运算符
-
-### 算数运算符
-
-加减乘除取余数：
-
-- +, -, \*, /, % (求余数)
-
-### 逻辑和关系运算符
-
-- <, >, <=, >=, ==, !=
-
-- &&(且), ||(或), !(非)
-
-- 运算符优先级
-
-算数运算符 >> 关系运算符 >> 逻辑运算符
-
-- 更多可以看:([**cpp Operator Precedence Table**](https://en.cppreference.com/w/cpp/language/operator_precedence) )
-
-### 赋值运算符
-
-`=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
-
-- 自增减运算符： `++ --`
-
-# 语句
-
-## If-else 条件语句
-
-codes: ex,BMI,Integer,Lunar year
-
-## 判断语句
-
-- If-else 语句
-  - 嵌套 if ： else if
-- Switch case 语句
-  - 嵌套 switch 语句
-- 条件运算符 `Exp1 ? Exp2 : Exp3;`
-  - 其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。`? :` 表达式的值取决于 Exp1 的计算结果。
-    - 如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 `? :` 表达式的值。
-    - 如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 `? :` 表达式的值。`
-      - ? 被称为三元运算符，因为它需要三个操作数，可以用来代替`if-else`语句。
-
-```c++
-if(condition){
-   var = X;
-}else{
-   var = Y;
-}
-```
-
-等价于：
-
-```c++
-(condition) ? var = X : var = Y;
-```
-
-### 流程图
-
-- 判定奇数偶数流程
-
-<div align = "center">
-<div style="width:700px">
-
-![img](./img/chapter-3-ifelseDIagram.png)
-
-</div>
-</div>
-
-- 判定三角形类型流程
-
-<div align = "center">
-<div style="width:700px">
-
-![img](img/chapter-3--Tri-ifelseDIagram.png)
-
-</div>
-</div>
-
-- 体脂率计算器流程
-  - 三个阈值：<18.5 低体脂率，>25 高体脂率，在 18.5-25 之间正常体脂率
-
-<div align = "center">
-<div style="width:700px">
-
-![img](./img/BMI.jpg)
-
-</div>
-</div>
-
-### 从 if-else 到 swich case 语句
-
-对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了：提供了一条便捷路径，让我们在固定选项中做出选择。
-
-请参考附属代码`chapter-3-1-exSwitchCase.cpp`
-
-## 迭代语句——iteration——循环
-
-迭代，知道重复执行操作到满足某个条件，或者超出某个范围。
-
-- for 循环
-  - `for (statement 1; statement 2; statement 3) { // code block to be executed }`
-- while 循环
-  - `while (condition) { statements; }`
-- do-while 循环
-  - `do { // code block to be executed } while (condition);`
-    - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while
-- 嵌套循环
-  - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
-
-## 跳转语句
-
-- `break`
-- `continue`
-- `goto`
-- `return`
-
-# 函数
-
-## 基础
-
-三要素：函数名、参数、返回值
-
-函数是一个命名了的代码块，通过调用函数执行相应的代码。典型的函数包括：
-
-- 返回类型 `return type`
-- 函数名 `function name`
-- 参数列表 `(parameter list)`
-  - 实参 `actual parameter` ：型参的初始值，默认值，类型必须匹配
-  - 型参 `type parameter`：不能同名
-- 函数体 `{ code block }`
-
-### void main 和 int main 的区别 就是有无返回值
-
-- void main 函数不需要返回值，返回值类型为 void
-- int main 函数需要返回值，返回值类型为 int
-
-## 参数传递
-
-赋值参数的方式：
-
-1. function(type1 parameter1, type2 parameter2);
-2. function(type1 parameter1 , type2 parameter2 = default value);
-   - 注意默认参数要放在定义参数的最后面
-
-### 返回值 Return
-
-- 函数返回值：
-  - 函数返回值类型：`return type`
-  - 函数返回值：`return value`
-
-### 函数重载
-
-**Function overloading** is a feature of object oriented programming where two or more functions can have the same name but different parameters.
-
-```c++
-#include <iostream>
-using namespace std;
-
-// Function Overloading
-
-int sum(int a, int b); // functions declaration
-double sum(double a, double b); // functions declaration
-float sum(float a, float b, float c);// functions declaration
-
-int main() {
-  cout << "Sum of two integers: " << sum(10, 20) << endl;
-  cout << "Sum of two doubles: " << sum(10.5, 20.5) << endl;
-  cout << "Sum of three floats: " << sum(10.5, 20.5, 30.5) << endl;
-}
-
-int sum(int a, int b) { return a + b; }
-double sum(double a, double b) { return a + b; }
-float sum(float a, float b, float c) { return a + b + c; }
-
-```
-
-## Recursion
-
-A function that calls itself is known as a recursive function. And, this technique is known as recursion.
-
-[Check here for Recursion.](https://www.programiz.com/cpp-programming/recursion)
-
-Sum of the numebrs between m to n.
-
-```c++
-#include <iostream>
-using namespace std;
-
-// Recursion version of the sum
-
-int recursive_sum(int m, int n) {
-  if (m == n)
-    return m;                         // base case to stop the recursion
-  return m + recursive_sum(m + 1, n); // how it recurrs
-}
-
-int main() {
-  int m = 2, n = 4;
-  cout << "Sum: " << recursive_sum(m, n) << endl;
-}
-```
-
-Calculate the factorial
-
-```
-#include <iostream>
-using namespace std;
-
-// Calculate the factorial of the number by recursion
-
-int recursive_factorial(int m) {
-  if (m == 1)
-    return m; // base case to stop the recursion
-  return m * recursive_factorial(m - 1); // how it recurrs
-}
-
-int main() {
-  int a = 5;
-  cout << recursive_factorial(5) << endl;
-}
-
-```
-
-As we see the code above there are always a base case to stop the recursion and a return statement to show us how it recurrs.
-
-# Generic and Template
-
-Philosophy of programming.
-
-- Generic : 范型
-- Template : 模板
-
-Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
-
-In this chapter we just introduce these concepts，since Generic and Template is more than this.
-
-```c++
-#include <iostream>
-using namespace std;
-
-template <typename T> // declare the template "args" as T,  typename is the
-                      // kyeword you can use class (ANOTHER TYPTE) etc.
-
-                      void Swap(T &a, T &b) { // & as reference, we will go
-                                              // througt it later.
-  T temp = a;
-  a = b;
-  b = temp;
-}
-
-int main() {
-  int a = 5, b = 7;
-  cout << "Initially, a = " << a << "and b = " << b << endl;
-  Swap(a, b);
-  cout << "Now, a = " << a << "and b = " << b << endl;
-
-  char c = 'c', d = 'd';
-  cout << "Initially, c = " << c << "and d = " << d << endl;
-  Swap(c, d);
-  cout << "Now, c = " << c << "and d = " << d << endl;
-}
-```
+# 类和对象
 
 # Object-Oriented Programming - OOP
 
@@ -283,9 +11,9 @@ Object-oriented programming has several advantages over procedural programming:
 - OOP is faster and easier to execute
 - OOP provides a clear structure for the programs
 - OOP helps to keep the C++ code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
-- OOP makes it possible to create full reusable applications with less code and shorter development time
+- OOP makes it possible to create full r
 
-## 类和对象
+# 类和对象
 
 类像一个容器，装载着变量和方法，所以定义一个类，就是在定义变量和方法。
 
@@ -301,7 +29,7 @@ Classes and objects are the two main aspects of object-oriented programming.
 </div>
 </div>
 
-#### Youtube channel class
+## Youtube channel class
 
 ```
 #include <cstdio>
@@ -337,7 +65,7 @@ int main() {
   }
 ```
 
-#### printf()
+## printf()
 
 - printf() is a function that prints the string to the screen.
 - printf Format Specifiers:The first argument to printf is always a format string. The format string provides a template for the string to be printed, and it contains any number of special format specifiers. Format specifiers tell printf how to interpret and format the arguments following the format string. All format specifiers begin with %.
@@ -346,11 +74,11 @@ Note:
 
 `%d\n` is the format specifier for an integer, `\n` is `endl;`, DO NOT remember this, you can make it when coding.
 
-## Constructors and Class methods
+# Constructors and Class methods
 
-## 封装
+# 封装
 
-### Constructor
+## Constructor
 
 A constructor is **a special type of member function** of** a class which initializes objects of a class**. In C++, Constructor is automatically called when object(instance of class) is created. It is special member function of the class because it does NOT have any RETURN type.
 
@@ -413,7 +141,7 @@ int main() {
 }
 ```
 
-## Encapsulation
+# Encapsulation
 
 Encapsulation is one of the key features of object-oriented programming. It involves the bundling of data members and functions inside a single class.
 
@@ -487,7 +215,7 @@ int main() {
 }
 ```
 
-## Inheritance
+# Inheritance
 
 The capability of a class to derive properties and characteristics from another class is called Inheritance. Inheritance is one of the most important feature of Object Oriented Programming.
 
@@ -544,7 +272,7 @@ void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
 }; // upload video
 
 class CookingYoutubeChannel
-: public YoutubeChannel // ## Inherit YoutubeChannel above ## // Derived
+: public YoutubeChannel // # Inherit YoutubeChannel above # // Derived
 // Class, really?
 {
 protected: // protected inheritance, can be accessed outside.
@@ -628,13 +356,13 @@ Child obj1;
 
 In the above program the ‘Child’ class is publicly inherited from the ‘Parent’ class so the public data members of the class ‘Parent’ will also be inherited by the class ‘Child’.
 
-#### Modes of Inheritance
+## Modes of Inheritance
 
 - Public mode: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
 - Protected mode: If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
 - Private mode: If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
 
-#### Types of Inheritance
+## Types of Inheritance
 
 - Single inheritance
 - Multi-level inheritance
@@ -681,7 +409,7 @@ class D : private A // 'private' is default for classes
 };
 ```
 
-## Polymorphism
+# Polymorphism
 
 The word polymorphism means **having many forms** : The ability of a message to be displayed in more than one form.
 
@@ -694,7 +422,7 @@ In C++ polymorphism is mainly divided into two types:
 - Compile time Polymorphism
 - Runtime Polymorphism
 
-#### Difference between Inheritance and Polymorphism
+## Difference between Inheritance and Polymorphism
 
 <div align = "center">
 <div style="width:700px">
@@ -831,15 +559,3 @@ sytch_1.Practice();
 sytch_1.CheckAnalytics();
 }
 ```
-
-# 收集
-
-## Namespaces 命名空间
-
-## #include<> 和 include"" 区别
-
-- 使用#include<> 程序会直接到标准函数库中找文件
-
-- 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
-
-## 封装 Encapsulation
