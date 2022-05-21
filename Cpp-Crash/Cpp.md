@@ -87,7 +87,7 @@ The value of intMax + 1 is -2147483648
 
 - 引用必须初始化
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 int main(){
@@ -101,6 +101,19 @@ printf("%p\n",&refVal);
 ```
 
 ### 指针 pointer
+
+关于指针：
+1. 存储的是变量的内存地址
+2. 为了访问数据必须先解决内存地址
+3. 指针很有用，使用时注意也会引发危险
+
+
+
+
+
+
+
+关于间接引用 dereference
 
 # Pointers
 
@@ -354,7 +367,7 @@ int main() {
   cin >> cols;
 ```
 
-```cpp
+```c++
   int **table =
       new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
   for (int i = 0; i < rows; i++) {
@@ -558,7 +571,7 @@ The void main() indicates that the main() function will NOT return any value, bu
 
 Try this code to find which function will show the result.
 
-```cpp
+```c++
 //Version 1
 #include <iostream>
 using namespace std;
@@ -572,7 +585,7 @@ We can see that there is only one code shows `Hello World from main.`
 
 If we want to call the `myFunction` we need to call it in main:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -592,7 +605,7 @@ I like this function.
 
 As for there are lots of functions in the project, we can use decoration function at first to name all the functions which make the code more readable:
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -708,7 +721,7 @@ int main() {
 
 **Function overloading** is a feature of object oriented programming where two or more functions can have the same name but different parameters.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -738,7 +751,7 @@ A function that calls itself is known as a recursive function. And, this techniq
 
 Sum of the numebrs between m to n.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -790,7 +803,7 @@ Generic programming is writing code once that works with different types rather 
 
 In this chapter we just introduce these concepts，since Generic and Template is more than this.
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -912,7 +925,7 @@ Here is the example of constructor and class method
 - constructor to collect the information of the object-`YouTubeChannel`
 - calss method to print the information of the object- `getInfo()`
 
-```cpp
+```c++
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -973,7 +986,7 @@ That is:
 
 - **Features inside (private), Funcions outside(public), Encapuslate them ALL.**
 
-```cpp
+```c++
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
 // #include <string>
@@ -1044,7 +1057,7 @@ The capability of a class to derive properties and characteristics from another 
 Here we go on with our youtube channel and dive in a more specific area:
 Cooking channel, which shows us how inheritance works.
 
-```cpp
+```c++
 #include <cstdio>
 #include <iostream>
 #include <list> // use the list C++ Standard Template Library (STL)
@@ -1122,7 +1135,7 @@ Using inheritance, we have to write the functions only one time instead of three
 
 Implementing inheritance in C++: For creating a sub-class which is inherited from the base class we have to follow the below syntax.
 
-```cpp
+```c++
 class subclass_name : access_mode base_class_name
 {
 // body of subclass
@@ -1133,7 +1146,7 @@ Here,**subclass_name** is the name of the sub class, access_mode is the mode in 
 
 Note: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
 
-```cpp
+```c++
 // C++ program to demonstrate implementation
 // of Inheritance
 
@@ -1190,7 +1203,7 @@ In the above program the ‘Child’ class is publicly inherited from the ‘Par
 
 Note: The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed. For example, Classes B, C and D all contain the variables x, y and z in below example. It is just question of access.
 
-```cpp
+```c++
 // C++ Implementation to show that a derived class
 // doesn’t inherit access to private data members.
 // However, it does inherit a full parent object.
@@ -1255,7 +1268,7 @@ In C++ polymorphism is mainly divided into two types:
 
 Now we continue the youtube channel tutorial.
 
-```cpp
+```c++
 #include <iostream>
 #include <list>
 using namespace std;
