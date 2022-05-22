@@ -6,12 +6,9 @@ namespace cs225 {
 class Cube {
   //共有成员
 public:
-  /**
-   * Returns the volume of the cube.
-   *
-   * @return
-   *   Volume of the cube.
-   */
+  Cube();
+  Cube(double length);
+
   double getVolume();
 
   double getSurfaceArea();
