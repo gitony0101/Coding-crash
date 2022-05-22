@@ -2,6 +2,7 @@
 
 /*先创建这个头文件，定义参数变量，
 然后才是运行cpp同名文件实现功能*/
+namespace cs225 {
 class Cube {
   //共有成员
 public:
@@ -19,3 +20,4 @@ public:
 private:
   double length_;
 };
+} // namespace cs225

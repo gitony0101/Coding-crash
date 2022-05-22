@@ -1,4 +1,5 @@
 #include "L2-Cube.h"
+using namespace cs225;
 
 double Cube::getVolume() { return length_ * length_ * length_; }
 

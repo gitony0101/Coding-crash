@@ -1,5 +1,6 @@
 #include "L2-Cube.h"
 #include <iostream>
+using namespace cs225;
 
 int main() {
   Cube s1;
