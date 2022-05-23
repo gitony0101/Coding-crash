@@ -4,7 +4,7 @@
 
 ## Namespaces 命名空间
 
-## #include<> 和 include"" 区别
+## `#include<header>` 和 `include"header"` 区别
 
 - 使用#include<> 程序会直接到标准函数库中找文件
 
@@ -57,7 +57,7 @@
 
 语法格式：
 
-````cpp
+```c++
 void recursion()
 {
    statements;
@@ -70,17 +70,18 @@ int main()
 {
    recursion();
 }
+```
+
+## 范型和模板 Generic and Template
+
+### 范型编程
 
 
-
-
-## 范型和模板
 
 Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
 
 In this chapter we just introduce these concepts，since Generic and Template is more than this.
 
-```c++
 #include <iostream>
 using namespace std;
 
@@ -108,3 +109,4 @@ int main() {
 ````
 
 eusable applications with less code and shorter development time
+```
