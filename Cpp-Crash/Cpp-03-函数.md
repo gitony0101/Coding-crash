@@ -53,10 +53,11 @@
 ## 递归 Recursion
 
 递归指的是在函数的定义中使用函数自身的方法。
+所谓的递归， 直白的说， 就是函数调用自己实现（Functions call themselves）。
 
 语法格式：
 
-```cpp
+````cpp
 void recursion()
 {
    statements;
@@ -69,20 +70,11 @@ int main()
 {
    recursion();
 }
-```
 
-A function that calls itself is known as a recursive function. And, this technique is known as recursion.
 
-[Check here for Recursion.](https://www.programiz.com/cpp-programming/recursion)
 
-As we see the code above there are always a base case to stop the recursion and a return statement to show us how it recurrs.
 
-# Generic and Template
-
-Philosophy of programming.
-
-- Generic : 范型
-- Template : 模板
+## 范型和模板
 
 Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
 
@@ -113,6 +105,6 @@ int main() {
   Swap(c, d);
   cout << "Now, c = " << c << "and d = " << d << endl;
 }
-```
+````
 
 eusable applications with less code and shorter development time
