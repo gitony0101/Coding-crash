@@ -42,78 +42,38 @@
   - 函数返回值类型：`return type`
   - 函数返回值：`return value`
 
-### 函数重载
+## 函数重载 Overload
 
-**Function overloading** is a feature of object oriented programming where two or more functions can have the same name but different parameters.
+函数重载是指在**同一作用域内**，可以有一组**具有相同函数名**，不同**参数列表的函数**，这组函数被称为**重载函数**。重载函数通常用来命名一组功能相似的函数，这样做减少了函数名的数量，避免了名字空间的污染，对于程序的可读性有很大的好处。
 
-```c++
-#include <iostream>
-using namespace std;
+- 整合功能相似的函数
+- 减少明明数量，避免了命名空间的污染
+- 增强程序的可读性
 
-// Function Overloading
+## 递归 Recursion
 
-int sum(int a, int b); // functions declaration
-double sum(double a, double b); // functions declaration
-float sum(float a, float b, float c);// functions declaration
+递归指的是在函数的定义中使用函数自身的方法。
 
-int main() {
-  cout << "Sum of two integers: " << sum(10, 20) << endl;
-  cout << "Sum of two doubles: " << sum(10.5, 20.5) << endl;
-  cout << "Sum of three floats: " << sum(10.5, 20.5, 30.5) << endl;
+语法格式：
+
+```cpp
+void recursion()
+{
+   statements;
+   ... ... ...
+   recursion(); /* 函数调用自身 */
+   ... ... ...
 }
 
-int sum(int a, int b) { return a + b; }
-double sum(double a, double b) { return a + b; }
-float sum(float a, float b, float c) { return a + b + c; }
-
+int main()
+{
+   recursion();
+}
 ```
-
-## Recursion
 
 A function that calls itself is known as a recursive function. And, this technique is known as recursion.
 
 [Check here for Recursion.](https://www.programiz.com/cpp-programming/recursion)
-
-Sum of the numebrs between m to n.
-
-```c++
-#include <iostream>
-using namespace std;
-
-// Recursion version of the sum
-
-int recursive_sum(int m, int n) {
-  if (m == n)
-    return m;                         // base case to stop the recursion
-  return m + recursive_sum(m + 1, n); // how it recurrs
-}
-
-int main() {
-  int m = 2, n = 4;
-  cout << "Sum: " << recursive_sum(m, n) << endl;
-}
-```
-
-Calculate the factorial
-
-```
-#include <iostream>
-using namespace std;
-
-// Calculate the factorial of the number by recursion
-
-int recursive_factorial(int m) {
-  if (m == 1)
-    return m; // base case to stop the recursion
-  return m * recursive_factorial(m - 1); // how it recurrs
-}
-
-int main() {
-  int a = 5;
-  cout << recursive_factorial(5) << endl;
-}
-
-```
 
 As we see the code above there are always a base case to stop the recursion and a return statement to show us how it recurrs.
 
