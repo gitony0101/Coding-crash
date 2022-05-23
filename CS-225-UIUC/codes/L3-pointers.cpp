@@ -14,7 +14,7 @@ int main() {
   return 0;
 }
 
-/*
+/* 注意这里的报错
 Undefined symbols for architecture x86_64:
   "cs225::Cube::getVolume()", referenced from:
       _main in L3-pointers-9d0b60.o
