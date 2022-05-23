@@ -1,6 +1,6 @@
 # Pointers and arrays
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
@@ -37,7 +37,7 @@ printf("The number array is: %d\n", _(numslist + i)); // _ get the value
 
 Use pointers to return min and max value of array.
 
-```cpp
+```c++
 
 #include <iostream>
 using namespace std;
@@ -101,7 +101,7 @@ Arrys is a type of collection which stores elements is contiguous memory locatio
 
 if I definite a fuction:
 
-```cpp
+```c++
 
 int myArray[5];
 
@@ -111,7 +111,7 @@ It means I created a container of 5 locations which can store elements.
 
 **Dynamic arrays** are arrays with **dynamic storage duration**. You create dynamic arrays with array new expressions. Array new expressions have the following form:
 
-```cpp
+```c++
 
 new MyType[n_elements] { init-list }
 
@@ -172,7 +172,7 @@ table and its' arrays
 
 ## \*\* - Pointer to Pointer
 
-```cpp
+```
 
 #include <cstdio>
 #include <iostream>
@@ -187,7 +187,7 @@ int main() {
   cin >> cols;
 ```
 
-```cpp
+```
   int **table =
       new int *[rows]; // porinter to pointers,the rows are arrays themselvs.
   for (int i = 0; i < rows; i++) {
@@ -200,6 +200,5 @@ int main() {
   //     delete[] table[i];
   //     table = NULL;
 }
-
-    ```
+```
 ````
