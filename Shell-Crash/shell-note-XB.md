@@ -2,8 +2,6 @@
 
 ## 介绍
 
-![img](shell-1.png)
-
 - Kernel
   - Linux 内核主要是为了和硬件打交道
 - Shell
@@ -17,6 +15,36 @@
   - csh:
     - C shell(csh)
     - tc shell(tcsh)
+
+### 使用Vim编辑运行shell脚本文件的经典步骤
+
+1. 输入命令 vim test 进入Vim文本编辑器界面。示例shell脚本文件test的内容如下：
+```shell
+#!/bin/bash
+# This script displays the date and who's logged on
+date
+who
+```
+
+2. 输入字符 i 进入插入模式，输入shell脚本文本test的内容
+
+3. 输入字符 :wq 保存shell脚本文本test的内容并退出
+
+- 注意：若再次输入命令 vim test ，将打开已存在的shell脚本文件test
+
+4. 赋予shell脚本文件test属主执行文件的权限：chmod u+x test
+
+5. 在shell脚本文本test当前目录下使用单点操作符执行脚本文件：./test
+
+
+
+
+
+
+
+
+
+
 
 ## 操作记录
 
@@ -69,6 +97,12 @@ EOS
 ```
 
 ### 1.2. 变量类型
+
+- 定义变量时，变量名不加美元符号
+- 命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。
+- 中间不能有空格，可以使用下划线(_)
+- 不能使用标点符号。
+- 不能使用bash里的关键字（可用help命令查看保留关键字）
 
 变量类型运行 Shell 时，会同时存在三种变量：
 
