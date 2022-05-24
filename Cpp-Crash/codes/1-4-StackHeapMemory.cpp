@@ -30,6 +30,7 @@ int *testStackFunc01(int b) { //     栈区
 
 int *testHeapFunc01() { //堆区
                         // 利用new 关键字，可以讲数据开辟到堆区
+                        // 指针的本质也是局部变量，放在栈上，指针保存的数据是放在堆区
   int *p = new int(10); //创建整型数据10,用指针接收堆区整型10的内存编号
   return p;
 }
@@ -48,4 +49,5 @@ int main() {
   //下同
   printf("%d\n", (int)*ptr02);
   printf("%d\n", (int)*ptr02);
+  //直到退出或者delete才能释放堆区的数据
 }
