@@ -22,6 +22,18 @@
 - 大小写敏感
   - **myVariablel != myvariable**
 
+
+
+## 全局变量 静态变量 常量 
+
+存储在内存 全局区中。
+
+
+
+
+
+
+
 ## printf 格式化输出
 
 printf 函数称为格式输出函数，其关键字最末一个字母 f 即为“格式”(format)之意。按照用户指定的格式（占位符），把指定的数据显示到屏幕上。
@@ -56,11 +68,6 @@ The format specifier %f displays a float with decimal digits, whereas %e display
   - 有利于工具做静态分析，有利于性能优化，有利于代码可读性。
   - 动态类型一时爽，代码重构火葬场
   - 各有所长，保持敬畏
-
-## Cpp 主要任务
-
-- 创建所有类型的编程语言
-- 汇编：把人类语言编译成机器能理解的语言
 
 # 数据类型
 
