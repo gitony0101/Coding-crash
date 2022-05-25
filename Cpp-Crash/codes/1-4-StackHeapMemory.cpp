@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 using namespace std;
 
@@ -9,6 +10,7 @@ using namespace std;
 
  堆区 heap：由程序员分配和释放，若不释放，程序结束时由操作系统回收
 - 手动用new 进行开辟内存，用delete 释放内存
+- 在队去利用new来开辟数组[]
 */
 
 //栈区数据注意事项:不要返回局部变量的地址
@@ -27,12 +29,27 @@ int *testStackFunc01(int b) { //     栈区
 
 //堆区 heap：由程序员分配和释放，若不释放，程序结束时由操作系统回收
 // - 手动用new 进行开辟内存，用delete 释放内存
+//  new 和 delete 的基本语法
 
-int *testHeapFunc01() { //堆区
-                        // 利用new 关键字，可以讲数据开辟到堆区
+int *testHeapFunc01() { //堆区 // 1、new的基本语法
+                        // 利用new 关键字，可以讲数据开辟到堆区，
+                        // new返回的是该数据类型的指针
                         // 指针的本质也是局部变量，放在栈上，指针保存的数据是放在堆区
+                        //
   int *p = new int(10); //创建整型数据10,用指针接收堆区整型10的内存编号
   return p;
+}
+// 2、 在队去利用new来开辟数组
+void exNewArr() {
+  //创建含有十个整型数据的数组[]
+  int *arr = new int[10]; //中括号10代表数组有十个元素
+  //连续内存空间首地址
+  for (int i = 0; i < 10; i++) {
+    arr[i] = i + 100; // 给十个元素赋值100-109
+    printf("%d\n", arr[i]);
+  }
+  printf("delete [] arr 释放数组：\n");
+  delete[] arr; //注意删除数组的格式，是一组数，需要中括号加持
 }
 
 int main() {
@@ -42,12 +59,28 @@ int main() {
   printf("%d\n", (int)*ptr01);
   // 第二次这个数据就不再保留了
   printf("%d\n", (int)*ptr01);
-  //堆区new delete操作
+  //堆区new
   int *ptr02 = testHeapFunc01();
   printf("%d\n", (int)*ptr02); // 第一次输出，若不删除，能返回10
   printf("%d\n", (int)*ptr02); //第二次输出，若不手动删除，还能返回10
   //下同
   printf("%d\n", (int)*ptr02);
   printf("%d\n", (int)*ptr02);
-  //直到退出或者delete才能释放堆区的数据
+  //直到退出或者delete才能释放堆区的数据，下面演示delete
+  delete ptr02; //删除释放
+  printf(
+      "%d\n",
+      (int)*ptr02); //最后输出的已经不是10了，可能报错为读取访问权限冲突，这块内存已经释放，再去访问就是非法操作
+  // 2、 在队去利用new来开辟数组
+  exNewArr();
 }
+
+/*
+？
+释放数组之后还能打印？
+  for (int i = 0; i < 10; i++) { //再打印一遍试试：
+    arr[i] = i + 100;
+    printf("%d\n", arr[i]);
+  }
+
+*/
