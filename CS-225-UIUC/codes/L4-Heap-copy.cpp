@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 using namespace std;
 
@@ -12,4 +13,21 @@ void exStack01() {
   printf("When *q = *r:\n%d %d %d %d %d %d\n", i, j, k, *p, *q, *r);
 }
 
-int main() { exStack01(); }
+void exHeap01() {
+  int *x;
+  int size = 3;
+  x = new int[size];
+  for (int i = 0; i < size; i++)
+    x[i] = i + 3;
+  for (int i = 0; i < size; i++)
+    printf("%d\n", x[i]);
+  printf("delete[] x\n");
+  delete[] x;
+  for (int i = 0; i < size; i++)
+    printf("%d\n", x[i]);
+}
+
+int main() {
+  exStack01();
+  exHeap01();
+}
