@@ -39,7 +39,7 @@ int *testHeapFunc01() { //堆区 // 1、new的基本语法
   int *p = new int(10); //创建整型数据10,用指针接收堆区整型10的内存编号
   return p;
 }
-// 2、 在队去利用new来开辟数组
+// 2、 在堆区利用new来开辟数组
 void exNewArr() {
   //创建含有十个整型数据的数组[]
   int *arr = new int[10]; //中括号10代表数组有十个元素
