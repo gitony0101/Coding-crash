@@ -54,6 +54,11 @@ Or:
 
 printf 函数称为格式输出函数，其关键字最末一个字母 f 即为“格式”(format)之意。按照用户指定的格式（占位符），把指定的数据显示到屏幕上。
 
+
+
+<div align = "center">
+<div style="width:700px">
+
 |        type        | examples | printf format specifiers |    etc     |
 | :----------------: | :------: | :----------------------: | :--------: |
 |       string       |          |            %s            | .to_cstr() |
@@ -68,6 +73,11 @@ printf 函数称为格式输出函数，其关键字最末一个字母 f 即为�
 ![img](./img/formatSpecifiers.png)
 ![img](./img/formatSpecifiers2.png)
 ![img](./img/formatSpecifiers3.png)
+
+</div>
+</div>
+
+
 
 The format specifier for a byte is %zd.
 The format specifier %f displays a float with decimal digits, whereas %e displays the same number in scientific notation.
@@ -91,6 +101,13 @@ C++中常见的数据类型.
 
 操作系统会根据变量的数据类型，来分配内存和决定在保留内存中存储什么，比如字符型、宽字符型、整型、浮点型、双浮点型、布尔型等
 
+<div align = "center">
+<div style="width:800px">
+
+
+
+
+
 |        类型        | 位（字节数）  |                                范围                                 |
 | :----------------: | :-----------: | :-----------------------------------------------------------------: |
 |        bool        |       1       |                               0 和 1                                |
@@ -110,6 +127,10 @@ C++中常见的数据类型.
 |       double       |       8       | 双精度型占 8 个字节（64 位）内存空间，+/- 1.7e +/- 308 (~15 个数字) |
 |    long double     |      16       |  长双精度型 16 个字节（128 位）内存空间，可提供 18-19 位有效数字。  |
 |      wchar_t       | 2 或 4 个字节 |                             1 个宽字符                              |
+
+
+</div>
+</div>
 
 注意，各种类型的存储大小与系统位数有关，但目前通用的以 64 位系统为主。
 
