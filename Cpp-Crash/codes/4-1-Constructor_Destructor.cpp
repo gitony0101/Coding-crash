@@ -20,22 +20,46 @@ using namespace std;
 对象在销毁前，会且只会自动调用析构函数一次，类比重置手机一次就好
 
 构造和析构都是必须有的实现，如果没有，编译器会自己提供一个空实现
-*/
 
-class Person {
+3、 构造函数的分类及调用
+*/
+//构造函数和析构函数
+class Person01 {
 public: // 一定要写出作用域
   // 1、构造函数
-  Person() { printf("Person 构造函数调用\n"); }
+  Person01() { printf("Person 构造函数调用\n"); }
   // 2、析构函数
-  ~Person() { printf("Person 析构函数调用\n"); }
+  ~Person01() { printf("Person 析构函数调用\n"); }
 };
 
 void test01() {
-  Person p1; // 在栈上的数据，test01执行完毕后，就会释放这个对象。
+  Person01 p1; // 在栈上的数据，test01执行完毕后，就会释放这个对象。
 }
-
+//构造函数的分类及调用
+class Person02 {
+public: // 一定要写出作用域
+  // 1、构造函数 按照参数分类：有参构造，无参构造（默认构造）
+  Person02() { printf("Person 无参(默认)构造函数调用\n"); }
+  Person02(int age) {
+    age = 10;
+    printf("Person 有参构造函数调用(int a)\n");
+  }
+  // 2、 构造函数按照类型分类 普通构造和拷贝构造函数
+  //拷贝构造
+  Person02(const Person02 &p) { //注意用const 冻结拷贝过来的对象，否则会一起改变
+                                // 有点问题，报错了
+    // age = p.age;
+    printf("Person 拷贝构造函数调用\n");
+    // int age = p.age;}
+  }
+};
 int main() {
   test01();
-  Person p2; // 这里一般在任意键继续后执行，将来再讲，这里运行不出来
+  Person01 p2; // 这里一般在任意键继续后执行，将来再讲，这里运行不出来
+               //构造函数的分类及调用
+               //拷贝构造函数使用
+  Person02 p3(10);
+  Person02 p4(p3);
+
   return 0;
 }
