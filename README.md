@@ -5,7 +5,7 @@
 
 ## C++ Notes
 
-[Cpp 10-hours](https://www.youtube.com/channel/UCl5-BV9aRaeDVohpE4sqJiQ)
+[Cpp](https://www.bilibili.com/video/BV1S54y1Z7Wc?p=1)
 
 ## CS 225 UIUC
 
