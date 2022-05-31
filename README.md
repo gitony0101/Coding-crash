@@ -5,13 +5,13 @@
 
 ## C++ Notes
 
-[Cpp 10-hours](https://www.youtube.com/channel/UCl5-BV9aRaeDVohpE4sqJiQ)
+[Cpp](https://www.bilibili.com/video/BV1S54y1Z7Wc?p=1)
 
 ## CS 225 UIUC
 
 [Introduction to Data Structures and Algorithms with C++](https://courses.engr.illinois.edu/cs225/sp2022/)
 
-[tutorial](https://github.com/pkgamma/cs225-final-review)
+[CS225 Review](https://github.com/pkgamma/cs225-final-review)
 
 ## Python Notes
 
