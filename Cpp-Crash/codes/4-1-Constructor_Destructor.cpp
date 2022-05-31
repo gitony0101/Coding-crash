@@ -47,19 +47,22 @@ public: // 一定要写出作用域
   // 2、 构造函数按照类型分类 普通构造和拷贝构造函数
   //拷贝构造
   Person02(const Person02 &p) { //注意用const 冻结拷贝过来的对象，否则会一起改变
-                                // 有点问题，报错了
-    // age = p.age;
+    age = p.age;
+
     printf("Person 拷贝构造函数调用\n");
     // int age = p.age;}
   }
+
+public:
+  int age; // 拷贝构造的时候这里必须声明age在外部可访问
 };
 int main() {
   test01();
   Person01 p2; // 这里一般在任意键继续后执行，将来再讲，这里运行不出来
                //构造函数的分类及调用
                //拷贝构造函数使用
-  Person02 p3(10);
-  Person02 p4(p3);
+  Person02 p3(20);
+  Person02 p4(p3); //拷贝构造,这个其实是括号法
 
   return 0;
 }
