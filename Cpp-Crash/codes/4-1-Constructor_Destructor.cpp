@@ -39,18 +39,16 @@ void test01() {
 class Person02 {
 public: // 一定要写出作用域
   // 1、构造函数 按照参数分类：有参构造，无参构造（默认构造）
-  Person02() { printf("Person 无参(默认)构造函数调用\n"); }
-  Person02(int age) {
-    age = 10;
+  Person02() { printf("Person 无参(默认)构造函数调用\n"); } // 无参构造
+  Person02(int age) {                                       //有参构造
     printf("Person 有参构造函数调用(int a)\n");
   }
   // 2、 构造函数按照类型分类 普通构造和拷贝构造函数
   //拷贝构造
-  Person02(const Person02 &p) { //注意用const 冻结拷贝过来的对象，否则会一起改变
+  Person02(const Person02 &p) { // const Person02 &p 就是参数
+    //注意用const 冻结拷贝过来的对象，否则会一起改变
     age = p.age;
-
-    printf("Person 拷贝构造函数调用\n");
-    // int age = p.age;}
+    printf("Person 拷贝构造函数调用，这里Person02的p年龄为%d\n", p.age);
   }
 
 public:
@@ -62,7 +60,7 @@ int main() {
                //构造函数的分类及调用
                //拷贝构造函数使用
   Person02 p3(20);
-  Person02 p4(p3); //拷贝构造,这个其实是括号法
+  Person02 p4(p3);
 
   return 0;
 }
