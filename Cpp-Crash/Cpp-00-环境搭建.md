@@ -1,3 +1,29 @@
+# C++ 编程笔记 
+
+## 环境搭建
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+clangd是检查器 
+linter
+
+
+
+
 # Pointers and arrays
 
 ```c++
@@ -201,4 +227,5 @@ int main() {
   //     table = NULL;
 }
 ```
-````
+
+```
