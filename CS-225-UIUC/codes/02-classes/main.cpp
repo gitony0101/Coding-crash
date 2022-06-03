@@ -1,8 +1,9 @@
-#include "L2-Cube.h"
+#include "Cube.h"
 #include <iostream>
 using namespace cs225;
 
 int main() {
+  Cube c;
   Cube s1;
   Cube &r1 = s1;
   s1.setLength(3.14);
