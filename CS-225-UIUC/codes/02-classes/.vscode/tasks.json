@@ -1,29 +1,22 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "c++:CS225", // task 名称
-            "command": "clang++",
             "type": "shell",
+            "label": "C/C++: clang++ build active file",
+            "command": "/usr/bin/clang++",
             "args": [
-                "-std=c++20",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-                "-Wall", // 显示所有警告
-                "-Wextra", // 显示额外警告
-                "-Wfatal-errors" // 遇到第一个错误就停止，减少查找错误时间
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
+            "options": {
+                "cwd": "/usr/bin"
             },
-            "problemMatcher": [],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
