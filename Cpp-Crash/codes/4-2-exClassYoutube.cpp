@@ -35,4 +35,8 @@ void yt01() {
     printf("%s\n", title->c_str());
 }
 
-int main() { yt01(); }
+//构造函数方法
+
+int main() {
+  yt01(); // class 类方法 打印
+}
