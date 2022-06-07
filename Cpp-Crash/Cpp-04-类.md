@@ -65,18 +65,6 @@ py 和 cpp都是
 </div>
 </div>
 
-## Constructor
-
-A constructor is **a special type of member function** of** a class which initializes objects of a class**. In C++, Constructor is automatically called when object(instance of class) is created. It is special member function of the class because it does NOT have any RETURN type.
-
-Difference with a normal member function:
-
-- Constructor MUST HAVE the SAME name as the class itself
-- Constructors don’t have input argument ，neither return type
-- A constructor is automatically called when an object is created
-- It must be placed in public section of class
-- If we do not specify a constructor, C++ compiler generates a default constructor for object (expects no parameters and has an empty body)
-
 Here is the example of constructor and class method
 
 - constructor to collect the information of the object-`YouTubeChannel`
