@@ -51,6 +51,10 @@ codes: ex,BMI,Integer,Lunar year
   - 嵌套 if ： else if
 - Switch case 语句
   - 嵌套 switch 语句
+
+
+### 条件运算符 三元运算符 三目运算符
+
 - 条件运算符 `Exp1 ? Exp2 : Exp3;`
   - 其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。`? :` 表达式的值取决于 Exp1 的计算结果。
     - 如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 `? :` 表达式的值。
@@ -126,7 +130,12 @@ if(condition){
 
 ## 跳转语句
 
-- `break`
-- `continue`
+为了避免进入死循环
+
+- `break` 跳出循环
+- `continue` 跳出本次执行 进行下次循环
 - `goto`
 - `return`
+
+## 三元表达式
+？：

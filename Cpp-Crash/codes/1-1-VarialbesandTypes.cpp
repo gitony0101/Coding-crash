@@ -33,6 +33,19 @@ void variableDataTypesAndRanges() {
          "%zd\nThe size of float is %zd\nThe size of double is %zd\n",
          sizeof(char), sizeof(unsigned int), sizeof(int), sizeof(float),
          sizeof(double));
+  // sizeof() 显示指针和引用的空间大小：
+  printf("Size of Bool* is %ld\nSize of Float* is %ld\nSize of Double* is "
+         "%ld\nSize of Long is %ld\n",
+         sizeof(bool *), sizeof(float *), sizeof(double *), sizeof(long *));
+  // auto自动推断
+  auto value01 = 11;
+  auto value02 = 2;
+  auto value03 = 1.4f;  // float
+  auto value04 = 123ul; // unsienged long
+  // auto value05 = 1.4l;
+  printf("Size of value01 ld\nSize of value02 %ld\nSize of value03 %ld\nSize "
+         "of value04 %ld\n",
+         sizeof(value01), sizeof(value02), sizeof(value03), sizeof(value04));
 }
 
 void exDataTypeOverFlow() { // It actually works like the clock when it is over
@@ -52,10 +65,10 @@ void exASCIITrans() {
 }
 
 int main() {
-  exHelloworldPrintf();
-  exIntChar();
+  // exHelloworldPrintf();
+  // exIntChar();
   variableDataTypesAndRanges();
-  exDataTypeOverFlow();
+  // exDataTypeOverFlow();
   // Codes below we need to input values:
   // exASCIITrans();
 }
