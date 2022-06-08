@@ -5,10 +5,15 @@
 using namespace std;
 
 /*
-print, datatype range ASCII and Hello World!
+变量 类型 打印
+全局变量一般不要用
 */
+
+//全局变量
+int RandNum = 2;
+const double PI = 3.141592653;
+
 void exHelloworldPrintf() {
-  // Always hello world
   string msg = "Hello World!";
   printf("%s\n", msg.c_str()); // yeah c_str()
   printf("Welcome to the C++ world!\n");
@@ -23,7 +28,7 @@ void variableDataTypesAndRanges() {
   printf("Int min value is %d\nInt max value is %d\nUINT max value is %d\n",
          INT_MIN, INT_MAX, UINT_MAX);
   cout << "UINT max value is " << UINT_MAX << endl; // issue here.
-  // Sizeof() data datatype
+  // Sizeof() 函数
   printf("Size of char is %zd\nSize of unsigned int is %zd\nThe size of int is "
          "%zd\nThe size of float is %zd\nThe size of double is %zd\n",
          sizeof(char), sizeof(unsigned int), sizeof(int), sizeof(float),
