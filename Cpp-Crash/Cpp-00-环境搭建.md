@@ -18,6 +18,13 @@
 
 
 
+- tasks.json # 编译指令设置，用于编译c++文件
+- launch.json # 调试器设置，用于使用vscode自带的debug工具（左侧的小虫图标）
+  - tasks.json的"label"参数值和launch.json的"preLaunchTask"参数值需要保持一致
+- c_cpp_properties.json # 用于使用vscode自带的代码提示工具如 IntelliSense
+  - c_cpp_properties.json 的作用是：代码提示、代码跳转等
+- makefile 一个含有一系列命令（directive）的，通过 Make 自动化编译工具，帮助 C/C++ 程序实现自动编译目标文件的文件。这个文件的默认命名是 "Makefile"。它描述了整个工程的编译、链接的规则。
+
 clangd是检查器 
 linter
 
