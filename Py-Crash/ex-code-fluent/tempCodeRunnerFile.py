@@ -19,9 +19,8 @@ testArr = [0, 1, 2, 3]
 
 
 def testFunc(x):
-    x = x + 1
-    return x
+    return x + 1
 
 
-test01 = mapIt(testFunc(), testArr)
+test01 = mapIt(testFunc, testArr)
 print(test01)
