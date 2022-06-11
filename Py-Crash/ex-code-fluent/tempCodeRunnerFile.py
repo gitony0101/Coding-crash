@@ -1,24 +1,27 @@
-import bisect
-import sys
-
-HAYSTACK = [1, 4, 5, 6, 8, 12, 15, 20, 21, 23, 23, 26, 29, 30]
-NEEDLES = [0, 1, 2, 5, 8, 10, 22, 23, 29, 30, 31]
-
-ROW_FMT = '{0:2d} @ {1:2d}    {2}{0:<2d}'
+# 格式 map(函数名，可迭代类型)
+# 可迭代类型：例如列表，元组，字符串、字典这样的
+# 功能：将可迭代类型中的中的每一个元素执行一遍函数
 
 
-def demo(bisect_fn):
-    for needle in reversed(NEEDLES):
-        position = bisect_fn(HAYSTACK, needle)
-        offset = position * '  |'
-        print(ROW_FMT.format(needle, position, offset))
+# map实现原理
+def mapIt(func, arr):
+    # 定义一个新数组，承接改变的arr
+    resultsArr = []
+    for i in arr:
+        # 调用传递过来的func函数迭代arr里面的可迭代元素
+        result = func(i)
+        resultsArr.append(result)
+    return resultsArr
 
 
-if __name__ == '__main__':
-    if sys.argv[-1] == 'left':
-        bisect_fn = bisect.bisect_left
-    else:
-        bisect_fn = bisect.bisect_right
-    print('DEMO:', bisect_fn.__name__)
-    print('haystack ->', ' '.join('%2d' % n for n in HAYSTACK))
-    demo(bisect_fn)
+#测试
+testArr = [0, 1, 2, 3]
+
+
+def testFunc(x):
+    x = x + 1
+    return x
+
+
+test01 = mapIt(testFunc(), testArr)
+print(test01)
