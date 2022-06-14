@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdio.h>  // 动态数组用
 #include <stdlib.h> //动态数组用
+#include <string>
 
 using namespace std;
 /* 一维数组 二维数组
@@ -127,6 +128,38 @@ void exBinArr01() {                       //嵌套打印
     }
     cout << endl; //每打印一行，另起一行接着打印
   }
+  // 查看二维数组大小、所占内存空间以及首地址
+  printf("二维数组大小为：%ld，其中一行大小：%ld，每个元素大小%ld。\n",
+         sizeof(arr), sizeof(arr[0]), sizeof(arr[0][0]));
+  int roNum = sizeof(arr) / sizeof(arr[0]);        //行数
+  int colNum = sizeof(arr[0]) / sizeof(arr[0][0]); //列数
+  printf("二维数组一共有%d行，%d列\n", roNum, colNum);
+  //内存地址
+  printf("二维数组首地址：%p\n", &arr);
+  printf("二维数组第一行地址：%p\n", &arr[0]);
+  printf("二维数组第二行地址：%p\n", &arr[1]);
+  printf("二维数组第一个元素地址%p，第二个元素地址%p\n", &arr[0][0],
+         &arr[0][1]);
+  // cout << (int &)arr[1] << endl;
+}
+//二维数组应用——考试成绩统计：
+void gradeStastics() {
+  int scores[3][3] = {
+      {100, 100, 100},
+      {90, 50, 100},
+      {60, 70, 80},
+  };
+  string names[] = {"张三", "李四", "王五"};
+
+  for (int i = 0; i < 3; i++) {
+    int grade =
+        0; //初始化零成绩必须在这个外循环里定义，因为你求的是一个人的总成绩
+    for (int j = 0; j < 3; j++) {
+      grade += scores[i][j];
+    }
+    printf("%s同学的总成绩为：%d\n", names->c_str(),
+           grade); //打印的也是逐行打印，所以要在外层循环里面打印。
+  }
 }
 
 // 动态数组
@@ -147,6 +180,7 @@ int main() {
   //   sortArr02();
   //   reverseArr01();
   //   exBubbleSort01();
-  exBinArr01();
+  // exBinArr01();
+  gradeStastics();
   // exDynamicArr01();
 }
