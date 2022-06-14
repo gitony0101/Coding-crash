@@ -113,6 +113,10 @@ void exBubbleSort01() {
 
 //二维数组
 //定义二
+void exBinArr01() { //嵌套打印
+  int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};
+  printf("二维数组：\n");
+}
 
 int main() {
   //   exUnarry01();
