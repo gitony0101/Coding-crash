@@ -1,5 +1,9 @@
+#include <algorithm>
 #include <cstdio>
 #include <iostream>
+#include <stdio.h>  // 动态数组用
+#include <stdlib.h> //动态数组用
+
 using namespace std;
 /* 一维数组 二维数组
 一维数组 升序排列 逆转排列 冒泡排序
@@ -113,9 +117,29 @@ void exBubbleSort01() {
 
 //二维数组
 //定义二
-void exBinArr01() { //嵌套打印
-  int arr[2][3] = {{1, 2, 3}, {4, 5, 6}};
+void exBinArr01() {                       //嵌套打印
+  int arr[2][3] = {{1, 2, 3}, {4, 5, 6}}; //命名方式直接用第二个了
   printf("二维数组：\n");
+  //因为是二维了，所以要打印数组的话需要逐行、逐列打印，用到嵌套循环
+  for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < 3; j++) {
+      printf("%d ", arr[i][j]);
+    }
+    cout << endl; //每打印一行，另起一行接着打印
+  }
+}
+
+// 动态数组
+// 内存分配
+void exDynamicArr01() {
+  int *parr = nullptr; // In newer C++ (C++11 and higher), use nullptr.
+  int *parr01 = nullptr;
+  parr = (int *)malloc(
+      sizeof(int)); // 开辟一个 int 4个字节的内存空间，用parr指针指向它
+  printf("初始化后，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
+  *parr = 520; // 给parr赋值
+  printf("赋值520后，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
+  parr01 = (int *)calloc(5, 4); // 开辟5个
 }
 
 int main() {
@@ -123,4 +147,6 @@ int main() {
   //   sortArr02();
   //   reverseArr01();
   //   exBubbleSort01();
+  exBinArr01();
+  // exDynamicArr01();
 }
