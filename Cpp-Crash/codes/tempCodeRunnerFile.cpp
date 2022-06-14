@@ -1,4 +1,2 @@
-  // //函数重载
-  // exSum(1, 2);
-  // exSum(1.2, 2.1);
-  // exSum(3.4, 3.3, 1.2);
+  sortArr02();
+  reverseArr01();

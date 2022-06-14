@@ -1,18 +1,24 @@
 #include <cstdio>
 #include <iostream>
 using namespace std;
-/*
+/* 一维数组 二维数组
 一维数组 升序排列 逆转排列 冒泡排序
-
 1. `数据类型 数组名[ 数组长度 ];`
 2. `数据类型 数组名[ 数组长度 ] = { 值1，值2 ...};` # 把值也标出来
 3. `数据类型 数组名[ ] = { 值1，值2 ...};` # 长度可以自己推测出来，电脑会查
+
+二维数组
+推荐使用：
+2. `数据类型 数组名[ 行数 ][ 列数 ] = { {数据1，数据2 } ，{数据3，数据4 } };`
+
+
+指针访问数组
 */
 
 //一维数组 从零开始，命名要规范，不要和变量重名
 void exUnarry01() {
-  float arr01[] = {1.001, 2, 3, 435, 6, 7, 8, 3, 4, 32, 3}; //直接生成一维数组
-  int countArr01 = sizeof(arr01) / sizeof(arr01[0]);        //统计元素个数
+  double arr01[] = {1.001, 2, 3, 435, 6, 7, 8, 3, 4, 32, 3}; //直接生成一维数组
+  int countArr01 = sizeof(arr01) / sizeof(arr01[0]); //统计元素个数
   printf("数组arr01中一共有%d个元素。\n", countArr01);
   printf("其中，第一个元素为%f,最后一个选素为%f\n", arr01[0],
          arr01[countArr01 - 1]);
@@ -105,9 +111,12 @@ void exBubbleSort01() {
   cout << endl;
 }
 
+//二维数组
+//定义二
+
 int main() {
   //   exUnarry01();
   //   sortArr02();
   //   reverseArr01();
-  exBubbleSort01();
+  //   exBubbleSort01();
 }
