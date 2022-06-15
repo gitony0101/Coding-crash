@@ -163,16 +163,42 @@ void gradeStastics() {
 }
 
 // 动态数组
-// 内存分配
+// 内存分配 malloc calloc
 void exDynamicArr01() {
   int *parr = nullptr; // In newer C++ (C++11 and higher), use nullptr.
   int *parr01 = nullptr;
-  parr = (int *)malloc(
-      sizeof(int)); // 开辟一个 int 4个字节的内存空间，用parr指针指向它
-  printf("初始化后，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
+  // 开辟一个 int 4个字节的内存空间，用parr指针指向它
+  parr = (int *)malloc(sizeof(int));
+  printf("初始化，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
   *parr = 520; // 给parr赋值
   printf("赋值520后，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
-  parr01 = (int *)calloc(5, 4); // 开辟5个
+  // calloc 开辟动态数组
+  parr01 = (int *)calloc(5, 4); // 开辟5个内存空间，每个空间4字节的动态一维数组
+  printf("初始化，parr01的内存地址为：%p，parr01的值为%d\n", &parr01, *parr01);
+  //赋值parr01
+  printf("赋值parr01并打印");
+  for (int i = 0; i < 5; i++) {
+    parr01[i] = i + 1;
+    printf("%d ", parr01[i]);
+  }
+  cout << endl;
+}
+
+// calloc自定义动态数组
+void exDynamicArr02() {
+  //自定义动态数组parr01
+  int num = 0;
+  printf("请确定数组的大小：\n");
+  scanf("%d", &num); // scanf输入，怎么需要&？
+  int *parr01 = (int *)calloc(num, sizeof(int)); //注意格式
+  printf("初始化，parr01的内存地址为：%p，parr01的值为%d\n", &parr01, *parr01);
+  //赋值parr01
+  printf("赋值parr01并打印\n");
+  for (int i = 0; i < num; i++) {
+    parr01[i] = i + 1;
+    printf("%d ", parr01[i]);
+  }
+  cout << endl;
 }
 
 int main() {
@@ -181,6 +207,7 @@ int main() {
   //   reverseArr01();
   //   exBubbleSort01();
   // exBinArr01();
-  gradeStastics();
+  // gradeStastics();
   // exDynamicArr01();
+  exDynamicArr02();
 }
