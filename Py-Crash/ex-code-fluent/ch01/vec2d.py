@@ -28,16 +28,3 @@ class Vector:
 
     def __rmul__(self, scalarF):  # rmul 右乘
         return Vector(scalarF * self.x, scalarF * self.y)
-
-
-# v1 = Vector(2, 4)
-# v2 = Vector(2, 1)
-# v3 = Vector(3, 4)
-
-# v1 + v2
-# abs(v3)
-
-# v3 * 3
-# 4 * v3
-
-# abs(3 * v3)
