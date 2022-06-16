@@ -59,9 +59,19 @@ py 和 cpp都是
 
 
 
+
+
+
+
+
+
 # 结构体
 
 结构体属于用户**自定义的数据类型**，允许用户存储不同的数据类型
+
+
+
+
 
 
 
@@ -74,59 +84,10 @@ py 和 cpp都是
 - 多态
   - 多态，是指一个类实例的相同方法在不同情形有不同表现形式。多态机制使具有不同内部结构的对象可以共享相同的外部接口。这意味着，虽然针对不同对象的具体操作不同，但通过一个公共的类，它们（那些操作）可以通过相同的方式予以调用。
 
+
+
 </div>
 </div>
-
-Here is the example of constructor and class method
-
-- constructor to collect the information of the object-`YouTubeChannel`
-- calss method to print the information of the object- `getInfo()`
-
-```c++
-#include <cstdio>
-#include <iostream>
-#include <list> // use the list C++ Standard Template Library (STL)
-#include <string>
-using namespace std;
-
-class YoutubeChannel {
-public: // corresponding to private, the variables below can be used publicly
-  string Name;
-  string OwnerName;
-  int SubscribersCount;
-  list<string> PublishedVideoTitles;
-  // Build the constructor inside the class
-  YoutubeChannel(string name, string ownerName) { // two key parameters here
-    Name = name;
-    OwnerName = ownerName;
-    SubscribersCount = 0;
-  }
-  // use class method to get the info we entered.
-  void getInfo() {
-
-    printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
-    printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
-    printf("Number of subscribers : %d\n", SubscribersCount);
-    for (auto &videoTitle : PublishedVideoTitles) {
-      printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
-    }
-  }
-};
-
-int main() {
-  YoutubeChannel yt_1("CodeBeauty", "Saldina");
-  yt_1.PublishedVideoTitles.push_back("C++ for beginners");
-  yt_1.PublishedVideoTitles.push_back("HTML & CSS for beginners");
-  yt_1.PublishedVideoTitles.push_back("C++ OOP for beginners");
-
-  YoutubeChannel yt_2("Sigur Ros", "Jonsi and his bands.");
-  yt_2.PublishedVideoTitles.push_back("Hopipolla");
-  yt_2.PublishedVideoTitles.push_back("Heima");
-
-  yt_1.getInfo(); // call the class method to get the info we entered.
-  yt_2.getInfo(); // call the class method to get the info we entered.
-}
-```
 
 # Encapsulation
 
