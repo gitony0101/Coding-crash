@@ -242,16 +242,30 @@ void exDynamic2DArr() {
   int **parr01; //创建二维动态数组
   int m = 5, n = 6;
   parr01 = (int **)calloc(
-      5, sizeof(int *)); //定义该数组
+      m, sizeof(int *)); //定义该数组
                          // 看这里星星的层次：
                          // int ** 表示的是parr01是二维的，几个星就几维
   // calloc创建出来一条 含有5个指针的指针数组，指针类型是int一维指针所以是int*
   //就是说，我们得到了5行。
-  for (int i = 0; i < 5;
+  for (int i = 0; i < m;
        i++) { //现在开始对每行进行操作，给每行各自开辟n个int内存空间
     parr01[i] = (int *)calloc(n, sizeof(int)); //
   } // 到这一步，未赋值的二维动态数组已经创建好了
+  //下面开始赋值
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      parr01[i][j] = i * n + j + 1; // 把后面加上1就不会从零开始了
+    }
+  }
+  //赋值完毕，打印这个动态二维数组
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      printf("%3d ", parr01[i][j]); // %nd高级！
+    }
+    printf("\n");
+  }
 }
+//睡醒了再来一发realloc自己创建
 
 int main() {
   //   exUnarry01();
@@ -263,4 +277,6 @@ int main() {
   // 内存分配调整 动态数组
   // exDynamicArr01();// malloc calloc
   // exDynamicArr02(); // 输入数组大小 calloc realloc
+  exDynamic2DArr();
+  1
 }

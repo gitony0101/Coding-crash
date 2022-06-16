@@ -96,6 +96,20 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 
 ## 未完待续
 
+### 关于%x的格式化输出：
+
+中间是可以加数字表示间隔空行的，在二维数组中可以把元素中间间隔开，很美观。
+
+```
+printf("%1s %3f %5d\n", "hello", 3.14, 42);
+//输出：
+hello 3.140000    42
+```
+ 可以看出，间隔增大
+
+
+
+
 [关于输出函数详解](http://c.biancheng.net/cpp/html/33.html)
 
 # 数据类型
