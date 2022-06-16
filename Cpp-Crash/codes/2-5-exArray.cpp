@@ -278,5 +278,4 @@ int main() {
   // exDynamicArr01();// malloc calloc
   // exDynamicArr02(); // 输入数组大小 calloc realloc
   exDynamic2DArr();
-  1
 }
