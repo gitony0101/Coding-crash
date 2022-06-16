@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cstddef>
 #include <cstdio>
 #include <iostream>
 #include <stdio.h>  // 动态数组用
@@ -191,6 +192,7 @@ void exDynamicArr01() { //一维动态数组
     printf("%d ", parr01[i]);
   }
   cout << endl;
+  free(parr01); //释放内存
 }
 
 // calloc realloc free 自定义一维动态数组，free最后释放内存
@@ -235,6 +237,7 @@ void exDynamicArr02() { //一维动态数组
     printf("%d ", parr01[i]);
   }
   cout << endl;
+  free(parr01); //释放内存
 }
 
 // 二维动态数组
@@ -264,8 +267,50 @@ void exDynamic2DArr() {
     }
     printf("\n");
   }
+  free(parr01); //释放内存
 }
-//睡醒了再来一发realloc自己创建
+//二维动态数组 realloc
+
+void reallocDynamic2dArr() {
+  int **parr01;     //创建二维动态数组
+  int m = 0, n = 0; //初始化行列
+  printf("请输入矩阵行列数 m n 然后回车(例输入6 9)：\n");
+  scanf("%d%d", &m, &n);
+  parr01 = (int **)calloc(m, sizeof(int *)); //定义第一维指针数组
+  for (int i = 0; i < m; i++) {
+    parr01[i] = (int *)calloc(n, sizeof(int)); //开辟每个指针下的一维数组
+  } //未赋值的二维动态数组创建完毕，下面开始赋值
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      parr01[i][j] = i * n + j + 1; //老样子自然数定义
+    }
+  }
+  for (int i = 0; i < m; i++) { //打印这个二维动态数组
+    for (int j = 0; j < n; j++) {
+      printf("%3d ", parr01[i][j]);
+    }
+    printf("\n");
+  } // 第一波输入完毕，realloc扳手上线
+  printf("请调整矩阵行列数 m n 然后回车(例输入6 9)：\n");
+  scanf("%d %d", &m, &n);
+  parr01 =
+      (int **)realloc(parr01, m); //注意用法，括号内直接写的是原来的动态数组名
+  for (int i = 0; i < m; i++) {
+    parr01[i] = (int *)calloc(n, sizeof(int)); //开辟每个指针下的一维数组
+  } //未赋值的二维动态数组创建完毕，下面开始赋值
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      parr01[i][j] = i * n + j + 1; //老样子自然数定义
+    }
+  }
+  for (int i = 0; i < m; i++) { //打印这个二维动态数组
+    for (int j = 0; j < n; j++) {
+      printf("%3d ", parr01[i][j]);
+    }
+    printf("\n");
+  }
+  free(parr01); //释放
+}
 
 int main() {
   //   exUnarry01();
@@ -277,5 +322,6 @@ int main() {
   // 内存分配调整 动态数组
   // exDynamicArr01();// malloc calloc
   // exDynamicArr02(); // 输入数组大小 calloc realloc
-  exDynamic2DArr();
+  // exDynamic2DArr();
+  reallocDynamic2dArr();
 }
