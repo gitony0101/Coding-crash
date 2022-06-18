@@ -9,7 +9,7 @@
 using namespace std;
 /* 一维数组 二维数组
 一维数组
-  升序排列 逆转排列 冒泡排序
+  找最大 逆转排列 冒泡排序
 1. `数据类型 数组名[ 数组长度 ];`
 2. `数据类型 数组名[ 数组长度 ] = { 值1，值2 ...};` # 把值也标出来
 3. `数据类型 数组名[ ] = { 值1，值2 ...};` # 长度可以自己推测出来，电脑会查
@@ -47,7 +47,7 @@ void exUnarry01() {
   printf("第二个元素地址为%p，十进制地址为%d\n", &arr01[1], (int &)arr01[1]);
 }
 
-// 升序排列
+// 最大数
 void sortArr02() {
   int arr02[] = {300, 350, 200, 400, 250};
   int count = sizeof(arr02) / sizeof(arr02[0]);
@@ -101,15 +101,15 @@ void exBubbleSort01() {
 3. 重复以上的步骤，每次比较次数-1，直到不需要比较
 */
   printf("排序前的数列：\n");
-  for (int i = 0; i <= count - 1; i++)
+  for (int i = 0; i < count; i++)
     printf("%d ", arr01[i]);
   cout << endl;
   //开始冒泡排序，
-  for (int i = 0; i <= count - 1; i++) //外层循环，排序轮数等于元素个数减一
+  for (int i = 0; i < count - 1; i++) //外层循环，排序轮数等于元素个数减一
   {
     //内层循环，用来相邻两数对比
     //每轮对比次数 = 元素个数 - 排序轮数
-    for (int j = 0; j <= count - i - 1; j++)
+    for (int j = 0; j < count - i - 1; j++)
       if (arr01[j] >
           arr01[j + 1]) //如果第一个数字比第二个数字大，交换这两个数字
       {                 //创建中间量交换数值
@@ -120,7 +120,7 @@ void exBubbleSort01() {
   }
 
   printf("排序后的数列：\n");
-  for (int i = 0; i <= count - 1; i++)
+  for (int i = 0; i < count; i++)
     printf("%d ", arr01[i]);
   cout << endl;
 }
@@ -316,12 +316,12 @@ int main() {
   //   exUnarry01();
   //   sortArr02();
   //   reverseArr01();
-  //   exBubbleSort01();
+  exBubbleSort01(); // 冒泡排序
   // exBinArr01();
   // gradeStastics();
   // 内存分配调整 动态数组
   // exDynamicArr01();// malloc calloc
   // exDynamicArr02(); // 输入数组大小 calloc realloc
   // exDynamic2DArr();
-  reallocDynamic2dArr();
+  // reallocDynamic2dArr();
 }

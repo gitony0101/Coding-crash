@@ -3,14 +3,13 @@
 #include <iostream>
 using namespace std;
 /*结构体
-
 创建方式：
 - struct 结构体名 变量名
 - struct 结构体名 变量名 = { 成员 1 值 ， 成员 2 值...}
 - 定义结构体时顺便创建变量 使用较少
 *stu,用指针是为了节省内存
 冻结 const struct ，const可以防止误操作
-结构体案例 这里解决了怎么嵌套结构体数组了
+结构体案例 老师带学生 三国无双 这里解决了怎么嵌套结构体数组了
 */
 
 //定义学生结构体，注意一下小尾巴
@@ -147,9 +146,38 @@ void printTeaStuInfo(teacher tArray[], int len) { //打印老师学生信息
   }
 }
 // 结构体案例一老师带学生结束
+/**案例描述：**
+设计一个英雄的结构体，包括成员姓名，年龄，性别;创建结构体数组，数组中存放 5
+名英雄。通过冒泡排序的算法，将数组中的英雄按照年龄进行升序排序，最终打印排序后的结果。
+*/
 
 // 结构体案例二三国无双
+struct DynastyWorrior { // 英雄的结构体
+  // 姓名
+  string name;
+  // 年龄
+  int age;
+  // 性别
+  string sex;
+};
 
+//冒泡排序实现年龄的升序排列
+void bubbleSort(DynastyWorrior heroArr[], int len) { //冒泡排序
+  for (int i = 0; i < len - 1; i++) {                //这里注意要减1
+    for (int j = 0; j < len - i - 1; j++) {          //这里注意也要减1
+      if (heroArr[j].age > heroArr[j + 1].age) {
+        // int temp = heroArr[j].age;//此处错误，临时中专值也要是一个结构体
+        DynastyWorrior temp = heroArr[j];
+        // heroArr[j].age = heroArr[j +
+        // 1].age;//错误，这一点致使你第一次打印错误，不能只转移年龄，结构体要全体转移
+
+        heroArr[j] = heroArr[j + 1];
+        // heroArr[j + 1].age = temp;//错误
+        heroArr[j + 1] = temp;
+      }
+    }
+  }
+}
 // 结构体案例二三国无双结束
 int main() {
   // exStructStudents();
@@ -157,18 +185,43 @@ int main() {
   // student stu05 = {"小七", 6, 99};
   // printStudentbyValue(stu05); // 值传递
   // printStudentbyAdd(&stu05);  //地址传递
-  // 结构体案例一老师带学生
+  //
+  // #####结构体案例一老师带学生#####
   // 0、创建随机数种子，否则，一直会有值被固定
-  srand((unsigned int)time(NULL));
-  // 1、创建三名老师的数组
-  teacher tArray[3]; //具体请参见上面teacher的结构体，尤其是 studentsArray[5];
-                     // 嵌套结构体数组，一个老师带了五名学生
+  // srand((unsigned int)time(NULL));
+  // // 1、创建三名老师的数组
+  // teacher tArray[3]; //具体请参见上面teacher的结构体，尤其是
+  // studentsArray[5];
+  //                    // 嵌套结构体数组，一个老师带了五名学生
 
-  // 2、通过函数给三名老师赋值，并给老师带的学生信息赋值
-  int len;
-  len = sizeof(tArray) / sizeof(tArray[0]); // 这里不会报错
-  allocatspace(tArray, len);
-  // 3、 打印所有老师所带学生的信息
-  printTeaStuInfo(tArray, len);
-  // 结构体案例一老师带学生结束########
+  // // 2、通过函数给三名老师赋值，并给老师带的学生信息赋值
+  // int len = sizeof(tArray) / sizeof(tArray[0]); // 这里不会报错
+  // allocatspace(tArray, len);
+  // // 3、 打印所有老师所带学生的信息
+  // printTeaStuInfo(tArray, len);
+  // #####结构体案例一老师带学生结束#####
+  //
+  // #####结构体案例二三国无双#####
+  // 1、创建英雄的结构体
+
+  // 2、创建数组存放5名英雄
+  DynastyWorrior heroArr[5] = {
+      {"刘备", 23, "男"}, {"关羽", 22, "男"}, {"张飞", 20, "男"},
+      {"赵云", 21, "男"}, {"貂蝉", 19, "女"},
+  };
+  int len = sizeof(heroArr) / sizeof(heroArr[0]);
+  printf("排序前打印:\n");
+  for (int i = 0; i < len; i++) {
+    printf("%s %d %s\n", heroArr[i].name.c_str(), heroArr[i].age,
+           heroArr[i].sex.c_str());
+  } // 此处需要测试是否可以打印，必要的阶段性输出
+  // 3、对数组进行排序，按年龄进行升序排列
+  bubbleSort(heroArr, len);
+  // 4、 将排序后的结果打印输出
+  printf("冒泡排序后打印:\n");
+  for (int i = 0; i < len; i++) {
+    printf("%s %d %s\n", heroArr[i].name.c_str(), heroArr[i].age,
+           heroArr[i].sex.c_str());
+  }
+  // #####结构体案例二三国无双结束#####
 }
