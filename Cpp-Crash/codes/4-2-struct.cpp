@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
 using namespace std;
 /*结构体
@@ -7,9 +8,9 @@ using namespace std;
 - struct 结构体名 变量名
 - struct 结构体名 变量名 = { 成员 1 值 ， 成员 2 值...}
 - 定义结构体时顺便创建变量 使用较少
-
-const struct *stu,用指针是为了节省内存，const可以防止误操作
-结构体案例
+*stu,用指针是为了节省内存
+冻结 const struct ，const可以防止误操作
+结构体案例 这里解决了怎么嵌套结构体数组了
 */
 
 //定义学生结构体，注意一下小尾巴
@@ -53,14 +54,15 @@ void exStructStudents() {
          sizeof(stu04), p, sizeof(*p));
 }
 
-//结构体嵌套结构体，总感觉很有用
+//结构体嵌套结构体和结构体数组，总感觉很有用
 struct teacher {
   //第一前提是之前已经创建好了结构体 此处是之前创建的student
   //成员列表
-  int id;      // 职工编号
-  string name; //教师姓名
-  int age;     //教师年龄
-  student stu; // 子结构体
+  int id;            // 职工编号
+  string name;       //教师姓名
+  int age;           //教师年龄
+  student stu;       // 子结构体
+  student sArray[5]; // 这样就可以了 结构体嵌套结构体数组
 };
 
 void exNestedStruct01() {
@@ -110,12 +112,63 @@ void printStubyAdd(student const *stu) {
   printf("姓名 %s,年龄 %d，分数 %d。\n", stu->name.c_str(), stu->age,
          stu->score);
 }
-
 //
+/*结构体案例一老师带学生
+**案例描述：**
+学校正在做毕设项目，每名老师带领 5 个学生，总共有 3
+名老师，设计学生和老师的结构体，其中在老师的结构体中，有老师姓名和一个存放
+5名学生的数组作为成员 学生的成员有姓名、考试分数，创建数组存放 3
+名老师，通过函数给每个老师及所带的学生赋值最终打印出老师数据以及老师所带的学生数据。
+*/
+
+void allocatspace(teacher tArray[], int len) { //主代码，开辟老师学生空间并赋值
+  //给老师进行赋值，小技巧：
+  string nameSeedtea = "JKMNO";
+  string nameSeedStu = "ABCDE";
+  for (int i = 0; i < len; i++) {
+    tArray[i].name = "Teacher ";
+    tArray[i].name += nameSeedtea[i]; // 这样就能命名Teacher_X了
+    for (int j = 0; j < 5;
+         j++) { //通过嵌套循环给每个老师带的学生赋值,默认一个老师带五个学生
+      tArray[i].sArray[j].name = "Student "; //姓名赋值
+      tArray[i].sArray[j].name += nameSeedStu[j];
+      int randScore = rand() % 61 + 40;      // 40 ~ 100 分
+      tArray[i].sArray[j].score = randScore; // 给学生分数赋值
+    }
+  }
+}
+void printTeaStuInfo(teacher tArray[], int len) { //打印老师学生信息
+  for (int i = 0; i < len; i++) {
+    printf("辅导教师姓名： %s，辅导学生信息：\n", tArray[i].name.c_str());
+    for (int j = 0; j < 5; j++) {
+      printf("\t学生姓名： %s, 分数：%d。\n", tArray[i].sArray[j].name.c_str(),
+             tArray[i].sArray[j].score);
+    }
+  }
+}
+// 结构体案例一老师带学生结束
+
+// 结构体案例二三国无双
+
+// 结构体案例二三国无双结束
 int main() {
   // exStructStudents();
   // exNestedStruct01();
-  student stu05 = {"小七", 6, 99};
-  printStudentbyValue(stu05); // 值传递
-  printStudentbyAdd(&stu05);  //地址传递
+  // student stu05 = {"小七", 6, 99};
+  // printStudentbyValue(stu05); // 值传递
+  // printStudentbyAdd(&stu05);  //地址传递
+  // 结构体案例一老师带学生
+  // 0、创建随机数种子，否则，一直会有值被固定
+  srand((unsigned int)time(NULL));
+  // 1、创建三名老师的数组
+  teacher tArray[3]; //具体请参见上面teacher的结构体，尤其是 studentsArray[5];
+                     // 嵌套结构体数组，一个老师带了五名学生
+
+  // 2、通过函数给三名老师赋值，并给老师带的学生信息赋值
+  int len;
+  len = sizeof(tArray) / sizeof(tArray[0]); // 这里不会报错
+  allocatspace(tArray, len);
+  // 3、 打印所有老师所带学生的信息
+  printTeaStuInfo(tArray, len);
+  // 结构体案例一老师带学生结束########
 }
