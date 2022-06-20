@@ -19,8 +19,7 @@ typedef struct DYNAMICARRAY { // typedef 不多余
 } Dynamic_Array;              // 第三种方法创建结构体
 //写一系列相关的对 DYNAMICARRAY 结构体操作的函数；
 // 1、初始化结构体，不需要任何参数，创建过后，Dynamic_Array指向DYNAMICARRAY内存空间
-
-Dynamic_Array *Dynamic_Array_Init();
+Dynamic_Array *Init_Array(); // 很重要，调用的时候要写到函数中的
 // 2、插入
 void PushBack_Array(Dynamic_Array *arr, int value); // PushBack 这么写好看
 // 3、删除 情况：根据值删除和根据位置删除

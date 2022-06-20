@@ -134,8 +134,6 @@ int Size_Array(Dynamic_Array *arr) {
 };
 // 10、根据位置获得某个元素位置
 int At_Array(Dynamic_Array *arr, int pos) {
-  if (arr == NULL) {
-    return 0;
-  }
   return arr->pAddr[pos]; //一开始需要写默认值返回0
+  //此处不用再判断报错，如果返回值无效直接越界
 };

@@ -115,9 +115,10 @@ int Capacity_Array(Dynamic_Array *arr) {
 int Size_Array(Dynamic_Array *arr) {
   return 0; //需要写默认值返回0
 };
-//根据位置获得某个位置元素
+// 10、根据位置获得某个元素位置
 int At_Array(Dynamic_Array *arr, int pos) {
-  return 0; //需要写默认值返回0
+  return arr->pAddr[pos]; //一开始需要写默认值返回0
+  //此处不用再判断报错，如果返回值无效直接越界
 };
 
 
