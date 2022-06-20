@@ -177,7 +177,7 @@ void exDynamicArr01() { //一维动态数组
   int *parr = nullptr;  // In newer C++ (C++11 and higher), use nullptr.
   int *parr01 = nullptr;
   // 开辟一个 int 4个字节的内存空间，用parr指针指向它
-  parr = (int *)malloc(sizeof(int));
+  parr = (int *)malloc(sizeof(int)); // 这是一个公式
   printf("初始化，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
   *parr = 520; // 给parr赋值
   printf("赋值520后，parr的内存地址为：%p，parr的值为%d\n", &parr, *parr);
