@@ -123,8 +123,113 @@ int At_Array(Dynamic_Array *arr, int pos) {
 
 ```
 
+### 壳已经写完了，下面开始写函数的实现，先从简单的5-10开始写
+
+```cpp
+#include "DynamicArray.h" // 把对应头文件引入进来
+#include <stdio.h>
+#include <stdlib.h>
+
+Dynamic_Array *Init_Array() { //动态数组初始化
+  //申请内存 malloc开辟
+  Dynamic_Array *myArray = (Dynamic_Array *)malloc(sizeof(Dynamic_Array));
+  //初始化 地址addr、元素个数size、容量capacity
+  myArray->capacity = 20; //初始化容量，给20个空间
+  myArray->size = 0;      //初始化元素个数为零
+  myArray->pAddr = (int *)malloc(
+      sizeof(int) * myArray->capacity); //开辟内存空间，用整型大小乘以capacity
+  return myArray; //一开始没写好的时候这里先默认NULL
+}
+
+// 2、插入
+void PushBack_Array(Dynamic_Array *arr, int value){
+
+};
+// 3、删除 情况：根据值删除和根据位置删除
+void RemoveByPos_Array(Dynamic_Array *arr, int pos){
+
+};
+void RemoveByValue_Array(Dynamic_Array *arr, int value){
+
+};
+
+// 4、查找 int类型
+int Find_Array(Dynamic_Array *arr, int value) {
+  return 0; //需要写默认值返回0
+};
+// 5、 打印
+void Print_Array(Dynamic_Array *arr) {
+  for (int i = 0; i < arr->size; i++) {
+    printf("%d ", arr->pAddr[i]);
+  }
+  printf("\n");
+};
+// 6、 释放动态数组的内存
+void FreeSpace_Array(Dynamic_Array *arr) { //先释放内部内存，再释放外面的
+  if (arr == NULL) {                       //首先判断是否指针为空
+    return;
+  }
+  if (arr->pAddr != NULL) {
+    free(arr->pAddr);
+  }
+  free(arr);
+};
+
+//再有新的功能可以继续增加
+// 7、 清空数组
+void Clear_Array(Dynamic_Array *arr) {
+  if (arr == NULL) { //首先判断是否指针为空
+    return;
+  }
+  // pAddr -> 空间
+  arr->size = 0; //直接等于0即可清空
+};
+// 8、获得动态数组容量
+int Capacity_Array(Dynamic_Array *arr) {
+  if (arr->capacity == 0) { //首先判断是否指针为空
+    return 0;
+  }
+  return arr->capacity; //一开始需要写默认值返回0
+};
+// 9、 获得动态数组当前元素个数
+int Size_Array(Dynamic_Array *arr) {
+  if (arr == NULL) {
+    return 0;
+  } //需要写默认值返回0
+  return arr->size;
+};
+// 10、根据位置获得某个元素位置
+int At_Array(Dynamic_Array *arr, int pos) {
+  if (arr == NULL) {
+    return 0;
+  }
+  return arr->pAddr[pos]; //一开始需要写默认值返回0
+};
+
+
+```
+
+> 每一步这么细致是为了比较每次编写的不同和改进，这就是写代码的思路
+
+每次都要判断一下当前内存情况是否不足或者值是否为零：
+```cpp
+ if (arr == NULL) {
+    return 0;
+  } //需要写默认值返回0
+  //或者：
+  if (arr->capacity == 0) { //首先判断是否指针为空
+    return 0;
+  }
+
+```
+
+### 下面写增删改
+
 ```c++
 
+```
+
+```c++
 
 ```
 
