@@ -1,5 +1,3 @@
-EXE = main
-OBJS = main.o Cube.o
-CLEAN_RM =
-
-include ../_make/generic.mk
+all:
+	clang++ main.cpp Cube.cpp -o main
+	./main
