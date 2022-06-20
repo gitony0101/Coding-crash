@@ -37,7 +37,7 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
   }
   //插入新元素 从尾部插入
   arr->pAddr[arr->size] = value; //最后一位就是pos[arr->size],赋值value
-  arr->size++;                   //记得要累加这个size
+  arr->size++;                   //记得要累加这个size13:59
 };
 // 3、删除 情况：根据值删除和根据位置删除
 void RemoveByPos_Array(Dynamic_Array *arr, int pos){
