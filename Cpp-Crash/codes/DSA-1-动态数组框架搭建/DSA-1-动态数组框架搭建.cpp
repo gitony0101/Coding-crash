@@ -9,9 +9,4 @@ using namespace std;
 
 void myFunc() {}
 
-int main() {
-  printf("Hello World!\n");
-  printf("Hello World!\n");
-  printf("Hello World!\n");
-  printf("Hello World!\n");
-}
+int main() {}
