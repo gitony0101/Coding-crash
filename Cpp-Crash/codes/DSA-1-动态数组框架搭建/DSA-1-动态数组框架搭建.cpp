@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,4 +9,9 @@ using namespace std;
 
 void myFunc() {}
 
-int main() {}
+int main() {
+  printf("Hello World!\n");
+  printf("Hello World!\n");
+  printf("Hello World!\n");
+  printf("Hello World!\n");
+}
