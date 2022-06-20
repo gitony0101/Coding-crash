@@ -1,5 +1,9 @@
 #ifndef DYNAMIC_ARRAY_H
 #define DYNAMIC_ARRAY_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 /*
 动态增长内存：策略：将内存放到堆上
 动态数组 如果当前有n个元素，目前要再插进去一个元素，所以我们 申请内存 拷贝数据
@@ -19,11 +23,26 @@ typedef struct DYNAMICARRAY { // typedef 不多余
 Dynamic_Array *Dynamic_Array_Init();
 // 2、插入
 void PushBack_Array(Dynamic_Array *arr, int value); // PushBack 这么写好看
-// 3、删除
-void Remove_Array(Dynamic_Array *arr, int value);
+// 3、删除 情况：根据值删除和根据位置删除
+void RemoveByPos_Array(Dynamic_Array *arr, int pos);
+void RemoveByValue_Array(Dynamic_Array *arr, int value);
 
+// 4、查找 int类型
+int Find_Array(Dynamic_Array *arr, int value);
+// 5、 打印
+void Print_Array(Dynamic_Array *arr);
+// 6、 释放动态数组的内存
+void FreeSpace_Array(Dynamic_Array *arr); //释放内存地址
+//再有新的功能可以继续增加
+// 7、 清空数组
+void Clear_Array(Dynamic_Array *arr);
+// 8、获得动态数组容量
+int Capacity_Array(Dynamic_Array *arr);
+// 9、 获得动态数组当前元素个数
+int Size_Array(Dynamic_Array *arr);
+//根据位置获得某个位置元素
+int At_Array(Dynamic_Array *arr, int pos);
 #endif
-
 /*
 1、头文件三件套，防止头文件被重复包含
 #ifndef XXX
