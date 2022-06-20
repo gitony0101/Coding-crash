@@ -1,15 +1,20 @@
-EXE = main
-OBJS = main.o Cube.o
-CLEAN_RM =
+all:
+	clang++ main.cpp Cube.cpp -o main
+	./main
 
-include ../_make/generic.mk
 
-# Directory-specific rules:
-puzzle: puzzle.cpp Cube2.cpp
-	$(LD) $^ $(LDFLAGS) -o $@
+# EXE = main
+# OBJS = main.o Cube.o
+# CLEAN_RM =
 
-main-ref: main-ref.cpp
-	$(LD) $^ $(LDFLAGS) -o $@
+# include ../_make/generic.mk
 
-all: main-ref
-CLEAN_RM += main-ref puzzle
+# # Directory-specific rules:
+# puzzle: puzzle.cpp Cube2.cpp
+# 	$(LD) $^ $(LDFLAGS) -o $@
+
+# main-ref: main-ref.cpp
+# 	$(LD) $^ $(LDFLAGS) -o $@
+
+# all: main-ref
+# CLEAN_RM += main-ref puzzle

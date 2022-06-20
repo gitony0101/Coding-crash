@@ -1,12 +1,12 @@
 /**
  * Simple C++ program using variables.
- * 
+ *
  * @author
  *   Wade Fagen-Ulmschneider <waf@illinois.edu>
  */
 
-#include <iostream>
 #include "Cube.h"
+#include <iostream>
 
 int main() {
   cs225::Cube c;
