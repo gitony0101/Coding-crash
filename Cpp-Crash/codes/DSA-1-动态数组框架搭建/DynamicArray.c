@@ -37,20 +37,60 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
   }
   //插入新元素 从尾部插入
   arr->pAddr[arr->size] = value; //最后一位就是pos[arr->size],赋值value
-  arr->size++;                   //记得要累加这个size13:59
-};
-// 3、删除 情况：根据值删除和根据位置删除
-void RemoveByPos_Array(Dynamic_Array *arr, int pos){
-
-};
-void RemoveByValue_Array(Dynamic_Array *arr, int value){
-
+  arr->size++;                   //记得要累加这个size
 };
 
 // 4、查找 int类型
 int Find_Array(Dynamic_Array *arr, int value) {
-  return 0; //需要写默认值返回0
+  if (arr == NULL) {
+    return -1; //返回-1说明出错
+  }
+  //找到值的位置
+  int pos = -1; //初始化位置值为-1防止误操作
+  for (int i = 0; i < arr->size; i++) {
+    if (arr->pAddr[i] == value) {
+      pos = i; //找到了这个位置，赋值给pos
+      break;   //停止查找了
+    }
+  }
+  return pos;
 };
+
+// 3、删除 情况：根据位置删除和根据值删除
+// 3.1、根据位置删除
+void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
+  if (arr == NULL) { //首先判断是否指针为空
+    return;
+  }
+  //其次判断位置是否有效
+  if (pos < 0 || pos >= arr->size) {
+    return;
+  }
+  //删除元素的指令
+  for (int i = pos; i < arr->size - 1; i++) {
+    arr->pAddr[i] = arr->pAddr[i + 1]; //向前覆盖了
+  }
+  arr->size--; //往前缩进一位
+};
+// 3.2、 根据值删除
+// 注意；这只是删除的value第一次出现的那个位置上的值
+void RemoveByValue_Array(Dynamic_Array *arr, int value) {
+  if (arr == NULL) {
+    return;
+  }
+  // //找到值的位置
+  // int pos = -1; //初始化位置值为-1防止误操作
+  // for (int i = 0; i < arr->size; i++) {
+  //   if (arr->pAddr[i] == value) {
+  //     pos = i; //找到了这个位置，赋值给pos
+  //     break;   //停止查找了
+  //   }
+  // }
+  int pos = Find_Array(arr, value); //嵌套上面的查找函数
+  //嵌套根据位置删除
+  RemoveByPos_Array(arr, pos); //这里的嵌套有意思
+};
+
 // 5、 打印
 void Print_Array(Dynamic_Array *arr) {
   for (int i = 0; i < arr->size; i++) {

@@ -70,7 +70,7 @@ void FreeSpace_Array(Dynamic_Array *arr); //释放内存地址
 
 3. 开始写函数，从初始化开始写
 
-```cpp
+```c++
 #include "DynamicArray.h" // 把对应头文件引入进来
 
 Dynamic_Array *Init_Array() { //初始化，需要默认返回NULL
@@ -125,7 +125,7 @@ int At_Array(Dynamic_Array *arr, int pos) {
 
 ### 壳已经写完了，下面开始写函数的实现，先从简单的5-10开始写
 
-```cpp
+```c++
 #include "DynamicArray.h" // 把对应头文件引入进来
 #include <stdio.h>
 #include <stdlib.h>
@@ -212,7 +212,7 @@ int At_Array(Dynamic_Array *arr, int pos) {
 > 每一步这么细致是为了比较每次编写的不同和改进，这就是写代码的思路
 
 每次都要判断一下当前内存情况是否不足或者值是否为零：
-```cpp
+```c++
  if (arr == NULL) {
     return 0;
   } //需要写默认值返回0
@@ -223,11 +223,137 @@ int At_Array(Dynamic_Array *arr, int pos) {
 
 ```
 
-### 下面写增删改
+### 下面写增删改查
 
 ```c++
+### 插入
+
+```cpp
+// 2、插入
+void PushBack_Array(Dynamic_Array *arr, int value) {
+  if (arr == NULL) { //首先判断是否指针为空
+    return;
+  }
+  //判断空间是否足够
+  if (arr->size == arr->capacity) { //判断是否空间已经满了
+                                    //第一步 申请一块更大的空间
+    int *newSpace = (int *)malloc(sizeof(int) * arr->capacity *
+                                  2); //默认新空间是旧空间的两倍
+    //第二步 拷贝数据到新的空间
+    // memcpy(),目标空间，原空间，空间大小为新的空间大小，注意乘以sizeof
+    memcpy(newSpace, arr->pAddr, arr->capacity * sizeof(int));
+    //第三步，释放旧空间的内存
+    free(arr->pAddr);
+    //第四步 更新容量和指针指向
+    arr->capacity = arr->capacity * 2;
+    arr->pAddr = newSpace; //内存指向新空间，至此新空间开辟完成
+  }
+  //插入新元素 从尾部插入
+  arr->pAddr[arr->size] = value; //最后一位就是pos[arr->size],赋值value
+  arr->size++;                   //记得要累加这个size
+};
 
 ```
+```
+
+
+### 删除
+
+情况：根据位置删除和根据值删除
+
+- 关于位置删除算法：
+  - 比如一列数组：{1,2,3,4,5,6,7,8,9,10}
+  - 我删除了第7个元素，然后后面的8、9、10往前移
+
+```cpp
+// 3、删除 情况：根据位置删除和根据值删除
+// 3.1、根据位置删除
+void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
+  if (arr == NULL) { //首先判断是否指针为空
+    return;
+  }
+  //其次判断位置是否有效
+  if (pos < 0 || pos >= arr->size) {
+    return;
+  }
+  //删除元素的指令
+  for (int i = pos; i < arr->size - 1; i++) {
+    arr->pAddr[i] = arr->pAddr[i + 1]; //向前覆盖了
+  }
+  arr->size--; //往前缩进一位
+};
+
+```
+
+ 根据值删除，首先还是先找到位置，然后嵌套根据位置删除
+ - 但是这是删除的value第一次出现的那个位置上的值
+
+
+
+### 查找
+
+这里其实是复制了上面的查找过程，其实可以变换一下
+
+> 所以这个编程问题，第一，我们可以先解决查找的函数，然后按顺序调用查找函数解决按位置删除，接着是嗲用查找和按位置删除去写按照数值删除，
+
+所以我们改变一下顺序，把查找代码和删除代码放在一起输出：
+
+```cpp
+// 4、查找 int类型
+int Find_Array(Dynamic_Array *arr, int value) {
+  if (arr == NULL) {
+    return -1; //返回-1说明出错
+  }
+  //找到值的位置
+  int pos = -1; //初始化位置值为-1防止误操作
+  for (int i = 0; i < arr->size; i++) {
+    if (arr->pAddr[i] == value) {
+      pos = i; //找到了这个位置，赋值给pos
+      break;   //停止查找了
+    }
+  }
+  return pos;
+};
+
+// 3、删除 情况：根据位置删除和根据值删除
+// 3.1、根据位置删除
+void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
+  if (arr == NULL) { //首先判断是否指针为空
+    return;
+  }
+  //其次判断位置是否有效
+  if (pos < 0 || pos >= arr->size) {
+    return;
+  }
+  //删除元素的指令
+  for (int i = pos; i < arr->size - 1; i++) {
+    arr->pAddr[i] = arr->pAddr[i + 1]; //向前覆盖了
+  }
+  arr->size--; //往前缩进一位
+};
+// 3.2、 根据值删除
+// 注意；这只是删除的value第一次出现的那个位置上的值
+void RemoveByValue_Array(Dynamic_Array *arr, int value) {
+  if (arr == NULL) {
+    return;
+  }
+
+  int pos = Find_Array(arr, value); //嵌套上面的查找函数
+  //嵌套根据位置删除
+  RemoveByPos_Array(arr, pos); //嵌套上面的按照位置删除
+};
+
+```
+
+注意这两次嵌套：
+```cpp
+  int pos = Find_Array(arr, value); //嵌套上面的查找函数
+  //嵌套根据位置删除
+  RemoveByPos_Array(arr, pos); //嵌套上面的按照位置删除
+```
+这种优化代码的思想要有。
+
+
 
 ```c++
 
