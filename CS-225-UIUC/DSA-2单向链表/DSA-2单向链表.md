@@ -54,3 +54,11 @@ void FreeSpace_LinkList(LinkList *list);
 - `void *data`中 `void*`为无类型指针，**指向任何类型的数据**
 
 
+## 2 框架实现 LinkList.cpp
+
+- 确保不报错，先把需要`return NULL和0`的补上
+- 初始化，开辟内存空间，初始化结构体的各种参数
+
+
+
+
