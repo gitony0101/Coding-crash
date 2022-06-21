@@ -4,7 +4,16 @@ using namespace std;
 #include "LinkList.h"
 
 //初始化链表
-LinkList *Init_LinkList() { return NULL; };
+LinkList *Init_LinkList() {
+  LinkList *list = (LinkList *)malloc(sizeof(LinkList)); //初始化，开辟内存
+  list->size = 0;                                        //初始容量为零
+  //头结点（不保存数据信息）
+  list->head = (LinkNode *)malloc(sizeof(LinkNode));
+  list->head->data = NULL;
+  list->head->next = NULL;
+
+  return list;
+};
 //指定位置插入数据
 void Insert_LinkList(LinkList *list, int pos, void *data){
 
