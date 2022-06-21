@@ -7,7 +7,7 @@
 ## 1 创建头文件
 
 
-```cpp
+```c++
 #ifndef LINKLIST_H
 #define LINKLIST_H
 
