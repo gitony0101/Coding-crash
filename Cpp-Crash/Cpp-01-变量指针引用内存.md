@@ -248,6 +248,16 @@ Pointer arithmetic is meaningless **unless performed on an array.**
 
 
 
+### 无类型指针`void*`
+
+`void*`为无类型指针，指向任何类型的数据。
+```cpp
+typedef struct LINKNODE {
+  void *data; //数据域,void*为无类型指针，指向任何类型的数据
+  struct LINKNODE *next; //指针域
+} LinkNode;
+```
+
 ## 引用指针小结后记
 
 C++ 提供了两种指针运算符，一种是取地址运算符 &，一种是间接寻址运算符 \*。

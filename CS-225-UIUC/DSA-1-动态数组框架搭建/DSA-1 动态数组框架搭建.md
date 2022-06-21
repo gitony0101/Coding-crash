@@ -229,7 +229,7 @@ int At_Array(Dynamic_Array *arr, int pos) {
 ```c++
 ### 插入
 
-```cpp
+```
 // 2、插入
 void PushBack_Array(Dynamic_Array *arr, int value) {
   if (arr == NULL) { //首先判断是否指针为空
@@ -255,6 +255,7 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
 };
 
 ```
+
 ```
 
 
@@ -266,7 +267,7 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
   - 比如一列数组：{1,2,3,4,5,6,7,8,9,10}
   - 我删除了第7个元素，然后后面的8、9、10往前移
 
-```cpp
+```c++
 // 3、删除 情况：根据位置删除和根据值删除
 // 3.1、根据位置删除
 void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
@@ -299,7 +300,7 @@ void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
 
 所以我们改变一下顺序，把查找代码和删除代码放在一起输出：
 
-```cpp
+```c++
 // 4、查找 int类型
 int Find_Array(Dynamic_Array *arr, int value) {
   if (arr == NULL) {
@@ -347,7 +348,7 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
 ```
 
 注意这两次嵌套：
-```cpp
+```c++
   int pos = Find_Array(arr, value); //嵌套上面的查找函数
   //嵌套根据位置删除
   RemoveByPos_Array(arr, pos); //嵌套上面的按照位置删除
@@ -356,10 +357,18 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
 
 
 
-```c++
 
+
+
+
+## 小结
+
+1. 我们整个数组的搭建，都是在维护最初定义的结构体：
+```cpp
+typedef struct DYNAMICARRAY { 
+  int *pAddr;                 // 数据存放地址
+  int size;                   // 当前有多少个元素
+  int capacity;               //容量，容器当前能容纳多少元素
+} Dynamic_Array;              // 第三种方法创建结构体
 ```
-
-
-
-
+> 我们在写函数的时候都是在围绕结构体增加各种操作 

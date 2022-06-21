@@ -11,6 +11,7 @@ using namespace std;
 DSA-1-动态数组框架搭建
 clang++ DSA-1-动态数组框架搭建.cpp DynamicArray.cpp -o DSA-1-动态数组框架搭建
 ./DSA-1-动态数组框架搭建
+写入了makefile
 */
 
 void testDynamicArr01() {
