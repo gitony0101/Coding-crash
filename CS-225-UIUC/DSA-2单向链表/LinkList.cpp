@@ -11,7 +11,6 @@ LinkList *Init_LinkList() {
   list->head = (LinkNode *)malloc(sizeof(LinkNode));
   list->head->data = NULL;
   list->head->next = NULL;
-
   return list;
 };
 //指定位置插入数据
