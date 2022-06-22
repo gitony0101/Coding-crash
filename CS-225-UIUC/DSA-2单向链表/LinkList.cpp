@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 using namespace std;
 
@@ -14,8 +15,18 @@ LinkList *Init_LinkList() {
   return list;
 };
 //指定位置插入数据
-void Insert_LinkList(LinkList *list, int pos, void *data){
-
+void Insert_LinkList(LinkList *list, int pos, void *data) {
+  if (list == NULL) { //首先判断参数是不是我们要求的参数
+    return;
+  }
+  if (data == NULL) {
+    return;
+  }
+  if (pos < 0 || pos > list->size) {
+    pos = list->size; //插入到尾部，或者直接return；
+  }
+  //创建新的节点
+  LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
 };
 //删除指定位置的值
 void Remove_LinkList(LinkList *list, int pos){
