@@ -60,6 +60,83 @@ void FreeSpace_LinkList(LinkList *list);
 
 - 确保不报错，先把需要`return NULL和0`的补上
 - 初始化，开辟内存空间，初始化结构体的各种参数
+>框架代码比较复杂，一步一步来分开写
+
+
+
+
+## 初始化链表
+```cpp
+//初始化链表
+LinkList *Init_LinkList() {
+  LinkList *list = (LinkList *)malloc(sizeof(LinkList)); //初始化，开辟内存
+  list->size = 0;                                        //初始容量为零
+  //头结点（不保存数据信息）
+  list->head = (LinkNode *)malloc(sizeof(LinkNode));
+  list->head->data = NULL;
+  list->head->next = NULL;
+  return list;
+};
+
+```
+
+
+
+## 指定位置插入数据
+
+![img](./DSA-2%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8-%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE.png)
+
+这里把新加入的结点插进来是个难点
+
+```cpp
+//指定位置插入数据
+void Insert_LinkList(LinkList *list, int pos, void *data) {
+  if (list == NULL) { //首先判断参数是不是我们要求的参数
+    return;
+  }
+  if (data == NULL) {
+    return;
+  }
+  if (pos < 0 || pos > list->size) {
+    pos = list->size; //插入到尾部，或者直接return；
+  }
+
+  //创建新的节点
+  LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
+  /*找结点
+newnode->next = pCurrent->next;
+pCurrent->next = newnode; 找pos位置的前一个结点
+*/
+  //创建辅助指针变量pCurrent，先指向list的head
+  LinkNode *pCurrent = list->head;
+  for (int i = 0; i < pos; i++) { //用这个循环找到pCurrent位置
+    pCurrent = pCurrent->next;
+  }
+  //新结点入链表
+  newnode->next = pCurrent->next;
+  pCurrent->next = newnode;
+  list->size++;
+};
+
+```
+
+> 回头这里可能还要改
+
+### 辅助指针`pCurrent`
+
+关于辅助指针变量：
+
+
+
+```cpp
+  LinkNode *pCurrent = list->head;
+  for (int i = 0; i < pos; i++) {
+    pCurrent = pCurrent->next; //找到pCurrent结点
+  }
+
+```
+
+## 删除指定位置的值
 
 
 
