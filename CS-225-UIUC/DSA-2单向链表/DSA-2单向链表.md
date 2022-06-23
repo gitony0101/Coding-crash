@@ -55,7 +55,7 @@ void FreeSpace_LinkList(LinkList *list);
 - 连着创建了三个结构体：
   - 先创建了结点，然后才是链表结构体，因为在链表结构体中，需要先找到头结点
 
-```cpp
+```c++
 //链表结点
 typedef struct LINKNODE {
   void *data; //数据域,void*为无类型指针，指向任何类型的数据
@@ -82,7 +82,7 @@ typedef struct LINKLIST {
 
 
 ## 初始化链表
-```cpp
+```c++
 //初始化链表
 LinkList *Init_LinkList() {
   LinkList *list = (LinkList *)malloc(sizeof(LinkList)); //初始化，开辟内存
@@ -103,9 +103,11 @@ LinkList *Init_LinkList() {
 ![img](./DSA-2%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8-%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE.png)
 
 这里把新加入的结点插进来是个难点
+- 创建辅助指针变量
+- 使用for循环让这个辅助指针变量跑到pos-1的位置，此时pCurrent就位
 
+```c++
 ```cpp
-//指定位置插入数据
 void Insert_LinkList(LinkList *list, int pos, void *data) {
   if (list == NULL) { //首先判断参数是不是我们要求的参数
     return;
@@ -114,26 +116,25 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
     return;
   }
   if (pos < 0 || pos > list->size) {
-    pos = list->size; //插入到尾部，或者直接return；
+    pos =
+        list->size; //也是不合规的输入，但是我们可以先插入到尾部，或者直接return；
   }
 
   //创建新的节点
   LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
-  /*找结点
-newnode->next = pCurrent->next;
-pCurrent->next = newnode; 找pos位置的前一个结点
-*/
-  //创建辅助指针变量pCurrent，先指向list的head
-  LinkNode *pCurrent = list->head;
-  for (int i = 0; i < pos; i++) { //用这个循环找到pCurrent位置
-    pCurrent = pCurrent->next;
+  //创建辅助指针变量pCurrent
+  LinkNode *pCurrent = list->head; // pCurrent先指向list的head
+  for (int i = 0; i < pos; i++) { //用这个循环让pCurrent走到pos-1的位置
+    pCurrent = pCurrent->next;    //不停地让pCurrent往前移动
   }
   //新结点入链表
+  //第一步，先把新结点的next指针,这个指针指向pNext的数据域在内存里的首地址:
   newnode->next = pCurrent->next;
+  //第二步，让上一个结点pCurrent的指针指向newnode（的数据域内存首地址）：
   pCurrent->next = newnode;
-  list->size++;
+  list->size++; //链表大小+1
 };
-
+```
 ```
 
 > 回头这里可能还要改
@@ -144,7 +145,7 @@ pCurrent->next = newnode; 找pos位置的前一个结点
 
 
 
-```cpp
+```c++
   LinkNode *pCurrent = list->head;
   for (int i = 0; i < pos; i++) {
     pCurrent = pCurrent->next; //找到pCurrent结点
@@ -156,4 +157,62 @@ pCurrent->next = newnode; 找pos位置的前一个结点
 
 
 
+
+这还是一个找内存地址的故事
+
+1. `LinkNode *pDel = pCurrent->next;`先让pos-1的当前结点指针域指向需要删除的结点pDel，这里就是把pos位置上的结点，命名成为pDel准备删除
+2. `pCurrent->next = pDell->next;` pDell->next指向的是下下一个结点，此处让pos-1的pCurrent结点继承了pDell的指针域，pDell结点就被**挤出来了**。
+3. 释放pDell内存空间
+
+```cpp
+void Remove_LinkList(LinkList *list, int pos) {
+  if (list == NULL) { //防呆预判
+    return;
+  }
+  if (pos < 0 || pos >= list->size) {
+    return;
+  }
+  //查找删除结点的前一个节点
+  ////创建辅助指针变量
+  LinkNode *pCurrent = list->head; //先让辅助指针变量指向链表头
+  for (int i = 0; i < pos; i++) { //用这个循环让pCurrent走到pos-1的位置
+    pCurrent = pCurrent->next;    //不停地让pCurrent往前移动
+  }
+  //缓存删除的结点 关键所在：
+  //先让pos-1的当前结点指针域指向需要删除的结点pDel，这里就是把pos位置上的结点，命名成为pDel准备删除
+  LinkNode *pDell = pCurrent->next;
+  // pDell->next指向的是下下一个结点，此处让pos-1的pCurrent结点继承了pDell的指针域，pDell结点就被**挤出来了**。
+  pCurrent->next = pDell->next;
+  //释放删除结点pDell的内存
+  free(pDell);
+  list->size--;
+};
+
+```
+
+- 找内存地址，一个是数据域内存首地址，一个是结点指针域指向下一个结点的地址。
+
+## 获得链表长度
+
+```cpp
+int Size_LinkList(LinkList *list) { //直接返回
+  return list->size;
+};
+```
+
+
+
+
+
+
+
+
+
+
+
+# 小结
+
+## 
+
+插入、删除
 
