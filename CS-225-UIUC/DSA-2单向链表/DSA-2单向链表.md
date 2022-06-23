@@ -107,6 +107,8 @@ LinkList *Init_LinkList() {
 - 使用for循环让这个辅助指针变量跑到pos-1的位置，此时pCurrent就位
 
 ```c++
+
+```
 ```cpp
 void Insert_LinkList(LinkList *list, int pos, void *data) {
   if (list == NULL) { //首先判断参数是不是我们要求的参数
@@ -120,6 +122,9 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
         list->size; //也是不合规的输入，但是我们可以先插入到尾部，或者直接return；
   }
 
+```
+
+```cpp
   //创建新的节点
   LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
   //创建辅助指针变量pCurrent
@@ -134,24 +139,13 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
   pCurrent->next = newnode;
   list->size++; //链表大小+1
 };
+
 ```
+```
+
 ```
 
 > 回头这里可能还要改
-
-### 辅助指针`pCurrent`
-
-关于辅助指针变量：
-
-
-
-```c++
-  LinkNode *pCurrent = list->head;
-  for (int i = 0; i < pos; i++) {
-    pCurrent = pCurrent->next; //找到pCurrent结点
-  }
-
-```
 
 ## 删除指定位置的值
 
@@ -164,7 +158,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 2. `pCurrent->next = pDell->next;` pDell->next指向的是下下一个结点，此处让pos-1的pCurrent结点继承了pDell的指针域，pDell结点就被**挤出来了**。
 3. 释放pDell内存空间
 
-```cpp
+```c++
 void Remove_LinkList(LinkList *list, int pos) {
   if (list == NULL) { //防呆预判
     return;
@@ -194,7 +188,7 @@ void Remove_LinkList(LinkList *list, int pos) {
 
 ## 获得链表长度
 
-```cpp
+```c++
 int Size_LinkList(LinkList *list) { //直接返回
   return list->size;
 };
@@ -210,9 +204,68 @@ int Size_LinkList(LinkList *list) { //直接返回
 
 
 
-# 小结
+## 查找（按地址）
+
+
+
+```cpp
+int Find_linkList(LinkList *list, void *data) {
+
+  if (list == NULL) {
+    return 0;
+  }
+  if (data == NULL) {
+    return 0;
+  }
+  //遍历查找，先创建辅助指针变量
+  LinkNode *pCurrent = list->head->next; //注意：
+  // list头结点不保存数据，从头结点的指针域才指向第一个结点的数据域地址，这才是第一个有效数据
+  int i = 0;
+  while (pCurrent != NULL) {
+    if (pCurrent->data == data) {
+      break;
+    }
+    i++;                       //第二种循环的方式，用while循环
+    pCurrent = pCurrent->next; //结点往后移动
+  }
+  return i;
+};
+
+```
+
+
+
+
+
+
+
+
+
+## 小结
 
 ## 
 
-插入、删除
+### 链表的操作要注意链表本身的特性
 
+作为一个链表，节点包括数据域和指针域：
+- 数据域首地址，就是这个节点的头，上一个节点的指针域，就指向这里。
+
+### 辅助指针变量`pCurrent`
+
+关于辅助指针变量：
+
+
+
+```c++
+  LinkNode *pCurrent = list->head;
+  for (int i = 0; i < pos; i++) {
+    pCurrent = pCurrent->next; //找到pCurrent结点
+  }
+
+```
+
+在遍历查找中，为了找数据，辅助指针变量为：
+```cpp
+LinkNode *pCurrent = list->head->next; //注意：
+  // list头结点不保存数据，从头结点的指针域才指向第一个结点的数据域地址，这才是第一个有效数据
+```
