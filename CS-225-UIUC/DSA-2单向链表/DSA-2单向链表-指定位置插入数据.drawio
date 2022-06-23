@@ -1,13 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="5ofMy6Scrlh20Qaq3g0U" name="Page-1">
-        <mxGraphModel dx="678" dy="1084" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="936" dy="1394" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="3" value="data" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="40" y="190" width="120" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=25;" edge="1" parent="1" source="5" target="7">
+                <mxCell id="26" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=25;" parent="1" source="5" target="7" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="next" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -16,41 +16,49 @@
                 <mxCell id="7" value="data" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="200" y="190" width="120" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=25;" edge="1" parent="1" source="8" target="9">
+                <mxCell id="33" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=20;" edge="1" parent="1" source="8" target="13">
                     <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="第二步" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;" vertex="1" connectable="0" parent="33">
+                    <mxGeometry x="-0.2159" y="-5" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="8" value="next" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="200" y="300" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="data" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="354" y="190" width="120" height="110" as="geometry"/>
+                    <mxGeometry x="470" y="190" width="120" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=25;" edge="1" parent="1" source="10" target="11">
+                <mxCell id="28" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=25;" parent="1" source="10" target="11" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="10" value="next" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="354" y="300" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="470" y="300" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="data" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="190" width="120" height="110" as="geometry"/>
+                    <mxGeometry x="636" y="190" width="120" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="next" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="300" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="636" y="300" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="13" value="data" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="294" y="530" width="120" height="110" as="geometry"/>
+                    <mxGeometry x="330" y="470" width="120" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="第一步" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.005;entryY=0.098;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=20;" edge="1" parent="1" source="14" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="14" value="next" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="294" y="640" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="330" y="580" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="pCurrent&lt;br style=&quot;font-size: 25px;&quot;&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" parent="1" vertex="1">
                     <mxGeometry x="205" y="140" width="110" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="pNext" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" parent="1" vertex="1">
-                    <mxGeometry x="374" y="140" width="80" height="40" as="geometry"/>
+                    <mxGeometry x="490" y="140" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" value="newnode" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;" parent="1" vertex="1">
-                    <mxGeometry x="294" y="480" width="120" height="40" as="geometry"/>
+                    <mxGeometry x="330" y="420" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="0" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=35;" parent="1" vertex="1">
                     <mxGeometry x="75" y="345" width="30" height="50" as="geometry"/>
@@ -59,13 +67,13 @@
                     <mxGeometry x="245" y="345" width="30" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="2" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=35;" parent="1" vertex="1">
-                    <mxGeometry x="399" y="345" width="30" height="50" as="geometry"/>
+                    <mxGeometry x="515" y="345" width="30" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="3" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=35;" parent="1" vertex="1">
-                    <mxGeometry x="565" y="345" width="30" height="50" as="geometry"/>
+                    <mxGeometry x="681" y="345" width="30" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="&lt;div style=&quot;background-color: rgb(255 , 255 , 255) ; font-family: &amp;#34;firacode nerd font&amp;#34; , &amp;#34;menlo&amp;#34; , &amp;#34;monaco&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 16px ; line-height: 24px&quot;&gt;&lt;div&gt;&lt;span&gt;找结点&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;newnode-&amp;gt;next = pCurrent-&amp;gt;next;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;pCurrent-&amp;gt;next = newnode;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;找pos位置的前一个结点&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=25;fontColor=#000000;" vertex="1" parent="1">
-                    <mxGeometry x="399" y="395" width="320" height="100" as="geometry"/>
+                <mxCell id="31" value="找结点：例如要把newnode插入pos=2 位置：&lt;br style=&quot;font-size: 20px&quot;&gt;1、先把pCurrent（位置1）的指针域拷贝给新的结点newnode指针域&lt;br style=&quot;font-size: 20px&quot;&gt;此时newnode的指针域指向了当前位置2pNext的数据域首地址；&lt;br style=&quot;font-size: 20px&quot;&gt;2、把pCurrent（位置1）的指针重新指向&lt;br&gt;要插入的结点newnode的数据域首地址&lt;br style=&quot;font-size: 20px&quot;&gt;也就是：&lt;br style=&quot;font-size: 20px&quot;&gt;&lt;div style=&quot;font-family: &amp;#34;firacode nerd font&amp;#34; , &amp;#34;menlo&amp;#34; , &amp;#34;monaco&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 20px&quot;&gt;newnode-&amp;gt;next = pCurrent-&amp;gt;next;//第一步&lt;/div&gt;&lt;div style=&quot;font-family: &amp;#34;firacode nerd font&amp;#34; , &amp;#34;menlo&amp;#34; , &amp;#34;monaco&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 20px&quot;&gt;pCurrent-&amp;gt;next = newnode; //第二步&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;" vertex="1" parent="1">
+                    <mxGeometry x="105" y="640" width="620" height="200" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

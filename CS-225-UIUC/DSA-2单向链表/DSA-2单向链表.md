@@ -52,7 +52,23 @@ void FreeSpace_LinkList(LinkList *list);
 #endif
 ```
 
-- 连着创建了三个结构体
+- 连着创建了三个结构体：
+  - 先创建了结点，然后才是链表结构体，因为在链表结构体中，需要先找到头结点
+
+```cpp
+//链表结点
+typedef struct LINKNODE {
+  void *data; //数据域,void*为无类型指针，指向任何类型的数据
+  struct LINKNODE *next; //指针域
+} LinkNode;
+//链表结构体
+typedef struct LINKLIST {
+  LinkNode *head; // 1、找到头结点
+  int size;       // 2、元素个数
+  //链表不需要容量，因为是按结点需求分配内存
+} 
+
+```
 - `void *data`中 `void*`为无类型指针，**指向任何类型的数据**
 
 

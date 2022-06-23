@@ -8,8 +8,8 @@ using namespace std;
 LinkList *Init_LinkList() {
   LinkList *list = (LinkList *)malloc(sizeof(LinkList)); //初始化，开辟内存
   list->size = 0;                                        //初始容量为零
-  //头结点（不保存数据信息）
-  list->head = (LinkNode *)malloc(sizeof(LinkNode));
+  //头结点
+  list->head = (LinkNode *)malloc(sizeof(LinkNode)); //头结点不保存信息
   list->head->data = NULL;
   list->head->next = NULL;
   return list;
