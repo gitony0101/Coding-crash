@@ -1,6 +1,5 @@
 // #define _CRT_SECURE_NO_WARNINGS
 #include "LinkList.h"
-#include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +13,7 @@ typedef struct PERSON {
 //打印函数
 void MyPrint(void *data) {
   Person *p = (Person *)data;
-  printf("Name : %s Age : %d Score %d\n", p->name, p->score, p->age);
+  printf("Name: %s Age: %d  Score: %d \n", p->name, p->age, p->score);
 }
 
 int main(void) {
