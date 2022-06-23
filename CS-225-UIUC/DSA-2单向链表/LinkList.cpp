@@ -92,12 +92,34 @@ int Find_linkList(LinkList *list, void *data) {
 };
 
 //返回第一个结点
-void *Front_LinkList(LinkList *list) { return 0; };
+void *Front_LinkList(LinkList *list) { return list->head->next; };
 //打印链表结点
-void Print_LinkList(LinkList *list, PRINTLINKNODE print){
+void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
+  if (list == NULL) {
+    return;
+  }
+  //创建辅助指针变量
+  LinkNode *pCurrent = list->head->next;
+  // 要打印节点，所以要从head的指针指向的第一个节点开始
 
+  while (pCurrent != NULL) {
+    print(pCurrent->data);
+    pCurrent = pCurrent->next;
+  }
 };
 //释放链表内存
-void FreeSpace_LinkList(LinkList *list){
-
+void FreeSpace_LinkList(LinkList *list) {
+  if (list == NULL) {
+    return;
+  }
+  //每个节点都要释放，所以还要遍历，此时需要辅助指针变量走一遍
+  LinkNode *pCurrent = list->head;
+  while (pCurrent != NULL) {
+    //  因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
+    LinkNode *pNext = pCurrent->next; //缓存下一个结点
+    free(pCurrent);                   //然后再释放当前结点
+    pCurrent = pNext;                 //往下循环
+  }
+  //释放链表内存
+  free(list);
 };

@@ -233,6 +233,84 @@ int Find_linkList(LinkList *list, void *data) {
 
 ```
 
+注意这个while可以起到循环：
+```cpp
+  int i = 0;
+  while (pCurrent != NULL) {
+    if (pCurrent->data == data) {
+      break;
+    }
+    i++;                       //第二种循环的方式，用while循环
+    pCurrent = pCurrent->next; //结点往后移动
+  }
+  return i;
+
+```
+
+## 返回第一个节点
+
+第一个节点是那个节点，想清楚！
+`list->head->next`
+
+```cpp
+void *Front_LinkList(LinkList *list) { return list->head->next; };
+
+```
+
+## 打印链表结点
+
+- 其实这个函数还需要在运行前把打印函数的print写详细，这里没写完，不知道为什么
+
+```cpp
+void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
+  if (list == NULL) {
+    return;
+  }
+  //创建辅助指针变量
+  LinkNode *pCurrent = list->head->next;
+  // 要打印节点，所以要从head的指针指向的第一个节点开始
+
+  while (pCurrent != NULL) {
+    print(pCurrent->data);
+    pCurrent = pCurrent->next;
+  }
+};
+
+```
+
+## 释放链表内存
+
+因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
+
+```cpp
+
+void FreeSpace_LinkList(LinkList *list) {
+  if (list == NULL) {
+    return;
+  }
+  //每个节点都要释放，所以还要遍历，此时需要辅助指针变量走一遍
+  LinkNode *pCurrent = list->head;
+  while (pCurrent != NULL) {
+    //  因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
+    LinkNode *pNext = pCurrent->next; //缓存下一个结点
+    free(pCurrent);                   //然后再释放当前结点
+    pCurrent = pNext;                 //往下循环
+  }
+  //释放链表内存
+  free(list);
+};
+
+
+```
+
+# 单向链表测试
+
+
+
+
+
+
+
 
 
 
