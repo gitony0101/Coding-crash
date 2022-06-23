@@ -72,10 +72,10 @@ int Size_LinkList(LinkList *list) { //直接返回
 int Find_linkList(LinkList *list, void *data) {
 
   if (list == NULL) {
-    return 0;
+    return -1;
   }
   if (data == NULL) {
-    return 0;
+    return -1;
   }
   //遍历查找，先创建辅助指针变量
   LinkNode *pCurrent = list->head->next; //注意：

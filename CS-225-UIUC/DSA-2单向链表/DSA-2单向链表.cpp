@@ -1,5 +1,6 @@
 // #define _CRT_SECURE_NO_WARNINGS
 #include "LinkList.h"
+#include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,8 +11,13 @@ typedef struct PERSON {
   int age;
   int score;
 } Person;
+//打印函数
+void MyPrint(void *data) {
+  Person *p = (Person *)data;
+  printf("Name : %s Age : %d Score %d\n", p->name, p->score, p->age);
+}
 
-void testLinkList01() {
+int main() {
   //创建链表
   LinkList *list = Init_LinkList();
   //创建数据
@@ -26,6 +32,9 @@ void testLinkList01() {
   Insert_LinkList(list, 0, &p3);
   Insert_LinkList(list, 0, &p4);
   Insert_LinkList(list, 0, &p5); // 打印顺序：p5-p1
+  //打印
+  Print_LinkList(list, MyPrint);
+  //
+  //销毁链表
+  FreeSpace_LinkList(list);
 }
-
-int main(void) { printf("hello\n"); }
