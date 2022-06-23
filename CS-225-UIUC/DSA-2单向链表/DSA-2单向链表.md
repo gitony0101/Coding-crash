@@ -278,6 +278,8 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
 
 ```
 
+- 这其实就还是个遍历，想要打印出来，还是要自己在后面的运行代码里面定义打印函数`MyPrint`
+
 ## 释放链表内存
 
 因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
