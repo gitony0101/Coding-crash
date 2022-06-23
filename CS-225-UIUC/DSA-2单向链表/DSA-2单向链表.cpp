@@ -17,7 +17,7 @@ void MyPrint(void *data) {
   printf("Name : %s Age : %d Score %d\n", p->name, p->score, p->age);
 }
 
-int main() {
+int main(void) {
   //创建链表
   LinkList *list = Init_LinkList();
   //创建数据
@@ -32,9 +32,9 @@ int main() {
   Insert_LinkList(list, 0, &p3);
   Insert_LinkList(list, 0, &p4);
   Insert_LinkList(list, 0, &p5); // 打印顺序：p5-p1
-  //打印
+                                 //打印
   Print_LinkList(list, MyPrint);
-  //
+
   //销毁链表
   FreeSpace_LinkList(list);
 }

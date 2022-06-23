@@ -98,15 +98,13 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
   if (list == NULL) {
     return;
   }
-  //创建辅助指针变量
+  //辅助指针变量
   LinkNode *pCurrent = list->head->next;
-  // 要打印节点，所以要从head的指针指向的第一个节点开始
-
   while (pCurrent != NULL) {
     print(pCurrent->data);
     pCurrent = pCurrent->next;
   }
-};
+}
 //释放链表内存
 void FreeSpace_LinkList(LinkList *list) {
   if (list == NULL) {
