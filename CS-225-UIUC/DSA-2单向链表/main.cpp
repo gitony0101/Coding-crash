@@ -32,10 +32,14 @@ int main(void) {
   Insert_LinkList(list, 0, &p3);
   Insert_LinkList(list, 0, &p4);
   Insert_LinkList(list, 0, &p5); // 打印顺序：p5-p1
-                                 //打印
-  // Print_LinkList(list, MyPrint);
-  Print_LinkList(list, MyPrint);
-
+                                 //
+  Print_LinkList(list, MyPrint); //打印
+  //打印链表长度
+  int lkSize = Size_LinkList(list);
+  printf("链表长度 %d\n", lkSize);
+  // 查找
+  int posP1 = Find_linkList(list, &p1);
+  printf("p1 的位置 %d\n", posP1);
   //销毁链表
   FreeSpace_LinkList(list);
 }
