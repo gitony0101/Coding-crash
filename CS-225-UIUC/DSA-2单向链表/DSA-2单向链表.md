@@ -67,9 +67,12 @@ typedef struct LINKLIST {
   int size;       // 2、元素个数
   //链表不需要容量，因为是按结点需求分配内存
 } 
+//打印函数指针
+typedef void (*PRINTLINKNODE)(void *);
 
 ```
 - `void *data`中 `void*`为无类型指针，**指向任何类型的数据**
+- 专门写了一个打印函数指针，用于打印结点的数据
 
 
 ## 2 框架实现 LinkList.cpp
@@ -146,6 +149,26 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 ```
 
 > 回头这里可能还要改
+
+### 实际使用场景
+
+```cpp
+ Insert_LinkList(list, 0, &p1);
+  Insert_LinkList(list, 0, &p2);
+  Insert_LinkList(list, 0, &p3);
+  Insert_LinkList(list, 0, &p4);
+  Insert_LinkList(list, 0, &p5);
+```
+
+因为都是从头压入数据，所以按照此顺序，链表中的数据就是：
+
+`head > p5 > p4 > p3 > p2 > p1 > NULL`
+
+打印的时候，先打印p5，最后是p1
+
+
+
+
 
 ## 删除指定位置的值
 
@@ -307,7 +330,7 @@ void FreeSpace_LinkList(LinkList *list) {
 
 最后代码的样子：
 
-```cpp
+```c++
 #include <cstddef>
 #include <iostream>
 using namespace std;

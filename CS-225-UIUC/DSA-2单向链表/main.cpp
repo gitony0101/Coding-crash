@@ -38,7 +38,7 @@ int main(void) {
   int lkSize = Size_LinkList(list);
   printf("链表长度 %d\n", lkSize);
   // 查找
-  int posP1 = Find_linkList(list, &p1);
+  int posP1 = Find_linkList(list, &p1); // 好好看一下这里的设置
   printf("p1 的位置 %d\n", posP1);
   //销毁链表
   FreeSpace_LinkList(list);
