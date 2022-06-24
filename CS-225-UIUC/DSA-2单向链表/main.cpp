@@ -1,5 +1,6 @@
 // #define _CRT_SECURE_NO_WARNINGS
 #include "LinkList.h"
+#include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,6 +33,7 @@ int main(void) {
   Insert_LinkList(list, 0, &p4);
   Insert_LinkList(list, 0, &p5); // 打印顺序：p5-p1
                                  //打印
+  // Print_LinkList(list, MyPrint);
   Print_LinkList(list, MyPrint);
 
   //销毁链表
