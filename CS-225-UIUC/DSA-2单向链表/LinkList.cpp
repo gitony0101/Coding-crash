@@ -2,6 +2,7 @@
 
 //打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
+//
 //初始化链表
 LinkList *Init_LinkList() {
   LinkList *list = (LinkList *)malloc(sizeof(LinkList)); //初始化，开辟内存
@@ -42,7 +43,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
   list->size++; //链表大小+1
 };
 //删除指定位置的值
-void Remove_LinkList(LinkList *list, int pos) {
+void RemoveByPos_LinkList(LinkList *list, int pos) {
   if (list == NULL) { //防呆预判
     return;
   }
@@ -50,7 +51,7 @@ void Remove_LinkList(LinkList *list, int pos) {
     return;
   }
   //查找删除结点的前一个节点
-  ////创建辅助指针变量
+  //创建辅助指针变量
   LinkNode *pCurrent = list->head; //先让辅助指针变量指向链表头
   for (int i = 0; i < pos; i++) { //用这个循环让pCurrent走到pos-1的位置
     pCurrent = pCurrent->next;    //不停地让pCurrent往前移动
@@ -92,8 +93,12 @@ int Find_linkList(LinkList *list, void *data) {
 };
 
 //返回第一个结点
-void *Front_LinkList(LinkList *list) { return list->head->next; }
+void *Front_LinkList(LinkList *list) { //调试的时候发现错误
+  return list->head->next->data;
+  //指针不保存数据信息，只是指向下一个结点的数据域内存首地址
+}
 //打印链表结点
+//要配合main入口函数中的MyPrint使用，此处是为了确定好数据类型，为打印提供必要的支持
 void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
   if (list == NULL) {
     return;

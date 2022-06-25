@@ -1,7 +1,7 @@
 #include "DynamicArray.h" // 把对应头文件引入进来
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> // memcpy
 
 Dynamic_Array *Init_Array() { //动态数组初始化
   //申请内存 malloc开辟

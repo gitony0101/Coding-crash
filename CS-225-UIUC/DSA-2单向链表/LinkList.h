@@ -29,7 +29,7 @@ LinkList *Init_LinkList(); //初始化链表
 //指定位置插入数据
 void Insert_LinkList(LinkList *list, int pos, void *data);
 //删除指定位置的值
-void Remove_LinkList(LinkList *list, int pos);
+void RemoveByPos_LinkList(LinkList *list, int pos);
 //获得链表长度
 int Size_LinkList(LinkList *list);
 //查找（根据指针查找） 不一定要放到这里，看看能否跟其他功能结合

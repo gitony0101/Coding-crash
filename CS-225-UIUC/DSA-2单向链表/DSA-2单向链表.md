@@ -152,7 +152,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 
 ### 实际使用场景
 
-```cpp
+```c++
  Insert_LinkList(list, 0, &p1);
   Insert_LinkList(list, 0, &p2);
   Insert_LinkList(list, 0, &p3);
@@ -160,9 +160,9 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
   Insert_LinkList(list, 0, &p5);
 ```
 
-因为都是从头压入数据，所以按照此顺序，链表中的数据就是：
+> 因为都是从头压入数据，所以按照此顺序，链表中的数据就是：
 
-`head > p5 > p4 > p3 > p2 > p1 > NULL`
+    `head > p5 > p4 > p3 > p2 > p1 > NULL`
 
 打印的时候，先打印p5，最后是p1
 
@@ -280,9 +280,20 @@ void *Front_LinkList(LinkList *list) { return list->head->next; };
 
 ```
 
-## 打印链表结点
+> 这里运行的时候报错：retName: �n Age: 0  Score: 0
 
-- 其实这个函数还需要在运行前把打印函数的print写详细，这里没写完，不知道为什么
+next是个指针，从这个错误你可以看到指针不保存数据信息。
+
+所以要改成：
+
+```cpp
+void *Front_LinkList(LinkList *list) { return list->head->next->data; };
+
+```
+
+
+
+## 打印链表结点
 
 ```c++
 void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
@@ -301,7 +312,7 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
 
 ```
 
-- 这其实就还是个遍历，想要打印出来，还是要自己在后面的运行代码里面定义打印函数`MyPrint`
+- 要配合main入口函数中的MyPrint使用，此处是为了确定好数据类型，为打印提供必要的支持
 
 ## 释放链表内存
 
@@ -425,7 +436,7 @@ int Find_linkList(LinkList *list, void *data) {
 };
 
 //返回第一个结点
-void *Front_LinkList(LinkList *list) { return list->head->next; };
+void *Front_LinkList(LinkList *list) { return list->head->next->data; };//这里运行时候报错调试了，指针不保存数据信息
 //打印链表结点
 void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
   if (list == NULL) {
@@ -462,8 +473,6 @@ void FreeSpace_LinkList(LinkList *list) {
 
 `make: *** [all] Segmentation fault: 11`
 
-换上test的同名代码就没问题了
-
 # 单向链表测试
 
 
@@ -473,6 +482,61 @@ void FreeSpace_LinkList(LinkList *list) {
 
 
 
+
+
+
+
+
+
+
+以下是程序入口函数：
+
+
+
+
+
+## 关于打印函数
+
+- 一个结构体
+```cpp
+//打印函数指针
+typedef void (*PRINTLINKNODE)(void *);
+```
+
+- 两个函数
+
+1. 打印链表结点
+```cpp
+//要配合main入口函数中的MyPrint使用，此处是为了确定好数据类型，为打印提供必要的支持
+void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
+  if (list == NULL) {
+    return;
+  }
+  //辅助指针变量
+  LinkNode *pCurrent = list->head->next;
+  while (pCurrent != NULL) {
+    print(pCurrent->data);
+    pCurrent = pCurrent->next;
+  }
+}
+
+```
+
+2. 打印函数
+```cpp
+//打印函数
+void MyPrint(void *data) {
+  Person *p = (Person *)data;
+  printf("Name: %s Age: %d  Score: %d \n", p->name, p->age, p->score);
+}
+```
+
+- 打印函数`MyPrint`确定了，我要打印的是Person类型的数据，所以要把数据类型转换成Person类型
+- 打印链表结点`Print_LinkList`确定了怎么去遍历这个结点
+- 结构体`typedef void (*PRINTLINKNODE)(void *);`帮助计算机知道什么是结点类型是我们要打印的结点。
+  - 不好，在理解一下
+- 三者配合，实现了链表结点的打印。
+- 由于插入顺序都是从第0位插入，打印顺序和压入顺序相反。
 
 
 

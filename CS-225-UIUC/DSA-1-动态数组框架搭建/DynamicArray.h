@@ -11,7 +11,7 @@
 capacity 表示当前内存空间一共可以存放多少元素
 size 记录当前数组中的具体元素个数
 */
-
+//创建动态数组结构体
 typedef struct DYNAMICARRAY { // typedef 不多余
   int *pAddr;                 // 数据存放地址
   int size;                   // 当前有多少个元素

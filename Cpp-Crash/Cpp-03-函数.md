@@ -87,11 +87,46 @@ int main()
 
 
 
-## Namespaces 命名空间
+## 一些常见函数、方法
+
+### Namespaces 命名空间
 
 ## `#include<header>` 和 `include"header"` 区别
 
 - 使用#include<> 程序会直接到标准函数库中找文件
 
 - 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
+
+### main 函数
+
+[`main()` 函数是 C++ 程序的入口函数](https://blog.csdn.net/K346K346/article/details/49331965):
+- C++ 标准规定 main() 函数的返回值类型为 int，返回值用于表示程序的退出状态，返回 0 表示程序正常退出，返回非 0，表示出现异常。
+- C++ 标准规定，main() 函数原型有两种:
+
+```cpp
+//第一种
+int main();
+
+//第二种
+int main(int argc，char* argv[]);
+int main(int argc，char** argv);
+
+```
+
+> 带参的 main() 函数可以提供用户向程序输入的参数，例如int main(int argc,char* argv[])，其中，argc 代表参数的个数，argv 数组中每一个元素用于保存命令行参数的内容
+
+# 库函数 内置函数 标准函数
+
+- `memcpy()` string.h
+
+- `alloc()` `calloc()` `malloc()`
+- 
+
+
+
+
+
+
+
+
 

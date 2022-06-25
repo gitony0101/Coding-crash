@@ -2,6 +2,8 @@
 
 黑马 DSA C++
 
+> 此次只是创建了int类型的动态数组框架
+
 1. 当插入一个新的元素的时候，这个时候发现空间不足？
 2. 申请一块更大的内存空间,将原空间的数据拷贝到新的空间
 3. 释放旧的空间
@@ -23,15 +25,15 @@
 capacity 表示当前内存空间一共可以存放多少元素
 size 记录当前数组中的具体元素个数
 */
-
+//创建动态数组结构体
 typedef struct DYNAMICARRAY { // typedef 不多余
   int *pAddr;                 // 数据存放地址
   int size;                   // 当前有多少个元素
   int capacity;               //容量，容器当前能容纳多少元素
 } Dynamic_Array;              // 第三种方法创建结构体
+
 //写一系列相关的对 DYNAMICARRAY 结构体操作的函数；
 // 1、初始化结构体，不需要任何参数，创建过后，Dynamic_Array指向DYNAMICARRAY内存空间
-
 Dynamic_Array *Dynamic_Array_Init();
 // 2、插入
 void PushBack_Array(Dynamic_Array *arr, int value); // PushBack 这么写好看
@@ -224,13 +226,11 @@ int At_Array(Dynamic_Array *arr, int pos) {
 
 ```
 
-### 下面写增删改查
+## 下面写增删改查
 
-```c++
 ### 插入
 
-```
-// 2、插入
+```cpp
 void PushBack_Array(Dynamic_Array *arr, int value) {
   if (arr == NULL) { //首先判断是否指针为空
     return;
@@ -253,11 +253,9 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
   arr->pAddr[arr->size] = value; //最后一位就是pos[arr->size],赋值value
   arr->size++;                   //记得要累加这个size
 };
-
 ```
 
-```
-
+内置函数`memcpy()`,目标空间，原空间，空间大小为新的空间大小，注意乘以sizeof
 
 ### 删除
 
@@ -364,7 +362,7 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
 ## 小结
 
 1. 我们整个数组的搭建，都是在维护最初定义的结构体：
-```cpp
+```c++
 typedef struct DYNAMICARRAY { 
   int *pAddr;                 // 数据存放地址
   int size;                   // 当前有多少个元素
