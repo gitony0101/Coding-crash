@@ -118,6 +118,7 @@ int main(int argc，char** argv);
 # 库函数 内置函数 标准函数
 
 - `memcpy()` string.h
+- ·strcpy()`
 
 - `alloc()` `calloc()` `malloc()`
 - 
