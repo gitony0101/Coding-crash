@@ -1,9 +1,12 @@
 # 企业链表
 
+一串指针把数据串联起来，数据和指针分离。
+
 - 企业里经常用，写完之后很爽？？
 - 内核链表的改进版
 - 访问权限考虑
-- 首地址间的偏移量
+- 数据和指针分离了
+- 用户自己管理内存
 
 
 
@@ -28,7 +31,7 @@
 1. 链表结点结构体
 
 -单向链表
-```cpp
+```c++
 typedef struct LINKNODE {
   void *data; //数据域
               // void*为无类型指针，指向任何类型的数据
@@ -38,7 +41,7 @@ typedef struct LINKNODE {
 ```
 - 企业链表
 
-```cpp
+```c++
 //链表小结点
 typedef struct LINKNODE {
   struct LINKNODE *next;
@@ -53,14 +56,14 @@ typedef struct LINKNODE {
 2.打印链表结点指针结构体
 
 - 单向链表
-```cpp
+```c++
 //打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
 
 ```
 
 - 企业链表
-```cpp
+```c++
 //打印企业链表结点指针
 typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企业链表的特点
 
@@ -71,7 +74,7 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
 
 - 单向链表，需要创建newnode
 
-```cpp
+```c++
 //创建新的节点
   LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
   newnode->data = data;
@@ -91,7 +94,7 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
 ```
 - 企业链表，没有创建newnode
 
-```cpp
+```c++
 
   for (int i = 0; i < pos; i++) {
     pCurrent = pCurrent->next; // 循环走到pos-1位置
@@ -118,7 +121,7 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
   
 - for循环遍历到`pos`前一个位置：`pos - 1`:
 
-```cpp
+```c++
   LinkNode *pCurrent = &(list->head); // list->head是一个实体，所以用取地址操作
   for (int i = 0; i < pos; i++) {
     pCurrent = pCurrent->next; // 循环走到pos-1位置
@@ -128,7 +131,7 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
 ```
    
   - `while i++` 循环遍历到需要查找的数值
-  ```cpp
+```c++
   LinkNode *pCurrent = list->head->next; //注意：
   // list头结点不保存数据，从头结点的指针域才指向第一个结点的数据域地址，这才是第一个有效数据
   int i = 0;
@@ -141,7 +144,7 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
   }
   return i;
   
-  ```  
+```
 ### 当你修改了h或者同名cpp代码后
 
 切记同步你的函数格式。
