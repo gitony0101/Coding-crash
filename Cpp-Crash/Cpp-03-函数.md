@@ -103,7 +103,7 @@ int main()
 - C++ 标准规定 main() 函数的返回值类型为 int，返回值用于表示程序的退出状态，返回 0 表示程序正常退出，返回非 0，表示出现异常。
 - C++ 标准规定，main() 函数原型有两种:
 
-```cpp
+```c++
 //第一种
 int main();
 
@@ -119,6 +119,7 @@ int main(int argc，char** argv);
 
 - `memcpy()` string.h
 - ·strcpy()`
+- `strcmp()`
 
 - `alloc()` `calloc()` `malloc()`
 - 
