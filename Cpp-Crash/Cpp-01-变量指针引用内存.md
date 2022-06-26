@@ -251,12 +251,48 @@ Pointer arithmetic is meaningless **unless performed on an array.**
 ### 无类型指针`void*`
 
 `void*`为无类型指针，指向任何类型的数据。
-```cpp
+```c++
 typedef struct LINKNODE {
   void *data; //数据域,void*为无类型指针，指向任何类型的数据
   struct LINKNODE *next; //指针域
 } LinkNode;
 ```
+
+### 回调函数与指针
+
+- C++ 指针应用的精髓
+
+
+
+```cpp
+int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
+  if (list == NULL) {
+    return -1;
+  }
+  if (data == NULL) {
+    return -1;
+  }
+  //创建辅助指针变量便利查找，头节点不看，直接next
+  LinkNode *pCurrent = list->head.next;
+  int index = 0; //初始化索引为0
+  while (pCurrent != NULL) {
+    //查找功能什么时候找到呢：需要做一个判断，引入比较函数指针
+    if (compare(pCurrent, data) == 0) {
+        break;
+
+    }
+    pCurrent = pCurrent->next;
+    index++;
+  }
+
+  return index; //找到了就返回index的值，找不到就返回-1
+};
+
+```
+
+
+
+
 
 ## 引用指针小结后记
 
