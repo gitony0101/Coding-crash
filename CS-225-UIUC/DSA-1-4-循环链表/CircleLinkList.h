@@ -1,5 +1,9 @@
-#ifndef CIRCLRLINKLIST
-#define CIRCLRLINKLIST
+#ifndef CIRCLELINKLIST
+#define CIRCLELINKLIST
+//引入标准库
+#include <cstddef>
+#include <stdio.h>
+#include <stdlib.h>
 
 //定义循环链表小结点
 typedef struct CIRCLELINKNODE {
@@ -11,19 +15,22 @@ typedef struct CIRCLELINKLIST {
   int size;            //链表大小
 } CircleLinkList;
 //自定义类型（结构体）创建完毕
+
 //创建需要的回调函数
 //比较回调函数
-typedef int(COMPARENODE)(CircleLinkNode *,
-                         CircleLinkNode *); //
-// 这里是C的写法，返回int01，C++可以bool，int(COMPARENODE)没有加星表示函数指针
+typedef int (*COMPARENODE)(CircleLinkNode *,
+                           CircleLinkNode *); //
+// 这里是C的写法，返回int01，C++可以bool，引用*在前
 // ###注意下面的同步。你对比的是什么？
 //打印回调函数
 typedef void (*PRINTNODE)(CircleLinkNode *);
 //创建回调函数完毕
 
-//针对C定义的宏
-
+//针对C定义的宏 看看注释掉行不行
+#define CIRCLELINKLIST_TRUE 1
+#define CIRCLELINKLIST_FALSE 0
 //
+
 //编写针对链表结构体操作的API函数
 //初始化循环链表
 CircleLinkList *Init_CircleLInkList();

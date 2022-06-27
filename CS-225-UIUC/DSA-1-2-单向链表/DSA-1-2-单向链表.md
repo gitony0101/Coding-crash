@@ -286,7 +286,7 @@ next是个指针，从这个错误你可以看到指针不保存数据信息。
 
 所以要改成：
 
-```cpp
+```c++
 void *Front_LinkList(LinkList *list) { return list->head->next->data; };
 
 ```
@@ -498,7 +498,7 @@ void FreeSpace_LinkList(LinkList *list) {
 ## 关于打印函数
 
 - 一个结构体
-```cpp
+```c++
 //打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
 ```
@@ -506,7 +506,7 @@ typedef void (*PRINTLINKNODE)(void *);
 - 两个函数
 
 1. 打印链表结点
-```cpp
+```c++
 //要配合main入口函数中的MyPrint使用，此处是为了确定好数据类型，为打印提供必要的支持
 void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
   if (list == NULL) {
@@ -523,7 +523,7 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
 ```
 
 2. 打印函数
-```cpp
+```c++
 //打印函数
 void MyPrint(void *data) {
   Person *p = (Person *)data;
@@ -554,6 +554,9 @@ void MyPrint(void *data) {
 - 数据域首地址，就是这个节点的头，上一个节点的指针域，就指向这里。
 
 ### 辅助指针变量`pCurrent`
+
+- 不要直接操作原始链表，而是使用辅助指针变量`pCurrent`，这样就可以保证不会改变原始结点的信息乃至链表的结构。
+
 
 关于辅助指针变量：
 
