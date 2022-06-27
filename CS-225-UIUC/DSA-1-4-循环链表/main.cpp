@@ -18,7 +18,7 @@ void MyPrint(CircleLinkNode *data) { //还是打印函数有报错
   printf("name:%s  age:%d score: %d\n", p->name, p->age, p->score);
 }
 
-int main(void) {
+int main() {
   CircleLinkList *clist = Init_CircleLInkList(); //初始化循环链表
   //创建数据
   Person p1, p2, p3, p4, p5;

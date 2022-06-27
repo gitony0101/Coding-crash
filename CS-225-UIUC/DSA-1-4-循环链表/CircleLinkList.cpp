@@ -6,7 +6,7 @@ CircleLinkList *Init_CircleLInkList() {
   CircleLinkList *clist = (CircleLinkList *)malloc(sizeof(CircleLinkList));
   clist->head.next = &(clist->head); // 循环链表初始化，让它指向自己
   clist->size = 0;
-  return NULL;
+  return clist;
 };
 //插入函数
 void Insert_CircleLinkList(CircleLinkList *clist, int pos,
@@ -122,13 +122,13 @@ void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print) {
   //     print(pCurrent);
   //     pCurrent = pCurrent->next; //别停下注意往前走
   //   }
-  for (int i = 0; i < clist->size * 2; i++) { // clist->size * 2 打印两次
+  for (int i = 0; i < clist->size * 3; i++) { // clist->size * 2 打印两次
     if (pCurrent == &(clist->head)) {
       pCurrent = pCurrent->next;
-      printf("--------------------------\n");
     }
     print(pCurrent);
     pCurrent = pCurrent->next; //别停下注意往前走
+    printf("--------------------------\n");
   }
   // return; //一定要有
 };
