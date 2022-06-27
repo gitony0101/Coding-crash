@@ -31,7 +31,9 @@ void Insert_CircleLinkList(CircleLinkList *clist, int pos,
   clist->size++;
 };
 //获得第一个元素
-CircleLinkNode *Front_CircleLinkList(CircleLinkList *clist) { return NULL; };
+CircleLinkNode *Front_CircleLinkList(CircleLinkList *clist) {
+  return clist->head.next;
+}
 //删除 根据位置删除
 void RemoveByPos_CircleLinkList(CircleLinkList *clist, int pos,
                                 CircleLinkNode *data) {
@@ -65,7 +67,7 @@ void RemoveByValue_CircleLinkList(CircleLinkList *clist, CircleLinkNode *data,
   //这是循环链表
   CircleLinkNode *pPrev = &(clist->head); //定义被删除结点的前一个结点
   CircleLinkNode *pCurrent = clist->head.next; //判断的是值，从next开始
-  int flag = -1;
+
   int i = 0;
   for (i = 0; i < clist->size; i++) { //引入compare判断*pCurrent和data是否相同
     if (compare(pCurrent, data) == CIRCLELINKLIST_TRUE) {
@@ -123,11 +125,12 @@ void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print) {
   for (int i = 0; i < clist->size * 2; i++) { // clist->size * 2 打印两次
     if (pCurrent == &(clist->head)) {
       pCurrent = pCurrent->next;
+      printf("--------------------------\n");
     }
     print(pCurrent);
     pCurrent = pCurrent->next; //别停下注意往前走
   }
-  return; //一定要有
+  // return; //一定要有
 };
 //释放内存
 void FreeSpace_CircleLinkList(CircleLinkList *clist) {
