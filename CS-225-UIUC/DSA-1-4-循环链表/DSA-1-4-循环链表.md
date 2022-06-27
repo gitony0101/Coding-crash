@@ -12,6 +12,19 @@
 
 
 
+
+
+
+
+## 删除 根据值删除
+
+```cpp
+CircleLinkNode *pPrev = &(clist->head); //定义被删除结点的前一个结点
+CircleLinkNode *pCurrent = clist->head.next; //判断的是值，从next开始
+```
+
+
+
 ### 回调函数
 
 ```cpp

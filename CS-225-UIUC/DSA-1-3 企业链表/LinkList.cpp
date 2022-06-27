@@ -107,7 +107,7 @@ void Print_LinkList(LinkList *list, PRINTNODE print) {
 }
 //释放链表内存
 void FreeSpace_LinkList(LinkList *list) {
-  if (list != NULL) {
+  if (list == NULL) {
     return;
   }
   free(list); //释放list内存
