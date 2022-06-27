@@ -61,16 +61,4 @@ typedef void (*PRINTNODE)(CircleLinkNode *);
 
 ## 你出错的问题：
 
-1. 头文件同名cpp文件框架写好以后，请注意检查return：
-
-```cpp
-//初始化循环链表
-CircleLinkList *Init_CircleLInkList() {
-  CircleLinkList *clist = (CircleLinkList *)malloc(sizeof(CircleLinkList));
-  clist->head.next = &(clist->head); // 循环链表初始化，让它指向自己
-  clist->size = 0;
-  return;
-};
-```
-
-你最后忘记了给return赋值，这样不会报错，但是传出来的是空值。
+1. 仔细检查每一个`return`到底输出了什么
