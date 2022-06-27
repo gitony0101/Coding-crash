@@ -125,10 +125,10 @@ void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print) {
   for (int i = 0; i < clist->size * 3; i++) { // clist->size * 2 打印两次
     if (pCurrent == &(clist->head)) {
       pCurrent = pCurrent->next;
+      printf("--------------------------\n");
     }
     print(pCurrent);
     pCurrent = pCurrent->next; //别停下注意往前走
-    printf("--------------------------\n");
   }
   // return; //一定要有
 };
