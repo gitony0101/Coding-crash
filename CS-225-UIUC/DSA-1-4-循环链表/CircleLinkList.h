@@ -44,16 +44,15 @@ void RemoveByPos_CircleLinkList(CircleLinkList *clist, int pos,
                                 CircleLinkNode *data);
 //删除 根据值删除
 //把值传进来删除就行了，剩下的事情交给用户去处理，所以这里需要再写一个调用函数
-void RemoveByValue_CircleLinkList(
-    CircleLinkList *clist, CircleLinkNode *data,
-    COMPARENODE *compare); // compare 这里加了星引用
+void RemoveByValue_CircleLinkList(CircleLinkList *clist, CircleLinkNode *data,
+                                  COMPARENODE compare);
 //获得链表的长度 int
 int SIze_CircleLinkList(CircleLinkList *clist);
 //判断
 int IsEmpty_CircleLinkList(CircleLinkList *clist);
 //查找 根据值去查找
 int Find_CircleLinkList(CircleLinkList *clist, CircleLinkNode *data,
-                        COMPARENODE *compare); // 有意思,还用了比较回调
+                        COMPARENODE compare); // 有意思,还用了比较回调
 //打印结点
 void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print);
 //释放内存 释放我们自己申请的内存

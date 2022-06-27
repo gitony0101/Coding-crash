@@ -55,7 +55,7 @@ void RemoveByPos_CircleLinkList(CircleLinkList *clist, int pos,
 };
 //删除 根据值删除
 void RemoveByValue_CircleLinkList(CircleLinkList *clist, CircleLinkNode *data,
-                                  COMPARENODE *compare) {
+                                  COMPARENODE compare) {
   if (clist == NULL) {
     return;
   }
