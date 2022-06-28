@@ -54,7 +54,7 @@ int IsEmpty_CircleLinkList(CircleLinkList *clist);
 int Find_CircleLinkList(CircleLinkList *clist, CircleLinkNode *data,
                         COMPARENODE compare); // 有意思,还用了比较回调
 //打印结点
-void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print);
+void Print_CircleLinkList(CircleLinkList *clist, int nPrint, PRINTNODE print);
 //释放内存 释放我们自己申请的内存
 void FreeSpace_CircleLinkList(CircleLinkList *clist);
 

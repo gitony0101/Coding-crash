@@ -1,6 +1,7 @@
 //引入头文件
 #include "CircleLinkList.h"
 #include <cstddef>
+#include <cstdio>
 //初始化循环链表
 CircleLinkList *Init_CircleLInkList() {
   CircleLinkList *clist = (CircleLinkList *)malloc(sizeof(CircleLinkList));
@@ -111,7 +112,7 @@ int Find_CircleLinkList(CircleLinkList *clist, CircleLinkNode *data,
   return flag;
 };
 //打印结点 缺实际的打印执行，只是遍历
-void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print) {
+void Print_CircleLinkList(CircleLinkList *clist, int nPrint, PRINTNODE print) {
 
   if (clist == NULL) {
     return;
@@ -122,7 +123,7 @@ void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print) {
   //     print(pCurrent);
   //     pCurrent = pCurrent->next; //别停下注意往前走
   //   }
-  for (int i = 0; i < clist->size * 3; i++) { // clist->size * 2 打印两次
+  for (int i = 0; i < clist->size * nPrint; i++) { // clist->size * 2 打印两次
     if (pCurrent == &(clist->head)) {
       pCurrent = pCurrent->next;
       printf("--------------------------\n");
