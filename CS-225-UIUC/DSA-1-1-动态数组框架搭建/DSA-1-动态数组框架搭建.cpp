@@ -7,13 +7,6 @@
 #include "DynamicArray.h"
 using namespace std;
 
-/*报错问题未解决：
-DSA-1-动态数组框架搭建
-clang++ DSA-1-动态数组框架搭建.cpp DynamicArray.cpp -o DSA-1-动态数组框架搭建
-./DSA-1-动态数组框架搭建
-写入了makefile
-*/
-
 void testDynamicArr01() {
   //初始化动态数组
   Dynamic_Array *myArray = Init_Array(); //初始化并创建一个动态数组myArray
