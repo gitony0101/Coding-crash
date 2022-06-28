@@ -1,4 +1,7 @@
 //引入标准库
+#include <algorithm>
+#include <cstdio>
+#include <cstring>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,10 +15,21 @@ typedef struct PERSON {
   int age;
   int score;
 } Person;
-//回调函数打印
+//创建所需的回调函数，复用后人的代码
+//打印回调函数
 void MyPrint(CircleLinkNode *data) { //还是打印函数有报错
   Person *p = (Person *)data;
   printf("name:%s  age:%d score: %d\n", p->name, p->age, p->score);
+}
+//比较回调函数
+int MyComPare(CircleLinkNode *node1, CircleLinkNode *node2) {
+  Person *p1 = (Person *)node1;
+  Person *p2 = (Person *)node2;
+  if (strcmp(p1->name, p2->name) == 0 && (p1->age == p2->age) == 0 &&
+      (p1->score == p2->score == 0)) {
+    return 0; // strcmp 比较函数 返回0 说明结点完全相同
+  }
+  return 1; // strcmp 比较函数 返回1 说明结点不完全相同
 }
 
 int main() {
@@ -45,6 +59,21 @@ int main() {
   Insert_CircleLinkList(clist, 100, (CircleLinkNode *)&p5);
   //   打印
   Print_CircleLinkList(clist, MyPrint);
+  //根据值删除，需要比较回调函数
+  Person pDel; //创建需要删除的结构体
+  strcpy(pDel.name, "ddd");
+  pDel.age = 30;
+  pDel.score = 65;
+  RemoveByValue_CircleLinkList(clist, (CircleLinkNode *)&pDel, MyComPare);
+  //再打印
+  Print_CircleLinkList(clist, MyPrint);
+  //查找
+  Person pX;
+  strcpy(pX.name, "eee");
+  pX.age = 50;
+  pX.score = 70;
+  int pos = Find_CircleLinkList(clist, (CircleLinkNode *)&pX, MyComPare);
+  printf("pX 的位置 %d\n", pos);
   //释放内存
   FreeSpace_CircleLinkList(clist);
 }
