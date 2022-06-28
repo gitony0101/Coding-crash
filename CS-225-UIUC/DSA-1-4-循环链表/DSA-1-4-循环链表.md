@@ -18,7 +18,7 @@
 
 ## 删除 根据值删除
 
-```cpp
+```c++
 CircleLinkNode *pPrev = &(clist->head); //定义被删除结点的前一个结点
 CircleLinkNode *pCurrent = clist->head.next; //判断的是值，从next开始
 ```
@@ -27,7 +27,7 @@ CircleLinkNode *pCurrent = clist->head.next; //判断的是值，从next开始
 
 ### 回调函数
 
-```cpp
+```c++
 typedef int(*COMPARENODE)(CircleLinkNode *,
                          CircleLinkNode *); //
 // 这里是C的写法，返回int01，C++可以bool
@@ -49,9 +49,17 @@ typedef void (*PRINTNODE)(CircleLinkNode *);
 # 循环链表应用——约瑟夫问题
 
 
-```plaintext
 
-```
+
+
+
+
+
+
+
+
+
+
 
 
 
