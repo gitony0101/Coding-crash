@@ -27,9 +27,9 @@ int MyComPare(CircleLinkNode *node1, CircleLinkNode *node2) {
   Person *p2 = (Person *)node2;
   if (strcmp(p1->name, p2->name) == 0 && (p1->age == p2->age) == 0 &&
       (p1->score == p2->score == 0)) {
-    return 0; // strcmp 比较函数 返回0 说明结点完全相同
+    return CIRCLELINKLIST_TRUE; // strcmp 比较函数 返回0 说明结点完全相同
   }
-  return 1; // strcmp 比较函数 返回1 说明结点不完全相同
+  return CIRCLELINKLIST_FALSE; // strcmp 比较函数 返回1 说明结点不完全相同
 }
 
 int main() {
