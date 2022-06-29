@@ -78,14 +78,6 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
   if (arr == NULL) {
     return;
   }
-  // //找到值的位置
-  // int pos = -1; //初始化位置值为-1防止误操作
-  // for (int i = 0; i < arr->size; i++) {
-  //   if (arr->pAddr[i] == value) {
-  //     pos = i; //找到了这个位置，赋值给pos
-  //     break;   //停止查找了
-  //   }
-  // }
   int pos = Find_Array(arr, value); //嵌套上面的查找函数
   //嵌套根据位置删除
   RemoveByPos_Array(arr, pos); //这里的嵌套有意思
