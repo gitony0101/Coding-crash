@@ -377,6 +377,8 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
 
 ## 小结
 
+
+
 1. 我们整个数组的搭建，都是在维护最初定义的结构体：
 ```c++
 typedef struct DYNAMICARRAY { 
@@ -388,3 +390,5 @@ typedef struct DYNAMICARRAY {
 > 我们在写函数的时候都是在围绕结构体增加各种操作 
 >
 > 优化代码的思想：嵌套函数结构体，但是要按照实际情况去考虑
+
+## 关于线性表的顺序存储
