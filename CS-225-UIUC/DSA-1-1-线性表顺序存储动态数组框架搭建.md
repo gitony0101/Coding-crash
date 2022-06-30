@@ -1,4 +1,4 @@
-# DSA-1 动态数组框架搭建
+# DSA-1-1 线性表顺序存储 动态数组框架搭建
 
 
 
@@ -102,7 +102,7 @@ int At_Array(Dynamic_Array *arr, int pos);
 - 再有新的功能可以继续增加
 - 头文件三件套，防止头文件被重复包含:
 
-    ```cpp
+    ```c++
     #ifndef XXX
     #define XXX
     /*Codes*/

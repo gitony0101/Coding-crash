@@ -14,7 +14,7 @@ Dynamic_Array *Init_Array() { //动态数组初始化
   return myArray; //一开始没写好的时候这里先默认NULL
 }
 
-// 先把5 - 10功能写完，再写2-5增删改
+// 先把5 - 10简单的功能写完，再写2-4增删改
 
 // 2、插入
 void PushBack_Array(Dynamic_Array *arr, int value) {

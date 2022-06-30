@@ -1,12 +1,13 @@
-#include "LinkList.h"
+#include "LinkList.h" //包含头文件
 
 //打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
 //
 //初始化链表
 LinkList *Init_LinkList() {
-  LinkList *list = (LinkList *)malloc(sizeof(LinkList)); //初始化，开辟内存
-  list->size = 0;                                        //初始容量为零
+  LinkList *list =
+      (LinkList *)malloc(sizeof(LinkList)); //初始化，申请内存 malloc开辟
+  list->size = 0;                           //初始容量为零
   //头结点
   list->head = (LinkNode *)malloc(sizeof(LinkNode)); //头结点不保存信息
   list->head->data = NULL;
