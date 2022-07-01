@@ -92,16 +92,16 @@ LinkList *Init_LinkList() {
   list->head->next = NULL;
   return list;
 };
-
 ```
 
 
 
-## 指定位置插入数据
+初始化链表，是为了：
+- 开辟链表内存空间，确定链表初始容量为零
+- 初始化链表的头结点，虽然不保存任何数据，但是也要初始化定义一下
+  - 头结点的指针域指向自己，头结点的数据域为空（不保存信息）
 
-这里把新加入的结点插进来是个难点
-- 创建辅助指针变量
-- 使用for循环让这个辅助指针变量跑到pos-1的位置，此时pCurrent就位
+## 指定位置插入数据
 
 ```c++
 void Insert_LinkList(LinkList *list, int pos, void *data) {
@@ -132,9 +132,18 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 
 ```
 
+这里把新加入的结点插进来是个难点：
+
+1. 创建辅助指针变量`pCurrent` 为了不影响链表本身结构
+2. 使用for循环，让辅助变量指针往前滑动，直到跑到pos-1的位置，此时pCurrent就位，他的next指针就指向pos位置的data数据域内存首地址
+    - size--，是不是可以反过来滑动？
+3. 插入结点：创建新的结点`newnode`，先把已经就位的`pCurrent->next`指针赋给newnode的next指针，然后让`pCurrent->next`重新指向newnode的数据域内存首地址
+4. 不要忘了size++
+
+
 > 测试、优化的时候，这里可能还要改
 
-### 实际使用场景
+### 插入的实际使用场景
 
 ```c++
  Insert_LinkList(list, 0, &p1);
@@ -156,14 +165,10 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 
 ## 删除指定位置的值
 
+- 链表中，删除操作的实质是**挤掉**这个位置的结点，后面的跟上
 
 
 
-这还是一个找内存地址的故事
-
-1. `LinkNode *pDel = pCurrent->next;`先让pos-1的当前结点指针域指向需要删除的结点pDel，这里就是把pos位置上的结点，命名成为pDel准备删除
-2. `pCurrent->next = pDell->next;` pDell->next指向的是下下一个结点，此处让pos-1的pCurrent结点继承了pDell的指针域，pDell结点就被**挤出来了**。
-3. 释放pDell内存空间
 
 ```c++
 void Remove_LinkList(LinkList *list, int pos) {
@@ -190,6 +195,12 @@ void Remove_LinkList(LinkList *list, int pos) {
 };
 
 ```
+
+这还是一个辅助内存变量pDel找内存地址的故事:
+
+1. `LinkNode *pDel = pCurrent->next;`先让pos-1的当前结点指针域指向需要删除的结点pDel，这里就是把pos位置上的结点，命名成为pDel准备删除
+2. `pCurrent->next = pDell->next;` pDell->next指向的是下下一个结点，此处让pos-1的pCurrent结点继承了pDell的指针域，pDell结点就被**挤出来了**。
+3. 释放pDell内存空间
 
 - 找内存地址，一个是数据域内存首地址，一个是结点指针域指向下一个结点的地址。
 
@@ -240,7 +251,7 @@ int Find_linkList(LinkList *list, void *data) {
 
 ```
 
-注意这个while可以起到循环：
+注意这个while可以起到循环滑动辅助指针变量pCurrent的效果：
 ```c++
   int i = 0;
   while (pCurrent != NULL) {
@@ -254,7 +265,7 @@ int Find_linkList(LinkList *list, void *data) {
 
 ```
 
-## 返回第一个节点
+## 返回第一个节点（数据信息）
 
 第一个节点是那个节点，想清楚！
 `list->head->next`
@@ -264,7 +275,7 @@ void *Front_LinkList(LinkList *list) { return list->head->next; };
 
 ```
 
-> 这里运行的时候报错：retName: �n Age: 0  Score: 0
+> 但是这里运行的时候报错：retName: �n Age: 0  Score: 0
 
 next是个指针，从这个错误你可以看到指针不保存数据信息。
 
@@ -300,7 +311,9 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
 
 ## 释放链表内存
 
-因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
+- 因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
+- 使用while 外加pCurrent = pNext; 循环，直到pNext为NULL
+  - 这是一个循环释放的过程，不是一次放完
 
 ```c++
 
@@ -319,8 +332,6 @@ void FreeSpace_LinkList(LinkList *list) {
   //释放链表内存
   free(list);
 };
-
-//全部代码看同名文件夹下
 ```
 
 # 单向链表测试
@@ -411,15 +422,7 @@ void MyPrint(void *data) {
 
 
 
-```c++
-
-```
-
-
-
-
-
-### 辅助指针变量`pCurrent`
+### 辅助指针变量`pCurrent`：为了在增删改的时候不影响链表结构
 
 - 不要直接操作原始链表，而是使用辅助指针变量`pCurrent`，这样就可以保证不会改变原始结点的信息乃至链表的结构。
 
@@ -453,7 +456,7 @@ LinkNode *pCurrent = list->head->next; //注意：
 - 企业里经常用，写完之后很爽？？
 - 内核链表的改进版
 - 访问权限考虑
-- 数据和指针分离了
+- 数据和指针分离了：指针在上，数据在下，晾衣绳晾衣服结构
 - 用户自己管理内存
 
 
@@ -463,6 +466,12 @@ LinkNode *pCurrent = list->head->next; //注意：
 
 
 ### 比较函数指针
+
+
+
+
+
+
 
 
 
@@ -593,6 +602,9 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
   return i;
   
 ```
+
+- 使用while 外加pCurrent = pNext; 循环，直到pNext为NULL
+
 ### 当你修改了h或者同名cpp代码后
 
 切记同步你的函数格式。

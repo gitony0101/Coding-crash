@@ -87,9 +87,9 @@ int main()
 
 
 
-## 一些常见函数、方法
+# 一些常见函数、方法
 
-### Namespaces 命名空间
+## Namespaces 命名空间
 
 ## `#include<header>` 和 `include"header"` 区别
 
@@ -97,7 +97,7 @@ int main()
 
 - 使用#include"" 程序会会先从当前目录中找文件，**如果找不到会再到标准函数库中找文件**，保底，自己写的头文件用它
 
-### main 函数
+## main 函数
 
 [`main()` 函数是 C++ 程序的入口函数](https://blog.csdn.net/K346K346/article/details/49331965):
 - C++ 标准规定 main() 函数的返回值类型为 int，返回值用于表示程序的退出状态，返回 0 表示程序正常退出，返回非 0，表示出现异常。
@@ -114,6 +114,24 @@ int main(int argc，char** argv);
 ```
 
 > 带参的 main() 函数可以提供用户向程序输入的参数，例如int main(int argc,char* argv[])，其中，argc 代表参数的个数，argv 数组中每一个元素用于保存命令行参数的内容
+
+## [typedef void(*F)(类型)解读](https://blog.csdn.net/weixin_43772611/article/details/124115413)
+
+- `typedef void(*T)(void *)`类型
+
+
+1. `void(*T)()`T是一个指向返回值为void ，参数为空的类型的函数指针
+2. `void(*T)(void *)`T是一个指向返回值为void，参数为void *类型的指针
+3. `typedef void(*T)(void *)`T不再是一个函数指针了，它代表着一种类型，这种类型可以定义一个指向返回值为void，参数为void *类型的指针，例如打印函数指针(链表)
+```cpp
+typedef void (*PRINTLINKNODE)(void *);
+```
+
+
+
+
+
+
 
 # 库函数 内置函数 标准函数
 
