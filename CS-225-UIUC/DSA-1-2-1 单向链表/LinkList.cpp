@@ -28,11 +28,11 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
     pos =
         list->size; //也是不合规的输入，但是我们可以先插入到尾部，或者直接return；
   }
-
   //创建新的节点
   LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
   newnode->data = data;
-  newnode->next = NULL;
+  newnode->next =
+      NULL; //先定义新结点指针域指向NULL，为它将来被赋值pCurrent->next做准备
   //创建辅助指针变量pCurrent
   LinkNode *pCurrent = list->head; // pCurrent先指向list的head
   for (int i = 0; i < pos; i++) { //用这个循环让pCurrent走到pos-1的位置

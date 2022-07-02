@@ -44,7 +44,7 @@ int main(void) {
   p5.age = 50;
   //节点插入到列表:头部第零位插入
   Insert_LinkList(list, 0, (LinkNode *)&p1);
-  //插入姿势相当不同,LinkNode*只能访问到next的指针域，这里可以看出来企业链表的晾衣绳结构，都，一整个企业链表就串联起来了
+  //插入姿势相当不同,LinkNode*只能访问到next的指针域，这里可以看出来企业链表的晾衣绳结构,一整个企业链表就串联起来了
   Insert_LinkList(list, 0, (LinkNode *)&p2);
   Insert_LinkList(list, 0, (LinkNode *)&p3);
   Insert_LinkList(list, 0, (LinkNode *)&p4);

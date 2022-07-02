@@ -31,8 +31,6 @@ void Insert_LinkList(LinkList *list, int pos, LinkNode *data) {
   pCurrent->next = data;
   list->size++; // 没有创建newnode
 };
-
-;
 //删除
 void Remove_LinkList(LinkList *list, int pos) {
   if (list == NULL) { //判断
@@ -47,7 +45,7 @@ void Remove_LinkList(LinkList *list, int pos) {
     pCurrent = pCurrent->next;
   }
   //删除节点：还是一根晾衣绳，直接把pos衣服取下来：
-  pCurrent->next = pCurrent->next->next; //跳跃两次，指针直接指向pos+1
+  pCurrent->next = pCurrent->next->next; //跳跃两次，指针pos-1直接指向pos+1
   list->size--;
 };
 ;
@@ -79,19 +77,8 @@ int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
 //返回链表大小
 int Size_LinkList(LinkList *list) { return 0; };
 ;
-//打印， print是main函数里面的打印函数MyPrint
-// void Print_LinkList(LinkList *list, PRINTNODE print) {
-//   if (list == NULL) {
-//     return;
-//   }
-//   //创建辅助指针pCurrent遍历list
-//   LinkNode *pCurrent = list->head.next;
-//   while (list != NULL) {
-//     print(pCurrent);
-//     pCurrent = pCurrent->next;
-//   }
-// };
 
+//打印
 void Print_LinkList(LinkList *list, PRINTNODE print) {
   if (list == NULL) {
     return;

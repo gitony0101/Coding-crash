@@ -137,7 +137,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 1. 创建辅助指针变量`pCurrent` 为了不影响链表本身结构
 2. 使用for循环，让辅助变量指针往前滑动，直到跑到pos-1的位置，此时pCurrent就位，他的next指针就指向pos位置的data数据域内存首地址
     - size--，是不是可以反过来滑动？
-3. 插入结点：创建新的结点`newnode`，先把已经就位的`pCurrent->next`指针赋给newnode的next指针，然后让`pCurrent->next`重新指向newnode的数据域内存首地址
+3. 插入结点：创建新的结点`newnode`，创建之初它的next指针为`NULL`，先把已经就位的`pCurrent->next`指针赋给newnode的next指针，然后让`pCurrent->next`重新指向newnode的数据域内存首地址
 4. 不要忘了size++
 
 
@@ -511,6 +511,8 @@ LinkNode *pCurrent = list->head->next; //注意：
 
 一串指针把数据域串联起来，数据和指针分离。实际中经常使用，操作相对便捷。
 
+- 也就是说操作企业链表，主要的感觉是在操作指针，下面挂的啥衣服，其实到输出函数才需要管
+
 - 内核是链表的改进版，区别在于指针的位置
   - 单向链表，指针域在下，数据域在上，指针指向下一个结点数据域内存首地址
   - 企业链表，指针在上，数据在下，指针指向下一个结点的指针，晾衣绳结构，指针下面挂着数据域
@@ -560,9 +562,11 @@ void FreeSpace_LinkList(LinkList *list);
 
 为了定义链表结构体，首先要定义链表小结点结构体
 
-- 链表小结点里面只有`LINKNODE *next`指针，没有数据域结点
+- 链表小结点里面只有`LINKNODE *next`指针，没有数据域结点**,LinkNode*只能访问到next的指针域，这里可以看出来企业链表的晾衣绳结构,一整个企业链表就串联起来了**
 
-链表结构体一样，到这里算是晾衣服只定义了晾衣绳和衣撑，接下来关注数据作为衣服怎么挂上去
+链表结构体一样，到这里算是晾衣服只定义了晾衣绳和衣撑，接下来关注数据作为衣服怎么挂上去:
+
+
 
 定义了两个函数指针，后面再讲
 
@@ -584,8 +588,121 @@ LinkList *Init_LinkList() {
 
 
 
-```c++
+### 关于功能函数和单向链表的区别主要在于`void *data` 和`LinkNode *data`
 
+单向链表操作的时候是指针和数据一起操作，到了企业链表，主要操作的是指针，链表小结点就没有data
+
+- 每个结点的首地址，就是指针的地址
+  - ### ？？ 是不是，意味着也是企业链表数据域的首地址？
+  - 所以操作企业链表就是在初始化晾衣绳以后一直在操作衣服撑子？？？
+  - 测试一下打印结点首地址什么概念
+
+### 插入结点
+```cpp
+void Insert_LinkList(LinkList *list, int pos, LinkNode *data) {
+/*
+........
+防呆判断都一样
+*/
+  //从头插入辅助变量指针位置
+  LinkNode *pCurrent = &(list->head); // list->head是一个实体，所以用取地址操作
+  for (int i = 0; i < pos; i++) {
+    pCurrent = pCurrent->next; // 循环走到pos-1位置
+  }                            //此时pCurrent 位于pos前一个节点
+  //插入新节点，已经找到位置pCurrent (pos - 1)
+  data->next = pCurrent->next;
+  pCurrent->next = data;
+  list->size++; // 没有创建newnode
+};
+
+```
+对于企业链表：
+- 辅助变量指针位置从头开始，取地址用&(list->head)
+- 操作的是LinkNode *data`链表小结点，LinkNode 只能访问到指针域
+
+实际插入：
+```cpp
+ Insert_LinkList(list, 0, (LinkNode *)&p1);
+  //插入姿势相当不同,LinkNode*只能访问到next的指针域，这里可以看出来企业链表的晾衣绳结构,一整个企业链表就串联起来了
+  Insert_LinkList(list, 0, (LinkNode *)&p2);
+  Insert_LinkList(list, 0, (LinkNode *)&p3);
+  Insert_LinkList(list, 0, (LinkNode *)&p4);
+  Insert_LinkList(list, 0, (LinkNode *)&p5);
+
+```
+
+
+### 删除结点
+
+和单向链表不同，不用创建`pDel`辅助指针变量并free，企业链表直接把pos结点挤出来了，`pCurrent`滑动到pos-1位置后，指针直接链条包两次指向pos+1
+
+```cpp
+void Remove_LinkList(LinkList *list, int pos) {
+/*......略....*/
+  //删除节点：还是一根晾衣绳，直接把pos衣服取下来：
+  pCurrent->next = pCurrent->next->next; //跳跃两次，指针pos-1直接指向pos+1
+  list->size--;
+};
+
+```
+
+### 查找
+
+你在找什么，你在找那个结点，但是LinkNode只能访问到指针域，下面挂的数据怎么弄？
+
+至此，我们引入**比较函数指针**
+
+### 比较函数指针
+
+```cpp
+typedef int (*COMPARENODE)(LinkNode *, LinkNode *);
+```
+
+你在比较什么？
+- 比较指针域下挂着的数据是否完全一样，如果完全和我们要找的哪个数据结点一样，我们返回这个结点位置int pos；
+- 具体见下文输出函数的**比较回调函数**
+
+```cpp
+int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
+/*...防呆比较...*/
+  //创建辅助指针变量便利查找，头节点不看，直接next
+  LinkNode *pCurrent = list->head.next;
+  int index = 0; //初始化索引为0
+  int flag = -4;
+  while (pCurrent != NULL) {
+    //查找功能什么时候找到呢：需要做一个判断，引入比较函数指针
+    if (compare(pCurrent, data) == 0) {//引入比较回调函数，见下文
+      flag = index;
+      break;
+    }
+    pCurrent = pCurrent->next;
+    index++;
+  }
+  return index; //找到了就返回index的值，找不到就返回-4
+};
+
+```
+
+后面的几个函数见代码
+
+## 输出函数`main.cpp`
+
+
+
+- 创建Person结构体，相同
+- 打印回调函数，相同
+
+### 比较回调函数
+
+```cpp
+int MyCompare(LinkNode *node1, LinkNode *node2) {
+  Person *p1 = (Person *)node1;
+  Person *p2 = (Person *)node2;
+  if (strcmp(p1->name, p2->name) == 0 && (p1->age == p2->age) == 0) {
+    return 0; // strcmp比较函数返回0 说明结点完全相同
+  }
+  return 1; //返回1 说明不完全相同
+}
 ```
 
 
@@ -596,23 +713,13 @@ LinkList *Init_LinkList() {
 
 
 
+比较回调函数首次出现，按照企业链表的结构，小结点里面只定义了指针域，所以需要再定义比较函数指针来引导框架函数去访问指针域下面挂着的数据，对本例，我们看到了
 
+```cpp
+ Person *p = (Person *)node;
+```
 
-
-
-
-
-### 比较函数指针
-
-
-
-
-
-
-
-
-
-
+结构，是为了把链表小结点`LinkNode`结构转换为`Person`结构，下面if语句来比较转换为Person结构以后的数据是否完全相同。
 
 
 
@@ -620,96 +727,15 @@ LinkList *Init_LinkList() {
 
 # 小结
 
-## 与单向链表的对比：
+## 与单向链表的对比不同点：
 
-1. 链表结点结构体
+1. 链表结点结构体不同
+2. 插入、删除结点方式不同，企业链表不需要操作数据，不需要创建新结点
+3. 查找功能需要创建比较函数指针
 
--单向链表
-```c++
-typedef struct LINKNODE {
-  void *data; //数据域
-              // void*为无类型指针，指向任何类型的数据
-  struct LINKNODE *next; //指针域
-} LinkNode;
+### 注意点
 
-```
-- 企业链表
-
-```c++
-//链表小结点
-typedef struct LINKNODE {
-  struct LINKNODE *next;
-} LinkNode;
-```
-
-可见企业链表小结点里面不包括数据域，只包括指针域。
-对比两个链表图
-
-
-
-2.打印链表结点指针结构体
-
-- 单向链表
-```c++
-//打印函数指针
-typedef void (*PRINTLINKNODE)(void *);
-
-```
-
-- 企业链表
-```c++
-//打印企业链表结点指针
-typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企业链表的特点
-
-```
-
-
-3. 插入新结点
-
-- 单向链表，需要创建newnode
-
-```c++
-//创建新的节点
-  LinkNode *newnode = (LinkNode *)malloc(sizeof(LinkNode));
-  newnode->data = data;
-  newnode->next = NULL;
-  //创建辅助指针变量pCurrent
-  LinkNode *pCurrent = list->head; // pCurrent先指向list的head
-  for (int i = 0; i < pos; i++) { //用这个循环让pCurrent走到pos-1的位置
-    pCurrent = pCurrent->next;    //不停地让pCurrent往前移动
-  }
-  //新结点入链表
-  //第一步，先把新结点的next指针,这个指针指向pNext的数据域在内存里的首地址:
-  newnode->next = pCurrent->next;
-  //第二步，让上一个结点pCurrent的指针指向newnode（的数据域内存首地址）：
-  pCurrent->next = newnode;
-  list->size++; //链表大小+1
-
-```
-- 企业链表，没有创建newnode
-
-```c++
-
-  for (int i = 0; i < pos; i++) {
-    pCurrent = pCurrent->next; // 循环走到pos-1位置
-  }                            //此时pCurrent 位于pos前一个节点
-  //插入新节点，已经找到位置pCurrent (pos -1)
-  data->next = pCurrent->next;
-  pCurrent->next = data;
-  list->size++; // 没有用newnode
-```
-
-- 在其他的函数中也存在这样的区别，还要领悟
-
-
-4. 查找功能里：
-   
-- 单向链表直接找到数值就行了
-- 企业链表需要创建比较函数指针
-
-## 注意点
-
-### 如何找到位置：
+- 如何找到位置：
 
 1. 创建辅助指针变量`pCurrent`:
   
@@ -742,9 +768,9 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
 
 - 使用while 外加pCurrent = pNext; 循环，直到pNext为NULL
 
-### 当你修改了h或者同名cpp代码后
+- 当你修改了h或者同名cpp代码后，切记同步你的函数格式。
 
-切记同步你的函数格式。
+
 
 
 
