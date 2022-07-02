@@ -26,7 +26,7 @@ void Insert_LinkList(LinkList *list, int pos, LinkNode *data) {
   for (int i = 0; i < pos; i++) {
     pCurrent = pCurrent->next; // 循环走到pos-1位置
   }                            //此时pCurrent 位于pos前一个节点
-  //插入新节点，已经找到位置pCurrent (pos -1)
+  //插入新节点，已经找到位置pCurrent (pos - 1)
   data->next = pCurrent->next;
   pCurrent->next = data;
   list->size++; // 没有创建newnode

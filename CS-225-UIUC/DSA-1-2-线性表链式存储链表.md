@@ -352,6 +352,65 @@ void FreeSpace_LinkList(LinkList *list) {
 
 以下是程序入口函数：
 
+```cpp
+// #define _CRT_SECURE_NO_WARNINGS
+#include "LinkList.h"
+#include <cstdio>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//自定义数据类型
+typedef struct PERSON {
+  char name[64]; //这种写法挺sql的，或者，就是因为C++才sql
+  int age;
+  int score;
+} Person;
+//打印函数
+void MyPrint(void *data) {
+  Person *p = (Person *)data;
+  printf("Name: %s Age: %d  Score: %d \n", p->name, p->age, p->score);
+}
+
+int main(void) {
+  printf("测试单向链表\n");
+  // 创建链表
+  LinkList *list = Init_LinkList(); //初始化链表
+  //创建数据
+  Person p1 = {"aaa", 19, 99};
+  Person p2 = {"bbb", 14, 34};
+  Person p3 = {"ccc", 13, 56};
+  Person p4 = {"ddd", 19, 86};
+  Person p5 = {"eee", 29, 19};
+  //数据插入链表,这里的插入真是插入啊
+  Insert_LinkList(list, 0, &p1);
+  Insert_LinkList(list, 0, &p2);
+  Insert_LinkList(list, 0, &p3);
+  Insert_LinkList(list, 0, &p4);
+  Insert_LinkList(list, 0, &p5); // 打印顺序：p5-p1
+                                 //
+  Print_LinkList(list, MyPrint); //打印
+  //打印链表长度
+  int lkSize = Size_LinkList(list);
+  printf("链表长度 %d\n", lkSize);
+  // 查找
+  int posP2 = Find_linkList(list, &p2);
+  printf("p2 的位置 %d\n", posP2);
+  // 删除 2
+  RemoveByPos_LinkList(list, 3);
+  printf("------删除 3(p4)------\n");
+  Print_LinkList(list, MyPrint); //打印
+  //返回第一个结点
+  printf("----返回第一个结点----\n");
+  Person *ret = (Person *)Front_LinkList(list);
+  MyPrint(ret);
+  // printf("retName: %s Age: %d  Score: %d \n", ret->name, ret->age,
+  // ret->score);  //一样的效果，有点啰嗦
+  //销毁链表
+  FreeSpace_LinkList(list);
+}
+```
+
 
 
 
@@ -436,7 +495,6 @@ void MyPrint(void *data) {
   for (int i = 0; i < pos; i++) {
     pCurrent = pCurrent->next; //找到pCurrent结点
   }
-
 ```
 
 在遍历查找中，为了找数据，辅助指针变量为：
@@ -451,13 +509,92 @@ LinkNode *pCurrent = list->head->next; //注意：
 
 # 企业链表
 
-一串指针把数据串联起来，数据和指针分离。
+一串指针把数据域串联起来，数据和指针分离。实际中经常使用，操作相对便捷。
 
-- 企业里经常用，写完之后很爽？？
-- 内核链表的改进版
-- 访问权限考虑
-- 数据和指针分离了：指针在上，数据在下，晾衣绳晾衣服结构
+- 内核是链表的改进版，区别在于指针的位置
+  - 单向链表，指针域在下，数据域在上，指针指向下一个结点数据域内存首地址
+  - 企业链表，指针在上，数据在下，指针指向下一个结点的指针，晾衣绳结构，指针下面挂着数据域
+- 处于一种访问权限的考虑
 - 用户自己管理内存
+
+## 创建企业链表头文件
+
+```cpp
+#ifndef LINKLIST_H
+#define LINKLIST_H
+
+//链表小结点
+typedef struct LINKNODE {
+  struct LINKNODE *next;
+} LinkNode;
+//链表结构体
+typedef struct LINKLIST {
+  LinkNode head; //内存首地址
+  int size;
+} LinkList;
+//遍历函数指针函数指针(打印企业链表结点指针)
+typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企业链表的特点
+//比较函数指针
+typedef int (*COMPARENODE)(LinkNode *, LinkNode *); //单向链表没有
+//结构体定义完成
+
+//初始化链表
+LinkList *Init_LinkList();
+/*插入
+和之前的单向链表不同了，插入的不是void*data，而是LinkNode* data */
+void Insert_LinkList(LinkList *list, int pos, LinkNode *data);
+//删除
+void Remove_LinkList(LinkList *list, int pos);
+//查找
+int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare);
+//返回链表大小
+int Size_LinkList(LinkList *list);
+//打印， print是main函数里面的打印函数MyPrint
+void Print_LinkList(LinkList *list, PRINTNODE print);
+//释放链表内存
+void FreeSpace_LinkList(LinkList *list);
+#endif
+
+
+```
+
+为了定义链表结构体，首先要定义链表小结点结构体
+
+- 链表小结点里面只有`LINKNODE *next`指针，没有数据域结点
+
+链表结构体一样，到这里算是晾衣服只定义了晾衣绳和衣撑，接下来关注数据作为衣服怎么挂上去
+
+定义了两个函数指针，后面再讲
+
+初始化以及各个功能接口，下面开始：
+
+## 框架实现LinkList.cpp文件
+
+
+### 初始化企业链表
+
+```cpp
+LinkList *Init_LinkList() {
+  LinkList *list = (LinkList *)malloc(sizeof(LinkList));
+  list->head.next = NULL;
+  list->size = 0;
+  return list; //返回列表，初始化名为list的企业链表完成
+};
+```
+
+
+
+```c++
+
+```
+
+
+
+
+
+
+
+
 
 
 
@@ -608,6 +745,16 @@ typedef void (*PRINTNODE)(LinkNode *); // 与单向链表不同，这也是企�
 ### 当你修改了h或者同名cpp代码后
 
 切记同步你的函数格式。
+
+
+
+
+
+
+
+
+
+
 
 
 

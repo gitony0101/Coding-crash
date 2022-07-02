@@ -18,8 +18,7 @@ typedef int (*COMPARENODE)(LinkNode *, LinkNode *); //单向链表没有
 
 //初始化链表
 LinkList *Init_LinkList();
-/*插入
-和之前的单向链表不同了，插入的不是void*data，而是LinkNode* data */
+/*插入和之前的单向链表不同了，插入的不是void*data，而是LinkNode* data */
 void Insert_LinkList(LinkList *list, int pos, LinkNode *data);
 //删除
 void Remove_LinkList(LinkList *list, int pos);
@@ -27,7 +26,7 @@ void Remove_LinkList(LinkList *list, int pos);
 int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare);
 //返回链表大小
 int Size_LinkList(LinkList *list);
-//打印， print是main函数里面的打印函数MyPrint
+//打印print是main函数里面的打印函数MyPrint
 void Print_LinkList(LinkList *list, PRINTNODE print);
 //释放链表内存
 void FreeSpace_LinkList(LinkList *list);

@@ -12,11 +12,7 @@ typedef struct PERSON { //创建的是链表节点的结构体，每个都一样
 } Person;
 
 //打印回调函数
-// void MyPrint(LinkNode *data) { //把LinkNode*转换为Person* 打印
-//   Person *p = (Person *)data;
-//   printf("Name: %s Age: %d\n", p->name, p->age);
-// }
-void MyPrint(LinkNode *data) { //还是打印函数有报错
+void MyPrint(LinkNode *data) { //把LinkNode*转换为Person* 打印
   Person *p = (Person *)data;
   printf(" name:%s  age:%d\n", p->name, p->age);
 }

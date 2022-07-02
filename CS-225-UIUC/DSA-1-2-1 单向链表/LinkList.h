@@ -1,13 +1,6 @@
 #ifndef LINKLIST_H
 #define LINKLIST_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
-/*
-链表由一系列节点组成，每个节点包括指针域和数据域
-*/
-
 //链表结点
 typedef struct LINKNODE {
   void *data; //数据域

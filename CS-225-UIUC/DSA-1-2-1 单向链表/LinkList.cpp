@@ -1,4 +1,6 @@
 #include "LinkList.h" //包含头文件
+#include <stdio.h>
+#include <stdlib.h>
 
 //打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
