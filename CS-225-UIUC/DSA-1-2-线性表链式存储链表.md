@@ -352,7 +352,7 @@ void FreeSpace_LinkList(LinkList *list) {
 
 以下是程序入口函数：
 
-```cpp
+```c++
 // #define _CRT_SECURE_NO_WARNINGS
 #include "LinkList.h"
 #include <cstdio>
@@ -521,7 +521,7 @@ LinkNode *pCurrent = list->head->next; //注意：
 
 ## 创建企业链表头文件
 
-```cpp
+```c++
 #ifndef LINKLIST_H
 #define LINKLIST_H
 
@@ -577,7 +577,7 @@ void FreeSpace_LinkList(LinkList *list);
 
 ### 初始化企业链表
 
-```cpp
+```c++
 LinkList *Init_LinkList() {
   LinkList *list = (LinkList *)malloc(sizeof(LinkList));
   list->head.next = NULL;
@@ -598,7 +598,7 @@ LinkList *Init_LinkList() {
   - 测试一下打印结点首地址什么概念
 
 ### 插入结点
-```cpp
+```c++
 void Insert_LinkList(LinkList *list, int pos, LinkNode *data) {
 /*
 ........
@@ -621,7 +621,7 @@ void Insert_LinkList(LinkList *list, int pos, LinkNode *data) {
 - 操作的是LinkNode *data`链表小结点，LinkNode 只能访问到指针域
 
 实际插入：
-```cpp
+```c++
  Insert_LinkList(list, 0, (LinkNode *)&p1);
   //插入姿势相当不同,LinkNode*只能访问到next的指针域，这里可以看出来企业链表的晾衣绳结构,一整个企业链表就串联起来了
   Insert_LinkList(list, 0, (LinkNode *)&p2);
@@ -636,7 +636,7 @@ void Insert_LinkList(LinkList *list, int pos, LinkNode *data) {
 
 和单向链表不同，不用创建`pDel`辅助指针变量并free，企业链表直接把pos结点挤出来了，`pCurrent`滑动到pos-1位置后，指针直接链条包两次指向pos+1
 
-```cpp
+```c++
 void Remove_LinkList(LinkList *list, int pos) {
 /*......略....*/
   //删除节点：还是一根晾衣绳，直接把pos衣服取下来：
@@ -654,7 +654,7 @@ void Remove_LinkList(LinkList *list, int pos) {
 
 ### 比较函数指针
 
-```cpp
+```c++
 typedef int (*COMPARENODE)(LinkNode *, LinkNode *);
 ```
 
@@ -662,7 +662,7 @@ typedef int (*COMPARENODE)(LinkNode *, LinkNode *);
 - 比较指针域下挂着的数据是否完全一样，如果完全和我们要找的哪个数据结点一样，我们返回这个结点位置int pos；
 - 具体见下文输出函数的**比较回调函数**
 
-```cpp
+```c++
 int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
 /*...防呆比较...*/
   //创建辅助指针变量便利查找，头节点不看，直接next
@@ -694,7 +694,7 @@ int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
 
 ### 比较回调函数
 
-```cpp
+```c++
 int MyCompare(LinkNode *node1, LinkNode *node2) {
   Person *p1 = (Person *)node1;
   Person *p2 = (Person *)node2;
@@ -715,7 +715,7 @@ int MyCompare(LinkNode *node1, LinkNode *node2) {
 
 比较回调函数首次出现，按照企业链表的结构，小结点里面只定义了指针域，所以需要再定义比较函数指针来引导框架函数去访问指针域下面挂着的数据，对本例，我们看到了
 
-```cpp
+```c++
  Person *p = (Person *)node;
 ```
 
@@ -806,7 +806,17 @@ int MyCompare(LinkNode *node1, LinkNode *node2) {
 
 
 
-## 删除 根据值删除
+## 
+
+### 插入
+
+- 和单向链表插入一样
+
+
+
+### 删除 根据值删除
+
+- 和单向链表一样
 
 ```c++
 CircleLinkNode *pPrev = &(clist->head); //定义被删除结点的前一个结点
@@ -815,22 +825,31 @@ CircleLinkNode *pCurrent = clist->head.next; //判断的是值，从next开始
 
 
 
+#### 关于根据值删除
+
+- 根据值删除，根据什么值——用户定义的值
+- 程序员一开始不知道用户想要删除的到底是什么值，所以需要写一个回调函数来对比**用户想要删除的值，是否他之前定义的值一样，所以就有了比较回调函数**
+
+
 ### 回调函数
 
 ```c++
 typedef int(*COMPARENODE)(CircleLinkNode *,
-                         CircleLinkNode *); //
-// 这里是C的写法，返回int01，C++可以bool
+                         CircleLinkNode *); 
 // ###注意下面的同步。你对比的是什么？
 //打印回调函数
 typedef void (*PRINTNODE)(CircleLinkNode *);
 ```
 
 - 根据值查找、删除都用到了回调函数，所以，你在compare什么？
+  - 程序员不知道用户到底传了什么值进来，需要一个回调函数来对比是否符合用户自定义的数据结构下的数据要求
 - 引用*写在COMPARENODE 前面
+- 开发库的时候，有些情况我们考虑不到，数据类型是后来的人传进来的，所以我们要用这个回调函数
 
 
-开发库的时候，有些情况我们考虑不到，数据类型是后来的人传进来的，所以我们要用这个回调函数
+
+
+
 
 
 
@@ -844,6 +863,125 @@ typedef void (*PRINTNODE)(CircleLinkNode *);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+头文件和同名cpp文件都引用了循环链表的文件，重点在于你怎么设计约瑟夫叫号：
+
+- 一共M个人，叫到第N个的时候从头报数并删除这个人，继续循环，直到只剩一个人为止
+- 循环到什么时候：只剩一个人
+- 防呆设计
+
+## main函数
+
+### 初始定义
+
+```cpp
+//引入标准库 略
+//引入头文件 
+#include "CircleLinkList.h"
+//定义人数和指定数
+#define M 8 //总人数
+#define N 3 //指定每次喊到第N个从头开始报数
+
+```
+定义了M和N，这种方法要知道
+
+### 用户自定义板块：结构体、回调函数
+
+```cpp
+//创建数组结构体
+typedef struct MYNUM {
+  CircleLinkNode node;
+  int val;
+} MyNum;
+//创建打印回调函数
+void MyPrint(CircleLinkNode *data) { //转换成为MyNum类型
+  MyNum *num = (MyNum *)data;
+  printf("%d ", num->val);
+}
+//创建比较回调函数用来检查是否是能够传入的数据
+int MyCompare(CircleLinkNode *node1, CircleLinkNode *node2) {
+  MyNum *num1 = (MyNum *)node1;
+  MyNum *num2 = (MyNum *)node2;
+  if (num1->val == num2->val) {
+    return CIRCLELINKLIST_TRUE;
+  }
+  return CIRCLELINKLIST_FALSE;
+}
+
+```
+定义结构体和回调函数，这个结构体是后来用户定义的，所以才有了相应的回调函数、打印函数，这些都是匹配用户的数据结构的
+
+## 输出函数main
+
+这个输出函数是重点，体现了如何去循环查找第N个人，找到以后删除它，接着往下循环到只剩一个人。
+
+```c++
+int main() {
+  //初始化循环链表
+  CircleLinkList *clist = Init_CircleLInkList();
+  //插入链表数据
+  MyNum num[M];
+  for (int i = 0; i < M; i++) {
+    num[i].val = i + 1; //数组赋值1-8
+    Insert_CircleLinkList(clist, i, (CircleLinkNode *)&num[i]); //插入循环链表中
+  }
+  //打印 测试一下循环链表是否赋值成功
+  printf("循环链表如下：\n");
+  Print_CircleLinkList(clist, MyPrint);
+  printf("\n下面解决约瑟夫问题\n其中总人数为%d，指定叫到第%"
+         "d人的时候从头开始报数\n",
+         M, N);
+  //以上测试完成，开始解决约瑟夫问题
+  int index = 1; //记录目前是第几个人，从1开始
+  CircleLinkNode *pCurrent = clist->head.next; //指针指向第一个人
+  while (SIze_CircleLinkList(clist) > 1) {
+    if (index == N) { //找到了第N个人，把这个人先输出：
+      MyNum *tmpNum = (MyNum *)pCurrent;
+      printf("%d ", tmpNum->val);
+      // CircleLinkNode *pNext = pCurrent->next; //缓存待删除结点的下一个结点
+      RemoveByValue_CircleLinkList(clist, pCurrent, MyCompare); //根据值删除
+      pCurrent = pCurrent->next;        //指针继续向前走
+      if (pCurrent == &(clist->head)) { //如果碰到了循环链表表头
+        pCurrent = pCurrent->next;      //那就往下走指向第一个数
+      }
+      index = 1; //重置计数，从1开始
+    }
+    pCurrent = pCurrent->next;
+
+    if (pCurrent == &(clist->head)) {
+      pCurrent = pCurrent->next;
+    }
+    index++;
+  }
+
+  if (SIze_CircleLinkList(clist) == 1) {
+    MyNum *tmpNum = (MyNum *)Front_CircleLinkList(clist);
+    printf("%d ", tmpNum->val);
+  } else {
+    printf("出错\n");
+  }
+  printf("\n");
+
+  //释放链表内存
+  FreeSpace_CircleLinkList(clist);
+}
+```
+```
+
+```c++
+
+```
 
 
 
@@ -870,3 +1008,18 @@ typedef void (*PRINTNODE)(CircleLinkNode *);
 
 
 
+![img](./DSA-1-2-2%20%E4%BC%81%E4%B8%9A%E9%93%BE%E8%A1%A8/%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8E%A8%E6%BC%94.png)
+
+循环链表
+
+![img](./DSA-1-2-3%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/DSA-1-4-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.png)
+
+搞清楚结构，链表，两部分组成，指针域在上在下和头尾结点造就了这些链表的变体，企业链表最常用，这么叫肯定有道理。
+
+
+
+
+
+```c++
+
+```

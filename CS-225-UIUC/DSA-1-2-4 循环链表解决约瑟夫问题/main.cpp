@@ -45,8 +45,11 @@ int main() {
     Insert_CircleLinkList(clist, i, (CircleLinkNode *)&num[i]); //插入循环链表中
   }
   //打印 测试一下循环链表是否赋值成功
+  printf("循环链表如下：\n");
   Print_CircleLinkList(clist, MyPrint);
-  printf("\n");
+  printf("\n下面解决约瑟夫问题\n其中总人数为%d，指定叫到第%"
+         "d人的时候从头开始报数\n",
+         M, N);
   //以上测试完成，开始解决约瑟夫问题
   int index = 1; //记录目前是第几个人，从1开始
   CircleLinkNode *pCurrent = clist->head.next; //指针指向第一个人

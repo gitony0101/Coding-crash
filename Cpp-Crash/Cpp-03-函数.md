@@ -123,7 +123,7 @@ int main(int argc，char** argv);
 1. `void(*T)()`T是一个指向返回值为void ，参数为空的类型的函数指针
 2. `void(*T)(void *)`T是一个指向返回值为void，参数为void *类型的指针
 3. `typedef void(*T)(void *)`T不再是一个函数指针了，它代表着一种类型，这种类型可以定义一个指向返回值为void，参数为void *类型的指针，例如打印函数指针(链表)
-```cpp
+```c++
 typedef void (*PRINTLINKNODE)(void *);
 ```
 
@@ -136,7 +136,7 @@ typedef void (*PRINTLINKNODE)(void *);
 # 库函数 内置函数 标准函数
 
 - `memcpy()` string.h
-- ·strcpy()`
+- `strcpy()`
 - `strcmp()`
 
 - `alloc()` `calloc()` `malloc()`

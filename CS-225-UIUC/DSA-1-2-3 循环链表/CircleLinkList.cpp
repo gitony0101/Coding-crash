@@ -12,7 +12,7 @@ CircleLinkList *Init_CircleLInkList() {
 //插入函数
 void Insert_CircleLinkList(CircleLinkList *clist, int pos,
                            CircleLinkNode *data) {
-  if (clist == NULL) {
+  if (clist == NULL) { //防呆预判
     return;
   }
   if (data == NULL) {
@@ -131,7 +131,6 @@ void Print_CircleLinkList(CircleLinkList *clist, PRINTNODE print) {
     print(pCurrent);
     pCurrent = pCurrent->next; //别停下注意往前走
   }
-  // return; //一定要有
 };
 //释放内存
 void FreeSpace_CircleLinkList(CircleLinkList *clist) {
@@ -140,5 +139,3 @@ void FreeSpace_CircleLinkList(CircleLinkList *clist) {
   }
   free(clist);
 };
-
-/*目前的问题：当前的这个头文件编译报错*/

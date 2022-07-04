@@ -1,5 +1,5 @@
 #ifndef CIRCLELINKLIST
-#define CIRCLELINKLIST
+#define CIRCLELINKLIST //防止头文件重复
 //引入标准库
 #include <cstddef>
 #include <stdio.h>
