@@ -1,0 +1,23 @@
+#ifndef LINKSTACK_H
+#define LINKSTACK_H
+/*栈的链式存储
+还是链式结点那套结构，冠以了栈容器的性质
+黑马直接用的企业链表格式，结点没有数据域
+*/
+
+//链式栈结点 企业链表格式
+typedef struct LINKNODE { //没有数据域
+  struct LINKNODE *next;  //只有指针域
+} LinkNode;
+//链式栈
+typedef struct LINKSTACK {
+  LinkNode node; // 头结点
+  int size;      // 元素个数
+} LinkStack;
+//初始化函数
+LinkStack *Init_LinkStack();
+
+//入栈
+void Push_LinkStack(LinkStack *stack);
+
+#endif
