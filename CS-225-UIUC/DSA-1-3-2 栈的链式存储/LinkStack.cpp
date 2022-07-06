@@ -33,6 +33,7 @@ void Pop_LinkStack(LinkStack *stack) {
   //第一个有效结点
   LinkNode *pNext = stack->head.next; //指向第一个结点，而不是链栈首地址
   stack->head.next = pNext->next;
+  stack->size--;
 };
 //返回栈顶元素
 LinkNode *Top_LinkStack(LinkStack *stack) {

@@ -29,8 +29,21 @@ int main() {
   p4.age = 30;
   p5.age = 50;
   //入栈--压栈
-  Push_LinkStack(stack, &p1);
-
+  Push_LinkStack(stack, (LinkNode *)&p1); //需要加上(LinkNode*)转换
+  Push_LinkStack(stack, (LinkNode *)&p2);
+  Push_LinkStack(stack, (LinkNode *)&p3);
+  Push_LinkStack(stack, (LinkNode *)&p4);
+  Push_LinkStack(stack, (LinkNode *)&p5);
+  //输出
+  while (Size_LinkStack(stack) > 0) {
+    //取出栈顶元素，并转换为Person的结构
+    Person *p = (Person *)Top_LinkStack(stack);
+    printf("姓名： %s，年龄： %d\n", p->name, p->age);
+    //弹出栈顶元素,从而读取下一个元素
+    Pop_LinkStack(stack);
+  }
+  //销毁栈
+  FreeSpace_LinkStack(stack);
   printf("\n");
   return 0;
 }

@@ -61,6 +61,8 @@ void FreeSpace_LinkList(LinkList *list);
 
 ```
 
+
+
 - 连着创建了三个结构体：**结点结构体、链表结构体、打印函数指针**
 - 先创建了结点，然后才是链表结构体，定义结构体的时候需要结点
     1. 结点结构体`LINKNODE`，先定义了数据域`void *data`，然后是指针域`LINKNODE *next`
@@ -885,7 +887,7 @@ typedef void (*PRINTNODE)(CircleLinkNode *);
 
 ### 初始定义
 
-```cpp
+```c++
 //引入标准库 略
 //引入头文件 
 #include "CircleLinkList.h"
@@ -898,7 +900,7 @@ typedef void (*PRINTNODE)(CircleLinkNode *);
 
 ### 用户自定义板块：结构体、回调函数
 
-```cpp
+```c++
 //创建数组结构体
 typedef struct MYNUM {
   CircleLinkNode node;
@@ -979,7 +981,7 @@ int main() {
 ```
 ```
 
-```c++
+```
 
 ```
 
@@ -1023,6 +1025,8 @@ int main() {
 
 
 
-```c++
+```
+
+```
 
 ```
