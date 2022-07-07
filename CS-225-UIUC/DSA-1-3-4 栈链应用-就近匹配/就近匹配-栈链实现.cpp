@@ -1,7 +1,9 @@
 // #define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 using namespace std;
 /*就近匹配 检测括号是否匹配
 - 扫描字符串，如果碰到左括号，直接入栈
@@ -10,14 +12,12 @@ using namespace std;
   - 如果不是，匹配失败
 */
 #include "LinkStack.h" //引入头文件，此处用的是企业链表栈
-
 //定义结构体
 typedef struct MYCHAR {
   LinkNode node; // 此结点负责让链表帮我们串起来，企业链表你懂的
   char *pAddres; //设定字符地址
   int index;     //遍历访问字符串时标记字符位置
 } MyChar;
-
 //编写左右括号判定函数
 int IsLeft(char c) { return c == '('; }
 int IsRight(char c) { return c == ')'; }
@@ -28,7 +28,14 @@ MyChar *CreateMyChar(char *p) {
   return mychar;
 }
 //报错函数
-void ShowError(char *str, int pos) {}
+void ShowError(char *str, int pos) {
+  printf("%s\n", str); //显示报错的字符
+  //下面开始打空格，然后用一个字符A或者箭头指向这个报错的地方
+  for (int i = 0; i < pos; i++) {
+    printf(" "); //打空格
+  }
+  printf("^"); //这里我没有用A来表示，看看效果
+}
 
 int main() {
 
@@ -49,9 +56,13 @@ int main() {
         if (IsLeft(*(mychar->pAddres))) { //如果弹出的是左括号
           Pop_LinkStack(stack);           //弹出
         }
+      } else { //碰见了右括号，报错，调用报错函数
+        printf("右括号没有匹配的左括号:\n");
+        ShowError(str, index);
       }
-    } else { //碰见了右括号
     }
+    p++;
+    index++;
   }
 
   printf("\n");
