@@ -51,10 +51,9 @@ int main() {
     printf("姓名： %s。年龄：%d\n", person->name, person->age);
     //弹出队头
     Pop_SeqQueue(queue);
-    // //释放内存
-    // FreeSpace_SeqQueue(queue);
   }
-
+  //释放内存
+  FreeSpace_SeqQueue(queue);
   printf("\n");
   return 0;
 }
