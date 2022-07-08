@@ -28,7 +28,7 @@ MyChar *CreateMyChar(char *p) {
   return mychar;
 }
 //报错函数
-void ShowError(char *str, int pos) {
+void ShowError(const char *str, int pos) {
   printf("%s\n", str); //显示报错的字符
   //下面开始打空格，然后用一个字符A或者箭头指向这个报错的地方
   for (int i = 0; i < pos; i++) {
@@ -36,6 +36,16 @@ void ShowError(char *str, int pos) {
   }
   printf("^"); //这里我没有用A来表示，看看效果
 }
+
+//测试
+
+typedef struct PERSON { //创建PERSON结构体
+  LinkNode node;        //企业链表，晾衣服
+  char name[64];
+  int age;
+} Person;
+
+//
 
 int main() {
 
@@ -47,7 +57,7 @@ int main() {
   while (*p != '\0') {
     //如果左括号，直接进栈
     if (IsLeft(*p)) {
-      Push_LinkStack(stack, (LinkNode *)CreateMyChar(p));
+      Push_LinkStack(stack, CreateMyChar(p));
     }
     //如果是右括号，从栈顶弹出元素 判断是不是左括号
     if (IsRight(*p)) {                 //加入预判
