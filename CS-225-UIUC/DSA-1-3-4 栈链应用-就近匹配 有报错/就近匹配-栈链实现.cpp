@@ -39,10 +39,10 @@ void ShowError(char *str, int pos) {
 
 int main() {
 
-  char *str = "sss1+3(sws)+asdfgsdfg((ss)"; //创造一个不匹配的左括号
+  const char *str = "sss1+3(sws)+asdfgsdfg((ss)"; //创造一个不匹配的左括号
   //初始化创建栈容器
   LinkStack *stack = Init_LinkStack();
-  char *p = str; //不修改原指针指向，引入辅助指针p来修改p
+  const char *p = str; //不修改原指针指向，引入辅助指针p来修改p
   //用while遍历字符串，字符串结束标志： \0
   while (*p != '\0') {
     //如果左括号，直接进栈
