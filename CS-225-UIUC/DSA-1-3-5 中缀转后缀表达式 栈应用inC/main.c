@@ -4,9 +4,11 @@
 #include <string.h>
 // using namespace std;//先注释掉，换成C了
 #include "LinkStack.h"
-
 /*
-c++类型更严格一些
+中缀转后缀表达式 数字输出，符号进栈
+*/
+/*
+c++类型更严格一些：
 比如字符串字面量c是char*（但是你不能改，改了就爆炸，这算标准bug），c++就是char
 const*
 */
@@ -32,11 +34,10 @@ int GetPriority(char c) {
   if (c == '+' || c == '-') {
     return 1;
   }
-
   return 0; //剩下一种情况就是括号了，直接return 0；
 }
 
-//这些判断函数，可以在if中配合使用
+//这些判断函数很巧妙，01返回bool，012返回优先级
 //直接输出数字 const char *p
 void NumberOperate(char *p) { printf("%c", *p); }
 //括号操作用 因为使用的企业链表形式的链式栈， 需要增加结构体
@@ -68,13 +69,41 @@ void RightOperate(LinkStack *stack) { // LinkStack* stack 这就是参数，好�
     free(mychar);               //释放内存
   }
 }
+//运算符号操作 总结上面的经验，直接把函数写出来
+void OperatorOperate(LinkStack *stack, char *p) { //这是一个比较
+  //如果栈顶符号优先级低的话直接入栈——这是LinkStack *stack和char *p之间的比较
+  //第一步先取出栈顶符号
+  MyChar *mychar = (MyChar *)Top_LinkStack(stack); //取出
+  //第二步判断优先级
+  if (mychar == NULL) { //判断如果没有元素，这个符号直接入栈？？
+    Push_LinkStack(stack, (LinkNode *)CreatMyChar(p));
+    return;
+  }
+  //如果栈顶优先级低于当前符号的优先级，直接入栈
+  if (GetPriority(*(mychar->p) < GetPriority(*p))) {
+    Push_LinkStack(stack, (LinkNode *)CreatMyChar(p));
+  } else { //如果栈顶优先级不低,从栈中弹出元素，直到弹出高一级优先级符号
+    while (Size_LinkStack(stack) > 0) { //预判栈中是否有元素
+      MyChar *mychar2 = (MyChar *)Top_LinkStack(stack); //取出栈顶元素
+      //如果找到优先级低的，当前符号入栈,并中断
+      if (GetPriority(*(mychar2->p) < GetPriority(*p))) {
+        Push_LinkStack(stack, (LinkNode *)CreatMyChar(p)); //入栈
+        break;                                             //停止
+      }
+      //如果优先级不低，先输出
+      printf("%c", *(mychar2->p)); //%c for char
+      Pop_LinkStack(stack);        //弹出
+      free(mychar2);               //释放内存
+    }
+  }
+};
 
 int main() {
   char *str = "8+(3-1)*5";             // 需要加const
   char *p = str;                       //还是需要讲究的
   LinkStack *stack = Init_LinkStack(); //创建并初始化栈
-  while (*p != '0') {
-    if (IsNumber(*p)) { //如果是数字，直接输出
+  while (*p != '\0') {                 //'\0‘是字符串中止符
+    if (IsNumber(*p)) {                //如果是数字，直接输出
       NumberOperate(p);
     }
     p++; //既然要用while来循环，建议直接创建完while就来p++
@@ -85,11 +114,12 @@ int main() {
       RightOperate(stack); //原来函数在此，解耦后独立成了函数保持代码简介可读性
     }
     //如果是运算符号，需要比较优先级了
-
+    if (IsOperator(*p)) {
+      OperatorOperate(stack, p);
+    }
     p++;
   }
   printf("\n");
   return 0;
 }
-
 //嵌套循环好多好多，不影响速度？
