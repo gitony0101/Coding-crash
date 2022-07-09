@@ -19,32 +19,39 @@ int IsOperator(char c) { // 判断是不是运算符号
   return c == '+' || c == '-' || c == '*' || c == '/';
 }
 //直接输出数字 const char *p
-void NumberOperate(const char *p) { printf("%c", *p); }
+void NumberOperate(char *p) { printf("%c", *p); }
 /*
 c++类型更严格一些
 比如字符串字面量c是char*（但是你不能改，改了就爆炸，这算标准bug），c++就是char
 const*
 */
-//左括号的操作 直接进栈
-// 因为使用的企业链表形式的链式栈， 需要增加结构体
+//括号操作用 因为使用的企业链表形式的链式栈， 需要增加结构体
 typedef struct MYCHAR {
   LinkNode node;
   char *p;
 } MyChar;
+//创建MyChar
+MyChar *CreatMyChar(char *p) {
+  MyChar *mychar = (MyChar *)malloc(sizeof(MyChar));
+  mychar->p = p;
+  return mychar;
+}
+//对左括号的操作
 void LeftOperate(LinkStack *stack, char *p) { //对链表进行操作
 }
 
 int main() {
-  const char *str = "8+(3-1)*5"; // 需要加const
-  const char *p = str;           //还是需要讲究的
-                                 //   //创建栈
-                                 //   LinkStack
+  char *str = "8+(3-1)*5"; // 需要加const
+  char *p = str;           //还是需要讲究的
+
+  LinkStack *stack = Init_LinkStack();
   while (*p != '0') {
     if (IsNumber(*p)) { //如果是数字，直接输出
       NumberOperate(p);
     }
     p++; //既然要用while来循环，建议直接创建完while就来p++
     if (IsLeft(*p)) { //如果是左括号 直接进栈
+      Push_LinkStack(stack, (LinkNode *)CreatMyChar(p));
     }
   }
   printf("\n");
