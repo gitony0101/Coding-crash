@@ -1,7 +1,6 @@
 // #define _CRT_SECURE_NO_WARNINGS
 #include "LinkStack.h"
-#include <cstddef>
-
+// #include <cstddef>// 因为报错目前先换了C，这个部分注重代码的结构
 //初始化函数
 LinkStack *Init_LinkStack() {
   LinkStack *stack = (LinkStack *)malloc(sizeof(LinkStack));
