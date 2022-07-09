@@ -119,6 +119,14 @@ int main() {
     }
     p++;
   }
+  //把栈中剩下的元素弹出
+  while (Size_LinkStack(stack) > 0) {
+    MyChar *mychar = (MyChar *)Top_LinkStack(stack);
+    //输出
+    printf("%c", *(mychar->p));
+    Pop_LinkStack(stack);
+    free(mychar);
+  }
   printf("\n");
   return 0;
 }
