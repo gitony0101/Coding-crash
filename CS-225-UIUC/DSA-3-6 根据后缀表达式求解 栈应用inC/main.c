@@ -31,10 +31,10 @@ int Calculate(int left, int right, char c) { // switch表达
 };
 
 int main() {
-  char *str = "831-5*"; //目标求解中缀表达式
+  char *str = "831-5*+";
+  char *p = str;
   //创建并初始化链栈
   LinkStack *stack = Init_LinkStack();
-  char *p = str;
   while (*p != '\0') { //遍历扫描字符串，\0字符串结束标志
     if (IsNumber2(*p)) {
       MyNum *num = (MyNum *)malloc(sizeof(MyNum));
