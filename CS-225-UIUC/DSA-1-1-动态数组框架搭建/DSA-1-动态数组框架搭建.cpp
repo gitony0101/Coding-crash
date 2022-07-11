@@ -9,7 +9,7 @@ using namespace std;
 
 void testDynamicArr01() {
   //初始化动态数组
-  Dynamic_Array *myArray = Init_Array(); //初始化并创建一个动态数组myArray
+  DynamicArray *myArray = Init_Array(); //初始化并创建一个动态数组myArray
   //打印容量
   printf("数组容量 %d\n数组大小%d\n", Capacity_Array(myArray),
          Size_Array(myArray));

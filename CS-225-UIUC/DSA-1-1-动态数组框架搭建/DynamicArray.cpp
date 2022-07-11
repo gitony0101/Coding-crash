@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h> // memcpy
 
-Dynamic_Array *Init_Array() { //动态数组初始化
+DynamicArray *Init_Array() { //动态数组初始化
   //申请内存 malloc开辟
-  Dynamic_Array *myArray = (Dynamic_Array *)malloc(sizeof(Dynamic_Array));
+  DynamicArray *myArray = (DynamicArray *)malloc(sizeof(DynamicArray));
   //初始化 地址addr、元素个数size、容量capacity
   myArray->capacity = 20; //初始化容量，给20个空间
   myArray->size = 0;      //初始化元素个数为零
@@ -17,7 +17,7 @@ Dynamic_Array *Init_Array() { //动态数组初始化
 // 先把5 - 10简单的功能写完，再写2-4增删改
 
 // 2、插入
-void PushBack_Array(Dynamic_Array *arr, int value) {
+void PushBack_Array(DynamicArray *arr, int value) {
   if (arr == NULL) { //首先判断是否指针为空
     return;
   }
@@ -41,7 +41,7 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
 };
 
 // 4、查找 int类型
-int Find_Array(Dynamic_Array *arr, int value) {
+int Find_Array(DynamicArray *arr, int value) {
   if (arr == NULL) {
     return -1; //返回-1说明出错
   }
@@ -58,7 +58,7 @@ int Find_Array(Dynamic_Array *arr, int value) {
 
 // 3、删除 情况：根据位置删除和根据值删除
 // 3.1、根据位置删除
-void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
+void RemoveByPos_Array(DynamicArray *arr, int pos) {
   if (arr == NULL) { //首先判断是否指针为空
     return;
   }
@@ -74,7 +74,7 @@ void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
 };
 // 3.2、 根据值删除
 // 注意；这只是删除的value第一次出现的那个位置上的值
-void RemoveByValue_Array(Dynamic_Array *arr, int value) {
+void RemoveByValue_Array(DynamicArray *arr, int value) {
   if (arr == NULL) {
     return;
   }
@@ -84,15 +84,15 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
 };
 
 // 5、 打印
-void Print_Array(Dynamic_Array *arr) {
+void Print_Array(DynamicArray *arr) {
   for (int i = 0; i < arr->size; i++) {
     printf("%d ", arr->pAddr[i]);
   }
   printf("\n");
 };
 // 6、 释放动态数组的内存
-void FreeSpace_Array(Dynamic_Array *arr) { //先释放内部内存，再释放外面的
-  if (arr == NULL) {                       //首先判断是否指针为空
+void FreeSpace_Array(DynamicArray *arr) { //先释放内部内存，再释放外面的
+  if (arr == NULL) {                      //首先判断是否指针为空
     return;
   }
   if (arr->pAddr != NULL) {
@@ -103,7 +103,7 @@ void FreeSpace_Array(Dynamic_Array *arr) { //先释放内部内存，再释放�
 
 //再有新的功能可以继续增加
 // 7、 清空数组
-void Clear_Array(Dynamic_Array *arr) {
+void Clear_Array(DynamicArray *arr) {
   if (arr == NULL) { //首先判断是否指针为空
     return;
   }
@@ -111,21 +111,21 @@ void Clear_Array(Dynamic_Array *arr) {
   arr->size = 0; //直接等于0即可清空
 };
 // 8、获得动态数组容量
-int Capacity_Array(Dynamic_Array *arr) {
+int Capacity_Array(DynamicArray *arr) {
   if (arr->capacity == 0) { //首先判断是否指针为空
     return 0;
   }
   return arr->capacity; //一开始需要写默认值返回0
 };
 // 9、 获得动态数组当前元素个数
-int Size_Array(Dynamic_Array *arr) {
+int Size_Array(DynamicArray *arr) {
   if (arr == NULL) {
     return 0;
   } //需要写默认值返回0
   return arr->size;
 };
 // 10、根据位置获得某个元素位置
-int At_Array(Dynamic_Array *arr, int pos) {
+int At_Array(DynamicArray *arr, int pos) {
   return arr->pAddr[pos]; //一开始需要写默认值返回0
   //此处不用再判断报错，如果返回值无效直接越界
 };
