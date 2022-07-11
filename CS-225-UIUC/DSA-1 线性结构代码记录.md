@@ -21,7 +21,7 @@
 2. 编写动态数组`.cpp`源文件
 3. 编写输出函数(main.cpp)
 4. 编写makefile文件
-- 关于debug编译，另参阅tasks/launch json文件编译教程
+- 关于debug编译，另参阅`tasks/launch json`文件编译教程
 - 此次创建的是int类型的动态数组框架
 
 
@@ -104,9 +104,9 @@ int At_Array(Dynamic_Array *arr, int pos);
 #endif
 ```
 
-- typedef并不多余，在写一系列相关的对 DYNAMICARRAY结构体操作的函数时候如果没这个定义函数，则报错Unknown typename'Dynamic_Array'
-- capacity 表示当前内存空间一共可以存放多少元素
-- size 记录当前数组中的具体元素个数
+- `typedef`并不多余，在写一系列相关的对 DYNAMICARRAY结构体操作的函数时候如果没这个定义函数，则报错Unknown typename'Dynamic_Array'
+- `capacity` 表示当前内存空间一共可以存放多少元素
+- `size` 记录当前数组中的具体元素个数
 - 再有新的功能可以继续增加
 - 头文件三件套，防止头文件被重复包含:
 
@@ -124,7 +124,7 @@ int At_Array(Dynamic_Array *arr, int pos);
 2. 把花括号都加上
    - 需要初始化的先`retrun NULL;`
    - 需要输出值的先`return 0;`
-   - >最后编写完成运行前要认真检查所有return最后的返回值是否合理
+   - >最后编写完成运行前要认真检查所有`return`最后的返回值是否合理
 
 ```c++
 #include "DynamicArray.h" // 把对应头文件引入进来
@@ -234,7 +234,7 @@ int At_Array(Dynamic_Array *arr, int pos) {
 
 ```
 
-每次都要判断一下当前线性表是否为NULL或者data值是否为零：
+每次都要判断一下当前线性表是否为`NULL`或者`data`值是否为零：
 ```c++
  if (arr == NULL) {
     return 0;
@@ -286,7 +286,7 @@ void PushBack_Array(Dynamic_Array *arr, int value) {
 情况：根据位置删除和根据值删除
 
 - 关于位置删除算法：
-  - 比如一列数组：{1,2,3,4,5,6,7,8,9,10}
+  - 比如一列数组：`{1,2,3,4,5,6,7,8,9,10}`
   - 我删除了第7个元素，然后后面的8、9、10往前移
 
 ```c++
@@ -310,7 +310,7 @@ void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
 ```
 
  根据值删除，首先还是先找到位置，然后嵌套根据位置删除
- - 但是这是删除的value第一次出现的那个位置上的值
+ - 但是这是删除的`value`第一次出现的那个位置上的值
 
 
 
@@ -318,7 +318,10 @@ void RemoveByPos_Array(Dynamic_Array *arr, int pos) {
 
 这里其实是复制了上面的查找过程，其实可以变换一下
 
-> 所以这个编程问题，第一，我们可以先解决查找的函数，然后按顺序调用查找函数解决按位置删除，接着是嗲用查找和按位置删除去写按照数值删除，
+> 所以这个编程问题:
+- 我们可以先解决查找的函数
+- 按顺序调用查找函数解决按位置删除
+- 调用查找和按位置删除去写按照数值删除
 
 所以我们改变一下顺序，把查找代码和删除代码放在一起输出：
 
@@ -387,7 +390,7 @@ void RemoveByValue_Array(Dynamic_Array *arr, int value) {
 
 
 
-1. 我们整个数组的搭建，都是在维护最初定义的结构体：
+> 1. 我们整个数组的搭建，都是在**维护**最初定义的结构体：
 ```c++
 typedef struct DYNAMICARRAY { 
   int *pAddr;                 // 数据存放地址
@@ -563,7 +566,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 2. 使用for循环，让辅助变量指针往前滑动，直到跑到pos-1的位置，此时pCurrent就位，他的next指针就指向pos位置的data数据域内存首地址
     - size--，是不是可以反过来滑动？
 3. 插入结点：创建新的结点`newnode`，创建之初它的next指针为`NULL`，先把已经就位的`pCurrent->next`指针赋给newnode的next指针，然后让`pCurrent->next`重新指向newnode的数据域内存首地址
-4. 不要忘了size++
+4. 不要忘了`size++`
 
 
 > 测试、优化的时候，这里可能还要改
@@ -582,7 +585,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 
     `head > p5 > p4 > p3 > p2 > p1 > NULL`
 
-打印的时候，先打印p5，最后是p1
+打印的时候，先打印`p5`，最后是`p1`
 
 
 
@@ -590,7 +593,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
 
 ## 删除指定位置的值
 
-- 链表中，删除操作的实质是**挤掉**这个位置的结点，后面的跟上
+> 链表中，删除操作的实质是**挤掉**这个位置的结点，后面的跟上
 
 
 
@@ -676,7 +679,7 @@ int Find_linkList(LinkList *list, void *data) {
 
 ```
 
-注意这个while可以起到循环滑动辅助指针变量pCurrent的效果：
+- 注意这个`while`可以起到循环滑动辅助指针变量`pCurrent`的效果：
 ```c++
   int i = 0;
   while (pCurrent != NULL) {
@@ -732,12 +735,12 @@ void Print_LinkList(LinkList *list, PRINTLINKNODE print) {
 
 ```
 
-- 要配合main入口函数中的MyPrint使用，此处是为了确定好数据类型，然后遍历，为打印提供必要的支持
+- 要配合`main`入口函数中的`MyPrint`使用，此处是为了确定好数据类型，然后遍历，为打印提供必要的支持
 
 ## 释放链表内存
 
 - 因为结点的特性，不能直接删除当前节点，而是要缓存下一个节点以后，再删除当前节点
-- 使用while 外加pCurrent = pNext; 循环，直到pNext为NULL
+- 使用`while` 外加`pCurrent = pNext; 循环`，直到`pNext==NULL`
   - 这是一个循环释放的过程，不是一次放完
 
 ```c++
