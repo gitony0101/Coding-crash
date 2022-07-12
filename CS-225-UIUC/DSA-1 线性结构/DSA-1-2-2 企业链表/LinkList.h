@@ -3,7 +3,7 @@
 
 //链表小结点
 typedef struct LINKNODE {
-  struct LINKNODE *next;
+  struct LINKNODE *next; //只包括了指针域
 } LinkNode;
 //链表结构体
 typedef struct LINKLIST {
