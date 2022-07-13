@@ -85,8 +85,8 @@ int getTreeHeight(BinaryNode *root, int *h) {
   // int rheight = getTreeHeight(root->rchild, h);
   // int height = lHeight > rheight ? rheight + 1 : lHeight + 1;
   // return height;
-  return 1 +
-         max(getTreeHeight(root->lchild, h), getTreeHeight(root->rchild, h));
+  return 1 + max(getTreeHeight(root->lchild, h),
+                 getTreeHeight(root->rchild, h)); //这个表达式更好
 }
 //构造二叉树并进行三种遍历 先序遍历 后序遍历
 void exBinaryTree() {
