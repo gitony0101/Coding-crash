@@ -61,10 +61,6 @@
 语法格式：
 
 ```c++
-
-```
-
-```c++
 void recursion()
 {
    statements;
@@ -77,6 +73,25 @@ int main()
 {
    recursion();
 }
+```
+
+### 二叉树递归先序遍历
+
+这是一个很好的递归应用，先序遍历根左右
+
+```c++
+//递归遍历
+void Recursion(BinaryNode *root) { //从根开始遍历
+  if (root == NULL) {
+    return;
+  }
+  //先序遍历 根左右 先访问根结点
+  printf("%c", root->ch);
+  //再遍历左子树
+  Recursion(root->lchild);
+  //再遍历右子树
+  Recursion(root->rchild);
+} //从根开始，那么终止退出的的条件就是：某个根下面没有结点了，自然而然root==NULL
 ```
 
 ## Lambda 函数
