@@ -83,12 +83,41 @@ int getTreeHeight(BinaryNode *root, int *h) {
   int lHeight = getTreeHeight(root->lchild, h);
   //求树的右子树高度
   int rHeight = getTreeHeight(root->rchild, h);
-  int height = lHeight > rHeight ? lHeight + 1 : rHeight + 1;
+  int height = lHeight > rHeight ? lHeight + 1 : rHeight + 1; // 三元表达式
   return height;
   // return 1 + max(getTreeHeight(root->lchild),
   //                getTreeHeight(root->rchild)); //这个表达式更好
 }
-//构造二叉树并进行三种遍历 先序遍历 后序遍历
+//拷贝二叉树
+BinaryNode *CopyBinaryTree(BinaryNode *root) { //拷贝左右子树并递归
+  if (root == NULL) {
+    return NULL;
+  }
+  //拷贝左子树
+  BinaryNode *lchild = CopyBinaryTree(root->lchild);
+  //拷贝右子树
+  BinaryNode *rhild = CopyBinaryTree(root->rchild);
+  //创建结点
+  BinaryNode *newnode = (BinaryNode *)malloc((sizeof(BinaryNode)));
+  newnode->ch = root->ch;
+  newnode->lchild = lchild;
+  newnode->rchild = rhild;
+  return newnode;
+}
+//释放二叉树内存 注意素质
+void FreeSpaceBinaryTree(BinaryNode *root) {
+  if (root != NULL) {
+    return;
+  }
+  //递归释放左右子树
+  FreeSpaceBinaryTree(root->lchild);
+  FreeSpaceBinaryTree(root->rchild);
+  //释放当前结点
+  free(root);
+}
+
+//函数创建完毕，下面构造二叉树
+//并进行三种遍历 求自结点数目 树高度  拷贝二叉树并遍历
 void exBinaryTree() {
   //创建结点
   BinaryNode node1 = {'A', NULL, NULL}; //定义结点，初始化时左右结点为NULL
@@ -117,13 +146,23 @@ void exBinaryTree() {
   printf("LRD后序遍历左右根\n");
   RecursionLRD(&node1);
   printf("\n");
+  //求子结点数目
   int leafNum = 0;
   CalculateLeafNum(&node1, &leafNum);
   // 上下两行对比原函数格式void CalculateLeafNum(BinaryNode *root, int *leafNum)
   printf("叶子结点数目：%d\n", leafNum);
+  //求树高度
   int h = 0;
   int height = getTreeHeight(&node1, &h);
   printf("树的高度为：%d\n", height);
+  //拷贝二叉树
+  BinaryNode *root = CopyBinaryTree(&node1);
+  //遍历新的二叉树，以DLR为例
+  printf("DLR先序遍历新的二叉树:\n");
+  RecursionDLR(root); //传入根结点
+  //释放内存
+  FreeSpaceBinaryTree(root);
+  printf("\n");
 };
 
 int main() {
