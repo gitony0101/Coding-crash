@@ -79,14 +79,14 @@ int getTreeHeight(BinaryNode *root, int *h) {
   if (root == NULL) {
     return 0;
   }
-  // //求树的左子树高度
-  // int lHeight = getTreeHeight(root->lchild, h);
-  // //求树的右子树高度
-  // int rheight = getTreeHeight(root->rchild, h);
-  // int height = lHeight > rheight ? rheight + 1 : lHeight + 1;
-  // return height;
-  return 1 + max(getTreeHeight(root->lchild, h),
-                 getTreeHeight(root->rchild, h)); //这个表达式更好
+  //求树的左子树高度
+  int lHeight = getTreeHeight(root->lchild, h);
+  //求树的右子树高度
+  int rHeight = getTreeHeight(root->rchild, h);
+  int height = lHeight > rHeight ? lHeight + 1 : rHeight + 1;
+  return height;
+  // return 1 + max(getTreeHeight(root->lchild),
+  //                getTreeHeight(root->rchild)); //这个表达式更好
 }
 //构造二叉树并进行三种遍历 先序遍历 后序遍历
 void exBinaryTree() {
@@ -122,8 +122,8 @@ void exBinaryTree() {
   // 上下两行对比原函数格式void CalculateLeafNum(BinaryNode *root, int *leafNum)
   printf("叶子结点数目：%d\n", leafNum);
   int h = 0;
-  int tHeight = getTreeHeight(&node1, &h);
-  printf("树的高度为：%d\n", tHeight);
+  int height = getTreeHeight(&node1, &h);
+  printf("树的高度为：%d\n", height);
 };
 
 int main() {
