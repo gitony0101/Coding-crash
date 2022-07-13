@@ -1,10 +1,12 @@
 // #define _CRT_SECURE_NO_WARNINGS
+#include <algorithm>
+#include <cstdio>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> //树高max
 using namespace std;
 
-/*二叉树递归遍历
+/*二叉树递归遍历 求叶子结点数目 求二叉树的高度
        A
      /   \
     B     F
@@ -15,8 +17,8 @@ using namespace std;
 先序遍历 根左右DLR：ABCDEFGH
 中序遍历 左根右LDR：BDCEAFHG
 后序遍历 左右根LRD：DECBHGFA
-小结：
-三种遍历方法在写代码的时候，里面的递归要看清楚，一定要保持和本函数一致,否则遍历出来的结果混乱
+叶子结点：没有child了：DEH 3个
+求树高度：根结点左右结点BF的子树谁大谁+1，从顶部开始A往下递归
 */
 //定义二叉树结点结构体
 typedef struct BINARYNODE { //二叉链表示法
@@ -60,8 +62,34 @@ void RecursionLRD(BinaryNode *root) { //从根开始遍历
   //最后访问根结点
   printf("%c", root->ch);
 }
+//求二叉树叶子结点数目 继续递归
+void CalculateLeafNum(BinaryNode *root, int *leafNum) { //注意取地址还是饮用*&
+  if (root == NULL) {
+    return;
+  }
+  if (root->lchild == NULL && root->rchild == NULL) {
+    (*leafNum)++;
+  }
+  //接下来开始递归，分别递归左子树结点的数目和右子树结点的数目
+  CalculateLeafNum(root->lchild, leafNum);
+  CalculateLeafNum(root->rchild, leafNum); //顺序可以颠倒，但是缺一不可
+}
+//求二叉树高度：根结点左右结点BF的子树谁大谁 + 1，从顶部开始A往下递归
+int getTreeHeight(BinaryNode *root, int *h) {
+  if (root == NULL) {
+    return 0;
+  }
+  // //求树的左子树高度
+  // int lHeight = getTreeHeight(root->lchild, h);
+  // //求树的右子树高度
+  // int rheight = getTreeHeight(root->rchild, h);
+  // int height = lHeight > rheight ? rheight + 1 : lHeight + 1;
+  // return height;
+  return 1 +
+         max(getTreeHeight(root->lchild, h), getTreeHeight(root->rchild, h));
+}
 //构造二叉树并进行三种遍历 先序遍历 后序遍历
-void CreateBinaryTree() {
+void exBinaryTree() {
   //创建结点
   BinaryNode node1 = {'A', NULL, NULL}; //定义结点，初始化时左右结点为NULL
   BinaryNode node2 = {'B', NULL, NULL};
@@ -89,10 +117,19 @@ void CreateBinaryTree() {
   printf("LRD后序遍历左右根\n");
   RecursionLRD(&node1);
   printf("\n");
+  int leafNum = 0;
+  CalculateLeafNum(&node1, &leafNum);
+  // 上下两行对比原函数格式void CalculateLeafNum(BinaryNode *root, int *leafNum)
+  printf("叶子结点数目：%d\n", leafNum);
+  int h = 0;
+  int tHeight = getTreeHeight(&node1, &h);
+  printf("树的高度为：%d\n", tHeight);
 };
 
 int main() {
-  CreateBinaryTree();
+  exBinaryTree(); //三种方法遍历二叉树、求二叉树叶子结点数目
   printf("\n");
   return 0;
 }
+// 小结：
+// 三种遍历方法在写代码的时候，里面的递归要看清楚，一定要保持和本函数一致,否则遍历出来的结果混乱
