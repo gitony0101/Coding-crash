@@ -1,8 +1,7 @@
 #ifndef LINKSTACK_H
 #define LINKSTACK_H
-/*栈的链式存储
-还是链式结点那套结构，冠以了栈容器的性质
-黑马直接用的企业链表格式，结点没有数据域
+/*
+栈 & 二叉树结构体 & 递归遍历
 */
 #include <stdio.h>
 #include <stdlib.h> // 再此引入标准库，你在同名cpp里面就不用再写了
@@ -16,6 +15,12 @@ typedef struct LINKSTACK {
   LinkNode head; // 头结点
   int size;      // 元素个数
 } LinkStack;
+
+typedef struct BINARYNODE { //二叉链表示法
+  char ch; //把图里面A～H字符表示出来，这就是数据域
+  struct BINARYNODE *lchild; //左结点
+  struct BINARYNODE *rchild; //又结点
+} BinaryNode;
 //初始化函数
 LinkStack *Init_LinkStack();
 
@@ -31,5 +36,9 @@ int Size_LinkStack(LinkStack *stack);
 void Clear_LinkStack(LinkStack *stack);
 //销毁栈
 void FreeSpace_LinkStack(LinkStack *stack);
+//定义二叉树递归遍历
+void RecursionDLR(BinaryNode *root);
+void RecursionLDR(BinaryNode *root);
+void RecursionLRD(BinaryNode *root);
 
 #endif

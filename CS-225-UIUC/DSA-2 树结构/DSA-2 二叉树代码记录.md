@@ -6,7 +6,7 @@
 
 核心结构体、递归遍历
 
-```cpp
+```c++
 //定义二叉树结点结构体
 typedef struct BINARYNODE { //二叉链表示法
   char ch; //把图里面A～H字符表示出来，这就是数据域
@@ -17,7 +17,7 @@ typedef struct BINARYNODE { //二叉链表示法
 
 > 二叉链表示法
 
-```cpp
+```c++
 //先序递归遍历
 void RecursionDLR(BinaryNode *root) { //从根开始遍历
   if (root == NULL) {
@@ -63,7 +63,7 @@ void RecursionLRD(BinaryNode *root) { //从根开始遍历
 
 - 叶子结点的性质在于没有child结点了，因此可以通过递归来找出叶子结点的个数
 
-```cpp
+```c++
 //求二叉树叶子结点数目 继续递归
 void CalculateLeafNum(BinaryNode *root, int *leafNum) { //注意取地址还是饮用*&
   if (root == NULL) {
@@ -82,7 +82,7 @@ void CalculateLeafNum(BinaryNode *root, int *leafNum) { //注意取地址还是�
 
 - 依靠递归思想，求二叉树的高度，根结点左右结点的子树谁大谁 + 1，从顶部结点往下递归
 
-```cpp
+```c++
 
 int getTreeHeight(BinaryNode *root, int *h) {
   if (root == NULL) {
@@ -98,13 +98,13 @@ int getTreeHeight(BinaryNode *root, int *h) {
 ```
 
 - 其中：
-```cpp
+```c++
   int height = lHeight > rHeight ? lHeight + 1 : rHeight + 1; 
 ```
 这里用了三元表达式，判定谁大就用谁+1
 
 与此同时，还有一种max比较的代码思想：
-```cpp
+```c++
 return 1 + max(getTreeHeight(root->lchild),getTreeHeight(root->rchild));
 ```
 看起来更加简洁高效
@@ -112,7 +112,7 @@ return 1 + max(getTreeHeight(root->lchild),getTreeHeight(root->rchild));
 
 ## 拷贝二叉树
 
-```cpp
+```c++
 BinaryNode *CopyBinaryTree(BinaryNode *root) { //拷贝左右子树并递归
   if (root == NULL) {
     return NULL;
@@ -134,7 +134,7 @@ BinaryNode *CopyBinaryTree(BinaryNode *root) { //拷贝左右子树并递归
 - 拷贝的时候我们拷贝的是结点的数据，而不是指针，所以是`newnode->l/rchild = l/rchild;`
 
 ## 释放内存 注意这是C++的基本素质
-```cpp
+```c++
 void FreeSpaceBinaryTree(BinaryNode *root) {
   if (root != NULL) {
     return;
@@ -149,9 +149,16 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 
 ## 二叉树非递归遍历
 
-- 二叉树和栈出的联名版应用
+- **二叉树和栈出的联名版应用**
 - 可以这样用，利用栈容器性质来替代之前二叉树代码中的**递归函数**
-- Bool思想：设定两种显示状态 ：`TRUE`为显示，`FALSE`为不显示
+- 为什么要这样用：利用栈的性质，结合二叉树自身**数据结构**，结合Bool思想给当前根结点做标记
+  - 设定两种显示状态 ：`TRUE`为显示，`FALSE`为不显示
+
+
+
+
+
+
 
 
 
