@@ -19,9 +19,9 @@ using namespace std;
 */
 //定义栈中结点的结构体
 typedef struct BITREESTACKNODE { //用企业链表
-  LinkNode node;
-  BinaryNode *root;
-  int flag; // MY_TRUE/FALSE 01
+  LinkNode node;                 //顶部晾衣绳结点
+  BinaryNode *root;              //二叉树结点
+  int flag;                      // MY_TRUE/FALSE 01 显示标记
 } BiTreeStackNode;
 //创建栈中结点 为了精简下面的函数增加可读性
 BiTreeStackNode *CreateBiTreeStackNode(BinaryNode *node, int flag) {
