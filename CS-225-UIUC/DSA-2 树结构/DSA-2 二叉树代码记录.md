@@ -175,7 +175,7 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 
 ### 井号法创建二叉树
 
-
+- `fflush(stdin);` 函数
 
 
 
