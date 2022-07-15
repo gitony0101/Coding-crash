@@ -162,6 +162,19 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 
 
 
+## 二叉树的创建
+
+- 怎样的遍历逆运算能确定一棵树？
+  - 中序遍历必参与
+
+
+
+
+
+
+
+### 井号法创建二叉树
+
 
 
 
