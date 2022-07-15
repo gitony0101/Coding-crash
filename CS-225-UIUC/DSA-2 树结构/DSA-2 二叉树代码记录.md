@@ -152,7 +152,21 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 - **二叉树和栈出的联名版应用**
 - 可以这样用，利用栈容器性质来替代之前二叉树代码中的**递归函数**
 - 为什么要这样用：利用栈的性质，结合二叉树自身**数据结构**，结合Bool思想给当前根结点做标记
-  - 设定两种显示状态 ：`TRUE`为显示，`FALSE`为不显示
+  - 设定两种显示状态 ：`TRUE`为显示，`FALSE`为不显示：
+   ```cpp
+      #define MY_FALSE 0 // 定义显示状态，如果为FALSE，设置为0，并且不被打印
+      #define MY_TRUE 1 //定义显示状态，如果为TRUE，设置为1,打印
+  ```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -175,7 +189,11 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 
 ### 井号法创建二叉树
 
+
+
 - `fflush(stdin);` 函数
+
+
 
 
 

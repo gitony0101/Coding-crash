@@ -30,15 +30,12 @@ BinaryNode *CreateBInaryTree() {
   fflush(stdin); //干清空缓存
   char ch;
   scanf("%c", &ch);
-  BinaryNode *node, *lchild, *rchild;
+  BinaryNode *node;
+
   if (ch == '#') { //井号代表此处为空结点
     node = NULL;
-  } else { //拷贝左右子树
-    lchild = CreateBInaryTree();
-    rchild = CreateBInaryTree();
-    node =
-        (BinaryNode *)malloc(sizeof(BinaryNode)); //注意这里跟以前创建的不一样了
-    //是否因为本身就是 BinaryNode？
+  } else {                                           //拷贝左右子树
+    node = (BinaryNode *)malloc(sizeof(BinaryNode)); //前方已经定义node
     node->ch = ch;
     node->lchild = CreateBInaryTree();
     node->rchild = CreateBInaryTree();
@@ -54,4 +51,4 @@ int main() {
   printf("\n");
   return 0;
 }
-// ABD##E##C #F##
+// 回车输入ABD##E##C #F##
