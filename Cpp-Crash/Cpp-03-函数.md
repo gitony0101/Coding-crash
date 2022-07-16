@@ -53,27 +53,10 @@
 递归指的是在函数的定义中使用函数自身的方法。
 所谓的递归， 直白的说， 就是自己调用自己（Functions call themselves），注意结束条件。
 
-有人不推荐用：
+不推荐的理由：
 - 栈溢出危险
 - 时间空间消耗较大
 - 重复运算
-
-语法格式：
-
-```c++
-void recursion()
-{
-   statements;
-   ... ... ...
-   recursion(); /* 函数调用自身 */
-   ... ... ...
-}
-
-int main()
-{
-   recursion();
-}
-```
 
 ### 二叉树递归先序遍历
 
@@ -101,6 +84,26 @@ void Recursion(BinaryNode *root) { //从根开始遍历
 
 
 
+
+## 三元表达式
+
+举例：求二叉树的高度，根结点左右结点的子树谁大谁 + 1，从顶部结点往下递归
+```cpp
+
+int getTreeHeight(BinaryNode *root, int *h) {
+  if (root == NULL) {
+    return 0;
+  }
+  //求树的左子树高度
+  int lHeight = getTreeHeight(root->lchild, h);
+  //求树的右子树高度
+  int rHeight = getTreeHeight(root->rchild, h);
+  int height = lHeight > rHeight ? lHeight + 1 : rHeight + 1; // 三元表达式
+  return height;
+}
+```
+
+这里求树高度`height`用了三元表达式，判定谁大就用谁+1
 
 # 一些常见函数、方法
 
@@ -150,9 +153,15 @@ typedef void (*PRINTLINKNODE)(void *);
 
 # 库函数 内置函数 标准函数
 
+```c++
+
+```
+
 - `memcpy()` string.h
 - `strcpy()`
 - `strcmp()`
+
+- `fflush(stdin)` 一个计算机专业术语，功能是清空输入缓冲区，通常是为了确保不影响后面的数据读取（例如在读完一个字符串后紧接着又要读取一个字符，此时应该先执行`fflush(stdin);`。
 
 - `alloc()` `calloc()` `malloc()`
 - 
