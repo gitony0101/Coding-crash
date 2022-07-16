@@ -9,7 +9,11 @@
 
 
 
-```cpp
+```c++
+
+```
+
+```c++
 
 //冒泡排序 4,2,8,0,5,7,1,3,9 进行升序排序
 void exBubbleSort01() {
@@ -49,7 +53,7 @@ void exBubbleSort01() {
 ```
 
 ## 本单元版本
-```cpp
+```c++
 // #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <cstdlib>
