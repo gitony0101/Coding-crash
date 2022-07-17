@@ -33,17 +33,9 @@ void printArr(int arr[], int length) {
   printf("\n");
 }
 
-//尝试初始化数组
-void *createMyArr(int length) {
-  int *arr = (int *)calloc(length, sizeof(int));
-  for (int i = 0; i < length; i++) {
-    arr[i] = rand() % length;
-  }
-  return arr;
-}
-
 //冒泡排序
-void exBubbleSort01(int arr[], int length) { //冒泡排序
+void exBubbleSort01(int arr[], int length) {
+
   for (int i = 0; i < length; i++) {
     for (int j = 0; j < length - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
@@ -116,3 +108,58 @@ int main() {
 // for (int i = 0; i < MAX; i++) {
 //   arr[i] = rand() % MAX;
 // }
+/*
+
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap(int*, int*);
+
+//尝试初始化数组
+void *createMyArr(int length) {
+    int *arr = (int *)malloc(length * sizeof(int));
+    for (int i = 0; i < length; i++) {
+        arr[i] = rand() % length;
+    }
+    return arr;
+}
+
+// 冒泡排序
+void exBubbleSort01(int arr[], int length) {
+    for (int i = 0; i < length; i++) {
+        for (int j = 0; j < length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j + 1], &arr[j]);
+            }
+        }
+    }
+}
+
+///
+
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
+
+void swap(int *a, int *b) {
+    const int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+void print_array(const int arr[], size_t len) {
+    for (int i = 0; i < len; i++) printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int main() {
+    const size_t array_size = 10;
+
+    int* arr = (int*)createMyArr(array_size);
+    print_array(arr, array_size);
+
+    exBubbleSort01(arr, array_size);
+    print_array(arr, array_size);
+
+    return 0;
+}
+*/
