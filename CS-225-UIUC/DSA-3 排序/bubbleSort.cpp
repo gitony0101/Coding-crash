@@ -17,8 +17,8 @@ long getSysTime() {
   ftime(&tb);
   return tb.time * 1000 + tb.millitm;
 }
+#define MAX 10000 // 设定数组最大值,目前测时间10000足¨够，多了会慢
 
-#define MAX 10 // 设定数组最大值,目前测时间10000足¨够，多了会慢
 //交换函数
 void Swap(int *a, int *b) {
   int temp = *a;
@@ -32,6 +32,16 @@ void printArr(int arr[], int length) {
   }
   printf("\n");
 }
+
+//尝试初始化数组
+void *createMyArr(int length) {
+  int *arr = (int *)calloc(length, sizeof(int));
+  for (int i = 0; i < length; i++) {
+    arr[i] = rand() % length;
+  }
+  return arr;
+}
+
 //冒泡排序
 void exBubbleSort01(int arr[], int length) { //冒泡排序
   for (int i = 0; i < length; i++) {
@@ -57,42 +67,52 @@ void exBubbleSortFlag(int arr[], int length, int flag) {
 }
 
 //调用原版还是改进版
-void whichBubbleSortToRun(int arr[], int length, int call) {
+void whichBubbleSortToRun(int length, int call) {
+  //冒泡排序初始化随机数组
+  int arr[length];
+  srand((unsigned int)time(NULL)); //设定随机数种子
+  printf("生成随机数组：\n");
+  for (int i = 0; i < length; i++) {
+    arr[i] = rand() % length;
+  }
+  //条件判断
   if (call == 0) {
     printf("排序前\n");
-    printArr(arr, MAX);
+    printArr(arr, length);
     long t_start = getSysTime();
-    exBubbleSort01(arr, MAX);
+    exBubbleSort01(arr, length);
     long t_end = getSysTime();
     printf("排序后\n");
-    printArr(arr, MAX);
+    printArr(arr, length);
     printf("冒泡排序 %d 个元素所需时间:%lo ms\n", MAX, (t_end - t_start));
   }
   if (call == 1) {
     printf("排序前\n");
-    printArr(arr, MAX);
+    printArr(arr, length);
     long t_start = getSysTime();
-    exBubbleSortFlag(arr, MAX, 0);
+    exBubbleSortFlag(arr, length, 0);
     long t_end = getSysTime();
     printf("排序后\n");
-    printArr(arr, MAX);
-    printf("冒泡排序 %d 个元素所需时间:%lo ms\n", MAX, (t_end - t_start));
+    printArr(arr, length);
+    printf("改进见好就收版冒泡排序 %d 个元素所需时间:%lo ms\n", MAX,
+           (t_end - t_start));
   }
 }
 
 int main() {
-  //冒泡排序初始化随机数组
-  int arr[MAX];
-  srand((unsigned int)time(NULL)); //设定随机数种子
-  printf("生成随机数组：\n");
-  for (int i = 0; i < MAX; i++) {
-    arr[i] = rand() % MAX;
-  }
-  //调用冒泡排序
-  whichBubbleSortToRun(arr, MAX, 0);
-  //冒泡排序见好就收改进版
 
-  whichBubbleSortToRun(arr, MAX, 1);
+  //调用冒泡排序
+  whichBubbleSortToRun(MAX, 0);
+  //冒泡排序见好就收改进版
+  whichBubbleSortToRun(MAX, 1);
   printf("\n");
   return 0;
 }
+
+// //冒泡排序初始化随机数组
+// int arr[MAX];
+// srand((unsigned int)time(NULL)); //设定随机数种子
+// printf("生成随机数组：\n");
+// for (int i = 0; i < MAX; i++) {
+//   arr[i] = rand() % MAX;
+// }
