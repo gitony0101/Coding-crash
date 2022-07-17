@@ -179,7 +179,7 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 ### 联名版结构体
 
 - 二叉树和栈容器相结合
-```cpp
+```c++
 //定义栈中结点的结构体
 typedef struct BITREESTACKNODE { //用企业链表
   LinkNode node;                 //顶部晾衣绳结点
@@ -194,7 +194,7 @@ typedef struct BITREESTACKNODE { //用企业链表
 
 以非递归先序遍历为例
 
-```cpp
+```c++
 //非递归先序遍历 DLR 压栈的时候反过来RLD
 void NonRecursionDLR(BinaryNode *root) { //先序遍历！
   //创建栈
@@ -227,7 +227,8 @@ void NonRecursionDLR(BinaryNode *root) { //先序遍历！
 
 主要步骤：
 
-1. 结点压入栈中时，默认flag为FALSE不显示，然后弹出该结点
+1. 结点压入栈中时，默认`flag`为FALSE不显示，然后弹出该结点
+   - `flag`可以成为标志量
 2. 以以先序遍历的**反向**顺序RLD把子结点压栈，顺序为：右结点先压栈，然后是左结点,最后是根结点
    - 这样是因为栈容器先进后出的性质决定
 3. 将结点的显示标记改为TRUE，即表示该结点已经被显示
