@@ -136,6 +136,57 @@ int main() {
 
 ### 别废话，不要冗余，见好就收的改进思想放光芒
 
+### 在对比的过程中，我们会遇到的问题
+
+需要用两个完全相同的随机数组进行对比：
+
+```cpp
+//冒泡排序初始化随机数组
+  int length = MAX;
+  int arr01[length];
+  int arr02[length];
+  srand((unsigned int)time(NULL)); //设定随机数种子
+  for (int i = 0; i < length; i++) {
+    int randNum = rand() % length;
+    arr01[i] = randNum;
+    arr02[i] = randNum;
+  };
+
+```
+
+- 怎么拷贝，就这样拷贝
+
 ## 选择排序
 
-比冒泡排序少了交换次数
+比冒泡排序少了交换次数，但是高不到哪里去
+
+```cpp
+void selectSort(int arr[], int length) {
+  for (int i = 0; i < length; i++) {
+    int min = i; //有可能这个地方时是最小了
+    for (int j = i + 1; j < length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j; //更新下标为j
+      }          //循环完毕后，min应该取到的是最小值的下标
+    }
+    if (min != i) {
+      Swap(&arr[min], &arr[i]);
+    }
+  }
+}
+
+
+```
+
+> 最后我们看到这个选择排序比冒泡效率高一些,因为交换次数少了些
+
+
+
+
+
+## 插入排序
+
+将无序的序列插入到有序的序列中
+
+
+
