@@ -6,7 +6,8 @@
 #include <string.h> //树高max
 using namespace std;
 
-/*二叉树递归遍历 求叶子结点数目 求二叉树的高度
+/*
+二叉树递归遍历 求叶子结点数目 求二叉树的高度
        A
      /   \
     B     F

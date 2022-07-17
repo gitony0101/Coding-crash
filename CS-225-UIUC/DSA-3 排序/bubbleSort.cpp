@@ -89,24 +89,9 @@ int main() {
     arr[i] = rand() % MAX;
   }
   //调用冒泡排序
-  // printf("排序前\n");
-  // printArr(arr, MAX);
-  // long t_start = getSysTime();
-  // exBubbleSort01(arr, MAX);
-  // long t_end = getSysTime();
-  // printf("排序后\n");
-  // printArr(arr, MAX);
-  // printf("冒泡排序 %d 个元素所需时间:%lo ms\n", MAX, (t_end - t_start));
+  whichBubbleSortToRun(arr, MAX, 0);
   //冒泡排序见好就收改进版
-  // printf("排序前\n");
-  // printArr(arr, MAX);
-  // long t_start = getSysTime();
-  // exBubbleSortFlag(arr, MAX, 0);
-  // long t_end = getSysTime();
-  // printf("排序后\n");
-  // printArr(arr, MAX);
-  // printf("冒泡排序 %d 个元素所需时间:%lo ms\n", MAX, (t_end - t_start));
-  // whichBubbleSortToRun(arr, MAX, 0);
+
   whichBubbleSortToRun(arr, MAX, 1);
   printf("\n");
   return 0;
