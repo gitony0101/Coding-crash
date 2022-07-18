@@ -154,7 +154,16 @@ int main() {
 
 ```
 
-- 怎么拷贝，就这样拷贝
+- 这就是如何拷贝生成的数组
+
+
+```c++
+
+```
+
+```c++
+
+```
 
 ## 选择排序
 
@@ -188,8 +197,15 @@ void selectSort(int arr[], int length) {
 
 > 将无序的序列插入到有序的序列中
 
+正式写
 
+```cpp
+void InsertSort(int arr[], int length) {
+  for (int i = 1; i < length; i++) { 
+    
+  }
+}
 
+```
 
-
-
+创建函数并开始循环，注意 `i=1`开始
