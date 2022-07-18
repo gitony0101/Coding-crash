@@ -140,7 +140,7 @@ int main() {
 
 需要用两个完全相同的随机数组进行对比：
 
-```cpp
+```c++
 //冒泡排序初始化随机数组
   int length = MAX;
   int arr01[length];
@@ -160,7 +160,7 @@ int main() {
 
 比冒泡排序少了交换次数，但是高不到哪里去
 
-```cpp
+```c++
 void selectSort(int arr[], int length) {
   for (int i = 0; i < length; i++) {
     int min = i; //有可能这个地方时是最小了
@@ -186,7 +186,10 @@ void selectSort(int arr[], int length) {
 
 ## 插入排序
 
-将无序的序列插入到有序的序列中
+> 将无序的序列插入到有序的序列中
+
+
+
 
 
 
