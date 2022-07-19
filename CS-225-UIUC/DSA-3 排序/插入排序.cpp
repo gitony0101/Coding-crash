@@ -14,7 +14,7 @@ using namespace std;
 > 插入排序在序列基本有序效率高，或者数据序列元素比较少
 */
 
-#define MAX 10000
+#define MAX 10
 
 //获得系统毫秒时间
 long getSysTime() {
@@ -38,7 +38,17 @@ void printArr(int arr[], int length) {
   printf("\n");
 }
 void InsertSort(int arr[], int length) {
+  int j;
   for (int i = 1; i < length; i++) { //开始循环
+    if (arr[i] < arr[i - 1]) { //如果当前数据元素比前一个小，进行插入排序
+      int temp = arr[i]; //先创建缓存变量把当前元素缓存下来
+
+      for (j = i - 1; j >= 0 && temp < arr[j]; j--) { // 从i-1的位置倒着来
+        //再往前找比当前元素小的数据元素，只要temp元素小于往前寻找的元素，就继续往前找
+        arr[j + 1] = arr[j]; //往前移动的实现
+      }
+      arr[j + 1] = temp; //就是比较过后，j后面那个位置，最后剩下给temp的位置
+    }
   }
 }
 
@@ -53,7 +63,9 @@ int main() {
     arr01[i] = randNum;
     arr02[i] = randNum;
   };
-
+  printArr(arr01, MAX);
+  InsertSort(arr01, MAX);
+  printArr(arr01, MAX);
   printf("\n");
   return 0;
 }

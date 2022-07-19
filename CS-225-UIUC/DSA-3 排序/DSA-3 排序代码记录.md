@@ -197,11 +197,12 @@ void selectSort(int arr[], int length) {
 
 > 将无序的序列插入到有序的序列中
 
-正式写
-
-```cpp
+```c++
 void InsertSort(int arr[], int length) {
   for (int i = 1; i < length; i++) { 
+   
+
+    }
     
   }
 }
@@ -209,3 +210,17 @@ void InsertSort(int arr[], int length) {
 ```
 
 创建函数并开始循环，注意 `i=1`开始
+
+
+
+
+
+# 小结
+
+## 元素移动
+
+> 数组中的元素，如何按照循环，往前移动，或者往后移动?
+
+
+
+
