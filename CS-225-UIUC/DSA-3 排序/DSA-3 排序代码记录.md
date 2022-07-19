@@ -211,6 +211,11 @@ void InsertSort(int arr[], int length) {
 
 创建函数并开始循环，注意 `i=1`开始
 
+主要的一层比较：
+```cpp
+ for (j = i - 1; j >= 0 && temp < arr[j]; j--) 
+```
+
 
 
 
