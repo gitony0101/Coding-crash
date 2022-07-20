@@ -77,6 +77,25 @@ void Recursion(BinaryNode *root) { //从根开始遍历
 } //从根开始，那么终止退出的的条件就是：某个根下面没有结点了，自然而然root==NULL
 ```
 
+## `do-while` 循环
+
+一个神奇的循环：
+
+### 希尔排序中增量减小的过程
+
+- `do-while`循环在保障每次外层循环增量逐步减小：
+ ```cpp
+do {
+  int increasement = length; //初始化，先让增量等于数组全长
+    increasement = increasement / 3 + 1; //循环第一步：确定分组的增量
+  } while (increasement > 1);
+```
+
+- 希尔增量`increasement`一直在减小，直到减小到1
+  - 例如数组全长length=9，初始化给到increasement，第一次increasement= 9/3 +1 =4.第二次 4/3+1 =2，第三次2/3+1=1，至此因`while (increasement > 1);`限定，推出循环，正好最后一次循环没有增量了，回归原来的插入排序，把整个**基本有序数组**再插入排序一次。
+
+
+
 ## Lambda 函数
 - Lambda函数又称匿名函数，函数没有名字
 - 具有输入输出，表达式的参数就是其输入，表达式结果为函数的输出
@@ -88,7 +107,7 @@ void Recursion(BinaryNode *root) { //从根开始遍历
 ## 三元表达式
 
 举例：求二叉树的高度，根结点左右结点的子树谁大谁 + 1，从顶部结点往下递归
-```cpp
+```c++
 
 int getTreeHeight(BinaryNode *root, int *h) {
   if (root == NULL) {
