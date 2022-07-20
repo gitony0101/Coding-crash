@@ -12,7 +12,7 @@ using namespace std;
 希尔排序Shell Sort
 */
 
-#define MAX 10
+#define MAX 100000
 
 //获得系统毫秒时间
 long getSysTime() {
@@ -61,6 +61,23 @@ void shellSort(int arr[], int length) {
     }
   } while (increasement > 1); //当 increasement > 1后，推出循环
 }
+//引入普通插入排序进行比较
+void InsertSort(int arr[], int length) {
+  int j;
+  for (int i = 1; i < length; i++) { //开始循环
+    if (arr[i] < arr[i - 1]) { //如果当前数据元素比前一个小，进行插入排序
+      int temp = arr[i]; //先创建缓存变量把当前元素缓存下来
+
+      for (j = i - 1; j >= 0 && temp < arr[j]; j--) { // 从i-1的位置倒着来
+        //再往前找比当前元素小的数据元素，只要temp元素小于往前寻找的元素，就继续往前找
+        arr[j + 1] = arr[j]; //往前移动的实现
+      } //之所以能够j--，是因为外层循环在一直扩大，所以能够有空间让j--
+        // 这也是插入排序的重点：动态思想，把一个序列分成有序的无序的两个序列，通过i++循环壮大有序序列，吸收（减小，j--)无序序列。
+      //上面的循环在条件内循环结束后，才有了下面的赋值
+      arr[j + 1] = temp; //就是比较过后，j后面那个位置，最后剩下给temp的位置
+    }
+  }
+}
 
 int main() {
 
@@ -77,6 +94,15 @@ int main() {
   //   printArr(arr02, MAX);
   //   shellSort(arr02, MAX);
   //   printArr(arr02, MAX);//测试希尔排序是否可用
+  //与普通插入排序比较测试效率，调整MAX 到100000
+  long t_start02 = getSysTime();
+  shellSort(arr02, length);
+  long t_end02 = getSysTime();
+  printf("希尔排序 %d 个元素所需时间:%lo ms\n", MAX, (t_end02 - t_start02));
+  long t_start01 = getSysTime();
+  InsertSort(arr01, length);
+  long t_end01 = getSysTime();
+  printf("插入排序 %d 个元素所需时间:%lo ms\n", MAX, (t_end01 - t_start01));
 
   printf("\n");
   return 0;
