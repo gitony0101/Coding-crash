@@ -37,7 +37,6 @@ void printArr(int arr[], int length) {
 }
 
 //希尔排序
-
 void shellSort(int arr[], int length) {
   int increasement = length; //初始化，先让增量等于数组全长
   int i, j, k;               //把循环变量先定义好
