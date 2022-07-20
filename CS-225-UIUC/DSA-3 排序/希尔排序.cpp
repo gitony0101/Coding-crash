@@ -58,7 +58,7 @@ void shellSort(int arr[], int length) {
         }
       }
     }
-  } while (increasement > 1); //当 increasement > 1后，推出循环
+  } while (increasement > 1); //当 increasement < 1后，退出循环
 }
 //引入普通插入排序进行比较
 void InsertSort(int arr[], int length) {
