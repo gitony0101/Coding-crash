@@ -287,8 +287,16 @@ void shellSort(int arr[], int length) {
 
 ```
 
-- 外层`do-while`
-- 希尔增量一直在调节，直到增量为1
+- 外层`do-while`循环在保障每次外层循环增量逐步减小
+ ```cpp
+do {
+  int increasement = length; //初始化，先让增量等于数组全长
+    increasement = increasement / 3 + 1; //循环第一步：确定分组的增量
+  } while (increasement > 1);
+```
+
+- 希尔增量一直在减小，直到减小到1
+  - 例如数组全长length=9，初始化给到increasement;
 
 
 
