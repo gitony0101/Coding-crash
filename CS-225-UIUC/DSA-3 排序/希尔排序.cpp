@@ -40,12 +40,23 @@ void printArr(int arr[], int length) {
 
 void shellSort(int arr[], int length) {
   int increasement = length; //初始化，先让增量等于数组全长
-  int i, j;                  //把循环变量先定义好
+  int i, j, k;               //把循环变量先定义好
   do {
     increasement = increasement / 3 + 1; //循环第一步：确定分组的增量
     for (i = 0; i < increasement; i++) { //注意这步循环，你在哪里
       for (j = i + increasement; j < length; j += increasement) {
-        //新的跨度:j += increasement
+        //新的跨度:j += increasement，在这一步也通过这个跨度来实现了分组
+        //但是光这样分组还不行，下面的循环里面还是要引进步长
+        if (arr[j] < arr[j - increasement]) { //分组插入排序开始
+          //如果当前数据元素比前一个小，进行插入排序
+          //这里是 arr[j -increasement])，确保是分组的比较
+          int temp = arr[j];
+          for (k = j - increasement; k > 0 && temp < arr[k];
+               k -= increasement) {
+            arr[k + increasement] = arr[k];
+          }
+          arr[k + increasement] = temp;
+        }
       }
     }
   } while (increasement > 1); //当 increasement > 1后，推出循环
@@ -63,6 +74,9 @@ int main() {
     arr01[i] = randNum;
     arr02[i] = randNum;
   };
+  //   printArr(arr02, MAX);
+  //   shellSort(arr02, MAX);
+  //   printArr(arr02, MAX);//测试希尔排序是否可用
 
   printf("\n");
   return 0;
