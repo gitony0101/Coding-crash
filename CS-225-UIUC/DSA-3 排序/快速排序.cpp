@@ -21,6 +21,16 @@ void QuickSort(int arr[], int start, int end) {
   if (i < j) {           //确保i开始下标一直比j结束下标小
     while (i < j) {      //为了确保挖坑填数，重复了一遍i<j
                          //开始填坑
+      //从右向左 找比基准数小的数
+      while (i < j && arr[j] >= temp) {
+        j--;
+      }
+      //填坑
+      if (i < j) {
+        arr[i] = arr[j]; //从右向左把坑填好了
+        i++;
+      }
+      //从左向右 找比基准数大的数
     }
   }
 }
