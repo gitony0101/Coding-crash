@@ -217,7 +217,7 @@ void InsertSort(int arr[], int length) {
 ```
 
 - 主要的一层比较：
-```cpp
+```c++
 int j;
 for (int i = 1; i < length; i++) { //开始循环
     if (arr[i] < arr[i - 1]) { //如果当前数据元素比前一个小，进行插入排序
@@ -258,7 +258,7 @@ for (int i = 1; i < length; i++) { //开始循环
 
 ## 希尔排序 Shell Sort
 
-```cpp
+```c++
 
 //希尔排序
 void shellSort(int arr[], int length) {
@@ -288,7 +288,7 @@ void shellSort(int arr[], int length) {
 ```
 
 - 外层`do-while`循环在保障每次外层循环增量逐步减小
- ```cpp
+```c++
 do {
   int increasement = length; //初始化，先让增量等于数组全长
     increasement = increasement / 3 + 1; //循环第一步：确定分组的增量
@@ -308,13 +308,25 @@ do {
 
 
 
+
+
+## 快速排序
+
+- 分治法 + 挖坑填数
+  - 分治法：大而化小，小而解决
+
+
+
+
+
+
 # 小结
 
 ## 元素移动
 
 > 数组中的元素，如何按照循环，往前移动，或者往后移动?
 
-```cpp
+```c++
 for (int i = 1; i < length; i++) { 
     if (arr[i] < arr[i - 1]) { 
       int temp = arr[i]; 
