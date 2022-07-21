@@ -184,6 +184,10 @@ The value of intMax + 1 is -2147483648
 
 
 
+> 具体例子请看后文函数do-while循环中的希尔增量`increasement`例子。
+
+- `increasement`是整型。
+
 # 复合类型 指针 引用
 
 ## **指针\*是地址，引用&是别名**
@@ -264,7 +268,7 @@ typedef struct LINKNODE {
 
 
 
-```cpp
+```c++
 int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
   if (list == NULL) {
     return -1;
