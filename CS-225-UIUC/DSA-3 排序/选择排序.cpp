@@ -98,3 +98,12 @@ int main() {
   printf("\n");
   return 0;
 }
+
+/*
+int *func(int length){
+    int *arr = (int*)malloc(sizeof(int)*length);
+    for (int i = 0; i < length; ++i) {
+        arr[i] = i;
+    }
+    return arr;
+}*/

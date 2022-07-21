@@ -27,7 +27,7 @@ void RecursionDLR(BinaryNode *root) { //从根开始遍历
 } //从根开始，那么终止退出的的条件就是：某个根下面没有结点了，自然而然root==NULL
 
 BinaryNode *CreateBInaryTree() {
-  fflush(stdin); //干清空缓存
+  fflush(stdin); //清空缓存
   char ch;
   scanf("%c", &ch);
   BinaryNode *node;
