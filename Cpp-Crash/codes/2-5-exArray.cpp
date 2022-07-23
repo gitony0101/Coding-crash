@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstdio>
+#include <cstdlib>
+#include <ctime> //创建随机数组用
 #include <iostream>
 #include <stdio.h>  // 动态数组用
 #include <stdlib.h> //动态数组用 内存分配  malloc calloc realloc free
@@ -9,6 +11,7 @@
 using namespace std;
 /* 一维数组 二维数组
 一维数组
+创建随机数组* int *Array = new int[length] 注意方法
   找最大 逆转排列 冒泡排序
 1. `数据类型 数组名[ 数组长度 ];`
 2. `数据类型 数组名[ 数组长度 ] = { 值1，值2 ...};` # 把值也标出来
@@ -46,6 +49,33 @@ void exUnarry01() {
          (int &)arr01[0]); //注意首元素地址和数组首地址相同
   printf("第二个元素地址为%p，十进制地址为%d\n", &arr01[1], (int &)arr01[1]);
 }
+
+//
+// 创建一维随机数组 这是个不及物函数
+void InitMyArr(int arr[], int length) {
+  srand((unsigned)time(NULL));
+  for (int i = 0; i < length; i++) {
+    arr[i] = rand() % 100 + 1;
+  }
+}
+//打印函数，打印数组
+void PrintArray(int arr[], int length) {
+  for (int i = 0; i < length; i++) {
+    printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+//创建并打印，这是个及物函数 int *Array = new int[length]是核心
+void InitPrintArr() {
+  int length;
+  printf("请输入一维数组大小：\n"); //单独写出来
+  scanf("%d", &length);             //只负责输入
+  int *Array = new int[length];
+  InitMyArr(Array, length);
+  PrintArray(Array, length);
+}
+
+//
 
 // 最大数
 void sortArr02() {
@@ -314,9 +344,10 @@ void reallocDynamic2dArr() {
 
 int main() {
   //   exUnarry01();
+  InitPrintArr(); //还有点问题
   //   sortArr02();
   //   reverseArr01();
-  exBubbleSort01(); // 冒泡排序
+  // exBubbleSort01(); // 冒泡排序
   // exBinArr01();
   // gradeStastics();
   // 内存分配调整 动态数组
