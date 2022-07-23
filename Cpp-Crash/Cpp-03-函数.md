@@ -2,6 +2,10 @@
 
 # 函数
 
+爱是个动词，函数也是。
+- 函数可以是个谓语动词
+- 函数可以是个非谓语动词
+
 ## 基础
 
 三要素：函数名、参数、返回值
@@ -84,7 +88,7 @@ void Recursion(BinaryNode *root) { //从根开始遍历
 ### 希尔排序中增量减小的过程
 
 - `do-while`循环在保障每次外层循环增量逐步减小：
- ```cpp
+```c++
 do {
   int increasement = length; //初始化，先让增量等于数组全长
     increasement = increasement / 3 + 1; //循环第一步：确定分组的增量
