@@ -11,19 +11,18 @@ void PrintArray(int arr[], int length) {
     printf("%d ", arr[i]);
   }
 }
-//快速排序 从小到大
+//快速排序 从小到大排序
 void QuickSort(int arr[], int start, int end) {
   //初始化
-  int i = start;         //让i指向第一个下标
-  int j = end;           //让j指向最后一下标
+  int i = start; //让i指向第一个下标，使用时开始是0，为什么不直接写0？
+  int j = end;           //让j指向最后一下标，使用时结束时len-1
   int temp = arr[start]; //初始化基准数为第一个元素
                          //所有数都和基准数进行比较
   if (i < j) {           //确保i开始下标一直比j结束下标小
-    while (i < j) {      //为了确保挖坑填数，重复了一遍i<j
-                         //开始填坑
+    while (i < j) {      //在i<j的情况下一直循环
       //从右向左 找比基准数小的数
-      while (i < j && arr[j] >= temp) {
-        j--;
+      while (i < j && arr[j] >= temp) { // arr[j] >= temp 条件确保了在找
+        j--;                            //
       }
       //填坑
       if (i < j) {
@@ -39,6 +38,7 @@ int main() {
   int myArr[] = {4, 2, 8, 0, 5, 7, 1, 3, 9}; //直接要了个数组
   int len = sizeof(myArr) / sizeof(int); // 或者sizeof(myArr)/sizeof(myArr[0])
   PrintArray(myArr, len);
+  QuickSort(myArr, 0, len); //调用快速排序
   printf("\n");
   return 0;
 }
