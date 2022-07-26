@@ -7,10 +7,9 @@
 
 using namespace std;
 
-#define MAX 10
+#define MAX 15
 //创建容量为MAX的一维随机数组
 int *CreatArray() {
-  srand((unsigned)int(NULL));
   int *arr = (int *)malloc(sizeof(int) * MAX);
   for (int i = 0; i < MAX; i++) {
     arr[i] = rand() % MAX + 1;
