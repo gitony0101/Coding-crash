@@ -9,6 +9,7 @@
 #include <string>
 
 using namespace std;
+#define MAX 10 //创建一维随机动态数组用，创建一个最大值10
 /* 一维数组 二维数组
 一维数组
 创建随机数组* int *Array = new int[length] 注意方法
@@ -66,15 +67,27 @@ void PrintArray(int arr[], int length) {
   printf("\n");
 }
 //创建并打印，这是个及物函数 int *Array = new int[length]是核心
-void InitPrintArr() {
+void InitPrintArrInput() {
   int length;
   printf("请输入一维数组大小：\n"); //单独写出来
   scanf("%d", &length);             //只负责输入
-  int *Array = new int[length];
+  int *Array = new int[length];     //注意这里用的是new
   InitMyArr(Array, length);
   PrintArray(Array, length);
 }
-
+//开辟内存空间创建一维随机数组
+int *CreateArray() {
+  srand((unsigned)time(NULL));
+  int *arr = (int *)malloc(sizeof(int) * MAX);
+  for (int i = 0; i < MAX; i++) {
+    arr[i] = rand() % MAX;
+  }
+  return arr;
+}
+void exPrintArrMAX() {
+  int *arr = CreateArray(); //注意形式
+  PrintArray(arr, MAX);
+}
 //
 
 // 最大数
@@ -344,7 +357,8 @@ void reallocDynamic2dArr() {
 
 int main() {
   //   exUnarry01();
-  InitPrintArr(); //还有点问题
+  // InitPrintArrInput(); //还有点问题
+  // exPrintArrMAX(); // define MAX 创建一维随机数组
   //   sortArr02();
   //   reverseArr01();
   // exBubbleSort01(); // 冒泡排序
