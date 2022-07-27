@@ -30,12 +30,10 @@ void PrintArray(int arr[], int length) {
   printf("\n");
 }
 //合并
-void Merge(int arr[], int *temp, int left, int mid, int right) {
+void Merge01(int arr[], int temp[], int left, int mid, int right) {
   //标记左右半区首尾元素
   int l_start = left;
-  //   int l_end = mid;
   int r_start = mid + 1;
-  //   int r_end = right;
   int length = left; //初始化临时数组的下标
   //合并
   while (l_start <= mid && r_start <= right) { //确保左右半区都有元素的情况下
@@ -46,6 +44,7 @@ void Merge(int arr[], int *temp, int left, int mid, int right) {
       temp[length++] = arr[r_start++]; //赋值并递增继续比较
     }
   }
+
   //合并左或者右半区剩余元素 上面合并的拆分版，仔细对照
   while (l_start <= mid) {
     temp[length++] = arr[l_start++];
@@ -60,18 +59,44 @@ void Merge(int arr[], int *temp, int left, int mid, int right) {
   }
 };
 
+//合并魔改  三元表达式
+void Merge(int arr[], int temp[], int left, int mid, int right) {
+  //标记左右半区首尾元素
+  int l_start = left;
+  int r_start = mid + 1;
+  int length = left; //初始化临时数组的下标
+  //合并
+  while (l_start <= mid && r_start <= right) { //魔改
+    temp[length++] =
+        arr[l_start] < arr[r_start] ? arr[l_start++] : arr[r_start++];
+  }
+  //合并左或者右半区剩余元素 上面合并的拆分版，仔细对照
+  while (l_start <= mid) {
+    temp[length++] = arr[l_start++];
+  }
+  while (r_start <= right) {
+    temp[length++] = arr[r_start++];
+  }
+  //把临时数组中的元素复制回原来的数组，覆盖。
+  while (left <= right) {
+    arr[left] = temp[left];
+    left++;
+  }
+};
+//魔改完成
+
 //归并排序
-void MergeSort(int arr[], int *temp, int left, int right) {
+void MergeSort(int arr[], int temp[], int left, int right) {
   //排序数组，临时数组，左标，右标
   //如果只有一个元素，那么久不需要继续划分，本身有序，直接归并
   if (left < right) {
-    int mid = (left + right) / 2; //计算机整型整除,找中间点
-
-    MergeSort(arr, temp, left, mid);        //递归划分左半区
-    MergeSort(arr, temp, right + 1, right); //递归划分右半区
-    Merge(arr, temp, left, mid, right);     //合并已经排序的部分
+    int mid = (left + right) / 2;         //计算机整型整除,找中间点
+    MergeSort(arr, temp, left, mid);      //递归划分左半区
+    MergeSort(arr, temp, mid + 1, right); //递归划分右半区
+    Merge(arr, temp, left, mid, right);   //合并已经排序的部分
   }
 }
+//
 
 //归并排序入口
 void exMergeSortPort(int arr[], int length) {
