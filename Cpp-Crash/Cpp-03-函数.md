@@ -108,6 +108,14 @@ do {
 
 
 
+```cpp
+[ capture clause ] (parameters) -> return-type  
+{   
+   definition of method   
+} 
+
+```
+
 ## 三元表达式
 
 举例：求二叉树的高度，根结点左右结点的子树谁大谁 + 1，从顶部结点往下递归

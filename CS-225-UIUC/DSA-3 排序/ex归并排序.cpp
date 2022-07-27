@@ -11,6 +11,7 @@ using namespace std;
 归并排序
 先分后合，合并的过程也是排序的过程
 https://www.bilibili.com/video/BV1Pt4y197VZ
+三元表达式魔改
 */
 
 #define MAX 15
@@ -29,35 +30,6 @@ void PrintArray(int arr[], int length) {
   }
   printf("\n");
 }
-//合并
-void Merge01(int arr[], int temp[], int left, int mid, int right) {
-  //标记左右半区首尾元素
-  int l_start = left;
-  int r_start = mid + 1;
-  int length = left; //初始化临时数组的下标
-  //合并
-  while (l_start <= mid && r_start <= right) { //确保左右半区都有元素的情况下
-    if (arr[l_start] < arr[r_start]) { //左区第一个元素更小的时候
-      temp[length++] = arr[l_start++]; //赋值并递增继续比较
-                                       // ！！可以用三元表达式！！
-    } else {                           //右区第一个元素更小的时候
-      temp[length++] = arr[r_start++]; //赋值并递增继续比较
-    }
-  }
-
-  //合并左或者右半区剩余元素 上面合并的拆分版，仔细对照
-  while (l_start <= mid) {
-    temp[length++] = arr[l_start++];
-  }
-  while (r_start <= right) {
-    temp[length++] = arr[r_start++];
-  }
-  //把临时数组中的元素复制回原来的数组，覆盖。
-  while (left <= right) {
-    arr[left] = temp[left];
-    left++;
-  }
-};
 
 //合并魔改  三元表达式
 void Merge(int arr[], int temp[], int left, int mid, int right) {
@@ -118,3 +90,33 @@ int main() {
   PrintArray(arr, MAX);
   return 0;
 }
+
+/*//合并
+void Merge01(int arr[], int temp[], int left, int mid, int right) {
+  //标记左右半区首尾元素
+  int l_start = left;
+  int r_start = mid + 1;
+  int length = left; //初始化临时数组的下标
+  //合并
+  while (l_start <= mid && r_start <= right) { //确保左右半区都有元素的情况下
+    if (arr[l_start] < arr[r_start]) { //左区第一个元素更小的时候
+      temp[length++] = arr[l_start++]; //赋值并递增继续比较
+                                       // ！！可以用三元表达式！！
+    } else {                           //右区第一个元素更小的时候
+      temp[length++] = arr[r_start++]; //赋值并递增继续比较
+    }
+  }
+
+  //合并左或者右半区剩余元素 上面合并的拆分版，仔细对照
+  while (l_start <= mid) {
+    temp[length++] = arr[l_start++];
+  }
+  while (r_start <= right) {
+    temp[length++] = arr[r_start++];
+  }
+  //把临时数组中的元素复制回原来的数组，覆盖。
+  while (left <= right) {
+    arr[left] = temp[left];
+    left++;
+  }
+};*/
