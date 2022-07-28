@@ -136,6 +136,28 @@ int getTreeHeight(BinaryNode *root, int *h) {
 
 这里求树高度`height`用了三元表达式，判定谁大就用谁+1
 
+归并排序中：
+```cpp
+    if (arr[i_start] < arr[j_start]) {           //从头对比两个指针，
+      // 当左边序列第一个要比较的元素小于右边序列第一个要比较的元素的时候：
+      temp[length] = arr[i_start]; //把较小的左边序列第一个元素装进temp序列
+      length++;                    // 此时length增加
+      i_start++;                   // 左边序列指针+1
+  } else { //否则，则是右边小于左边，右边序列第一个需要比较的元素入列temp
+      temp[length] = arr[j_start];
+      j_start++;
+      length++;
+    }
+
+```
+- 等价于
+```cpp
+temp[length++] =
+        arr[i_start] < arr[j_start] ? arr[i_start++] : arr[j_start++];
+```
+
+
+
 # 一些常见函数、方法
 
 ## Namespaces 命名空间

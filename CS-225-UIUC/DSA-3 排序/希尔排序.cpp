@@ -9,8 +9,7 @@
 using namespace std;
 
 /*
-希尔排序Shell Sort
-又称减少增量排序
+希尔排序Shell Sort又称减少增量排序
 增量 就是跨度
 减少增量 dowhile来实现
 增量减小到1的时候也就是回到一列数组中开始插入排序的时候

@@ -6,6 +6,7 @@
 #include <string.h>
 
 using namespace std;
+//归并排序 魔改三元表达式
 
 #define MAX 15
 //创建容量为MAX的一维随机数组
@@ -31,30 +32,19 @@ void Merge(int arr[], int start, int end, int mid, int *temp) {
   int j_start = mid + 1; //右边序列的开始
   int j_end = end;       //右边序列的结束
   int length = 0; //初始化temp序列里面的元素为0，随着合并情况膨胀
-  //合并两个有序序列
+  //合并两个有序序列 魔改三元表达式
   while (i_start <= i_end && j_start <= j_end) { //用while保证合理并循环递进
-    if (arr[i_start] < arr[j_start]) {           //从头对比两个指针，
-      // 当左边序列第一个要比较的元素小于右边序列第一个要比较的元素的时候：
-      temp[length] = arr[i_start]; //把较小的左边序列第一个元素装进temp序列
-      length++;                    // 此时length增加
-      i_start++;                   // 左边序列指针+1
-    } else { //否则，则是右边小于左边，右边序列第一个需要比较的元素入列temp
-      temp[length] = arr[j_start];
-      j_start++;
-      length++;
-    }
+
+    temp[length++] =
+        arr[i_start] < arr[j_start] ? arr[i_start++] : arr[j_start++];
   } //合并完毕，但是这两个序列中，必有一个序列的若干元素因为没有元素可以跟他比较被剩下来，需要把他填入temp的最后一个位置，需要遍历:
     // i序列
   while (i_start <= i_end) { //此时说明左边序列还剩的有元素
-    temp[length] = arr[i_start];
-    i_start++;
-    length++;
+    temp[length++] = arr[i_start++];
   }
   // j序列,同上
   while (j_start <= j_end) {
-    temp[length] = arr[j_start];
-    j_start++;
-    length++;
+    temp[length++] = arr[j_start++];
   }
   //辅助空间中的数据覆盖到原空间*******
   for (int i = 0; i < length; i++) {
@@ -92,3 +82,47 @@ int main() {
   printf("\n");
   return 0;
 }
+
+/*
+
+//合并算法，从小到大排序，归并排序内部调用
+void Merge(int arr[], int start, int end, int mid, int *temp) {
+  //两个序列合并，要确定好两个序列的开始和结束
+  int i_start = start;   //左边序列的开始
+  int i_end = mid;       //左边序列结束
+  int j_start = mid + 1; //右边序列的开始
+  int j_end = end;       //右边序列的结束
+  int length = 0; //初始化temp序列里面的元素为0，随着合并情况膨胀
+  //合并两个有序序列 魔改三元表达式
+  while (i_start <= i_end && j_start <= j_end) { //用while保证合理并循环递进
+    if (arr[i_start] < arr[j_start]) {           //从头对比两个指针，
+      // 当左边序列第一个要比较的元素小于右边序列第一个要比较的元素的时候：
+      temp[length] = arr[i_start]; //把较小的左边序列第一个元素装进temp序列
+      length++;                    // 此时length增加
+      i_start++;                   // 左边序列指针+1
+    } else { //否则，则是右边小于左边，右边序列第一个需要比较的元素入列temp
+      temp[length] = arr[j_start];
+      j_start++;
+      length++;
+    }
+  }
+//合并完毕，但是这两个序列中，必有一个序列的若干元素因为没有元素可以跟他比较被剩下来，需要把他填入temp的最后一个位置，需要遍历:
+    // i序列
+  while (i_start <= i_end) { //此时说明左边序列还剩的有元素
+    temp[length] = arr[i_start];
+    i_start++;
+    length++;
+  }
+  // j序列,同上
+  while (j_start <= j_end) {
+    temp[length] = arr[j_start];
+    j_start++;
+    length++;
+  }
+  //辅助空间中的数据覆盖到原空间*******
+  for (int i = 0; i < length; i++) {
+    arr[start + i] = temp[i]; //重点理解
+  }
+}
+
+*/
