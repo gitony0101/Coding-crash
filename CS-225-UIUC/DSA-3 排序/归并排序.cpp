@@ -84,7 +84,6 @@ int main() {
 }
 
 /*
-
 //合并算法，从小到大排序，归并排序内部调用
 void Merge(int arr[], int start, int end, int mid, int *temp) {
   //两个序列合并，要确定好两个序列的开始和结束
@@ -124,5 +123,4 @@ void Merge(int arr[], int start, int end, int mid, int *temp) {
     arr[start + i] = temp[i]; //重点理解
   }
 }
-
 */

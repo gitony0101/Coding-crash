@@ -288,7 +288,6 @@ void shellSort(int arr[], int length) {
     }
   } while (increasement > 1); //当 increasement > 1后，推出循环
 }
-
 ```
 
 - 外层`do-while`循环在保障每次外层循环增量逐步减小
