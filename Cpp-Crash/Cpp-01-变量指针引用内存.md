@@ -160,7 +160,7 @@ C++中常见的数据类型.
 
 注意，各种类型的存储大小与系统位数有关，但目前通用的以 64 位系统为主。
 
-## 计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
+> 计算结果超出数据类型元算所能表示的范围时产生溢出，溢出后像是过了半夜十二点从头开始
 
 like:
 The value of intMax is 2147483647
@@ -231,8 +231,6 @@ The value of intMax + 1 is -2147483648
 
 - `*`被叫做取值运算符，首先我们用了`&`去访问 val 的内存地址，然后用了`*`取到了这个内存地址的值，所以`*(&val)`是`val`的值。
 
-Pointer arithmetic is meaningless **unless performed on an array.**
-
 ## const 引用与指针
 
 ### Const-冻结： 可以冻结它后面的的指令所代表的含义
@@ -252,9 +250,9 @@ Pointer arithmetic is meaningless **unless performed on an array.**
 
 
 
-### 无类型指针`void*`
+### 无类型指针`void *ptr`
 
-`void*`为无类型指针，指向任何类型的数据。
+`void *ptr`为无类型指针，指向任何类型的数据。
 ```c++
 typedef struct LINKNODE {
   void *data; //数据域,void*为无类型指针，指向任何类型的数据
