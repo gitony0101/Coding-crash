@@ -81,6 +81,14 @@ void Recursion(BinaryNode *root) { //从根开始遍历
 } //从根开始，那么终止退出的的条件就是：某个根下面没有结点了，自然而然root==NULL
 ```
 
+> 注意递归函数需要有终止的出口，在此例中：
+```cpp
+  if (root == NULL) {
+    return;
+  }
+```
+就是**递归函数出口**，当root为空时，递归函数结束。
+
 ## `do-while` 循环
 
 一个神奇的循环：
@@ -108,7 +116,7 @@ do {
 
 
 
-```cpp
+```c++
 [ capture clause ] (parameters) -> return-type  
 {   
    definition of method   
@@ -137,7 +145,7 @@ int getTreeHeight(BinaryNode *root, int *h) {
 这里求树高度`height`用了三元表达式，判定谁大就用谁+1
 
 归并排序中：
-```cpp
+```c++
     if (arr[i_start] < arr[j_start]) {           //从头对比两个指针，
       // 当左边序列第一个要比较的元素小于右边序列第一个要比较的元素的时候：
       temp[length] = arr[i_start]; //把较小的左边序列第一个元素装进temp序列
@@ -151,7 +159,7 @@ int getTreeHeight(BinaryNode *root, int *h) {
 
 ```
 - 等价于
-```cpp
+```c++
 temp[length++] =
         arr[i_start] < arr[j_start] ? arr[i_start++] : arr[j_start++];
 ```

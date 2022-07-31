@@ -12,7 +12,7 @@ using namespace std;
 比较一下性能
 https://github.com/imxtx/algorithms/blob/main/01-sort/05-heap/heap.c
 */
-#define MAX 15 //设定最大值
+#define MAX 10 //设定最大值
 //准备  从小到大
 //打印数组
 void PrintArray(int arr[], int length) {
@@ -57,6 +57,36 @@ void heapSort(int arr[], int length) {
     heapify(arr, i, 0);
   }
 }
+
+// https://www.youtube.com/watch?v=j-DqQcNPGbE&ab_channel=%E9%BB%84%E6%B5%A9%E6%9D%B0
+//堆排序第二版
+void swap(int arr[], int a, int b) { //交换函数
+  int temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+}
+
+void heapify02(int arr[], int n, int i) {
+  if (i >= n) { //防呆设计，也是递归函数出口
+    return;
+  }
+  int lChild = 2 * i + 1;
+  int rChild = 2 * i + 2;
+  int max = i; //假设i是最大值
+  if (lChild < n && arr[lChild] > arr[max]) {
+    max = lChild;
+  }
+  if (rChild < n && arr[rChild] > arr[max]) {
+    max = rChild;
+  }
+  if (max != i) {
+    swap(arr, max, i);
+    heapify02(arr, n, max);
+  }
+}
+
+//堆排序第二版结束
+
 int main() {
   //初始化随机数组
   int length = MAX;
@@ -70,7 +100,9 @@ int main() {
   };
   PrintArray(arr01, MAX);
   printf("\n堆排序\n");
-  heapSort(arr01, MAX);
-  PrintArray(arr01, MAX);
+  // heapSort(arr01, MAX);
+  // PrintArray(arr01, MAX);
+  heapify02(arr02, MAX, 0);
+  PrintArray(arr02, MAX);
   return 0;
 }

@@ -10,9 +10,7 @@ using namespace std;
 
 /*
 堆排序
-1、初始化堆 大顶堆 从小到大
-
-
+初始化堆 大顶堆 从小到大
 */
 //准备
 #define MAX 10
