@@ -18,7 +18,7 @@ using namespace std;
 void InitMyArr(int arr[], int length) {
   srand((unsigned)time(NULL));
   for (int i = 0; i < length; i++) {
-    arr[i] = rand() % 100 + 1;
+    arr[i] = rand() % 10 + 1;
   }
 }
 //打印数组
