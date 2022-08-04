@@ -61,7 +61,8 @@ void RecursionLRD(BinaryNode *root) { //从根开始遍历
 
 ## 求叶子结点个数
 
-- 叶子结点的性质在于没有child结点了，因此可以通过递归来找出叶子结点的个数
+- 叶子结点的性质在于没有child结点了，因此可以通过递归次数来找出叶子结点的个数
+  - 一开始定义叶子结点个数为0，递归++
 
 ```c++
 //求二叉树叶子结点数目 继续递归
@@ -77,6 +78,8 @@ void CalculateLeafNum(BinaryNode *root, int *leafNum) { //注意取地址还是�
   CalculateLeafNum(root->rchild, leafNum); //顺序可以颠倒，但是缺一不可
 }
 ```
+
+- 运行程序时候，`int leafNum = 0;`要进行初始化
 
 ## 求二叉树高度
 
