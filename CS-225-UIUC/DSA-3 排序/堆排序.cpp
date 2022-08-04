@@ -12,8 +12,7 @@ using namespace std;
 堆排序
 初始化堆 大顶堆 从小到大
 */
-//准备
-#define MAX 15 设定序列的最大值
+
 //初始化一个随机数组
 void InitMyArr(int arr[], int length) {
   srand((unsigned)time(NULL));
@@ -65,26 +64,26 @@ void Heapify(int arr[], int index, int length) {
   }
   if (max != index) { //交换两个结点
     mySwap(max, index);
-    HeapAdjust(arr, max, length);
+    Heapify(arr, max, length);
   }
 };
 //堆排序主函数
 void HeapSort(int arr[], int length) {
   //初始化堆
   for (int i = length / 2 - 1; i >= 0; i--) { //从大到小初始化，好好思考这个循环
-    HeapAdjust(arr, i, length);
+    Heapify(arr, i, length);
   }
   //交换堆顶元素和最后一个元素
   for (int i = length - 1; i >= 0; i--) {
-    mySwap(0, i); //交换头尾
-    HeapAdjust(arr, i, 0);
+    mySwap(arr[0], arr[i]); //交换头尾
+    Heapify(arr, i, 0);
   }
   printf("%d ", arr[0]);
   printf("\n");
 }
 
 int main() {
-  int length = MAX;
+  int length = 10;
   int *myArr = new int[length];
   InitMyArr(myArr, length);
   printf("随机数组：\n");
