@@ -1,18 +1,21 @@
 # DSA-2 二叉树代码记录
 
-## 二叉树递归遍历
+## 
 
-三种方法
+## 核心结构体与二叉树递归遍历
 
-核心结构体、递归遍历
-
-```c++
+```cpp
 //定义二叉树结点结构体
 typedef struct BINARYNODE { //二叉链表示法
   char ch; //把图里面A～H字符表示出来，这就是数据域
   struct BINARYNODE *lchild; //左结点
   struct BINARYNODE *rchild; //又结点
 } BinaryNode;
+
+```
+
+```c++
+以上定义了二叉树的结构体，我们可以看到的是，非常经典的根，左结点，右结点结构
 ```
 
 > 二叉链表示法
