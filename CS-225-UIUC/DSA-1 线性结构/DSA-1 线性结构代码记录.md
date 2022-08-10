@@ -1,4 +1,6 @@
-# 线性表 数组 链表 栈 队列 代码记录
+# 线性结构代码记录
+
+- 线性表 数组 链表 栈 队列
 
 
 
@@ -58,7 +60,8 @@
 
 ## 1 创建 头文件 `DynamicArray.h`
 
-- 动态增长内存：策略：将内存放到堆上
+- 动态增长内存
+  > 策略：将内存放到堆上
 - 动态数组 如果当前有n个元素，目前要再插进去一个元素
   - 所以我们 申请内存 拷贝数据 释放内存
 
@@ -190,7 +193,7 @@ void Print_Array(Dynamic_Array *arr) {
   printf("\n");
 };
 // 6、 释放动态数组的内存
-void FreeSpace_Array(Dynamic_Array *arr) { //先释放内部内存，再释放外面的
+void FreeSpace_Array(Dynamic_Array *arr) { //先释放内部内存，再释放                                                                                                                                                                外面的
   if (arr == NULL) {                       //首先判断是否指针为空
     return;
   }
@@ -402,14 +405,6 @@ typedef struct DYNAMICARRAY {
 >
 > 优化代码的思想：嵌套函数结构体，但是要按照实际情况去考虑
 
-## 关于线性表的顺序存储
-
-
-
-
-
-
-
 # DSA-1-2 线性表链式存储 链表
 
 
@@ -444,15 +439,14 @@ typedef struct DYNAMICARRAY {
 
 ```c++
 #ifndef LINKLIST_H
-#define LINKLIST_H
+#define LINKLIST_H 
 
 #include <stdio.h>
 #include <stdlib.h>
 
 //链表结点
 typedef struct LINKNODE {
-  void *data; //数据域
-              // void*为无类型指针，指向任何类型的数据
+  void *data; //数据域 void*为无类型指针，指向任何类型的数据
   struct LINKNODE *next; //指针域
 } LinkNode;
 //链表结构体
@@ -489,15 +483,15 @@ void FreeSpace_LinkList(LinkList *list);
 
 
 
-- 连着创建了三个结构体：**结点结构体、链表结构体、打印函数指针**
+- 创建链表结构体：**结点结构体、链表结构体**
 - 先创建了结点，然后才是链表结构体，定义结构体的时候需要结点
     1. 结点结构体`LINKNODE`，先定义了数据域`void *data`，然后是指针域`LINKNODE *next`
        - 链表结构中上一个结点的指针域`LINKNODE *next`指向下一个结点数据域首地址，`void*`为无类型指针，**可以指向任何类型的数据**
        - 然后定义了指针域`LINKNODE *next`，自己嵌套自己，起到连接下一个结点的作用
-    2. 链表结构体`LINKLIST`，先定义了头结点`LINKNODE *head`,元素个数`int size`
-       - 定义了头结点，起到连接链表的作用
-       - 定义元素个数，记录链表操作的增删改查
-    3. 打印回调函数指针包括后来的比较函数指针都是针对后来人复用后人代码提供的
+    2. 链表结构体`LINKLIST`
+       - 先定义了头结点`LINKNODE *head`,起到连接链表的作用
+       - 定义元素个数`int size`，并且不需要容量，因为没有容量的概念。记录链表操作的增删改查
+    1. 打印回调函数结构体指针包括后来的比较函数指针都是针对后来人复用后人代码提供的
 
 ## 2 框架实现 LinkList.cpp
 
