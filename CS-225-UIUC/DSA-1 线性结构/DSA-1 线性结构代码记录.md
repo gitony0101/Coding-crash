@@ -525,7 +525,7 @@ LinkList *Init_LinkList() {
 
 ### 初始化 打印函数 指针？
 
-```cpp
+```c++
 //初始化打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
 
@@ -534,6 +534,10 @@ typedef void (*PRINTLINKNODE)(void *);
 就这一行代码，先完成初始化打印函数指针
 
 ## 指定位置插入数据
+
+![img](./DSA-1-2-1%20%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/DSA-1-2.png)
+
+单向链表的结点插入
 
 ```c++
 void Insert_LinkList(LinkList *list, int pos, void *data) {
@@ -558,7 +562,7 @@ void Insert_LinkList(LinkList *list, int pos, void *data) {
   //第一步，先把新结点的next指针,这个指针指向pNext的数据域在内存里的首地址:
   newnode->next = pCurrent->next;
   //第二步，让上一个结点pCurrent的指针指向newnode（的数据域内存首地址）：
-  pCurrent->next = newnode;
+  pCurrent->next = newnode;8
   list->size++; //链表大小+1
 };
 
