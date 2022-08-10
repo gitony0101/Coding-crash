@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//打印函数指针
+//初始化打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
 //
 //初始化链表
