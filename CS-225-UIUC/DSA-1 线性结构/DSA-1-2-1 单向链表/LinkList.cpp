@@ -74,7 +74,6 @@ int Size_LinkList(LinkList *list) { //直接返回
 };
 //查找 不一定要放到这里，看看能否跟其他功能结合
 int Find_linkList(LinkList *list, void *data) {
-
   if (list == NULL) {
     return -1;
   }
