@@ -16,6 +16,7 @@ LinkList *Init_LinkList() {
   list->head->next = NULL;
   return list;
 };
+//是谁
 //指定位置插入数据
 void Insert_LinkList(LinkList *list, int pos, void *data) {
   if (list == NULL) { //首先判断参数是不是我们要求的参数
