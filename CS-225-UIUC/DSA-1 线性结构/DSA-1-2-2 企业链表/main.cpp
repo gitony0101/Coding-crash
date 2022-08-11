@@ -11,7 +11,8 @@ typedef struct PERSON { //创建的是链表节点的结构体，每个都一样
   int age;
 } Person;
 
-//打印回调函数
+//打印回调函数 void MyPrint 是 void Print_LinkList(LinkList *list, PRINTNODE
+//print) 中的print
 void MyPrint(LinkNode *data) { //把LinkNode*转换为Person* 打印
   Person *p = (Person *)data;
   printf(" name:%s  age:%d\n", p->name, p->age);
@@ -50,7 +51,8 @@ int main(void) {
   Insert_LinkList(list, 0, (LinkNode *)&p4);
   Insert_LinkList(list, 0, (LinkNode *)&p5);
   //打印 需要再创建回调函数
-  Print_LinkList(list, MyPrint);
+  Print_LinkList(
+      list, MyPrint); // void Print_LinkList(LinkList *list, PRINTNODE print)
   //删除节点
   Remove_LinkList(list, 2); //删除p3
   printf("----删除p3----\n");
