@@ -19,7 +19,7 @@ void Push_SeqStack(SeqStack *stack, void *data) { //防呆预判
   if (stack->size == MAX_SIZE) {
     return;
   }
-  stack->data[stack->size] = data;
+  stack->data[stack->size] = data; //总是在最后一位添加，栈特性的体现
   stack->size++;
 }
 //返回栈顶元素

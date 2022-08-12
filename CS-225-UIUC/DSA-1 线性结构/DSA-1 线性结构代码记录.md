@@ -1407,6 +1407,130 @@ int main() {
 
 ## 栈的线性存储 
 
+- 用数组模拟的栈的线性存储
+- 因为栈的特性不能直接遍历，无法打印
+
+### 初始定义参数
+
+```cpp
+//定义参数
+#define MAX_SIZE 1024   //设置数组最大容量
+#define SEQSTACK_TRUE 1 //返回是否为空时调用
+#define SEQSTACK_FALSE 0
+```
+
+### 定义结构体
+
+```cpp
+//定义结构体
+typedef struct SEQSTACK {
+  void *data[MAX_SIZE]; //任何类型的数组最大容量MAX_SIZE
+  int size;
+} SeqStack;
+
+```
+
+栈结构体里直接初始化了栈的最大容量，在同名cpp中，初始化栈如下：
+
+```cpp
+//初始化栈
+SeqStack *Init_SeqStack() {
+  SeqStack *stack = (SeqStack *)malloc(sizeof(SeqStack));
+  for (int i = 0; i < MAX_SIZE; i++) {
+    stack->data[i] = NULL; //初始化栈元素都为NULL
+  }
+  stack->size = 0;
+  return stack;
+};
+
+```
+
+### 入栈
+
+```cpp
+//入栈
+void Push_SeqStack(SeqStack *stack, void *data) { //防呆预判
+  if (stack == NULL) {
+    return;
+  }
+  if (stack->size == MAX_SIZE) {
+    return;
+  }
+  stack->data[stack->size] = data;
+  stack->size++;
+}
+
+```
+
+  `stack->data[stack->size] = data;` 总是在最后一位添加，栈特性的体现，每次入栈，size都+1
+
+### 返回栈顶元素
+
+```cpp
+//返回栈顶元素
+void *Top_SeqStack(SeqStack *stack) {
+  if (stack == NULL) {
+    return NULL;
+  }
+  if (stack->size == 0) { //是否为空的判断
+    return NULL;
+  }
+  return stack->data[stack->size - 1]; //返回的是栈顶元素，最后那个元素
+}
+```
+
+`void *Top_SeqStack(SeqStack *stack) `,标星：不定元素类型
+
+### 出栈
+
+```cpp
+//出栈 删除栈顶：直接让栈顶元素等于NULL，又回到了初始化状态
+void Pop_SeqStack(SeqStack *stack) {
+  if (stack == NULL) {
+    return;
+  }
+  if (stack->size == 0) { //是否为空的判断
+    return;
+  }
+
+  stack->data[stack->size - 1] = NULL;
+  stack->size--;
+}
+
+```
+
+典型的`Nullify`,也体现了栈的容器性质，栈顶元素弹出了，但是容器还在
+
+
+### 其他几个功能
+
+```cpp
+//返回栈中元素的个数
+int Size_SeqStack(SeqStack *stack) { return stack->size; }
+//清空栈
+void Clear_SeqStack(SeqStack *stack) {
+  if (stack == NULL) {
+    return;
+  }
+  for (int i = 0; i < stack->size; i++) {
+    stack->data[i] = NULL;
+  }
+  stack->size = 0; //想要清空，就要清空结构体内所有数据类型下的数据
+}
+//销毁 释放内存
+void FreeSpace_SeqStack(SeqStack *stack) {
+  if (stack == NULL) {
+    return;
+  }
+  free(stack);
+}
+
+```
+
+
+
+
+
 
 
 
