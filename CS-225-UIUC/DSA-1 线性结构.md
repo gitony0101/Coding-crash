@@ -94,18 +94,15 @@
 
 ![img](./DSA-1%20%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/DSA-1-2-2%20%E4%BC%81%E4%B8%9A%E9%93%BE%E8%A1%A8/Person%E5%92%8CLinkNode.png)
 
-循环链表
-
-![img](./DSA-1%20%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/DSA-1-2-3%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/DSA-1-4-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.png)
-
-
-
 搞清楚结构：
 
 - 链表，两部分组成，指针域在上在下和头尾结点造就了这些链表的变体
 - 企业链表最常用，这么叫肯定有道理。
 
 ## 循环链表
+
+![img](./DSA-1%20%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/DSA-1-2-3%20%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/DSA-1-4-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8.png)
+
 
 
 

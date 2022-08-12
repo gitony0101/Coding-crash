@@ -21,7 +21,7 @@ void MyPrint(CircleLinkNode *data) { //还是打印函数有报错
   Person *p = (Person *)data;
   printf("name:%s  age:%d score: %d\n", p->name, p->age, p->score);
 }
-//比较回调函数
+//比较回调函数 根据值删除用 因为不确定用户传进来了什么数值
 int MyComPare(CircleLinkNode *node1, CircleLinkNode *node2) {
   Person *p1 = (Person *)node1;
   Person *p2 = (Person *)node2;

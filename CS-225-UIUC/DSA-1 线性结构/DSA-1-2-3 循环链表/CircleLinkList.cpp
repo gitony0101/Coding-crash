@@ -5,7 +5,7 @@
 //初始化循环链表
 CircleLinkList *Init_CircleLInkList() {
   CircleLinkList *clist = (CircleLinkList *)malloc(sizeof(CircleLinkList));
-  clist->head.next = &(clist->head); // 循环链表初始化，让它指向自己
+  clist->head.next = &(clist->head); // 循环链表初始化，让它自己指向自己
   clist->size = 0;
   return clist;
 };
