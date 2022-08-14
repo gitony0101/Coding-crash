@@ -1734,8 +1734,14 @@ int main() {
   printf("\n");
   return 0;
 }
-
 ```
+
+
+
+
+
+
+
 
 
 
@@ -1745,6 +1751,30 @@ int main() {
 
 - 还是链式结点那套结构，冠以了栈容器的性质
 - 直接用的企业链表格式，结点没有数据域
+
+### 初始化并创建栈的链式存储
+
+```cpp
+//链式栈结点 企业链表格式
+typedef struct LINKNODE { //没有数据域
+  struct LINKNODE *next;  //只有指针域
+} LinkNode; //结点没有数据域
+
+//链式栈
+typedef struct LINKSTACK {
+  LinkNode head; // 头结点
+  int size;      // 元素个数
+} LinkStack;
+```
+
+> 这里对结点的定义没有数据域，因为栈的容器性质，栈顶元素弹出了，但是容器还在
+
+
+
+
+
+
+
 
 
 
