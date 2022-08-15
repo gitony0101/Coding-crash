@@ -1738,14 +1738,6 @@ int main() {
 
 
 
-
-
-
-
-
-
-
-
 ## 栈的链式存储
 
 
@@ -1769,20 +1761,132 @@ typedef struct LINKSTACK {
 
 > 这里对结点的定义没有数据域，因为栈的容器性质，栈顶元素弹出了，但是容器还在
 
+```cpp
+//初始化函数
+LinkStack *Init_LinkStack() {
+  LinkStack *stack = (LinkStack *)malloc(sizeof(LinkStack));
+  stack->head.next = NULL;
+  stack->size = 0;
+  return stack;
+};
+```
+
+开内存
+
+### main中的person结构体
+
+```cpp
+
+typedef struct PERSON { //创建PERSON结构体
+  LinkNode node;        //企业链表，晾衣服
+  char name[64];
+  int age;
+} Person;
+
+```
+
+### 入栈 压栈
+
+```cpp
+void Push_LinkStack(LinkStack *stack, LinkNode *data) {
+  if (stack == NULL) {
+    return;
+  }
+  if (data == NULL) {
+    return;
+  }
+  data->next = stack->head.next;
+  stack->head.next = data;
+  stack->size++;
+};
+```
 
 
 
+### 出栈 弹栈
+
+```cpp
+//出栈
+void Pop_LinkStack(LinkStack *stack) {
+  if (stack == NULL) {
+    return;
+  }
+  if (stack->size == 0) {
+    return;
+  }
+  //第一个有效结点
+  LinkNode *pNext = stack->head.next; //指向第一个结点，而不是链栈首地址
+  stack->head.next = pNext->next;
+  stack->size--;
+};
+
+```
+
+对比入出栈，首先都要把结点挂上新的位置，然后是大小加一或者减一
+
+### 其他略
 
 
 
+### 主程序
+
+```cpp
+
+int main() {
+
+  //创建栈
+  LinkStack *stack = Init_LinkStack();
+  //创建数据
+  Person p1, p2, p3, p4, p5;
+  strcpy(p1.name, "aaa");
+  strcpy(p2.name, "bbb");
+  strcpy(p3.name, "ccc");
+  strcpy(p4.name, "ddd");
+  strcpy(p5.name, "eee");
+  p1.age = 10;
+  p2.age = 20;
+  p3.age = 40;
+  p4.age = 30;
+  p5.age = 50;
+  //入栈--压栈
+  Push_LinkStack(stack, (LinkNode *)&p1); //需要加上(LinkNode*)转换
+  Push_LinkStack(stack, (LinkNode *)&p2);
+  Push_LinkStack(stack, (LinkNode *)&p3);
+  Push_LinkStack(stack, (LinkNode *)&p4);
+  Push_LinkStack(stack, (LinkNode *)&p5);
+  //输出
+  while (Size_LinkStack(stack) > 0) {
+    //取出栈顶元素，并转换为Person的结构
+    Person *p = (Person *)Top_LinkStack(stack);
+    printf("姓名： %s，年龄： %d\n", p->name, p->age);
+    //弹出栈顶元素,从而读取下一个元素
+    Pop_LinkStack(stack);
+  }
+  //销毁栈
+  FreeSpace_LinkStack(stack);
+  printf("\n");
+  return 0;
+}
 
 
 
-
+```
 
 
 
 ## 队列的线性存储
+
+
+```c++
+
+```
+
+- 队列的顺序存储，从两端的哪端开始都行
+
+
+
+
+
 
 
 

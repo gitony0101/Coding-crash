@@ -14,7 +14,7 @@ typedef struct LINKNODE { //没有数据域
 
 //链式栈
 typedef struct LINKSTACK {
-  LinkNode head; // 头结点
+  LinkNode head; // 头结点·
   int size;      // 元素个数
 } LinkStack;
 
