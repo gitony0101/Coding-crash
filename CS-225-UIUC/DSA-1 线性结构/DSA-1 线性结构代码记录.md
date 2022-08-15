@@ -39,7 +39,8 @@
 
 
 > 每一步这么细致是为了比较每次编写的不同和改进，这就是写代码的思路
-
+> 
+> h头文件是同名cpp的起源，连起来一起看
 
 ## `.h`头文件暨`.cpp`源文件框架
 
@@ -69,6 +70,8 @@
 
 
 
+
+> 阅读代码注意：h头文件衍生出来同名文件
 
 ## 1 创建 头文件 `DynamicArray.h`
 
@@ -1877,17 +1880,107 @@ int main() {
 ## 队列的线性存储
 
 
-```c++
+- 队列的顺序存储，从两端的哪端开始都行
+- 先进先出
+- 本例以左边做队头
+
+### 定义参数结构体初始化队列
+
+```cpp
+//定义参数
+#define MAX_SIZE 1024   //设置数组最大容量
+#define SEQQUEUE_TRUE 1 //返回是否为空时调用
+#define SEQQUEUE_FALSE 0
+//定义顺序队列结构体
+typedef struct SEQQUQUE {
+  void *data[MAX_SIZE]; //无类型指针
+  int size;
+} SeqQueue;
+```
+
+- 初始化队列：
+
+```cpp
+//初始化队列
+SeqQueue *Init_SeqQueue() {
+  SeqQueue *queue = (SeqQueue *)malloc(sizeof(SeqQueue));
+  for (int i = 0; i < MAX_SIZE; i++) {
+    queue->data[i] = NULL; //初始化元素都为NULL
+  }
+  queue->size = 0;
+  return queue;
+};
 
 ```
 
-- 队列的顺序存储，从两端的哪端开始都行
+- 运行函数中，定义了PERSON类
 
+```cpp
+typedef struct PERSON {
+  char name[64];
+  int age;
+} Person;
 
+```
 
+### 入队列、返回头元素、出队列
 
+```cpp
+//入队列
+void Push_SeqQueue(SeqQueue *queue, void *data) { //防呆预判
+  if (queue == NULL) {
+    return;
+  }
+  if (data == NULL) { // 数据也要判断
+    return;
+  }
+  if (queue->size == MAX_SIZE) {
+    return;
+  }
+  //例如 数组左边当队头，那么在尾部添加元素
+  queue->data[queue->size] = data;
+  queue->size++;
+};
+//返回队头元素
+void *Front_SeqQueue(SeqQueue *queue) {
+  if (queue == NULL) {
+    return NULL;
+  }
+  if (queue->size == 0) {
+    return NULL;
+  }
+  //数组左边当队头，data[0]为第一个元素
+  return queue->data[0];
+};
 
+//出队操作 牢记队列先进先出的原则，队头元素先出：需要移动元素
+void Pop_SeqQueue(SeqQueue *queue) {
+  if (queue == NULL) {
+    return;
+  }
+  if (queue->size == 0) {
+    return;
+  }
+  for (int i = 0; i < queue->size - 1; i++) {
+    queue->data[i] = queue->data[i + 1]; //前一位等于后一位的数值实现了移动元素
+  }
+  queue->size--;
+};
+//返回队尾元素
+void *Back_SeqQueue(SeqQueue *queue) {
+  if (queue == NULL) {
+    return NULL;
+  }
+  if (queue->size == 0) {
+    return NULL;
+  }
+  return queue->data[queue->size - 1]; //此处不要忘了减一
+};
+```
 
+- 队列先进先出，此处是人为设置了`data[0]`为对头，`data[size-1]`为队尾
+
+```cpp
 
 
 

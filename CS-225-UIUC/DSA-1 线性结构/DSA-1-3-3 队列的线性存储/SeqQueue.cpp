@@ -10,6 +10,7 @@ SeqQueue *Init_SeqQueue() {
   queue->size = 0;
   return queue;
 };
+
 //入队列
 void Push_SeqQueue(SeqQueue *queue, void *data) { //防呆预判
   if (queue == NULL) {
@@ -36,6 +37,7 @@ void *Front_SeqQueue(SeqQueue *queue) {
   //数组左边当队头，data[0]为第一个元素
   return queue->data[0];
 };
+
 //出队操作 牢记队列先进先出的原则，队头元素先出：需要移动元素
 void Pop_SeqQueue(SeqQueue *queue) {
   if (queue == NULL) {
