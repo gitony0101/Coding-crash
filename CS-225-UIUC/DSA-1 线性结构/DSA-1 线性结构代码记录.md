@@ -2082,24 +2082,15 @@ char *str = (char *)"sss1+3(sws)+asdfgsdfg((ss)"; //创造一个不匹配的左�
 
 `(char *)`写法是为了不报错，具体情况看这里：[C++ deprecated conversion from string constant to 'char*'](https://stackoverflow.com/questions/1524356/c-deprecated-conversion-from-string-constant-to-char)
 
-
-
-
+- c++类型更严格一些：
+    比如字符串字面量c是`char*`（但是你不能改，改了就爆炸，这算标准bug），c++就是`char const*`
 
 ## 逆波兰式
 
 ### 中缀转后缀表达式
 
 
-
-
-
-
-
-
 ### 根据后缀表达式计算
-
-
 
 
 
