@@ -6,6 +6,8 @@
 
 ## 核心结构体与二叉树递归遍历
 
+> 二叉链表示法
+
 ```c++
 //定义二叉树结点结构体
 typedef struct BINARYNODE { //二叉链表示法
@@ -16,11 +18,50 @@ typedef struct BINARYNODE { //二叉链表示法
 
 ```
 
-```c++
 以上定义了二叉树的结构体，我们可以看到的是，非常经典的根，左结点，右结点结构
+
+### 主程序中的创建二叉树
+
+树接上文，我们看一下下图例中的二叉树是怎么弄出来的
+
+```cpp
+int main() {
+  //创建结点
+  BinaryNode node1 = {'A', NULL, NULL}; //定义结点，初始化时左右结点为NULL
+  BinaryNode node2 = {'B', NULL, NULL};
+  BinaryNode node3 = {'C', NULL, NULL};
+  BinaryNode node4 = {'D', NULL, NULL};
+  BinaryNode node5 = {'E', NULL, NULL};
+  BinaryNode node6 = {'F', NULL, NULL};
+  BinaryNode node7 = {'G', NULL, NULL};
+  BinaryNode node8 = {'H', NULL, NULL};
+  //建立结点关系 就是把结点按照图上表示的连接起来 遵守准则 先左后右：
+  /*
+       A
+     /   \
+    B     F
+     \     \
+      C     G
+     / \    /
+    D  E   H
+*/
+  node1.lchild = &node2; // A(node1)的左子树指向B(node2)
+  node1.rchild = &node6; // A(node1)的右子树指向F(node6)
+  node2.rchild = &node3; // B(node2)只有右子树，指向C(node3)
+  node3.lchild = &node4;
+  node3.rchild = &node5;
+  node6.rchild = &node7;
+  node7.lchild = &node8;
+//到此为止，下略
+}
 ```
 
-> 二叉链表示法
+从代码中我们可以看到，二叉树的子结点不断指向它要链接的子结点，就成了我们看到图例中的样子。
+
+
+
+
+
 
 ```c++
 //先序递归遍历
