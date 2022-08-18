@@ -43,7 +43,6 @@ void QuickSort(int arr[], int left, int right) {
         j--; //往前迭代下标
       }
       if (i < j) { //判断左标是否右边走i++
-
         arr[i++] =
             arr[j]; //把在右边找到的比基准数小的这个数移到左边，左标往前走
       }

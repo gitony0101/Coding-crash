@@ -307,7 +307,53 @@ do {
 
 
 
+### 调用打印数组代码略
 
+### 快速排序主代码
+
+```cpp
+//快速排序  从小到大排序
+void QuickSort(int arr[], int start, int end) { // start和end使用时都要赋值首尾
+  //初始化
+  int i = start;         //让i指向第一个下标，使用时开始是0
+  int j = end;           //让j指向最后一下标，使用时结束时len-1
+  int temp = arr[start]; //初始化基准数为第一个元素
+                         //所有数都和基准数进行比较
+  if (i < j) {           //确保i开始下标一直比j结束下标小
+    while (i < j) {      //在i<j的情况下一直循环
+      //从右向左 找比基准数小的数
+      while (i < j && arr[j] >= temp) { // arr[j] >= temp 条件确保了在找
+        j--; //右标往左退一位，准备下一步赋值填坑
+      }
+      //填坑
+      if (i < j) {
+        arr[i] = arr[j];
+        i++;
+      }
+      //从左向右 找比基准数大的数
+      while (i < j && arr[i] < temp) {
+        i++; //左标往右进一位，准备下一步填坑
+      }
+      //填坑
+      if (i < j) {
+        arr[j] = arr[i];
+        j--;
+      }
+    } //此处while外层循环推出，因为找到了基准数的位置
+      // 此时i=j，左右标重合了
+    arr[i] = temp; // 把基准数放到它的位置上，arr[j]也行，因为此时他们重合了
+    QuickSort(arr, start, i - 1); //对基准数左半部分进行递归快排. j-1也行，同上
+    QuickSort(arr, i + 1, end); //对基准数右半部分进行递归快排. j-1也行，同上
+  }
+}
+```
+
+从最后的递归：
+```cpp
+    QuickSort(arr, start, i - 1); //对基准数左半部分进行递归快排. j-1也行，同上
+    QuickSort(arr, i + 1, end); //对基准数右半部分进行递归快排. j-1也行，同上
+```
+**我们看到快速排序是二叉树的前序遍历，根左右**
 
 
 
@@ -332,6 +378,37 @@ do {
 - 计算机整数除法会取整
 - 合并的过程里面包括比较复制的过程，也是排序的过程
   
+
+
+
+### 先看主代码
+
+```cpp
+//归并排序
+void MergeSort(int arr[], int start, int end, int *temp) {
+  //防呆设计，什么时候结束递归？start>=end
+  if (start >= end) {
+    return;
+  } //下面开始else正题
+  //确定从哪里分开成两个序列,准备分组
+  int mid = (start + end) / 2;
+  //递归分组
+  MergeSort(arr, start, mid, temp);   //左半边
+  MergeSort(arr, mid + 1, end, temp); //右半边
+  //合并
+  Merge(arr, start, end, mid, temp);
+}
+```
+可以看到递归：
+```cpp
+  MergeSort(arr, start, mid, temp);   //左半边
+  MergeSort(arr, mid + 1, end, temp); //右半边
+  //合并
+  Merge(arr, start, end, mid, temp);
+```
+> 先左后右再合并一起，归并排序就是二叉树的后序遍历
+
+
 
 
 
