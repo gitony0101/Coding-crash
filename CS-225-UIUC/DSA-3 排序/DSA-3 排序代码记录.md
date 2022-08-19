@@ -3,8 +3,11 @@
 
 
 - **快速排序和归并排序**是一定要掌握的，因为都用到了递归和分治的思想
+  - 快速排序是二叉树的前序遍历，归并排序是后序遍历，那么从遍历到二叉树，为什么会有这样的联系，是需要回过头来感悟的
+    - 快排有个基准枢轴量`pivot`，动态地把序列分开
+    - 归并
 - 其次是**堆排序**，属于堆数据结构部分的基础知识
-- 其他排序从面试的角度讲，考察的概率很低
+  - 其他排序从面试的角度讲，考察的概率很低
 
 ## 冒泡排序
 
@@ -294,6 +297,8 @@ do {
 
 ## 快速排序
 
+**快速排序就是个二叉树的前序遍历**
+
 - 分治法 + 挖坑填数
   - 分治法：大而化小，小而解决
 - 找基准数
@@ -311,7 +316,7 @@ do {
 
 ### 快速排序主代码
 
-```cpp
+```c++
 //快速排序  从小到大排序
 void QuickSort(int arr[], int start, int end) { // start和end使用时都要赋值首尾
   //初始化
@@ -349,11 +354,13 @@ void QuickSort(int arr[], int start, int end) { // start和end使用时都要赋
 ```
 
 从最后的递归：
-```cpp
+```c++
     QuickSort(arr, start, i - 1); //对基准数左半部分进行递归快排. j-1也行，同上
     QuickSort(arr, i + 1, end); //对基准数右半部分进行递归快排. j-1也行，同上
 ```
 **我们看到快速排序是二叉树的前序遍历，根左右**
+
+
 
 
 
@@ -372,18 +379,25 @@ void QuickSort(int arr[], int start, int end) { // start和end使用时都要赋
 
 
 
+
+
+```c++
+
+```
+
 ## 归并排序
 
 - 拆分
 - 计算机整数除法会取整
 - 合并的过程里面包括比较复制的过程，也是排序的过程
+- 归并排序就是二叉树的后序遍历
   
 
 
 
 ### 先看主代码
 
-```cpp
+```c++
 //归并排序
 void MergeSort(int arr[], int start, int end, int *temp) {
   //防呆设计，什么时候结束递归？start>=end
@@ -400,7 +414,7 @@ void MergeSort(int arr[], int start, int end, int *temp) {
 }
 ```
 可以看到递归：
-```cpp
+```c++
   MergeSort(arr, start, mid, temp);   //左半边
   MergeSort(arr, mid + 1, end, temp); //右半边
   //合并

@@ -1,13 +1,20 @@
 // #define _CRT_SECURE_NO_WARNINGS
-#include <cstdio>
+#include <cstdlib>
+#include <ctime>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 using namespace std;
 
-/*
-快速排序 基准数分治递归思想
-*/
+/*练手 快速排序
+初始化数组
+基准数分治递归思想
+- 分治法 + 挖坑填数
+  - 分治法：以`pivot`中轴思想为抓手
+  - 打头挖坑作为基准数：
+    - 从最右边开始找，找个比它小的放到左边的坑
+    - 再从左边开始找，找个比它大的数，去填上一步右边的坑
+https://blog.csdn.net/qq_45269116/article/details/105850709*/
 
 //打印数组
 void PrintArray(int arr[], int length) {
@@ -15,49 +22,59 @@ void PrintArray(int arr[], int length) {
     printf("%d ", arr[i]);
   }
 }
-//快速排序  从小到大排序
-void QuickSort(int arr[], int start, int end) { // start和end使用时都要赋值首尾
-  //初始化
-  int i = start;         //让i指向第一个下标，使用时开始是0
-  int j = end;           //让j指向最后一下标，使用时结束时len-1
-  int temp = arr[start]; //初始化基准数为第一个元素
-                         //所有数都和基准数进行比较
-  if (i < j) {           //确保i开始下标一直比j结束下标小
-    while (i < j) {      //在i<j的情况下一直循环
-      //从右向左 找比基准数小的数
-      while (i < j && arr[j] >= temp) { // arr[j] >= temp 条件确保了在找
-        j--; //右标往左退一位，准备下一步赋值填坑
-      }
-      //填坑
-      if (i < j) {
-        arr[i] = arr[j];
-        i++;
-      }
-      //从左向右 找比基准数大的数
-      while (i < j && arr[i] < temp) {
-        i++; //左标往右进一位，准备下一步填坑
-      }
-      //填坑
-      if (i < j) {
-        arr[j] = arr[i];
-        j--;
-      }
-    } //此处while外层循环推出，因为找到了基准数的位置
-      // 此时i=j，左右标重合了
-    arr[i] = temp; // 把基准数放到它的位置上，arr[j]也行，因为此时他们重合了
-    QuickSort(arr, start, i - 1); //对基准数左半部分进行递归快排. j-1也行，同上
-    QuickSort(arr, i + 1, end); //对基准数右半部分进行递归快排. j-1也行，同上
+//初始化一个随机数组
+void InitMyArr(int arr[], int length) {
+  srand((unsigned)time(NULL));
+  for (int i = 0; i < length; i++) {
+    arr[i] = rand() % 100 + 1;
   }
 }
 
-int main() {
-  int myArr[] = {4, 2, 8, 0, 5, 7, 1, 3, 9}; //直接要了个数组
-  int len = sizeof(myArr) / sizeof(int); // 或者sizeof(myArr)/sizeof(myArr[0])
-  printf("排序前数组\n");
-  PrintArray(myArr, len);
-  QuickSort(myArr, 0, len - 1); //调用快速排序
-  printf("\n快速排序后的数组\n");
-  PrintArray(myArr, len);
+//快速排序
+void QuickSort(int arr[], int left, int right) {
+  int i = left;       //定义开始下标
+  int j = right;      //定义末尾下标
+  int pivot = arr[i]; //取出第一个元素为基准数，并挖坑
+  if (i < j) { //限定条件，保证左标一直小于右标，给递归做准备
+    while (i < j) { //循环条件，每次只要左标还小于右标，那就往下循环，
+                    // 并且确保他们中间相遇的时候停止
+      //从右向左开始找，找到第一个比基准数小的元素（准备放到左边去）
+      while (i < j && pivot < arr[j]) {
+        j--; //往前迭代下标
+      }
+      if (i < j) { //判断左标是否右边走i++
+        arr[i++] =
+            arr[j]; //把在右边找到的比基准数小的这个数移到左边，左标往前走
+      }
+      //从左向右开始找，找到第一个比基准值大的元素（准备放到右边去）
+      while (i < j && pivot > arr[i]) {
+        i++; //左标往右进1
+      }
+      if (i < j) { //判断右标是否该往左边走j--
+        arr[j--] = arr[i]; //把在左边找到的比基准数大的数移到右边，右标往左进1
+      }
+    }
+    QuickSort(arr, left, i - 1);
+    QuickSort(arr, i + 1, right);
+  }
+}
+
+int main() {  //自定义创建随机数组并进行快速排序
+  int length; // 定义数组长度
+  printf("请输入一维数组大小：\n"); //单独写出来
+  scanf("%d", &length);             //只负责输入
+  int *Array = new int[length];
+  InitMyArr(Array, length);
+  // 随机初始化的数组有点问题，可以自定固定数组
+  //   int Array[] = {4, 2, 8, 0, 5, 7, 1, 3, 9};
+  //   int length = sizeof(Array) / sizeof(int);
+  //前后排序打印
+  printf("未排序前的数组：\n");
+  PrintArray(Array, length);
+  printf("\n");
+  printf("快速排序后的数组：\n");
+  QuickSort(Array, 0, length - 1);
+  PrintArray(Array, length);
   printf("\n");
   return 0;
 }
