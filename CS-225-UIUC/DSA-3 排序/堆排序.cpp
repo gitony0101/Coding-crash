@@ -49,10 +49,11 @@ heapify 二叉堆的顺序存储
 */
 void Heapify(int arr[], int index, int length) {
   //先保存父结点下标,并假设：父结点就是最大的，大顶堆，从大到小，就这么安排
-  int max = index;
+  index = length / 2;
   //保存左右孩子结点的数组下标：
-  int lChild = index * 2 + 1;
-  int rChild = index * 2 + 2;
+  int lChild = index * 2 + 1; //左子结点下标
+  int rChild = index * 2 + 2; //右子结点下标
+  int max = index;
   //比较父结点和子结点大小，大顶堆从大到小，把大的放到父结点
   if (lChild < length &&
       arr[lChild] > arr[max]) { //如果存在左子树，并且左子树数据比父结点大

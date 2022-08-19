@@ -84,7 +84,6 @@ void heapify02(int arr[], int n, int i) {
     heapify02(arr, n, max);
   }
 }
-
 //堆排序第二版结束
 
 int main() {
