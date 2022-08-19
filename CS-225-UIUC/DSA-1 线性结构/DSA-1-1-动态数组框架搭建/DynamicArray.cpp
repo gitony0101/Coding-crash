@@ -13,7 +13,6 @@ DynamicArray *Init_Array() { //动态数组初始化
       sizeof(int) * myArray->capacity); //开辟内存空间，用整型大小乘以capacity
   return myArray; //一开始没写好的时候这里先默认NULL
 }
-
 // 先把5 - 10简单的功能写完，再写2-4增删改
 
 // 2、插入
@@ -66,6 +65,7 @@ void RemoveByPos_Array(DynamicArray *arr, int pos) {
   if (pos < 0 || pos >= arr->size) {
     return;
   }
+
   //删除元素的指令
   for (int i = pos; i < arr->size - 1; i++) {
     arr->pAddr[i] = arr->pAddr[i + 1]; //向前覆盖了
@@ -90,6 +90,7 @@ void Print_Array(DynamicArray *arr) {
   }
   printf("\n");
 };
+
 // 6、 释放动态数组的内存
 void FreeSpace_Array(DynamicArray *arr) { //先释放内部内存，再释放外面的
   if (arr == NULL) {                      //首先判断是否指针为空

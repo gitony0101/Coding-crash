@@ -27,7 +27,7 @@ typedef int (*COMPARENODE)(CircleLinkNode *,
 typedef void (*PRINTNODE)(CircleLinkNode *);
 //创建回调函数完毕
 
-//针对C定义的宏 看看注释掉行不行
+//针对C定义的宏
 #define CIRCLELINKLIST_TRUE 1
 #define CIRCLELINKLIST_FALSE 0
 //

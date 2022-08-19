@@ -9,7 +9,7 @@
 //定义结构体
 typedef struct SEQSTACK {
   void *data[MAX_SIZE]; //任何类型的数组最大容量MAX_SIZE
-  int size;
+  int size;             //初始化容量数值
 } SeqStack;
 
 //初始化栈

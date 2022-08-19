@@ -7,7 +7,7 @@
 using namespace std;
 
 /*
-二叉树递归遍历 求叶子结点数目 求二叉树的高度
+二叉树递归遍历 求叶子结点数目 求、、二叉树的高度
        A
      /   \
     B     F
@@ -119,7 +119,9 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 
 //函数创建完毕，下面构造二叉树
 //并进行三种遍历 求自结点数目 树高度  拷贝二叉树并遍历
-void exBinaryTree() {
+
+int main() {
+  // exBinaryTree(); //三种方法遍历二叉树、求二叉树叶子结点数目
   //创建结点
   BinaryNode node1 = {'A', NULL, NULL}; //定义结点，初始化时左右结点为NULL
   BinaryNode node2 = {'B', NULL, NULL};
@@ -129,7 +131,16 @@ void exBinaryTree() {
   BinaryNode node6 = {'F', NULL, NULL};
   BinaryNode node7 = {'G', NULL, NULL};
   BinaryNode node8 = {'H', NULL, NULL};
-  //建立结点关系 就是把结点按照图上表示的连接起来 遵守准则 先左后右
+  //建立结点关系 就是把结点按照图上表示的连接起来 遵守准则 先左后右：
+  /*
+       A
+     /   \
+    B     F
+     \     \
+      C     G
+     / \    /
+    D  E   H
+*/
   node1.lchild = &node2; // A(node1)的左子树指向B(node2)
   node1.rchild = &node6; // A(node1)的右子树指向F(node6)
   node2.rchild = &node3; // B(node2)只有右子树，指向C(node3)
@@ -146,7 +157,7 @@ void exBinaryTree() {
   printf("\n");
   printf("LRD后序遍历左右根\n");
   RecursionLRD(&node1);
-  printf("\n");
+
   //求子结点数目
   int leafNum = 0;
   CalculateLeafNum(&node1, &leafNum);
@@ -163,11 +174,6 @@ void exBinaryTree() {
   RecursionDLR(root); //传入根结点
   //释放内存
   FreeSpaceBinaryTree(root);
-  printf("\n");
-};
-
-int main() {
-  exBinaryTree(); //三种方法遍历二叉树、求二叉树叶子结点数目
   printf("\n");
   return 0;
 }

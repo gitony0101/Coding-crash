@@ -7,6 +7,7 @@
 
 using namespace std;
 //归并排序 魔改三元表达式
+//下面注释有原版
 
 #define MAX 15
 //创建容量为MAX的一维随机数组
@@ -33,7 +34,7 @@ void Merge(int arr[], int start, int end, int mid, int *temp) {
   int j_end = end;       //右边序列的结束
   int length = 0; //初始化temp序列里面的元素为0，随着合并情况膨胀
   //合并两个有序序列 魔改三元表达式
-  while (i_start <= i_end && j_start <= j_end) { //用while保证合理并循环递进
+  while (i_start <= i_end && j_start <= j_end) { //用while保证合理并循环递进hi
 
     temp[length++] =
         arr[i_start] < arr[j_start] ? arr[i_start++] : arr[j_start++];

@@ -1,10 +1,12 @@
 # DSA-2 二叉树代码记录
 
-## 二叉树递归遍历
+## 
 
-三种方法
+> 尝试写头文件改代码
 
-核心结构体、递归遍历
+## 核心结构体与二叉树递归遍历
+
+> 二叉链表示法
 
 ```c++
 //定义二叉树结点结构体
@@ -13,9 +15,53 @@ typedef struct BINARYNODE { //二叉链表示法
   struct BINARYNODE *lchild; //左结点
   struct BINARYNODE *rchild; //又结点
 } BinaryNode;
+
 ```
 
-> 二叉链表示法
+以上定义了二叉树的结构体，我们可以看到的是，非常经典的根，左结点，右结点结构
+
+### 主程序中的创建二叉树
+
+树接上文，我们看一下下图例中的二叉树是怎么弄出来的
+
+```cpp
+int main() {
+  //创建结点
+  BinaryNode node1 = {'A', NULL, NULL}; //定义结点，初始化时左右结点为NULL
+  BinaryNode node2 = {'B', NULL, NULL};
+  BinaryNode node3 = {'C', NULL, NULL};
+  BinaryNode node4 = {'D', NULL, NULL};
+  BinaryNode node5 = {'E', NULL, NULL};
+  BinaryNode node6 = {'F', NULL, NULL};
+  BinaryNode node7 = {'G', NULL, NULL};
+  BinaryNode node8 = {'H', NULL, NULL};
+  //建立结点关系 就是把结点按照图上表示的连接起来 遵守准则 先左后右：
+  /*
+       A
+     /   \
+    B     F
+     \     \
+      C     G
+     / \    /
+    D  E   H
+*/
+  node1.lchild = &node2; // A(node1)的左子树指向B(node2)
+  node1.rchild = &node6; // A(node1)的右子树指向F(node6)
+  node2.rchild = &node3; // B(node2)只有右子树，指向C(node3)
+  node3.lchild = &node4;
+  node3.rchild = &node5;
+  node6.rchild = &node7;
+  node7.lchild = &node8;
+//到此为止，下略
+}
+```
+
+从代码中我们可以看到，二叉树的子结点不断指向它要链接的子结点，就成了我们看到图例中的样子。
+
+
+
+
+
 
 ```c++
 //先序递归遍历
@@ -61,7 +107,8 @@ void RecursionLRD(BinaryNode *root) { //从根开始遍历
 
 ## 求叶子结点个数
 
-- 叶子结点的性质在于没有child结点了，因此可以通过递归来找出叶子结点的个数
+- 叶子结点的性质在于没有child结点了，因此可以通过递归次数来找出叶子结点的个数
+  - 一开始定义叶子结点个数为0，递归++
 
 ```c++
 //求二叉树叶子结点数目 继续递归
@@ -77,6 +124,8 @@ void CalculateLeafNum(BinaryNode *root, int *leafNum) { //注意取地址还是�
   CalculateLeafNum(root->rchild, leafNum); //顺序可以颠倒，但是缺一不可
 }
 ```
+
+- 运行程序时候，`int leafNum = 0;`要进行初始化
 
 ## 求二叉树高度
 
@@ -150,8 +199,9 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 ## 二叉树非递归遍历 二叉树和栈的联名版应用
 
 - **二叉树和栈的联名版应用**
-- 可以这样用，利用栈容器性质来替代之前二叉树代码中的**递归函数**
-- 为什么要这样用：利用栈的性质，结合二叉树自身**数据结构**，结合Bool思想给当前根结点做标记
+  - 栈先进后出，是一个等待器
+- 可以这样用，利用栈容器先进后出来替代之前二叉树代码中的**递归函数**
+- 为什么要这样用：栈容器先进后出，结合二叉树自身**数据结构**，结合Bool思想给当前根结点做标记
   - 设定两种显示状态 ：`TRUE`为显示，`FALSE`为不显示：
 ```c++
       #define MY_FALSE 0 // 定义显示状态，如果为FALSE，设置为0，并且不被打印

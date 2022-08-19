@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//打印函数指针
+//初始化打印函数指针
 typedef void (*PRINTLINKNODE)(void *);
 //
 //初始化链表
@@ -16,6 +16,7 @@ LinkList *Init_LinkList() {
   list->head->next = NULL;
   return list;
 };
+
 //指定位置插入数据
 void Insert_LinkList(LinkList *list, int pos, void *data) {
   if (list == NULL) { //首先判断参数是不是我们要求的参数
@@ -74,7 +75,6 @@ int Size_LinkList(LinkList *list) { //直接返回
 };
 //查找 不一定要放到这里，看看能否跟其他功能结合
 int Find_linkList(LinkList *list, void *data) {
-
   if (list == NULL) {
     return -1;
   }

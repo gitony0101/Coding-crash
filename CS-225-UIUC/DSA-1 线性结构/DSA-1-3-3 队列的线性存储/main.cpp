@@ -35,7 +35,6 @@ int main() {
       "eee",
       50,
   };
-
   Push_SeqQueue(queue, &p1);
   Push_SeqQueue(queue, &p2);
   Push_SeqQueue(queue, &p3);

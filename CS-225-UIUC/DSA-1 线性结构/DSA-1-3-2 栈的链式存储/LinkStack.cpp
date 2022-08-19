@@ -18,7 +18,7 @@ void Push_LinkStack(LinkStack *stack, LinkNode *data) {
   if (data == NULL) {
     return;
   }
-  data->next = stack->head.next;
+  data->next = stack->head.next; //先挂上结点头地址
   stack->head.next = data;
   stack->size++;
 };
