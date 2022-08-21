@@ -10,7 +10,7 @@ using namespace std;
 /*堆排序
 https://www.bilibili.com/video/BV1P64y1U7HY?share_source=copy_pc
 */
-#define MAX 10 //设定最大值
+#define MAX 100 //设定最大值
 //准备  从小到大
 //初始化一个随机数组
 void InitMyArr(int arr[], int length) {
