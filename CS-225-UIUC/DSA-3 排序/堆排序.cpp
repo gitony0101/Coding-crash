@@ -59,7 +59,7 @@ void heapSort(int arr[], int length) {
     heapify(arr, length, i);
   }
   //堆排序
-  for (i = length - 1; i > 0; i--) {
+  for (i = length - 1; i > 0; i--) { //从最后一个结点出发
     swap(arr[i], arr[0]);
     heapify(arr, i, 0);
   }
