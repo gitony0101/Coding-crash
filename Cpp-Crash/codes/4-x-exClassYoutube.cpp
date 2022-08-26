@@ -5,7 +5,6 @@ using namespace std;
 
 /*
 class 类方法
-
 */
 
 class YoutubeChannel {               //定义油管频道类

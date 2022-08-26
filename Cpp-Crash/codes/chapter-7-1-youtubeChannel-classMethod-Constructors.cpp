@@ -18,7 +18,6 @@ public: // corresponding to private, the variables below can be used publicly
   }
   // use class method to get the info we entered.
   void getInfo() {
-
     printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
     printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
     printf("Number of subscribers : %d\n", SubscribersCount);
