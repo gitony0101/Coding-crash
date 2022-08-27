@@ -422,7 +422,7 @@ void MergeSort(int arr[], int start, int end, int *temp) {
   //合并
   Merge(arr, start, end, mid, temp);
 ```
-> 先左后右再合并一起，归并排序就是二叉树的后序遍历
+> 先左后右再合并一起，**归并排序就是二叉树的后序遍历**
 
 
 
@@ -534,7 +534,7 @@ void Merge(int arr[], int start, int end, int mid, int *temp) {
 
 ### 二叉堆的顺序存储
 
-```cpp
+```c++
 // heapify 二叉堆的顺序存储
 void heapify(int arr[], int length, int i) {
   int largest = i;
@@ -557,7 +557,7 @@ void heapify(int arr[], int length, int i) {
 按照大顶堆的性质，最大的元素总是在堆顶，所以只需要调整堆顶即可，中间运用了递归
 
 ### 堆排序
-```cpp
+```c++
 //堆排序
 void heapSort(int arr[], int length) {
   int i;
