@@ -65,6 +65,7 @@ void RecursionLRD(BinaryNode *root) { //从根开始遍历
 }
 //求二叉树叶子结点数目 继续递归
 void CalculateLeafNum(BinaryNode *root, int *leafNum) { //注意取地址还是饮用*&
+  // 后续要初始化int *leafNum = 0；
   if (root == NULL) {
     return;
   }
