@@ -85,3 +85,42 @@ int main() {
 - 返回栈顶 --- top
 - 判断栈是否为空 --- empty
 - 返回栈大小 --- size
+
+## 
+
+## 应用 栈实现二叉树前序遍历
+
+栈实现前序遍历较简单，由于每次先输出根节点，再输出左节点随后是右节点。因此我的处理逻辑是：
+
+    1、若栈非空输出根节点，并出栈
+    2、将右节点压栈（如果存在）
+    3、将左节点压栈（如果存在）
+    4、重复第1步直到栈空
+
+```cpp
+class Solution {
+public:
+  vector<int> preorderTraversal(TreeNode *root) {
+    vector<int> result;
+    stack<TreeNode *> s;
+    if (root == NULL)
+      return result;
+    while (s.empty() != NULL) {
+      TreeNode *p = s.top();
+      s.pop();
+      result.push_back(p->val);
+      if (p->right != NULL)
+        s.push(p->right);
+      if (p->left != NULL)
+        s.push(p->left);
+    }
+    return result;
+  }
+};
+
+
+```
+
+```plaintext
+
+```
