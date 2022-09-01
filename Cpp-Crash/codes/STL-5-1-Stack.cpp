@@ -19,9 +19,8 @@ void test01() {
   //只要栈不为空，查看栈顶，并且执行出栈操作
   while (!s.empty()) {
     printf("栈顶元素为： %d\n", s.top());
-    //弹出栈顶元素
-    s.pop();
-    printf("弹出栈顶元素，栈顶元素为： %d,此时,栈的大小%lu\n", s.top(),
+    s.pop(); //弹出栈顶元素
+    printf("弹出栈顶元素后，当前栈顶元素为： %d 此时栈的大小%lu\n", s.top(),
            s.size());
   }
 }
