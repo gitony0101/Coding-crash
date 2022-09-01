@@ -40,6 +40,16 @@
 
 ## 十大排序一览
 
+| 排序方法  |                 平均                  |         最优          |         最坏          |               辅助空间               | 稳定与否 |
+| :-------: | :-----------------------------------: | :-------------------: | :-------------------: | :----------------------------------: | :------: |
+|  Bubble   |           $\mathrm{O}(n²)$            |    $\mathrm{O}(n)$    |   $\mathrm{O}(n²)$    |           $\mathrm{O}(1)$            |    ✔️    |
+| Selection |           $\mathrm{O}(n²)$            |   $\mathrm{O}(n²)$    |   $\mathrm{O}(n²)$    |           $\mathrm{O}(1)$            |          |
+| Quicksort |         $\mathrm{O}(n\log n)$         | $\mathrm{O}(n\log n)$ |   $\mathrm{O}(n²)$    | $\mathrm{O}(n\log n)～\mathrm{O}(n)$ |          |
+| Insertion |           $\mathrm{O}(n²)$            |    $\mathrm{O}(n)$    |   $\mathrm{O}(n²)$    |           $\mathrm{O}(1)$            |    ✔️    |
+|   Shell   | $\mathrm{O}(n\log n)～\mathrm{O}(n²)$ | $\mathrm{O}(n^{1.3})$ |   $\mathrm{O}(n²)$    |           $\mathrm{O}(1)$            |          |
+|   Merge   |         $\mathrm{O}(n\log n)$         | $\mathrm{O}(n\log n)$ | $\mathrm{O}(n\log n)$ |           $\mathrm{O}(n)$            |    ✔️    |
+|   Heap    |         $\mathrm{O}(n\log n)$         | $\mathrm{O}(n\log n)$ | $\mathrm{O}(n\log n)$ |           $\mathrm{O}(1)$            |    ✔️    |
+
 ## 冒泡排序
 
 

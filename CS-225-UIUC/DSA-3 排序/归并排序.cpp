@@ -43,7 +43,7 @@ void Merge(int arr[], int start, int end, int mid, int *temp) {
   while (i_start <= i_end) { //此时说明左边序列还剩的有元素
     temp[length++] = arr[i_start++];
   }
-  // j序列,同上
+  // j序列,同上，因为是两个不同序列，此处无法三元表达式
   while (j_start <= j_end) {
     temp[length++] = arr[j_start++];
   }
@@ -53,7 +53,7 @@ void Merge(int arr[], int start, int end, int mid, int *temp) {
   }
 }
 
-//归并排序
+//归并排序 从这里明显看到了左右很的后序遍历
 void MergeSort(int arr[], int start, int end, int *temp) {
   //防呆设计，什么时候结束递归？start>=end
   if (start >= end) {
@@ -66,6 +66,7 @@ void MergeSort(int arr[], int start, int end, int *temp) {
   MergeSort(arr, mid + 1, end, temp); //右半边
   //合并
   Merge(arr, start, end, mid, temp);
+  //  以上可以清晰的看到左右根后序遍历
 }
 
 int main() {
