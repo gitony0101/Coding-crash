@@ -30,6 +30,16 @@ py 和 cpp都是
 
 
 
+
+
+## 类
+
+
+
+
+
+
+
 ## 构造函数Consturctor和析构函数Destrctor
 
 构造函数Consturctor和析构函数Destrctor:

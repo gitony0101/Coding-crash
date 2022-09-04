@@ -24,7 +24,7 @@ typedef struct BINARYNODE { //二叉链表示法
 
 树接上文，我们看一下下图例中的二叉树是怎么弄出来的
 
-```cpp
+```c++
 int main() {
   //创建结点
   BinaryNode node1 = {'A', NULL, NULL}; //定义结点，初始化时左右结点为NULL
@@ -309,6 +309,18 @@ void NonRecursionDLR(BinaryNode *root) { //先序遍历！
 
 
 - `fflush(stdin);` 函数
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
