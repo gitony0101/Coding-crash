@@ -399,9 +399,10 @@ int main() {
 ```
 
 
+注意这个插入的过程：
 
-
-
+- 插入到了堆内存中去，开辟的内存空间实在栈里面
+- 按照二叉搜索树insertData中约定的，按照二叉搜索树左小右大的原则，先比较，后插入
 
 ### 搜索数值是否在二叉搜索树中
 
@@ -447,3 +448,7 @@ int main(){
 # 小结 
 
 关于二叉树，由于自身的结构性质，使得递归函数在这里应用广泛，想到二叉树，要想到递归
+
+[关于堆和栈内存的理解，动态内存分配](https://courses.engr.illinois.edu/cs225/sp2022/resources/stack-heap/)
+
+heap: dynamic memory allocation
