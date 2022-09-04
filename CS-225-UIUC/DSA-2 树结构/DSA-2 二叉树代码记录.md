@@ -337,7 +337,6 @@ void NonRecursionDLR(BinaryNode *root) { //先序遍历！
 1. 创建二叉树结点结构体
 
 ```cpp
-```cpp
 //创建二叉搜索树结点结构体
 struct BstNode {
   int data;       //父节点数据
@@ -351,6 +350,7 @@ struct BstNode {
 
 2. 初始化二叉搜索树，创建插入结点函数
 
+
 ```cpp
 //在堆中初始化二叉搜索树（动态内存）
 BstNode *GetNewNode(int data) { // GetNewNode函数名很形象
@@ -362,6 +362,9 @@ BstNode *GetNewNode(int data) { // GetNewNode函数名很形象
   return newNode;
 }
 
+```
+
+```cpp
 //创造在结点中插入数值的函数insertData，从而可以创造二叉搜索树
 BstNode *insertData(BstNode *root, int data) {
   if (root == NULL) {        // 空树
@@ -379,6 +382,7 @@ BstNode *insertData(BstNode *root, int data) {
 }
 
 ```
+
 
 
 - `BstNode *newNode = new BstNode();`创建新的二叉树结点，**创建结点的过程就是在栈内存开辟内存空间的过程**，初始化的时候左右子结点NULL
@@ -399,6 +403,7 @@ int main() {
 ```
 
 
+
 注意这个插入的过程：
 
 - 插入到了堆内存中去，开辟的内存空间实在栈里面
@@ -406,6 +411,10 @@ int main() {
 
 ### 搜索数值是否在二叉搜索树中
 
+
+```
+
+```
 ```cpp
 // 二叉搜索树搜索bool函数 还是用到了递归Search
 bool Search(BstNode *root, int data) {
@@ -420,7 +429,6 @@ bool Search(BstNode *root, int data) {
   //总之牢记二叉搜索树两个子结点与父节点的关系就是：左小右大（与父节点比）
 }
 
-
 int main(){
 //创建二叉搜索树同上
   int num;
@@ -433,16 +441,8 @@ int main(){
   printf("\n");
   return 0;
 }
+
 ```
-
-
-
-
-
-
-
-
-
 
 
 # 小结 
