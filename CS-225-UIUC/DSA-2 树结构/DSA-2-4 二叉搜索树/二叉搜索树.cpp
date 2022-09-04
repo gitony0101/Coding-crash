@@ -17,7 +17,8 @@ struct BstNode {
 //在堆中初始化二叉搜索树（动态内存）
 BstNode *GetNewNode(int data) { // GetNewNode函数名很形象
   // BstNode *newNode = (BstNode *)malloc(sizeof(BstNode));// mallc 写法
-  BstNode *newNode = new BstNode();      // new 写法
+  BstNode *newNode = new BstNode(); // new 写法，都是为了开辟内存空间
+  // 无论new还是malloc，创建结点的过程就是在栈内存开辟内存空间的过程
   newNode->data = data;                  //初始化数据
   newNode->left = newNode->right = NULL; //初始化左右结点都NULL
   return newNode;
