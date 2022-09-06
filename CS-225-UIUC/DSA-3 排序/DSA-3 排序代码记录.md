@@ -575,6 +575,8 @@ void heapSort(int arr[], int length) {
 ```
 
 
+[堆常常被当做优先队列`priority_queue`使用，因为可以快速的访问到“最重要”的元素](https://leetcode.com/problems/find-median-from-data-stream/discuss/1048192/C%2B%2B-Easy-Understandable-Two-heaps-Intuitive-Solution.-O(logn)-add-O(1)-find)
+
 # 小结
 
 ## 元素移动
