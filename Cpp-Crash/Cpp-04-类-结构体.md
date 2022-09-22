@@ -179,6 +179,31 @@ struct teacher {
 
 
 
+## 结构体应用举例
+
+LC 题目中的二叉树结构体：
+
+```cpp
+#include <cstddef>
+#include <iostream>
+
+struct TreeNode {
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right)
+      : val(x), left(left), right(right) {}
+};//初始化结构体列表
+```
+
+#### [构造函数与成员初始化器列表](https://zh.cppreference.com/w/cpp/language/constructor)
+
+```c++
+
+```
+
 # 继承和多态
 
 - 继承：复用前人的代码
