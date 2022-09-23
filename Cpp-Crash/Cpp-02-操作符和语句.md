@@ -130,6 +130,33 @@ if(condition){
 
 
 
+### ++i 和 i++的区别
+
+
+i++ 与 ++i 的主要区别有两个：
+
+- i++ 返回原来的值，++i 返回加1后的值。
+- i++ 不能作为左值，而++i 可以。
+
+
+
+
+```cpp
+void comparePrePostIncrement() {
+  int i = 1, j;
+  int m = 1, n;
+  j = ++i;
+  n = m++;
+
+  printf("now i = %d  j = %d\nm = %d n = %d\n", i, j, m, n);
+}
+
+int main() {
+  comparePrePostIncrement();
+}
+
+```
+
 
 
 ## 跳转语句
