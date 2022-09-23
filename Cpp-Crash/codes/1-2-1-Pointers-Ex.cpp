@@ -1,6 +1,17 @@
 #include <cstdio>
 #include <iostream>
 using namespace std;
+
+void printVoidPointer(void *ptr, char type) {
+  switch (type) {
+  case 'i':
+    printf("The value is :%d\n", (*(int *)ptr));
+    break;
+  case 'c': // c for char
+    printf("The letter is : %c\n", *(char *)ptr);
+  }
+}
+
 int main() {
   // A normal integer variable
   int Var = 10;
@@ -32,4 +43,9 @@ int main() {
   double *ptr_2 = &Var_2;
   printf("The Value of Var_2 is %f\n,The address of Var_2 is %p\n", *ptr_2,
          ptr_2);
+  // print void pointers
+  int number = 5;
+  char letter = 'a';
+  printVoidPointer(&number, 'i');
+  printVoidPointer(&letter, 'c');
 }

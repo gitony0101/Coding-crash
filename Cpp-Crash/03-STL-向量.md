@@ -32,43 +32,59 @@
 **示例：**
 
 ```C++
+// #define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+using namespace std;
 #include <vector>
 
-void printVector(vector<int>& v) {
+void printVector(vector<int> &v) {
 
-	for (vector<int>::iterator it = v.begin(); it != v.end(); it++) {
-		cout << *it << " ";
-	}
-	cout << endl;
+  for (vector<int>::iterator it = v.begin(); it != v.end(); it++) {
+    printf("%d ", *it);
+  }
+  printf("\n");
+};
+
+void printV1() {
+  vector<int> v1; //无参构造
+  for (int i = 0; i < 10; i++) {
+    v1.push_back(i);
+  }
+  printVector(v1);
 }
 
-void test01()
-{
-	vector<int> v1; //无参构造
-	for (int i = 0; i < 10; i++)
-	{
-		v1.push_back(i);
-	}
-	printVector(v1);
+void printV2() {
+  vector<int> v1; //无参构造
+  for (int i = 0; i < 10; i++) {
+    v1.push_back(i);
+  }
 
-	vector<int> v2(v1.begin(), v1.end());
-	printVector(v2);
+  vector<int> v2(v1.begin(), v1.end());
+  printVector(v2); //从头到尾传完
+}
 
-	vector<int> v3(10, 100);
-	printVector(v3);
+void printV3() {
 
-	vector<int> v4(v3);
-	printVector(v4);
+  vector<int> v3(10, 100); // 10 个100
+  printVector(v3);
+
+  vector<int> v4(v3); //直接复制
+  printVector(v4);
 }
 
 int main() {
 
-	test01();
+  printV1();
+  printV2();
+  printV3();
 
-	system("pause");
+  system("pause");
 
-	return 0;
+  return 0;
 }
+
 ```
 
 **总结：**vector 的多种构造方式没有可比性，灵活使用即可

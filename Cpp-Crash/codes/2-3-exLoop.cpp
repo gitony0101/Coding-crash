@@ -10,7 +10,7 @@ using namespace std;
 数字反转 while
 酒店保险箱 do while
 模拟ATM机 do while + switch case
-
+i++ 和++i 的区别演示
 */
 
 void exFactorial() { //求整数的阶乘
@@ -117,6 +117,15 @@ void simATM() { // do while 循环模拟ATM机
   } while (option != 4); // 限定了循环
 }
 
+void comparePrePostIncrement() {
+  int i = 1, j;
+  int m = 1, n;
+  j = ++i;
+  n = m++;
+
+  printf("now i = %d  j = %d\nm = %d n = %d\n", i, j, m, n);
+}
+
 int main() {
   // exFactorial();
   // exDivisible3and5();
@@ -124,6 +133,7 @@ int main() {
   // exReverseNumbers01();
   // hotelSafeLocker();
   // simATM();
+  comparePrePostIncrement();
 }
 
 // Notes:
