@@ -500,3 +500,68 @@ int main() {
 ```
 
 总结：如果数据量较大，可以一开始利用 reserve 预留空间
+
+## 9.引用传递和指针传递
+
+c++中常用的vector容器作为参数时，有[三种传参方式](https://www.cnblogs.com/xiaoxi666/p/6843211.html)：
+
+> function1(std::vector<std::vector<int> > vec)，值传递
+> 
+> function2(std::vector<std::vector<int> >& vec)，引用传递
+> 
+> function3(std::vector<std::vector<int> >* vec)，指针传递
+
+**注意，三种方式分别有对应的const形式，不在此讨论。**
+
+三种方式对应的调用形式分别为：
+
+> function1(vec)，传入值
+> function2(vec)，传入引用
+> function3(&vec),传入地址
+
+
+**三种方式的效果**分别为：
+
+> 值传递会发生拷贝构造
+> 
+> 引用传递不会发生拷贝构造
+> 
+> 指针传递不会发生拷贝构造
+
+- 引用传递
+
+```cpp
+
+void func1(vector<int> &q){
+ 
+...
+ 
+}
+int main(){
+vector<int> q;
+q.push_back(2);
+q.push_back(3);
+q.push_back(1);
+func1(q);
+
+
+```
+
+- 指针传递
+
+```cpp
+void func1(vector<int> *q){
+ 
+...
+ 
+}
+int main(){
+vector<int> q;
+q.push_back(2);
+q.push_back(3);
+q.push_back(1);
+func1(&q);
+}
+
+```
+
