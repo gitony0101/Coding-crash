@@ -119,7 +119,6 @@ int main() {
   printf("\n");
   return 0;
 }
-
 ```
 
 - `srand((unsigned int)time(NULL));` //[设定随机数种子](https://blog.csdn.net/jx232515/article/details/51510336)
@@ -158,7 +157,6 @@ int main() {
     arr01[i] = randNum;
     arr02[i] = randNum;
   };
-
 ```
 
 - 这就是如何拷贝生成相同的数组
@@ -184,8 +182,6 @@ void selectSort(int arr[], int length) {
     }
   }
 }
-
-
 ```
 
 ## 插入排序
