@@ -196,7 +196,7 @@ void FreeSpaceBinaryTree(BinaryNode *root) {
 }
 ```
 
-## 二叉树非递归遍历 二叉树和栈的联名版应用
+## DFS-二叉树深度优先栈实现 二叉树和栈的联名版应用
 
 - **二叉树和栈的联名版应用**
   - 栈先进后出，是一个等待器
@@ -293,6 +293,44 @@ void NonRecursionDLR(BinaryNode *root) { //先序遍历！
 
 
 
+## BFS-二叉树广度优先搜索队列实现
+
+- 仔细看看层序遍历过程，其实就是从上到下，从左到右依次将每个数放入到队列Queue中，然后按顺序依次打印就是想要的结果。所以这里我们借助一个队列进行操作。
+
+实现过程：
+1. 首先将二叉树的根节点push到队列中，判断队列不为nullptr，就输出队头的元素
+2. 判断节点如果有孩子，就将孩子push到队列中，
+3.  遍历过的节点出队列，
+4. 循环以上操作，直到root= NULL。
+
+```cpp
+
+void BFS_Q(BinaryNode *root) { //二叉树广度优先搜索队列实现
+  if (root == NULL) {
+    return;
+  }
+  queue<BinaryNode *> q_BFS;
+  q_BFS.push(root);
+  while (!q_BFS.empty()) {
+    printf("%c", q_BFS.front()->ch);
+    if (q_BFS.front()->lchild != NULL) { //先将左子树入队
+      q_BFS.push(q_BFS.front()->lchild);
+    }
+    if (q_BFS.front()->rchild != NULL) { //再将右子树入队
+      q_BFS.push(q_BFS.front()->rchild);
+    }
+    q_BFS.pop();
+  }
+}
+
+```
+
+
+
+
+
+
+
 ## 二叉树的创建
 
 - 怎样的遍历逆运算能确定一棵树？
@@ -328,7 +366,7 @@ void NonRecursionDLR(BinaryNode *root) { //先序遍历！
 
 
 
-## 二叉搜索树
+# 二叉搜索树
 
 左小右大，中序遍历有序
 
@@ -336,7 +374,7 @@ void NonRecursionDLR(BinaryNode *root) { //先序遍历！
 
 1. 创建二叉树结点结构体
 
-```cpp
+```c++
 //创建二叉搜索树结点结构体
 struct BstNode {
   int data;       //父节点数据
@@ -351,7 +389,7 @@ struct BstNode {
 2. 初始化二叉搜索树，创建插入结点函数
 
 
-```cpp
+```c++
 //在堆中初始化二叉搜索树（动态内存）
 BstNode *GetNewNode(int data) { // GetNewNode函数名很形象
   // BstNode *newNode = (BstNode *)malloc(sizeof(BstNode));// mallc 写法
@@ -364,7 +402,7 @@ BstNode *GetNewNode(int data) { // GetNewNode函数名很形象
 
 ```
 
-```cpp
+```c++
 //创造在结点中插入数值的函数insertData，从而可以创造二叉搜索树
 BstNode *insertData(BstNode *root, int data) {
   if (root == NULL) {        // 空树
@@ -388,7 +426,7 @@ BstNode *insertData(BstNode *root, int data) {
 - `BstNode *newNode = new BstNode();`创建新的二叉树结点，**创建结点的过程就是在栈内存开辟内存空间的过程**，初始化的时候左右子结点NULL
 - 插入结点时，按照二叉搜索树本质：`左结点数值比父结点小，右结点数值比父结点大`
 
-```cpp
+```c++
 int main() {
   BstNode *root = NULL; //创建一个空树
   //按照insertData插入结点，从而创作二叉搜索树
@@ -415,7 +453,7 @@ int main() {
 ```
 
 ```
-```cpp
+```c++
 // 二叉搜索树搜索bool函数 还是用到了递归Search
 bool Search(BstNode *root, int data) {
   if (root == NULL)
@@ -448,6 +486,8 @@ int main(){
 # 小结 
 
 关于二叉树，由于自身的结构性质，使得递归函数在这里应用广泛，想到二叉树，要想到递归
+
+前中后序遍历，就是二叉树的深度优先搜索
 
 [关于堆和栈内存的理解，动态内存分配](https://courses.engr.illinois.edu/cs225/sp2022/resources/stack-heap/)
 
