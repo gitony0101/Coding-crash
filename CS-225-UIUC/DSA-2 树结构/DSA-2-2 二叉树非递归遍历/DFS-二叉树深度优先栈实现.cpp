@@ -7,7 +7,8 @@ using namespace std;
 #include "LinkStack.h" //引入已经修改过的链栈头文件
 #define MY_FALSE 0 // 定义显示状态，如果为FALSE，设置为0，并且不被打印
 #define MY_TRUE 1 //定义显示状态，如果为TRUE，设置为1
-/*二叉树的非递归遍历 Binary Tree Traversal without Recursion
+
+/*二叉树深度优先遍历栈实现
 结合栈应用，模拟三种遍历方法
        A
      /   \
