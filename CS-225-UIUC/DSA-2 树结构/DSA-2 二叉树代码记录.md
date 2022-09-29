@@ -312,7 +312,7 @@ void BFS_Q(BinaryNode *root) { //二叉树广度优先搜索队列实现
   queue<BinaryNode *> q_BFS;
   q_BFS.push(root);
   while (!q_BFS.empty()) {
-    printf("%c", q_BFS.front()->ch);
+    printf("%c", q_BFS.front()->ch);//打队头结点的当前根结点
     if (q_BFS.front()->lchild != NULL) { //先将左子树入队
       q_BFS.push(q_BFS.front()->lchild);
     }
@@ -324,12 +324,6 @@ void BFS_Q(BinaryNode *root) { //二叉树广度优先搜索队列实现
 }
 
 ```
-
-
-
-
-
-
 
 ## 二叉树的创建
 
