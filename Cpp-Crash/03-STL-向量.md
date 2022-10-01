@@ -530,7 +530,7 @@ c++中常用的vector容器作为参数时，有[三种传参方式](https://www
 
 - 引用传递
 
-```cpp
+```c++
 
 void func1(vector<int> &q){
  
@@ -549,7 +549,7 @@ func1(q);
 
 - 指针传递
 
-```cpp
+```c++
 void func1(vector<int> *q){
  
 ...
