@@ -3,6 +3,8 @@
 
 ## **指针\*是地址，引用&是别名**
 
+- `*`又叫间接符号
+
 
 ## 引用 reference
 
@@ -173,7 +175,7 @@ int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
 > (可以认为 引用就是`double *const`)
 
 
-```cpp
+```c++
 
 #include <iostream>
 using namespace std;
@@ -209,7 +211,7 @@ int main() {
 ```
 
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 int getMin(int numbers[], int size) {
@@ -241,7 +243,7 @@ int main() {
 ```
 
 
-```cpp
+```c++
 #include <iostream>
 using namespace std;
 
