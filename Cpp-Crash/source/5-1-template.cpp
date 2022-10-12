@@ -8,6 +8,7 @@ using namespace std;
 //引入模板：类型参数化，编写代码可以忽略类型，使用一个符号代替所有符号
 //为了让编译器区分是普通 模板函数
 template <class T> // template<typename T> 关键字不同但是意思相同
+//每次用一次都要调用一次
 void MySwap(T &a, T &b) {
   T temp = a;
   a = b;
@@ -31,6 +32,58 @@ int main() {
   printf("\n");
   return 0;
 }
+
+/*
+函数模板案例
+- 利用函数模板封装一个排序的函数，可以对**不同数据类型数组**进行排序
+- 排序规则从大到小，排序算法为**选择排序**
+- 分别利用**char 数组**和**int 数组**进行测试
+*/
+
+// template <typename T>
+
+// void MySwap(T &a, T &b) {
+//   T temp = a;
+//   a = b;
+//   b = temp;
+// }
+
+// template <typename T>
+// // template <class T> 这俩都可以用
+// void mySort(T arr[], int len) {
+//   for (int i = 0; i < len; i++) {
+//     int max = i;
+//     for (int j = i + 1; j < len; j++) {
+//       if (arr[max] < arr[j]) {
+//         max = j;
+//       }
+//     }
+//     if (max != i) {
+//       MySwap(arr[max], arr[i]);
+//     }
+//   }
+// }
+
+// template <typename T> void printArray(T arr[], int len) {
+//   for (int i = 0; i < len; i++) {
+//     printf("%u", arr[i]);
+//   }
+//   printf("\n");
+// }
+
+// int main() {
+//   char charArr[] = "asdfasdfgg";
+//   int num_1 = sizeof(charArr) / sizeof(char);
+//   int intArr[] = {7, 5, 8, 1, 3, 9, 2, 4, 6};
+//   int num_2 = sizeof(intArr) / sizeof(int);
+//   mySort(charArr, num_1);
+//   mySort(intArr, num_2);
+//   printArray(charArr, num_1);
+//   printArray(intArr, num_2);
+
+//   printf("\n");
+//   return 0;
+// }
 
 // // int 类型数据交换
 // void MySwap(int &a, int &b) {
