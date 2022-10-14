@@ -103,47 +103,22 @@ template<typename T>
 类
 ```
 
-**示例：**
+> 类模板必须显示制定类型，没办法像函数模板那样自动推导
 
-```C++
-#include <string>
-//类模板
-template<class NameType, class AgeType>
-class Person
-{
-public:
-	Person(NameType name, AgeType age)
-	{
-		this->mName = name;
-		this->mAge = age;
-	}
-	void showPerson()
-	{
-		cout << "name: " << this->mName << " age: " << this->mAge << endl;
-	}
-public:
-	NameType mName;
-	AgeType mAge;
-};
 
-void test01()
-{
-	// 指定NameType 为string类型，AgeType 为 int类型
-	Person<string, int>P1("孙悟空", 999);
-	P1.showPerson();
-}
 
-int main() {
 
-	test01();
-
-	system("pause");
-
-	return 0;
-}
+```cpp
+template <class T> class Person {.......}；
+void testPersonInt() {
+  //类模板必须显示制定类型，没办法像函数模板那样自动推导
+  Person<int> p(10, 20); //此处定义了类模板为int类型
+  .......};
 ```
 
 总结：类模板和函数模板语法相似，在声明模板 template 后面加类，此类称为类模板
+
+
 
 ## 11. 类模板与函数模板区别
 

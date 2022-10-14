@@ -6,6 +6,7 @@
 using namespace std;
 
 //类模板
+// 1. 创建类模板
 template <class T> class Person {
   //类写法，把函数和属性分开，谁上谁下都行
 public:
@@ -28,8 +29,48 @@ void testPersonInt() {
   p.show();
 }
 
-int main() {
-  testPersonInt();
+// 2、 对 char 和int类型数组进行排序
+// 打印函数
+template <class T> void printArray(T *arr, int len) { // 数组做参数退化成指针
+  // len 可以换也可以不换T
+  for (int i = 0; i < len; i++) {
+    printf("%d ", arr[i]);
+  }
   printf("\n");
+}
+//冒泡排序
+template <class T> void popSort(T *arr, int len) { // len 可以换也可以不换T
+  for (int i = 0; i < len; i++) {
+    for (int j = i + 1; j < len; j++) {
+      //从大到小排序，大的交换
+      if (arr[i] < arr[j]) {
+        T temp = arr[i]; //这里的temp也要换一下T
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+}
+
+int main() {
+  // 1. 创建类模板
+  //   testPersonInt();
+  printf("\n");
+  // 2、 对 char 和int类型数组进行排序
+  int arr[] = {23, 545, 23, 566, 13, 4, 4};
+  int lenArr = sizeof(arr) / sizeof(int);
+  char charArr[] = {'v', 's', 'a', 'n', 'o'};
+  int lenCharArr = sizeof(charArr) / sizeof(char);
+  printf("int数组排序前：\n");
+  printArray(arr, lenArr);
+  popSort(arr, lenArr);
+  printf("int数组排序后：\n");
+  printArray(arr, lenArr);
+  printf("char数组排序前：\n");
+  printArray(charArr, lenArr);
+  popSort(charArr, lenArr);
+  printf("char数组排序后：\n");
+  printArray(charArr, lenArr);
+
   return 0;
 }
