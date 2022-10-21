@@ -13,12 +13,19 @@
 - pyside是正统，pyqt 是社区版
 
 ## PySide6
+- 内部api调用整齐划一
 
 - QtWidgets 
   - QApplication
   - Widget
   - QLabel
+  - QPushButton
+  - QMenu
+  - QLineEdit
 
 - QtGui
   - QIcon 
   - QFont
+
+- QtCore
+  - QSize
