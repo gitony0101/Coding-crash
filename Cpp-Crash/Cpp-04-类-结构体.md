@@ -1,68 +1,21 @@
 # C++ 编程笔记 04
 
-# 面向对象编程 Object-Oriented Programming - OOP
+- 类
+- 结构体
+- 构造函数
 
-py 和 cpp 都是
-
-## 面向对象和面向过程
-
-面向对象和面向过程，字面意思的区别，核心是对编程的认知：
-
-要把大象装冰箱：
-
-- 面向对象：人类，大象类，冰箱类，人类的实例，人类的方法，人类的属性，冰箱类的实例，冰箱类的方法，冰箱类的属性
-- 面向过程：把冰箱门打开，把大象放进冰箱，冰箱门关上
+- oop 面向对象编程
+  - 特性：面向对象编程具有继承、多态、封装
 
 ## 类
 
-类像一个容器，装载着变量和方法，所以定义一个类，就是在定义变量和方法。
-`.h` 文件用于函数和变量的声明，而 `.cpp` 文件则用于定义。
+- 类像一个容器，装载着变量和方法，所以定义一个类，就是在定义变量和方法。
+- `.h` 文件用于函数和变量的声明，而 `.cpp` 文件则用于定义。
 
-```c++
-#include <cstdio>
-#include <iostream>
-#include <list> // STL 链表
-using namespace std;
+## 头文件`.h file` 普通类的`.h .cpp`分离写法
 
-/*
-class 类方法
-*/
-
-class YoutubeChannel {               //定义油管频道类
-public:                              // 公共变量，外部可访问
-  string Name;                       // 设定up主名称
-  string OwnerName;                  // Up主所有人账户名
-  int SubscribersCount;              // 订阅量
-  list<string> PublishedVideoTitles; //初始化链表
-};
-
-void yt01() {
-  YoutubeChannel yt01;
-  yt01.Name = "Avengers";
-  yt01.OwnerName = "Tony";
-  yt01.SubscribersCount = 10000;
-  //   list<string> names{"A", "B", "C", "D", "E"}; 为什么这样会报错？
-  yt01.PublishedVideoTitles.push_back("Avengers: Endgame"); //添加节目
-  yt01.PublishedVideoTitles.push_back("Avengers: Infinity War");
-  yt01.PublishedVideoTitles.push_back("Avengers: Age of Ultron");
-  yt01.PublishedVideoTitles.push_back("Avengers: The Initiative");
-  //打印yt01的信息
-  printf("Up主所有人姓名：%s\nUp主名称：%s\n订阅量：%d\n频道下节目:\n",
-         yt01.Name.c_str(), yt01.OwnerName.c_str(), yt01.SubscribersCount);
-  // 打印节目名称
-  for (auto title = yt01.PublishedVideoTitles.begin();
-       title != yt01.PublishedVideoTitles.end(); title++) // 循环起来啊，别忘了
-    printf("%s\n", title->c_str());
-}
-
-//构造函数方法
-
-int main() {
-  yt01(); // class 类方法 打印
-}
-
-
-```
+- ### 头文件`.h file` 只作类的声明，不作实现
+- ### `.cpp` 用作实现
 
 ## 结构体
 
@@ -121,9 +74,22 @@ int main() {
 - 为什么要同名？因为你要知道你的对象从哪里来，到哪里去，很清晰。
 - 为什么没有返回值，一个初始化，一个销毁，没有必要上来就返回数值活着销毁了还要再来返回什么，啰嗦
 
-# 特性
+# 面向对象编程 Object-Oriented Programming - OOP
 
-面向对象编程具有继承、多态、封装等特性以及 class、interface、private、public 等特性
+py 和 cpp 都是
+
+## 面向对象和面向过程
+
+面向对象和面向过程，字面意思的区别，核心是对编程的认知：
+
+要把大象装冰箱：
+
+- 面向对象：人类，大象类，冰箱类，人类的实例，人类的方法，人类的属性，冰箱类的实例，冰箱类的方法，冰箱类的属性
+- 面向过程：把冰箱门打开，把大象放进冰箱，冰箱门关上
+
+## 面向对象编程 特性
+
+面向对象编程具有**继承、多态、封装**等特性以及 class、interface、private、public 等特性
 
 > 继承：复用前人的代码,多态：复用后人的代码
 
@@ -135,11 +101,48 @@ int main() {
 
 ### 继承方式权限 private >> protected >> public
 
+子类：继承方式父类
+
+继承方式：public 公有继承，private 私有继承 ，protect 保护继承
+
+### 继承的构造函数写法
+
+子类的构造函数必须要调用父类的构造函数
+
+### 权限问题 用继承方式去看权限问题
+
 - ### 父类当中的**属性**在子类当中的最低**呈现**
 
-> 同时子类中继承方式会**升级**原来父类的 public 到 protected
+> 同时子类中继承方式会**升级**原来父类的 public 到 protected，父类中的私有属性子类不可访问
 
+### 单继承中的构造顺序和析构顺序
 
+普通对象来说，构造顺序和析构顺序相反的
+
+### 多继承：存在两个或者两个以上的父类，称之为多继承
+
+- 权限和单继承一样，构造函数写法和单继承也是一样的
+
+## 虚函数：用 virtual 修饰的函数
+
+### 为什么引入虚函数
+
+1.因为当你顶级基类 A 有一虚函数 play()而 A 的子类 B 也有 play();，A 的子类 C 也有 play();，这就说明如果顶级基类 A 中的 play();若定义怎么玩是不合理的。因为 B 有 B 的玩法 C 有 C 的玩法。所以这种情况下定义为纯虚函数目的在于使子类仅仅只是继承函数的接口，告诉子类的设计者“你必须在子类中提供一个纯虚函数的实现，但我不知道你会怎么样实现它” 2.引入纯虚函数，则编译器要求在子类中必须予以重写以实现多态性
+
+### 虚函数对内存的影响： 32 位系统只增加 4 个字节，64 位 8 个字节
+
+- 虚指针的力量 应用在多态里面
+
+### 纯虚函数 没有函数体的函数
+
+- 构造函数没有虚函数，析构函数有虚函数
+- 抽象类： 具有纯虚函数的类
+- 抽象类的特性：不能创建对象，但是可以创建对象指针
+- ADT Abstract Data Type 抽象数据类型
+
+### 虚析构函数（析构函数可以（往往）是虚函数）
+
+- 父类指针，被子类初始化，会出现内存泄漏问题
 
 ## 多态
 
@@ -157,71 +160,3 @@ C++ 多态意味着调用成员函数时，会根据调用函数的对象的类�
 ## 封装
 
 封装，就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。一个类就是一个封装了数据以及操作这些数据的代码的逻辑实体。在一个对象内部，某些代码或某些数据可以是私有的，不能被外界访问。通过这种方式，对象对内部数据提供了不同级别的保护，以防止程序中无关的部分意外的改变或错误的使用了对象的私有部分。
-
-```c++
-#include <iostream>
-#include <list> // use the list C++ Standard Template Library (STL)
-// #include <string>
-using namespace std;
-
-class YoutubeChannel {
-private: // The data members should be labeled as private using the private
-         // access specifiers
-  string Name;
-  string OwnerName;
-  int SubscribersCount;
-  list<string> PublishedVideoTitles;
-
-public: // The member function which manipulates the data members should be
-        // labeled as public using the public access specifier
-  YoutubeChannel(string name, string ownerName) { // two key parameters here
-    Name = name;
-    OwnerName = ownerName;
-    SubscribersCount = 0;
-  }
-
-  // use class method to get the info we entered.
-  void getInfo() {
-
-    printf("Name : %s\n", Name.c_str()); // print name,just  Name.c_str()
-    printf("Owner Name: %s\n", OwnerName.c_str()); // Similarily
-    printf("Number of subscribers : %d\n", SubscribersCount);
-    for (auto &videoTitle : PublishedVideoTitles) {
-      printf("The %s has %s\n", Name.c_str(), videoTitle.c_str());
-    }
-  };
-
-  void Subscribe() { SubscribersCount++; } // + 1 subscriber
-  void Unsubscribe() {
-    if (SubscribersCount > 0) {
-      SubscribersCount--;
-    } else {
-      SubscribersCount = 0;
-    }
-  }
-  // - 1 subscriber with condition
-  void PublishVideo(string title) { PublishedVideoTitles.push_back(title); }
-
-}; // this ; MUST HAVE
-
-int main() {
-  YoutubeChannel yt_1("CodeBeauty", "Saldina");
-  yt_1.Subscribe();
-  yt_1.Subscribe();
-  yt_1.Subscribe();
-  yt_1.Unsubscribe();
-  yt_1.PublishVideo("C++ for beginners");
-  yt_1.PublishVideo("HTML & CSS for beginners");
-  yt_1.PublishVideo("C++ OOP beginners");
-  yt_1.getInfo();
-}
-
-//   YoutubeChannel yt_2("Sigur Ros", "Jonsi and his bands.");
-//   yt_2.PublishedVideoTitles.push_back("Hopipolla");
-//   yt_2.PublishedVideoTitles.push_back("Heima");
-
-//   // call the class method to get the info we entered.
-//   yt_2.getInfo(); // call the class method to get the info we entered.
-
-
-```

@@ -2,6 +2,13 @@
 
 Template  and Generic
 
+
+- 函数模板
+- 类模板
+- 泛型
+- 泛型编程
+
+
 # 模板
 
 ## 模板的概念
@@ -108,7 +115,7 @@ template<typename T>
 
 
 
-```cpp
+```c++
 template <class T> class Person {.......}；
 void testPersonInt() {
   //类模板必须显示制定类型，没办法像函数模板那样自动推导
@@ -834,7 +841,7 @@ int main() {
 
 ```
 
-### 范型编程
+# 范型编程
 
 Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
 

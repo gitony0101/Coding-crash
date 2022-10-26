@@ -6,6 +6,13 @@
 using namespace std;
 
 //类模板
+
+/*
+ 1. 创建类模板
+2、 对 char 和int类型数组进行排序 冒泡排序
+3、 类模板派生普通类
+*/
+
 // 1. 创建类模板
 template <class T> class Person {
   //类写法，把函数和属性分开，谁上谁下都行
@@ -52,6 +59,17 @@ template <class T> void popSort(T *arr, int len) { // len 可以换也可以不�
   }
 }
 
+// 3、类模板派生普通类
+template <class T> class Animal {
+public:
+  void Bark() { printf("Animal barking"); }
+
+public:
+  T mAge;
+};
+//派生类模板 用的类继承
+template <class T> class Cat : public Animal<T> {};
+
 int main() {
   // 1. 创建类模板
   //   testPersonInt();
@@ -71,6 +89,8 @@ int main() {
   popSort(charArr, lenArr);
   printf("char数组排序后：\n");
   printArray(charArr, lenArr);
+  // 3、类模板派生普通类
+  Cat<int> cat;
 
   return 0;
 }
