@@ -97,7 +97,7 @@ void printArray(T arr[], int len) {
 
 ## 2 类模板
 
-## 10. 类模板语法
+### 类模板语法
 
 类模板作用：
 
@@ -127,7 +127,7 @@ void testPersonInt() {
 
 
 
-## 11. 类模板与函数模板区别
+### 类模板与函数模板区别
 
 类模板与函数模板区别主要有两点：
 
@@ -189,7 +189,7 @@ int main() {
 - 类模板使用只能用显示指定类型方式
 - 类模板中的模板参数列表可以有默认参数
 
-## 12. 类模板中成员函数创建时机
+### 类模板中成员函数创建时机
 
 类模板中成员函数和普通类中成员函数创建时机是有区别的：
 
@@ -251,7 +251,7 @@ int main() {
 
 总结：类模板中的成员函数并不是一开始就创建的，在调用时才去创建
 
-## 13. 类模板对象做函数参数
+### 类模板对象做函数参数
 
 学习目标：
 
@@ -342,7 +342,7 @@ int main() {
 - 通过类模板创建的对象，可以有三种方式向函数中进行传参
 - 使用比较广泛是第一种：指定传入的类型
 
-## 14. 类模板与继承
+### 类模板与继承
 
 当类模板碰到继承时，需要注意一下几点：
 
@@ -400,7 +400,7 @@ int main() {
 
 总结：如果父类是类模板，子类需要指定出父类中 T 的数据类型
 
-## 15. 类模板成员函数类外实现
+### 类模板成员函数类外实现
 
 学习目标：能够掌握类模板中的成员函数类外实现
 
@@ -440,7 +440,7 @@ void test01()
 	Person<string, int> p("Tom", 20);
 	p.showPerson();
 }
-
+cc
 int main() {
 
 	test01();
@@ -453,13 +453,7 @@ int main() {
 
 总结：类模板中成员函数类外实现时，需要加上模板参数列表
 
-## 16. 类模板分文件编写
-
-学习目标：
-
-- 掌握类模板成员函数分文件编写产生的问题以及解决方式
-
-问题：
+### 类模板分文件编写
 
 - 类模板中成员函数创建时机是在调用阶段，导致分文件编写时链接不到
 
@@ -468,380 +462,13 @@ int main() {
 - 解决方式 1：直接包含.cpp 源文件
 - 解决方式 2：将声明和实现写到同一个文件中，并更改后缀名为.hpp，hpp 是约定的名称，并不是强制
 
-**示例：**
-
-person.hpp 中代码：
-
-```C++
-#pragma once
-#include <iostream>
-using namespace std;
-#include <string>
-
-template<class T1, class T2>
-class Person {
-public:
-	Person(T1 name, T2 age);
-	void showPerson();
-public:
-	T1 m_Name;
-	T2 m_Age;
-};
-
-//构造函数 类外实现
-template<class T1, class T2>
-Person<T1, T2>::Person(T1 name, T2 age) {
-	this->m_Name = name;
-	this->m_Age = age;
-}
-
-//成员函数 类外实现
-template<class T1, class T2>
-void Person<T1, T2>::showPerson() {
-	cout << "姓名: " << this->m_Name << " 年龄:" << this->m_Age << endl;
-}
-```
-
-类模板分文件编写.cpp 中代码
-
-```C++
-#include<iostream>
-using namespace std;
-
-//#include "person.h"
-#include "person.cpp" //解决方式1，包含cpp源文件
-
-//解决方式2，将声明和实现写到一起，文件后缀名改为.hpp
-#include "person.hpp"
-void test01()
-{
-	Person<string, int> p("Tom", 10);
-	p.showPerson();
-}
-
-int main() {
-
-	test01();
-
-	system("pause");
-
-	return 0;
-}
-```
-
-总结：主流的解决方式是第二种，将类模板成员函数写到一起，并将后缀名改为.hpp
-
-## 17. 类模板与友元
-
-学习目标：
-
-- 掌握类模板配合友元函数的类内和类外实现
+### 类模板与友元
 
 全局函数类内实现 - 直接在类内声明友元即可
 
 全局函数类外实现 - 需要提前让编译器知道全局函数的存在
 
-**示例：**
-
-```C++
-#include <string>
-
-//2、全局函数配合友元  类外实现 - 先做函数模板声明，下方在做函数模板定义，在做友元
-template<class T1, class T2> class Person;
-
-//如果声明了函数模板，可以将实现写到后面，否则需要将实现体写到类的前面让编译器提前看到
-//template<class T1, class T2> void printPerson2(Person<T1, T2> & p);
-
-template<class T1, class T2>
-void printPerson2(Person<T1, T2> & p)
-{
-	cout << "类外实现 ---- 姓名： " << p.m_Name << " 年龄：" << p.m_Age << endl;
-}
-
-template<class T1, class T2>
-class Person
-{
-	//1、全局函数配合友元   类内实现
-	friend void printPerson(Person<T1, T2> & p)
-	{
-		cout << "姓名： " << p.m_Name << " 年龄：" << p.m_Age << endl;
-	}
-
-
-	//全局函数配合友元  类外实现
-	friend void printPerson2<>(Person<T1, T2> & p);
-
-public:
-
-	Person(T1 name, T2 age)
-	{
-		this->m_Name = name;
-		this->m_Age = age;
-	}
-
-
-private:
-	T1 m_Name;
-	T2 m_Age;
-
-};
-
-//1、全局函数在类内实现
-void test01()
-{
-	Person <string, int >p("Tom", 20);
-	printPerson(p);
-}
-
-
-//2、全局函数在类外实现
-void test02()
-{
-	Person <string, int >p("Jerry", 30);
-	printPerson2(p);
-}
-
-int main() {
-
-	//test01();
-
-	test02();
-
-	system("pause");
-
-	return 0;
-}
-```
-
-总结：建议全局函数做类内实现，用法简单，而且编译器可以直接识别
-
-## 18. 类模板案例
-
-案例描述: 实现一个通用的数组类，要求如下：
-
-- 可以对内置数据类型以及自定义数据类型的数据进行存储
-- 将数组中的数据存储到堆区
-- 构造函数中可以传入数组的容量
-- 提供对应的拷贝构造函数以及 operator=防止浅拷贝问题
-- 提供尾插法和尾删法对数组中的数据进行增加和删除
-- 可以通过下标的方式访问数组中的元素
-- 可以获取数组中当前元素个数和数组的容量
-
-**示例：**
-
-myArray.hpp 中代码
-
-```C++
-#pragma once
-#include <iostream>
-using namespace std;
-
-template<class T>
-class MyArray
-{
-public:
-
-	//构造函数
-	MyArray(int capacity)
-	{
-		this->m_Capacity = capacity;
-		this->m_Size = 0;
-		pAddress = new T[this->m_Capacity];
-	}
-
-	//拷贝构造
-	MyArray(const MyArray & arr)
-	{
-		this->m_Capacity = arr.m_Capacity;
-		this->m_Size = arr.m_Size;
-		this->pAddress = new T[this->m_Capacity];
-		for (int i = 0; i < this->m_Size; i++)
-		{
-			//如果T为对象，而且还包含指针，必须需要重载 = 操作符，因为这个等号不是 构造 而是赋值，
-			// 普通类型可以直接= 但是指针类型需要深拷贝
-			this->pAddress[i] = arr.pAddress[i];
-		}
-	}
-
-	//重载= 操作符  防止浅拷贝问题
-	MyArray& operator=(const MyArray& myarray) {
-
-		if (this->pAddress != NULL) {
-			delete[] this->pAddress;
-			this->m_Capacity = 0;
-			this->m_Size = 0;
-		}
-
-		this->m_Capacity = myarray.m_Capacity;
-		this->m_Size = myarray.m_Size;
-		this->pAddress = new T[this->m_Capacity];
-		for (int i = 0; i < this->m_Size; i++) {
-			this->pAddress[i] = myarray[i];
-		}
-		return *this;
-	}
-
-	//重载[] 操作符  arr[0]
-	T& operator [](int index)
-	{
-		return this->pAddress[index]; //不考虑越界，用户自己去处理
-	}
-
-	//尾插法
-	void Push_back(const T & val)
-	{
-		if (this->m_Capacity == this->m_Size)
-		{
-			return;
-		}
-		this->pAddress[this->m_Size] = val;
-		this->m_Size++;
-	}
-
-	//尾删法
-	void Pop_back()
-	{
-		if (this->m_Size == 0)
-		{
-			return;
-		}
-		this->m_Size--;
-	}
-
-	//获取数组容量
-	int getCapacity()
-	{
-		return this->m_Capacity;
-	}
-
-	//获取数组大小
-	int	getSize()
-	{
-		return this->m_Size;
-	}
-
-
-	//析构
-	~MyArray()
-	{
-		if (this->pAddress != NULL)
-		{
-			delete[] this->pAddress;
-			this->pAddress = NULL;
-			this->m_Capacity = 0;
-			this->m_Size = 0;
-		}
-	}
-
-private:
-	T * pAddress;  //指向一个堆空间，这个空间存储真正的数据
-	int m_Capacity; //容量
-	int m_Size;   // 大小
-};
-```
-
-类模板案例—数组类封装.cpp 中
-
-```C++
-#include "myArray.hpp"
-#include <string>
-
-void printIntArray(MyArray<int>& arr) {
-	for (int i = 0; i < arr.getSize(); i++) {
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-}
-
-//测试内置数据类型
-void test01()
-{
-	MyArray<int> array1(10);
-	for (int i = 0; i < 10; i++)
-	{
-		array1.Push_back(i);
-	}
-	cout << "array1打印输出：" << endl;
-	printIntArray(array1);
-	cout << "array1的大小：" << array1.getSize() << endl;
-	cout << "array1的容量：" << array1.getCapacity() << endl;
-
-	cout << "--------------------------" << endl;
-
-	MyArray<int> array2(array1);
-	array2.Pop_back();
-	cout << "array2打印输出：" << endl;
-	printIntArray(array2);
-	cout << "array2的大小：" << array2.getSize() << endl;
-	cout << "array2的容量：" << array2.getCapacity() << endl;
-}
-
-//测试自定义数据类型
-class Person {
-public:
-	Person() {}
-		Person(string name, int age) {
-		this->m_Name = name;
-		this->m_Age = age;
-	}
-public:
-	string m_Name;
-	int m_Age;
-};
-
-void printPersonArray(MyArray<Person>& personArr)
-{
-	for (int i = 0; i < personArr.getSize(); i++) {
-		cout << "姓名：" << personArr[i].m_Name << " 年龄： " << personArr[i].m_Age << endl;
-	}
-
-}
-
-void test02()
-{
-	//创建数组
-	MyArray<Person> pArray(10);
-	Person p1("孙悟空", 30);
-	Person p2("韩信", 20);
-	Person p3("妲己", 18);
-	Person p4("王昭君", 15);
-	Person p5("赵云", 24);
-
-	//插入数据
-	pArray.Push_back(p1);
-	pArray.Push_back(p2);
-	pArray.Push_back(p3);
-	pArray.Push_back(p4);
-	pArray.Push_back(p5);
-
-	printPersonArray(pArray);
-
-	cout << "pArray的大小：" << pArray.getSize() << endl;
-	cout << "pArray的容量：" << pArray.getCapacity() << endl;
-
-}
-
-int main() {
-
-	//test01();
-
-	test02();
-
-	system("pause");
-
-	return 0;
-}
-```
-
-总结：
-
-能够利用所学知识点实现通用的数组
-
-```plaintext
-
-```
-
-# 范型编程
+# 泛型编程
 
 Generic programming is writing code once that works with different types rather than having to repeat the same code multiple times by copying and pasting each type you want to support. In C++, you use templates to produce generic code. Templates are a special kind of parameter that tells the compiler to represent a wide range of possible types.
 

@@ -53,57 +53,11 @@ codes: ex,BMI,Integer,Lunar year
   - 嵌套 switch 语句
 
 
-### 条件运算符 三元运算符 三目运算符
-
-- 条件运算符 `Exp1 ? Exp2 : Exp3;`
-  - 其中，Exp1、Exp2 和 Exp3 是表达式。请注意冒号的使用和位置。`? :` 表达式的值取决于 Exp1 的计算结果。
-    - 如果 Exp1 为真，则计算 Exp2 的值，且 Exp2 的计算结果则为整个 `? :` 表达式的值。
-    - 如果 Exp1 为假，则计算 Exp3 的值，且 Exp3 的计算结果则为整个 `? :` 表达式的值。`
-      - ? 被称为三元运算符，因为它需要三个操作数，可以用来代替`if-else`语句。
-
-```c++
-if(condition){
-   var = X;
-}else{
-   var = Y;
-}
-```
-
-等价于：
-
-```c++
-(condition) ? var = X : var = Y;
-```
-
-### 流程图
-
-- 判定奇数偶数流程
-
-<div align = "center">
-<div style="width:700px">
-
-![img](./img/chapter-3-ifelseDIagram.png)
-
-</div>
-</div>
-
-- 判定三角形类型流程
-
-<div align = "center">
-<div style="width:700px">
-
-![img](img/chapter-3--Tri-ifelseDIagram.png)
-
 </div>
 </div>
 
 - 体脂率计算器流程
   - 三个阈值：<18.5 低体脂率，>25 高体脂率，在 18.5-25 之间正常体脂率
-
-<div align = "center">
-<div style="width:700px">
-
-![img](./img/BMI.jpg)
 
 </div>
 </div>
@@ -111,8 +65,6 @@ if(condition){
 ### 从 if-else 到 swich case 语句
 
 对比两个计算器代码，在条件较多的时候，可以用 switch case 代码替代 if-else 代码，更清晰明了：提供了一条便捷路径，让我们在固定选项中做出选择。
-
-请参考附属代码`chapter-3-1-exSwitchCase.cpp`
 
 ## 迭代语句——iteration——循环
 
@@ -141,7 +93,7 @@ i++ 与 ++i 的主要区别有两个：
 
 
 
-```cpp
+```c++
 void comparePrePostIncrement() {
   int i = 1, j;
   int m = 1, n;
@@ -168,5 +120,3 @@ int main() {
 - `goto`
 - `return`
 
-## 三元表达式
-？：

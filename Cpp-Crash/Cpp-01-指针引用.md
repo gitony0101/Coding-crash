@@ -83,22 +83,24 @@ int * p = NULL;
 程序中避免出现
 
 
-## const 引用与指针
+## const
 
 
-### Const-冻结： 可以冻结它后面的的指令所代表的含义
+
+- ### Const-冻结： 可以冻结它后面的的指令所代表的含义
 
 
-指针与 const
-
+### 指针与const
 
 - 指针两大操作空间：一个是重新指向，一个是变换当前值
-  - `double const*`指向不可动,不能够变换指向
-  - `const double*`指向的值不可以修改
-  - `const double const*`也不能动，也不能变
+> `double const*`指向不可动,不能够变换指向
+> 
+>  `const double*`指向的值不可以修改
+> 
+>  `const double const*`也不能动，也不能变
 
 
-引用与 const
+### 引用与 const
 
 
 - 引用只有`const double&`相当于指针的`const double const*`，也不能动，也不能变
@@ -117,10 +119,7 @@ typedef struct LINKNODE {
 } LinkNode;
 ```
 
-### 回调函数与指针
-
-
-- C++ 指针应用的精髓
+### 回调函数与指针 C++ 指针应用的精髓
 
 
 ```c++
@@ -152,19 +151,19 @@ int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
 ## 引用指针小结
 
 
-> C++ 提供了两种指针运算符，一种是取地址运算符 `&`，一种是间接寻址运算符 `*`。
+> ### C++ 提供了两种指针运算符，一种是取地址运算符 `&`，一种是间接寻址运算符 `*`。
 
 
 指针是一个包含了另一个变量地址的变量，您可以把一个包含了另一个变量地址的变量说成是"指向"另一个变量。变量可以是任意的数据类型，包括对象、结构或者指针。
 
 
-- 取地址运算符 `&`
+- ## 取地址运算符 `&`
 
 
 `&` 是一元运算符，返回操作数的内存地址。例如，如果 `var` 是一个整型变量，则 `&var` 是它的地址。该运算符与其他一元运算符具有相同的优先级，在运算时它是从右向左顺序进行的。您可以把 `&` 运算符读作"取地址运算符"，这意味着，`&var` 读作"var 的地址"。
 
 
-- 间接寻址运算符 `*`
+- ## 间接寻址运算符 `*`
 
 
 第二个运算符是间接寻址运算符，它是 `&` 运算符的补充。`*`是一元运算符，返回操作数所指定地址的变量的值。
@@ -174,95 +173,4 @@ int Find_LinkList(LinkList *list, LinkNode *data, COMPARENODE compare) {
 >
 > (可以认为 引用就是`double *const`)
 
-
-```c++
-
-#include <iostream>
-using namespace std;
-
-int luckyNumbers[5] = {2, 3, 4, 5, 6};
-
-int main() {
-  printf("%p\n", luckyNumbers); // cout << luckyNumbers << endl; memory addres
-                                // of luckyNumbers
-  printf("'&luckynumbers[0]': %p\n",
-         &luckyNumbers[0]); // memory address of luckyNumbers[0]
-  printf("'&luckynumbers[1]': %p\n",
-         &luckyNumbers[1]); // memory address of luckyNumbers[1]
-  printf("'luckynumbers[2]': %d\n", luckyNumbers[2]); // deferencing
-  printf("'*(luckynumbers)': %d\n", *luckyNumbers);   // deferencing
-  printf("'*(luckynumbers+2)': %d\n",
-         *(luckyNumbers +
-           2)); // equivalent to luckyNumbers[2], which is
-                // accessing the 3rd element of the array,deferencing.
-
-  int numslist[5];
-  for (int i = 0; i <= 4; i++) {
-    printf("Please enter a number(5 in total) :");
-    cin >> numslist[i];
-  }
-  for (int i = 0; i <= 4; i++) {
-    printf("The number array is: %d\n", *(numslist + i)); // * get the value
-                                                          // of the array
-  }
-}
-
-
-```
-
-
-```c++
-#include <iostream>
-using namespace std;
-int getMin(int numbers[], int size) {
-  int min = numbers[0];
-  for (int i = 1; i < size; i++) {
-    if (numbers[i] < min)
-      min = numbers[i];
-  }
-  return min;
-}
-
-int getMax(int numbers[], int size) {
-  int max = numbers[0];
-  for (int i = 1; i < size; i++) {
-    if (numbers[i] > max)
-      max = numbers[i];
-  }
-  return max;
-}
-
-int main() {
-
-  int numArr[5] = {1, 3, -4, 5, 7};
-  printf("The min number is: %d\n", getMin(numArr, 5));
-  printf("The max numbers is: %d\n", getMax(numArr, 5));
-}
-
-
-```
-
-
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  int x = 10;
-
-  // ref is a reference to X.
-  int &ref = x;
-  cout << ref << endl;
-
-  // Value of x is now changed to 20
-  ref = 20;
-  cout << "x = " << x << endl;
-
-  // Value of x is now changed to 30
-  x = 30;
-  cout << "ref = " << ref << endl;
-}
-
-
-```
 
