@@ -25,8 +25,16 @@ void testGetCircumference() {
   printf("圆的周长为： %f", cir1);
 }
 
+void inputgetCircumference() {
+  Circle c2;
+  scanf("请输入半径 %lf", &c2.R);
+  double cir2 = c2.getCircumference();
+  printf("圆的周长为： %f", cir2);
+}
+
 int main() {
-  testGetCircumference();
+  // testGetCircumference();
+  inputgetCircumference();
   printf("\n");
   return 0;
 }
