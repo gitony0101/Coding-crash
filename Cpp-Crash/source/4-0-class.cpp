@@ -13,28 +13,21 @@ class 类方法
 //设计一个类，求圆的周长
 
 class Circle {
-public:                                            //公共作用域
-  double getCircumference() { return 2 * pi * R; } // 求周长公式
-  double R;                                        //设定圆半径
+public:                                              //公共作用域
+  double getCircumference() { return 2 * pi * m_R; } // 求周长公式
+  double m_R;
+  //设定圆半径
+  void setR(int r) { m_R = r; }
+  //获取圆当前半径
+  int getR() { return m_R; }
 };
 
-void testGetCircumference() {
+int main() {
   Circle c1; // 实例化对象：通过类来创建对象
-  c1.R = 10.1;
+  c1.setR(10);
   double cir1 = c1.getCircumference();
   printf("圆的周长为： %f", cir1);
-}
 
-void inputgetCircumference() {
-  Circle c2;
-  scanf("请输入半径 %lf", &c2.R);
-  double cir2 = c2.getCircumference();
-  printf("圆的周长为： %f", cir2);
-}
-
-int main() {
-  // testGetCircumference();
-  inputgetCircumference();
   printf("\n");
   return 0;
 }
