@@ -51,6 +51,11 @@ Or:
 - 常量是一旦定义就不能修改的 `const float pi 3.14`
 - 预定义(preprocessor directive) `#define PI 3.14`
 
+## `sacnf` 读取
+
+- `scanf("%占位",&var)`
+  - 注意有引用
+
 ## printf 格式化输出
 
 printf 函数称为格式输出函数，其关键字最末一个字母 f 即为“格式”(format)之意。按照用户指定的格式（占位符），把指定的数据显示到屏幕上。
@@ -81,7 +86,7 @@ The format specifier %f displays a float with decimal digits, whereas %e display
 
 中间是可以加数字表示间隔空行的，在二维数组中可以把元素中间间隔开，很美观。
 
-```cpp
+```c++
 printf("%1s %3f %5d\n", "hello", 3.14, 42);
 //输出：
 hello 3.140000    42
@@ -142,6 +147,8 @@ C++中常见的数据类型.
 - intMax is 2147483647
 - intMax + 1 is -2147483648
 
+> 浮点数： 浮点，代表小数点位置是浮动可变的，与之对立的是定点数
+
 # 带符号类型和无符号类型
 
 有符号（signed）也就是该整型可以表示正数也可以表示负数，而无符号（unsigned）则表示该整数只能表示正数，不能表示负数。
@@ -163,3 +170,8 @@ C++中常见的数据类型.
 > 具体例子请看后文函数 do-while 循环中的希尔增量`increasement`例子。
 
 - `increasement`是整型。
+
+## 关于计算
+
+- 同类型数据的运算结果还是原类型
+

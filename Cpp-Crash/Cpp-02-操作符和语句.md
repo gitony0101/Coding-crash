@@ -31,9 +31,47 @@
 
 ### 赋值运算符
 
-`=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
+复合赋值
+
+- `=, +=, -=, \*=, /=, %=, <<=, >>=, &=, |=, ^=`
 
 - 自增减运算符： `++ --`
+  - `count++` 就是 `count +=1` 就是 `count = count + 1`
+
+
+
+
+
+
+
+### ++i 前缀形式 和 i++ 后缀形式 的区别
+
+
+i++ 与 ++i 的主要区别有两个：
+
+- i++ 返回原来的值，++i 返回加1后的值。
+- i++ 不能作为左值，而++i 可以。
+
+
+
+
+```c++
+void comparePrePostIncrement() {
+  int i = 1, j;
+  int m = 1, n;
+  j = ++i;
+  n = m++;
+
+  printf("now i = %d  j = %d\nm = %d n = %d\n", i, j, m, n);
+}
+
+int main() {
+  comparePrePostIncrement();
+}
+
+```
+
+
 
 ### `<<` 左移运算符和 `>>`右移运算符 
 
@@ -88,35 +126,6 @@ codes: ex,BMI,Integer,Lunar year
     - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while
 - 嵌套循环
   - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
-
-
-
-### ++i 和 i++的区别
-
-
-i++ 与 ++i 的主要区别有两个：
-
-- i++ 返回原来的值，++i 返回加1后的值。
-- i++ 不能作为左值，而++i 可以。
-
-
-
-
-```c++
-void comparePrePostIncrement() {
-  int i = 1, j;
-  int m = 1, n;
-  j = ++i;
-  n = m++;
-
-  printf("now i = %d  j = %d\nm = %d n = %d\n", i, j, m, n);
-}
-
-int main() {
-  comparePrePostIncrement();
-}
-
-```
 
 
 
