@@ -1,0 +1,94 @@
+{
+    // Tasks in VS Code can be configured to run scripts and start processes
+    // so that many of these existing tools can be used from within VS Code 
+    // without having to enter a command line or write new code.
+    // Workspace or folder specific tasks are configured from the tasks.json file in the .vscode folder for a workspace.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // The task's label used in the user interface.
+            // Terminal -> Run Task... 看到的名字
+            "label": "Clang++ Compile",
+            // The task's type. For a custom task, this can either be shell or process.
+            // If shell is specified, the command is interpreted as a shell command (for example: bash, cmd, or PowerShell).
+            // If process is specified, the command is interpreted as a process to execute.
+            "type": "shell", // shell: 输入命令，命令行里面编译，活着是process，进程中编译
+            // The actual command to execute.
+            // 因为clang++已经在环境变量中了，所以我们这里写命令就行不用写clang++的绝对路径
+            "command": "clang++", //重要，这里是编译命令
+            "args": [
+                "${file}", // 表示当前文件（绝对路径）
+                // 在这里添加你还需要链接的.cpp文件
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out", //输出文件的名字，必要
+                "-W", //开始错误警告
+                "-Wall",
+                "-g", // 需要调试
+                "-std=c++20", //C++的标准，这里是20
+            ],
+            //任务分组，group功能：
+            // Defines to which execution group this task belongs to.
+            // It supports "build" to add it to the build group and "test" to add it to the test group.
+            // Tasks that belong to the build/test group can be executed by running Run Build/Test Task from the Command Palette (sft cmd P).
+            // Valid values:
+            //   "build",
+            //   {"kind":"build","isDefault":true}, 
+            //   "test",
+            //   {"kind":"test","isDefault":true}, 
+            //   "none".
+            "group": {
+                "kind": "build",
+                "isDefault": true, // Defines if this task is the default task in the group.
+            },
+            //任务的显示
+            // Configures the panel that is used to present the task's output and reads its input.
+            "presentation": {
+                // Controls whether the executed command is echoed to the panel. Default is true.
+                "echo": true, // 打开可以看到编译的命令，把命令本身输出一次
+                // Controls whether the terminal running the task is revealed or not. Default is "always".
+                //   always: Always reveals the terminal when this task is executed.
+                //   silent: Only reveals the terminal if the task exits with an error or the problem matcher finds an error.(会显示错误，但不会显示警告)
+                //   never: Never reveals the terminal when this task is executed.
+                "reveal": "always", // 控制在集成终端中是否显示。如果没问题那我不希望终端被切换、如果有问题我希望能看到编译过程哪里出错，所以选silent(可能always会好一些)
+                // Controls whether the panel takes focus. Default is false.
+                "focus": false, // 我的理解是：是否将鼠标移过去。因为这个是编译任务，我们不需要输入什么东西，所以选false
+                // Controls if the panel is shared between tasks, dedicated to this task or a new one is created on every run.
+                "panel": "shared", // shared:不同任务的输出使用同一个终端panel（为了少生成几个panel我们选shared）
+                // Controls whether to show the `Terminal will be reused by tasks, press any key to close it` message.
+                "showReuseMessage": true, // 就一句话，你想看就true，不想看就false
+                // Controls whether the terminal is cleared before executing the task.
+                "clear": false, // 还是保留之前的task输出信息比较好。所以不清理
+            },
+            //自定义的设置
+            // Other two choices: options & runOptions (cmd I to use IntelliSense)
+            "options": {
+                // The current working directory of the executed program or script. If omitted Code's current workspace root is used.
+                "cwd": "${workspaceFolder}", // 默认就是这个，删掉也没问题
+            },
+            // problemMatcher: 用正则表达式提取clang++的输出中的错误信息并将其显示到VS Code下方的Problems窗口
+            // check: https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
+            //错误提示显示在vsc中
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5,
+                },
+            },
+            // 官网教程 https://code.visualstudio.com/docs/cpp/config-clang-mac#_build-helloworldcpp 
+            // 提到了另一种problemMatcher 不建议尝试
+        }, //第一个任务到此结束
+        { //以下是第二个任务：打开终端输入命令,目的是为了让vsc有权限来运行调试
+            "label": "Open Terminal.app",
+            "type": "shell",
+            "command": "osascript -e 'tell application \"Terminal\"\ndo script \"echo now VS Code is able to open Terminal.app\"\nend tell'", //告诉Terminal通知我有能够打开终端的权限
+            "problemMatcher": [], //没有设置
+            "group": "none",
+        }
+    ]
+}

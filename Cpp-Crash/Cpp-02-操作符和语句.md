@@ -42,8 +42,6 @@
 
 
 
-
-
 ### ++i 前缀形式 和 i++ 后缀形式 的区别
 
 
@@ -55,20 +53,13 @@ i++ 与 ++i 的主要区别有两个：
 
 
 
+例如 `  int a = 10; int b = 10;`
+
 ```c++
-void comparePrePostIncrement() {
-  int i = 1, j;
-  int m = 1, n;
-  j = ++i;
-  n = m++;
-
-  printf("now i = %d  j = %d\nm = %d n = %d\n", i, j, m, n);
-}
-
-int main() {
-  comparePrePostIncrement();
-}
-
+// a++ = 10
+// a= 11
+// ++b= 11
+// b= 11
 ```
 
 
