@@ -83,7 +83,7 @@ i++ 与 ++i 的主要区别有两个：
 
 codes: ex,BMI,Integer,Lunar year
 
-```cpp
+```c++
 #include <stdio.h>
 using namespace std;
 
@@ -135,9 +135,9 @@ int main() { // if else
   - `for (statement 1; statement 2; statement 3) { // code block to be executed }`
 - while 循环
   - `while (condition) { statements; }`
-- do-while 循环
+- do-while 循环 ： 当条件满足时，不断地重复循环体内的语句。
   - `do { // code block to be executed } while (condition);`
-    - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到执行完 while
+    - 后面还跟 if 条件：可以理解为：while 是前后两个代码块的一个约束，在这个约束循环里面，哪个条件满足，就执行哪个条件，直到不满足 `while(condition)`里面的condition 条件
 - 嵌套循环
   - 一个循环内可以嵌套另一个循环，最好别这样做，因为这样会导致循环无限循环。
 
