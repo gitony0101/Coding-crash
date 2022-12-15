@@ -1,21 +1,30 @@
 // #define _CRT_SECURE_NO_WARNINGS
 
+#include <cstdlib>
+#include <random>
 #include <stdio.h>
 using namespace std;
 
 int main() { // if else
-  int price = 0;
-  int bill = 0;
-  printf("请输入金额:\n");
-  scanf("%d", &price);
-  printf("请输入票面\n");
-  scanf("%d", &bill);
-  if (bill >= price) {
-    printf("应该找您:%d \n", bill - price);
-  } else {
-    printf("您的钱不够，还差%d", price - bill);
+  srand(time(0));
+  int rMin, rMax = 0;
+  int input_number = 0;
+  printf("请输入想猜的数字范围:\n");
+  scanf("%d %d", &rMin, &rMax);
+  int randNum = (rand() % (rMax - rMin + 1)) + rMin;
+  printf("请输入你的数字:\n");
+  scanf(" %d", &input_number);
+  while (input_number != randNum) {
+    if (input_number < randNum) {
+      printf("小了\n");
+    } else {
+      printf("大了\n");
+    }
+    printf("请重新输入你的数字\n");
+    scanf("%d", &input_number);
   }
 
+  printf("\n恭喜你答对了,这个数字就是  %d\n", randNum);
   printf("\n");
   return 0;
 }
