@@ -17,8 +17,6 @@ unsigned long hash_function(char *str) {
 int main() {
   string str01 = "GLE";
 
-  hash_function(str01);
-
   printf("\n");
   return 0;
 }
