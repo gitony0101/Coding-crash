@@ -8,10 +8,12 @@ using namespace std;
 #define HASH_SIZE 50    // 每个 Bucket 大小
 #define HASH_BUCKET 128 // Bucket 总数量
 
-typedef struct _Hash
+typedef struct _HashUnit { //顺序存储的精髓
+  int key;
+  void *data;
+} HashUnit;
 
-    int
-    main() {
+int main() {
 
   printf("\n");
   return 0;
