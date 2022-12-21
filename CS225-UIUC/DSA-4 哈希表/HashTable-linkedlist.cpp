@@ -6,11 +6,13 @@
 #include <stdlib.h>
 #include <string.h>
 using namespace std;
+
+// #include "hash_table.h"
 //哈希链表算法实现
 #define DEFAULT_SIZE 16 //索引数组的大小
 //定义哈希链表数据结构
 typedef struct _ListNode {
-  struct _ListNode *next;
+  struct _ListNode *next; //链式存储的精髓——连接节点
   int key;
   void *data;
 } ListNode;
@@ -36,7 +38,6 @@ HashTable *InitHash(int TableSize) {
   }
   hTable = (HashTable *)malloc(TableSize); // 开内存 C 法
   //   hTable = new HashTable(TableSize);
-
   if (hTable == NULL) { //定义哈希表指针，值设置（NULL）
     printf("HashTable malloc error\n");
     return NULL;
@@ -85,7 +86,7 @@ void Insert(HashTable *HashTable, int key, void *value) {
     if (tmp == NULL) {
       printf("Malloc error.\n");
       return;
-    } else { //插入元素，断键重连
+    } else { //插入元素，断键交换重连
       listCur = HashTable->Thelists[Hash(key, HashTable->TableSize)];
       tmp->data = value;
       tmp->key = key;
@@ -97,14 +98,56 @@ void Insert(HashTable *HashTable, int key, void *value) {
   }
 }
 // 4、删除哈希表元素，元素应为键值对
-void Delete(HashTable *HashTable, int key) {}
+void Delete(HashTable *HashTable, int key) {
+  Element elementCur, elementLast = NULL;
+  List listCur = NULL;
+  int i = Hash(key, HashTable->TableSize);
+  listCur = HashTable->Thelists[i];
+  elementLast = listCur;
+  elementCur = listCur->next;
+  while (elementCur != NULL && elementCur->key != key) { //找这个节点
+    elementLast = elementCur;
+    elementCur = elementCur->next;
+  }                                       //到此找到了，开始删除
+  if (elementCur) {                       //如果键值对存在
+    elementLast->next = elementCur->next; //断键重连
+    delete (elementCur);                  //删除节点
+  }
+}
+// 5、哈希表元素中提取数据
+void *Retrieve(Element elementCur) {
+  return elementCur ? elementCur->data : NULL; //三元
+}
+// 6、销毁哈希表
+void Destroy(HashTable *HashTable) {
+  int i = 0;
+  Element pCur, pNext = NULL;
+  List listCur = NULL;
+  for (i = 0; i < HashTable->TableSize; i++) {
+    listCur = HashTable->Thelists[i];
+    pCur = listCur->next;
+    while (pCur != NULL) {
+      pNext = pCur->next;
+      free(pCur);
+      pCur = pNext;
+    }
+    free(listCur);
+  }
+  free(HashTable->Thelists);
+  free(HashTable);
+}
 
 //
 int main() {
-  string elms[] = {"张三", "李四", "王五"};
+  string elems[] = {"张三", "李四", "王五"};
   int i = 0;
-  HashTable *HashTable = NULL;
+  HashTable *HashTable;
   HashTable = InitHash(31);
+  // Insert(HashTable, 1, elems[0]);
+  Insert(HashTable, 1, &elems[0]); // 加上了引用&
+  Insert(HashTable, 2, &elems[1]);
+  Insert(HashTable, 3, &elems[2]);
+  Delete(HashTable, 1);
 
   printf("\n");
   return 0;
