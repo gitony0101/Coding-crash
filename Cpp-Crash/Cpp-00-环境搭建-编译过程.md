@@ -13,10 +13,10 @@
 clangd 是检查器
 linter
 
-tasks 的作用是啥？
-launch 的作用是啥？
-makefile 的作用是啥？
-makefile 的编译工具有哪些？
+- tasks 的作用
+- launch 的作用
+- makefile 的作用
+- makefile 的编译工具有那些？
 
 ## C/C++程序编译流程
 
