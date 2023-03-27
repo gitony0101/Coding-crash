@@ -29,6 +29,13 @@
 - 函数体 `{ code block }`
 
 
+
+
+
+### Binary program:
+
+- 对于每一个二进制文件，它的入口就是main函数
+
 ### void main 和 int main 的区别 就是有无返回值
 
 
@@ -47,13 +54,20 @@
    - 注意默认参数要放在定义参数的最后面
 
 
+### `int argc, char** argv`
+
+- 在C++中，argc和argv是如何将命令行参数传递给main()函数的。其中，argc是指向由argv指向的字符串的数量。   
+
 ### 返回值 Return
+- 表明程序运行的结果
 
 
 - 函数返回值：
   - 函数返回值类型：`return type`
   - 函数返回值：`return value`
 
+
+### 两种注释： `//`和`/**/` 多行注释，不可嵌套
 
 ## 函数重载 Overload
 
